@@ -1,0 +1,27 @@
+.work-states {
+  width: calc(100% - @width-toolbar);
+  height: 100vh;
+  transform: translateX(@width-toolbar);
+  display: flex;
+}
+
+.panel {
+  width: calc(100% / 3);
+  box-sizing: border-box;
+  border-left: 1px solid @color-border;
+  overflow: hidden;
+  display:flex;
+  flex-direction: column;
+  position: relative;
+  
+  &:first-child {
+    border-left:none;  
+  }
+  
+  &_white {
+    background: #fff;
+  }
+  &_chat {
+    box-shadow: inset 0px 0px 50px rgba(0,0,0,0.03);
+  }
+}

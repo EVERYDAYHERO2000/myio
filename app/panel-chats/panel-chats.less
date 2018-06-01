@@ -1,0 +1,13 @@
+.panel-chats {
+	display: flex;
+	height: 100vh;
+	flex-direction: row;
+	
+	&__list {
+		height: calc(100vh - @height-header);
+		width: 100%;
+		transform: translateY(@height-header);
+		overflow: hidden;
+		overflow-y: scroll;
+	}
+}

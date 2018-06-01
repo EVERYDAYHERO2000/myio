@@ -1,0 +1,38 @@
+.add-form {
+	margin: 0 auto;
+	height: 100vh;
+
+	opacity: 1;
+  padding: 20px 20px 0 0;
+  box-sizing: border-box;
+
+	&__button-group {
+		display: flex;
+    justify-content: space-between;
+		background-color: @color-white;
+    position: sticky;
+    bottom: 0px;
+    padding: 0 0 20px 0;
+		
+		& .btn:first-child {
+			margin-right: 20px;
+		}
+	}
+	
+	&__logo {
+		display:flex; 
+		justify-content: center;
+	}
+	
+	&__header {
+		font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 5px;
+	}
+	
+	&_hide {
+		opacity: 0;
+		transition: all 0.2s ease;
+	}
+}

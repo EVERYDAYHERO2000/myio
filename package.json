@@ -1,0 +1,13 @@
+{
+  "name": "cpcel",
+  "main": "index.html",
+  "window": {
+    "position": "center",
+    "frame": true,
+    "resizable": true,
+    "width": 1024,
+    "height": 768,
+    "min_width": 500,
+    "min_height": 500
+  }
+}

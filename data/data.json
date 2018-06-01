@@ -1,0 +1,235 @@
+{
+	"options" : {
+		"id": 1,
+		"name": "Ilya Aralin",
+		"inbox":[1,2],
+		"tasks":[3],
+		"pined_inbox": [1],
+		"pined_task": [3]
+	},
+	"users" : [
+		{
+			"id" : 1,
+			"name" : "Ilya Aralin",
+      "avatar" : "./data/ilya.jpg"
+		},
+		{
+			"id" : 2,
+			"name" : "Vladimir Frolov",
+      "avatar" : "./data/vladimir.jpg"
+		},
+		{
+			"id" : 3,
+			"name" : "Test User",
+      "avatar" : ""
+		}
+	],
+	"chats": [
+		{
+			"id": 1,
+			"title": "Front-end end-less chat",
+			"date" : "2018-05-03 00:00:00",
+			"type" : "chat",
+			"author_id" : 1,
+			"users_id" : [1,2],
+			"keys" : [],
+			"status" : "",
+			"last_message" : 13,
+			"avatar" : ""
+        },
+		{
+			"id": 2,
+			"title": "Design",
+			"date": "2018-05-03 00:00:00",
+			"type" : "chat",
+			"author_id" : 2,
+			"users_id" : [1,2],
+			"keys" : ["design"],
+			"status" : "",
+			"last_message" : 10,
+			"avatar" : ""
+        },
+		{
+			"id": 3,
+			"title" : "Front-end",
+			"date": "2018-05-03 00:00:00",
+			"type" : "task",
+			"author_id" : 1,
+			"users_id" : [1,2],
+			"keys" : [],
+			"status" : "started",
+			"last_message" : 8,
+			"avatar" : ""
+        }
+    ],
+	"messages": [
+		{
+			"id": 1,
+			"date": "2018-05-03 00:00:00",
+			"author_id": 1,
+			"message": "Тестовое сообщение",
+			"chat_id": 1
+  },
+		{
+			"id": 2,
+			"date": "2018-05-03 00:00:10",
+			"author_id": 2,
+			"message": "привет",
+			"chat_id": 1
+  },
+		{
+			"id": 3,
+			"date": "2018-05-03 00:00:20",
+			"author_id": 1,
+			"message": "хаюшки",
+			"chat_id": 1
+  },
+		{
+			"id": 4,
+			"date": "2018-05-03 00:00:30",
+			"author_id": 2,
+			"message": "как жизнь?",
+			"chat_id": 1
+  },
+		{
+			"id": 5,
+			"date": "2018-05-03 00:00:40",
+			"author_id": 1,
+			"message": "фигово",
+			"chat_id": 1
+  },
+		{
+			"id": 6,
+			"date": "2018-05-03 00:00:50",
+			"author_id": 2,
+			"message": "чего это?",
+			"chat_id": 1
+  },
+		{
+			"id": 7,
+			"date": "2018-05-03 00:00:58",
+			"author_id": 1,
+			"message": "работа достала",
+			"chat_id": 1
+  },
+		{
+			"id": 8,
+			"date": "2018-05-03 00:01:00",
+			"author_id": 2,
+			"message": "ну всех достала, а ты выпей, легче станет",
+			"chat_id": 1
+  },
+		{
+			"id": 9,
+			"date": "2018-05-03 00:01:10",
+			"author_id": 1,
+			"message": "да, так и сделаю пожалуй",
+			"chat_id": 1
+  },
+		{
+			"id": 10,
+			"date": "2018-05-03 00:01:20",
+			"author_id": 2,
+			"message": "правильно...",
+			"chat_id": 1
+  },
+		{
+			"id": 12,
+			"date": "2018-05-03 00:01:30",
+			"author_id": 1,
+			"message": "будешь?",
+			"chat_id": 1
+  },
+		{
+			"id": 13,
+			"date": "2018-05-03 00:10:40",
+			"author_id": 2,
+			"message": "буду",
+			"chat_id": 1
+  },
+{
+			"id": 14,
+			"date": "2018-05-06 00:00:01",
+			"author_id": 1,
+			"message": "привет",
+			"chat_id": 2
+  },
+		{
+			"id": 15,
+			"date": "2018-05-06 00:00:10",
+			"author_id": 2,
+			"message": "привет",
+			"chat_id": 2
+  },
+		{
+			"id": 16,
+			"date": "2018-05-06 00:00:20",
+			"author_id": 1,
+			"message": "как прошло?",
+			"chat_id": 2
+  },
+		{
+			"id": 17,
+			"date": "2018-05-06 00:00:30",
+			"author_id": 2,
+			"message": "норм. а у тебя?",
+			"chat_id": 2
+  },
+		{
+			"id": 18,
+			"date": "2018-05-06 00:00:40",
+			"author_id": 1,
+			"message": "как всегда",
+			"chat_id": 2
+  },
+		{
+			"id": 19,
+			"date": "2018-05-06 00:00:50",
+			"author_id": 2,
+			"message": "пойдем за пивом?",
+			"chat_id": 2
+  },
+		{
+			"id": 20,
+			"date": "2018-05-06 00:00:58",
+			"author_id": 1,
+			"message": "пойдем",
+			"chat_id": 2
+  },
+		{
+			"id": 21,
+			"date": "2018-05-06 00:01:00",
+			"author_id": 2,
+			"message": "через 10 минут",
+			"chat_id": 2
+  },
+		{
+			"id": 22,
+			"date": "2018-05-06 00:01:10",
+			"author_id": 1,
+			"message": "ок",
+			"chat_id": 2
+  },
+		{
+			"id": 23,
+			"date": "2018-05-06 00:11:20",
+			"author_id": 2,
+			"message": "ну?",
+			"chat_id": 2
+  },
+		{
+			"id": 24,
+			"date": "2018-05-06 00:01:30",
+			"author_id": 1,
+			"message": "бегу",
+			"chat_id": 2
+  },
+		{
+			"id": 25,
+			"date": "2018-05-06 00:10:40",
+			"author_id": 2,
+			"message": "давай",
+			"chat_id": 2
+  }
+]
+}
