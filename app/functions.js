@@ -2,6 +2,7 @@
 //date object from string date
 //return date object [object]
 APP.f.getDateTime = function (date) {
+	date = date || new Date();
   date = (date instanceof Date) ? date : new Date(date);
   let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   let dateTime = {
@@ -17,17 +18,13 @@ APP.f.getDateTime = function (date) {
     dateTime: null,
     formated: null
   }
-  dateTime.hours = date.getHours();
-  dateTime.minute = date.getMinutes();
-  dateTime.fullYear = date.getFullYear();
-  dateTime.month = date.getMonth() + 1;
+  dateTime.hours = APP.f.stringifyNumber( date.getHours() );
+  dateTime.minute = APP.f.stringifyNumber( date.getMinutes() ); 
+  dateTime.fullYear = APP.f.stringifyNumber( date.getFullYear() ); 
+  dateTime.month = APP.f.stringifyNumber( date.getMonth() + 1 ); 
   dateTime.monthName = monthNames[date.getMonth()];
-  dateTime.day = date.getDate();
-  dateTime.time = (function () {
-    let hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
-    let minute = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
-    return hours + ':' + minute;
-  })();
+  dateTime.day = APP.f.stringifyNumber( date.getDate() );
+  dateTime.time = dateTime.hours + ':' + dateTime.minute;
   dateTime.date = dateTime.monthName + ' ' + dateTime.day;
   dateTime.dateTime = dateTime.date + ', ' + dateTime.time;
   dateTime.formated = dateTime.fullYear + '-' + dateTime.month + '-' + dateTime.day + ' ' + dateTime.time;
@@ -82,6 +79,7 @@ APP.f.changeColor = function (str) {
   return color;
 }
 
+//склеить массивы
 APP.f.concat = function(currentArr, newArr){
   $.each(newArr,function(i,e){
     currentArr.push(newArr[e]);
@@ -89,6 +87,7 @@ APP.f.concat = function(currentArr, newArr){
   return currentArr;       
 }
 
+//найти самы большой zIndex
 APP.f.findHighestZIndex = function(elem){
   let elems = document.getElementsByTagName(elem);
   let highest = 0;
@@ -99,4 +98,9 @@ APP.f.findHighestZIndex = function(elem){
     }
   }
   return new Number(highest);
+}
+
+//переводит число в строку, добавляет 0 в начало строки если n меньше 10 
+APP.f.stringifyNumber = function(n){
+	return (n < 10) ? '0' + n : n.toString();
 }

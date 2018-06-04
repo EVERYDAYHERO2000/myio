@@ -8,6 +8,11 @@ APP.f = {}
 //vue app
 APP.$ = {};
 
+APP.URL = {};
+APP.URL.base = 'http://localhost/chattask_server';
+APP.URL.auth = APP.URL.base + '/auth.php';
+APP.URL.registration = APP.URL.base + '/registration.php';
+
 //load js
 requirejs([
   //core
@@ -51,7 +56,7 @@ requirejs([
 				__this__.opt.options.app.screen = 'loading';
 				
 				
-				$.get('../../app/data/data.json', function(data) {
+				$.get('./data/data.json', function(data) {
 					__this__.opt.options.app.screen = 'main';
 					
 					__this__.opt = APP.f.data.getData( data , __this__.opt );
