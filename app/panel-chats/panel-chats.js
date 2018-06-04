@@ -6,7 +6,12 @@ Vue.component('panel-chats', {
 	props: ['opt','panelTitle','type'],
   template: 
 `<div class="panel-chats">
-	<panel-header v-bind:title="panelTitle" v-bind:opt="opt"></panel-header>
+
+	<panel-header
+		v-bind:type="type"
+		v-bind:title="panelTitle" 
+		v-bind:opt="opt">
+	</panel-header>
 
 	<div v-if="type == 'chats'" class="panel-chats__list">
 		<chat-list-item 

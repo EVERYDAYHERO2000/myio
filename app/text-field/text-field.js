@@ -5,7 +5,9 @@
 Vue.component('text-field', {
   props: ['lable','type'],
   template: 
-`<div class="text-field">
+`<div class="text-field" v-bind:class="(type == 'search') ? 'text-field_search' : ''" >
+	
+	<div v-if="type == 'search'" class="text-field__search-icon"></div>
 
   <input 
 		v-bind:type="fieldType" 

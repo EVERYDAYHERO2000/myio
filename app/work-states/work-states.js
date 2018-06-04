@@ -29,6 +29,16 @@ Vue.component('work-states', {
 		</panel-chats>
   </div>
 
-</div>`
+</div>`,
+	methods: {
+		loadData: function(){
+			$.get('./data/data.json', function(d){
+				APP.$.$data.opt = APP.f.data.getData(d, APP.$.$data.opt);
+			});	
+		}
+	},
+	created: function(){
+		this.loadData()
+	}
 	
 });

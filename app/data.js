@@ -4,45 +4,7 @@ APP.f.data = APP.f.data || {};
 
 APP.f.data.getData = function(newData, currentData){
 	
-	
-	if (!newData && !currentData) {
-		
-		newData = {};
-		newData.options = {};
-		newData.options.app = {
-			screen: 'login', //'loading', 'registration', 'login', 'main'
-			state: 'chats', //'chats', 'calendar', 'files', 'settings', 'user_info'
-			modal: false
-		}
-	}
-	
-	currentData = currentData || {};
-	newData = newData || {};
-	
-	
-	newData.options = newData.options || {};
-	newData.options.login = newData.options.login || null;
-	newData.options.id = newData.options.id || null;
-	newData.options.email = newData.options.email || null;
-	newData.options.name = newData.options.name || null;
-	newData.options.pined_id = newData.options.pined_id || null;
-	newData.options.app = newData.options.app || {};
-	
-		currentData.options = currentData.options || {
-			login: null,
-			id: null,
-			email: null,
-			name: null,
-			pined_id: null,
-			app: {}
-	};
-	
-	newData.options.app.screen = currentData.options.app.screen || 'login';
-	newData.options.app.state = currentData.options.app.state || 'chats';
-	newData.options.app.modal = currentData.options.app.modal || false;
-	
-
-		
+				
   const DATA = {
 		inboxList: currentData.inboxList || [],
 		taskList: currentData.taskList || [],
@@ -60,7 +22,7 @@ APP.f.data.getData = function(newData, currentData){
 			name: newData.options.name,
 			pined_id: newData.options.pined_id,
 			active_chat_id: [],
-			app: newData.options.app
+			app: currentData.options.app
 		}
 	}
 	
@@ -152,6 +114,7 @@ APP.f.data.getData = function(newData, currentData){
 		});
 		return message;
 	}
+	
 	return DATA;
 } 
 

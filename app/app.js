@@ -46,23 +46,32 @@ requirejs([
   APP.$ = new Vue({
     el: '#app',
     data: {
-      opt: APP.f.data.getData(null,null),
+      opt: {
+				inboxList: [],
+				messages: [],
+				options: {
+					email: null,
+					id: null,
+					login: null,
+					name: null,
+					pined_id: null,
+					app: {
+						modal: false,
+						screen: "login",
+						state: "chats"
+					}
+				},
+				taskList : [],
+				users : []
+			},
 			auth: APP.f.auth.load()
     },
 		created: function () {
 			const __this__ = this;
 			if (__this__.auth.authValid == 'true') {
 				
-				__this__.opt.options.app.screen = 'loading';
+				__this__.opt.options.app.screen = 'main';
 				
-				
-				$.get('./data/data.json', function(data) {
-					__this__.opt.options.app.screen = 'main';
-					
-					__this__.opt = APP.f.data.getData( data , __this__.opt );
-					
-
-				});
 			}
 		},
     mounted: function () {

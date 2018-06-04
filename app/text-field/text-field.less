@@ -4,6 +4,8 @@
 	padding: 40px 0 0 0;
 	box-sizing: border-box;
 	position: relative;
+	
+
 
 	& input {
 		font-size: @font-size-main;
@@ -57,7 +59,24 @@
 		transition: all .2s ease;
 	}
 	
+	&_search {
+		
+		& input {
+			padding-left: 25px;
+		}
+		
+	}
 	
+	&__search-icon {
+		background-image: ~'url(./res/icons/search.svg)';
+		background-repeat: no-repeat;
+		background-position: center;
+		opacity: 0.3;
+		width: 20px;
+		height: 20px;
+		position: absolute;
+    bottom: 10px;
+	}
 
 
 
