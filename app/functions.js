@@ -28,6 +28,7 @@ APP.f.getDateTime = function (date) {
   dateTime.date = dateTime.monthName + ' ' + dateTime.day;
   dateTime.dateTime = dateTime.date + ', ' + dateTime.time;
   dateTime.formated = dateTime.fullYear + '-' + dateTime.month + '-' + dateTime.day + ' ' + dateTime.time;
+	dateTime.dateOnly = dateTime.fullYear + '-' + dateTime.month + '-' + dateTime.day;
   return dateTime;
 }
 

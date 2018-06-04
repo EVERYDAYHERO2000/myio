@@ -15,6 +15,10 @@
 		border-bottom: 1px solid rgba(0,0,0,0.2);
 		box-sizing: border-box;
 	}
+	
+	& input[type='date'] {
+		letter-spacing: 1px;
+	}
 
 	& input:focus {
 		outline: none;
@@ -31,10 +35,18 @@
 		color: rgba(0,0,0,0.3);
 	}
 	
+	& input:valid:not(:focus) ~ label {
+		color: @color-gray-font;
+	}
+	
 	& input:focus ~ label, & input:valid ~ label {
-		transform: translate(0px,-30px) scale(0.9);
+		transform: translate(0px,-20px) scale(0.9);
 		transition: all .2s ease;
 		color: @color-active;
+	}
+	
+	& input[type='date'] ~ label {
+		transform: translate(0px,-20px) scale(0.9);
 	}
 	
 	&__bar {
@@ -71,7 +83,7 @@
 		background-image: ~'url(./res/icons/search.svg)';
 		background-repeat: no-repeat;
 		background-position: center;
-		opacity: 0.3;
+		opacity: 0.2;
 		width: 20px;
 		height: 20px;
 		position: absolute;

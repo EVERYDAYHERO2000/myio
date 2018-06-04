@@ -212,6 +212,9 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
+.text-field input[type='date'] {
+  letter-spacing: 1px;
+}
 .text-field input:focus {
   outline: none;
 }
@@ -225,11 +228,17 @@
   transition: all .2s ease;
   color: rgba(0, 0, 0, 0.3);
 }
+.text-field input:valid:not(:focus) ~ label {
+  color: rgba(0, 0, 0, 0.5);
+}
 .text-field input:focus ~ label,
 .text-field input:valid ~ label {
-  transform: translate(0px, -30px) scale(0.9);
+  transform: translate(0px, -20px) scale(0.9);
   transition: all .2s ease;
   color: #4b91c6;
+}
+.text-field input[type='date'] ~ label {
+  transform: translate(0px, -20px) scale(0.9);
 }
 .text-field__bar {
   transform: translate(0, -2px);
@@ -249,6 +258,19 @@
 .text-field input:focus ~ .text-field__bar::after {
   width: 100%;
   transition: all .2s ease;
+}
+.text-field_search input {
+  padding-left: 25px;
+}
+.text-field__search-icon {
+  background-image: url(./res/icons/search.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.3;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 10px;
 }
 .logo {
   width: 90px;
@@ -532,6 +554,10 @@
 .add-form__button-group {
   display: flex;
   justify-content: space-between;
+  background-color: #ffffff;
+  position: sticky;
+  bottom: 0px;
+  padding: 0 0 20px 0;
 }
 .add-form__button-group .btn:first-child {
   margin-right: 20px;
@@ -567,21 +593,33 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 40px;
+  max-height: 40px;
   z-index: 1000;
   box-sizing: border-box;
   border-bottom: 1px solid #ececec;
   background-color: #fff;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.05);
-  transition: all .2s;
+  transition: max-height 0.3s ease;
   color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 .panel-header_active {
-  height: 200px;
-  transition: all .2s;
+  max-height: calc(60vh);
+  transition: max-height 0.9s ease;
+  overflow: visible;
+  animation: overflowed 0.9s 1;
+}
+@keyframes overflowed {
+  0%,
+  90% {
+    overflow: hidden;
+  }
+  100% {
+    overflow: visible;
+  }
 }
 .panel-header__titlebar {
-  padding: 10px 0px 0px 10px;
+  padding: 10px 0px 10px 10px;
   line-height: 20px;
 }
 .panel-header__titlebar:after {
@@ -597,6 +635,12 @@
   top: 0;
   right: -8px;
   opacity: 0.8;
+}
+.panel-header__form {
+  padding: 0 10px 10px 10px;
+}
+.panel-header__form > div:first-child {
+  padding-top: 20px;
 }
 .chat-list-item {
   border-bottom: 1px solid #ececec;
@@ -750,6 +794,9 @@
   display: flex;
   justify-content: space-between;
 }
+.user-list__users + .user-list__list {
+  margin: -30px 0 0 0 !important;
+}
 .user-list__title {
   font-weight: 500;
 }
@@ -760,25 +807,24 @@
   display: flex;
   align-items: flex-end;
 }
-.user-list__list {
-  flex-grow: 1;
-}
-.user-list__add-button {
-  width: 50px;
-  height: 45px;
-  margin: 0 -15px 0 -5px;
-  background-image: url(./res/icons/add-circle-outline.svg);
-  background-size: 20px;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.7;
+.user-list__header ~ .user-list__list {
+  margin: -20px 0 0 0;
 }
 .user-item {
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
+  padding: 10px 0 10px 0;
 }
 .user-item__content {
   flex-grow: 1;
+  box-sizing: border-box;
+  padding: 0px 0px 0 10px;
+}
+.user-item__user-name {
+  color: #4b91c6;
+  font-size: 14px;
+  margin: 10px 0 0 0;
 }
 .user-item__remove {
   width: 20px;
@@ -789,7 +835,13 @@
   background-size: 20px;
   background-position: center;
   background-repeat: no-repeat;
+  opacity: .1;
+  margin: 10px 0 0 0;
+  transition: all .2s;
+}
+.user-item:hover .user-item__remove {
   opacity: .7;
+  transition: all .2s;
 }
 body {
   margin: 0;
@@ -798,6 +850,7 @@ body {
   overflow: hidden;
   font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
 }
 a {
   color: #4b91c6;
@@ -805,6 +858,12 @@ a {
 }
 a:focus {
   outline: none;
+}
+input {
+  font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+button {
+  color: rgba(0, 0, 0, 0.7);
 }
 #app {
   position: absolute;

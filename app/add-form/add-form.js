@@ -19,17 +19,21 @@ Vue.component('add-form', {
     <div v-if="this.active == 0">
 
       <text-field 
-				v-on:onValue="setTitle" 
+				v-on:onValue="setTitle"
+				v-bind:type="'text'"
 				v-bind:lable="'Task title'">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDescription" 
+				v-bind:type="'text'"
 				v-bind:lable="'Description'">
 			</text-field>
 
       <text-field 
-				v-on:onValue="setDate" 
+				v-on:onValue="setDate"
+				v-bind:value="this.date"
+				v-bind:type="'date'"
 				v-bind:lable="'Deadline date'">
 			</text-field>
 
@@ -46,11 +50,13 @@ Vue.component('add-form', {
 
       <text-field 
 				v-on:onValue="setTitle"
+				v-bind:type="'text'"
 				v-bind:lable="'Chat title'">
 			</text-field>
 
       <text-field 
-				v-on:onValue="setDescription" 
+				v-on:onValue="setDescription"
+				v-bind:type="'text'"
 				v-bind:lable="'Description'">
 			</text-field>
 
@@ -67,6 +73,7 @@ Vue.component('add-form', {
 
       <text-field 
 				v-on:onValue="setEmail" 
+				v-bind:type="'email'"
 				v-bind:lable="'Email'">
 			</text-field>
 
@@ -125,7 +132,7 @@ Vue.component('add-form', {
 			title : '',
 			description : '',
 			email : '',
-			date : '',
+			date : APP.f.getDateTime().dateOnly,
 			userList: []
 		}
 	}
