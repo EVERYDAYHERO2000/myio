@@ -18,6 +18,7 @@ APP.URL.addNew = APP.URL.base + '/addnew.php';
 requirejs([
   //core
   'functions',
+	'dictionary',
   'data',
 	'auth',
 	//components

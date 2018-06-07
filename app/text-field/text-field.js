@@ -2,6 +2,7 @@
 /*
 поле ввода
 */
+
 Vue.component('text-field', {
   props: ['lable','type','value','placeholder'],
   template: 

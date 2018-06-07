@@ -113,6 +113,7 @@ Vue.component('add-form', {
 		createNew: function(){
 			
 			let data = {
+				author: APP.$.$data.opt.options.id,
 				eventType : this.dataType[this.active].name,
 				title: this.title,
 				description: this.description,
