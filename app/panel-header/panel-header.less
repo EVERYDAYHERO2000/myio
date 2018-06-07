@@ -22,13 +22,13 @@
   &_active {
     
 		max-height: calc(100vh - @height-header);
-    transition: max-height @animation-speed*3 ease;
+    transition: max-height @animation-speed ease;
 		overflow: visible;
-		animation: overflowed @animation-speed*3 1;
+		animation: overflowed @animation-speed 1 ease;
   }
 	
 	@keyframes overflowed {
-		0%, 90% {
+		0%, 99% {
 			overflow: hidden;
 		}
 		100% {

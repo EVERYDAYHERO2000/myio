@@ -21,7 +21,7 @@ Vue.component('add-form', {
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:lable="'Task title'">
+				v-bind:lable="'Title'">
 			</text-field>
 
       <text-field 
@@ -38,11 +38,12 @@ Vue.component('add-form', {
 			</text-field>
 
       <user-list 
+				v-on:onValue="setUserList"
 				v-bind:opt="opt">
 			</user-list>
 
       <div class="add-form__button-group">
-		    <btn v-bind:title="'Create'" v-on:click.native="setState('main')"></btn>
+		    <btn v-bind:title="'Create'" v-on:click.native="createNew"></btn>
       </div>
     </div>
 
@@ -51,7 +52,7 @@ Vue.component('add-form', {
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:lable="'Chat title'">
+				v-bind:lable="'Title'">
 			</text-field>
 
       <text-field 
@@ -61,11 +62,12 @@ Vue.component('add-form', {
 			</text-field>
 
       <user-list 
+				v-on:onValue="setUserList"
 				v-bind:opt="opt">
 			</user-list>
 
       <div class="add-form__button-group">
-		    <btn v-bind:title="'Create'" v-on:click.native="setState('main')"></btn>
+		    <btn v-bind:title="'Create'" v-on:click.native="createNew"></btn>
       </div>
     </div>
 
@@ -78,7 +80,7 @@ Vue.component('add-form', {
 			</text-field>
 
       <div class="add-form__button-group">
-		    <btn v-bind:title="'Invite'" v-on:click.native="setState('main')"></btn>
+		    <btn v-bind:title="'Invite'" v-on:click.native="createNew"></btn>
       </div>
     </div>
 
@@ -105,11 +107,20 @@ Vue.component('add-form', {
 		setDate: function(e){
 			this.date = e;
 		},
+		setUserList: function(e){
+			this.userList = e;
+		},
 		createNew: function(){
 			
 			let data = {
-				eventType : this.dataType[this.active].name
+				eventType : this.dataType[this.active].name,
+				title: this.title,
+				description: this.description,
+				email: this.email,
+				date: this.date,
+				userList: this.userList
 			}
+			console.log(data);
 		}
 	},
   data: function () {

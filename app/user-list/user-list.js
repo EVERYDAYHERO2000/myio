@@ -36,7 +36,7 @@ Vue.component('user-list', {
     addUser: function(e){
       this.UsersCanBeRemoved.push( this.UsersCanBeAdded[e] );
 			this.UsersCanBeAdded.splice(e, 1);
-			
+			this.$emit('onValue',  this.UsersCanBeRemoved ); 
     },
 		removeUser: function(e){
       this.UsersCanBeAdded.push( this.UsersCanBeRemoved[e] );

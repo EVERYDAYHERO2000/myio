@@ -12,7 +12,8 @@ Vue.component('panel-header', {
 		<div class="panel-header__form">
 
 			<text-field 
-				v-bind:lable="''" 
+				v-bind:lable="''"
+				v-bind:placeholder="'Search'"
 				v-bind:type="'search'">
 			</text-field>
 

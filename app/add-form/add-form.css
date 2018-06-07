@@ -9,6 +9,10 @@
 .add-form__button-group {
   display: flex;
   justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 30%, #ffffff 100%);
+  position: sticky;
+  bottom: 0px;
+  padding: 0 0 20px 0;
 }
 .add-form__button-group .btn:first-child {
   margin-right: 20px;

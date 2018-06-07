@@ -12,6 +12,7 @@ APP.URL = {};
 APP.URL.base = 'http://localhost/chattask_server';
 APP.URL.auth = APP.URL.base + '/auth.php';
 APP.URL.registration = APP.URL.base + '/registration.php';
+APP.URL.addNew = APP.URL.base + '/addnew.php';
 
 //load js
 requirejs([
