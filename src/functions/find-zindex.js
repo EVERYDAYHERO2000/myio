@@ -1,5 +1,6 @@
-//найти самы большой zIndex
-let findZindex = function(elem){
+"use strict";
+
+const findZindex = function(elem){
   let elems = document.getElementsByTagName(elem);
   let highest = 0;
   for (var i = 0; i < elems.length; i++){

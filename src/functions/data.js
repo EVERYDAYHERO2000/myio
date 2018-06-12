@@ -4,7 +4,7 @@ import $ from 'jquery';
 import getDateTime from '../functions/date-time.js';
 import changeColor from '../functions/change-color.js';
 
-let data = {};
+const data = {};
 
 data.getData = function (newData, currentData) {
 

@@ -1,4 +1,6 @@
-let auth = {};
+"use strict";
+
+const auth = {};
 
 auth.load = function() {	
 	const __auth__ = {

@@ -1,6 +1,8 @@
+"use strict";
+
 import $ from 'jquery';
 
-let changeColor = function (str) {
+const changeColor = function (str) {
 
   let char = str[0];
   let color = '#eaeaea';
