@@ -1,36 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+	<meta charset="utf-8">
 	<title>myio</title>
-	<meta charset="utf-8" />
 	<meta content="width=device-width,initial-scale=1,minimal-ui,maximum-scale=1,user-scalable=no" name="viewport" />
 	<meta http-equiv="cache-control" content="no-cache" />
 	<meta http-equiv="Pragma" content="no-cache" />
-
-	<link rel="stylesheet" href="res/fonts/iconfont/material-icons.css" />
-	<link rel="stylesheet/less" type="text/css" href="app/app.less" />
-	<script src="libs/vue.min.js"></script>
-	<script src="libs/lodash.min.js"></script>
-	<script src="libs/less.min.js"></script>
-	<script src="libs/jquery-3.3.1.min.js"></script>
-	<link rel="icon" href="./res/favicon_16.png" sizes="16x16" type="image/png" />
-	<link rel="icon" href="./res/favicon_32.png" sizes="32x32" type="image/png" />
-
+	<link rel="icon" href="/static/favicon_16.png" sizes="16x16" type="image/png" />
+	<link rel="icon" href="/static/favicon_32.png" sizes="32x32" type="image/png" />
+	<link rel="stylesheet" href="/static/loading.css" />
 </head>
 
 <body>
-  <div id="loading">
-  <svg class="loading-spinner" viewBox="0 0 50 50">
+	<div id="loading">
+		<svg class="loading-spinner" viewBox="0 0 50 50">
     <circle class="path" cx="25" cy="25" r="20"></circle>
   </svg>
-  </div>  
-	<div id="app">
-		<app-states v-bind:opt="opt"></app-states>
-		<app-modal v-bind:opt="opt"></app-modal>
 	</div>
-
-	<script data-main="app/app" src="libs/require.js"></script>
+	<div id="app"></div>
+	<script src="/dist/build.js"></script>
 </body>
 
 </html>
