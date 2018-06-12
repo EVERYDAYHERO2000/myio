@@ -1,10 +1,22 @@
 {
   "name": "myio",
-  "description": "A Vue.js project",
+  "description": "Chat message and inspiring project management",
   "version": "1.0.0",
   "author": "EVERYDAYHERO2000 <ilyaflare@gmail.com>",
+	"homepage": "https://github.com/EVERYDAYHERO2000/myio",
+	"repository": "https://github.com/EVERYDAYHERO2000/myio",
   "license": "MIT",
   "private": true,
+	"main": "index.html",
+  "window": {
+    "position": "center",
+    "frame": true,
+    "resizable": true,
+    "width": 1024,
+    "height": 768,
+    "min_width": 500,
+    "min_height": 500
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
