@@ -5,14 +5,14 @@
     <toolbar-tool 
       v-if="opt.options.app.state == 'chats'" 
       v-on:click.native="toggleToolbarAdd" 
-      v-bind:icon="'./static/add.svg'">
+      v-bind:icon="this.icons.icon_add">
     </toolbar-tool>
 
     <div class="toolbar__sizer"></div>
 
 		<toolbar-tool 
       v-on:click.native="toggleToolbarSpace" 
-      v-bind:opt="opt" v-bind:icon="'./static/space.svg'">
+      v-bind:opt="opt" v-bind:icon="this.icons.icon_space">
     </toolbar-tool>
 
 		<div class="toolbar__divider"></div>
@@ -20,28 +20,28 @@
     <toolbar-tool 
       v-bind:data="'chats'" 
       v-on:click.native="closeToolbar" 
-      v-bind:opt="opt" v-bind:icon="'./static/forum.svg'">
+      v-bind:opt="opt" v-bind:icon="this.icons.icon_forum">
     </toolbar-tool>
 
     <toolbar-tool 
       v-bind:data="'calendar'" 
       v-on:click.native="closeToolbar" 
       v-bind:opt="opt" 
-      v-bind:icon="'./static/event.svg'">
+      v-bind:icon="this.icons.icon_event">
     </toolbar-tool>
 
     <toolbar-tool 
       v-bind:data="'files'" 
       v-on:click.native="closeToolbar"
       v-bind:opt="opt" 
-      v-bind:icon="'./static/cloud-queue.svg'">
+      v-bind:icon="this.icons.icon_cloudQueue">
     </toolbar-tool>
 
     <toolbar-tool 
       v-bind:data="'settings'" 
       v-on:click.native="closeToolbar" 
       v-bind:opt="opt" 
-      v-bind:icon="'./static/settings.svg'">
+      v-bind:icon="this.icons.icon_settings">
     </toolbar-tool>
   </div>
 
@@ -60,6 +60,13 @@
 	
 	import toolbarTool from './toolbar-tool.vue';
 	import addForm from './add-form.vue';
+	
+	import icon_add from './assets/add.svg';
+	import icon_space from './assets/space.svg';
+	import icon_forum from './assets/forum.svg';
+	import icon_event from './assets/event.svg';
+	import icon_cloudQueue from './assets/cloud-queue.svg';
+	import icon_settings from './assets/settings.svg';
 
 	export default {
 		props: {
@@ -98,6 +105,14 @@
 				},
 				spaceForm: {
 					isVisible: false
+				},
+				icons : {
+					icon_add : icon_add,
+					icon_space : icon_space,
+					icon_forum : icon_forum,
+					icon_event : icon_event,
+					icon_cloudQueue : icon_cloudQueue,
+					icon_settings : icon_settings
 				}
 			}
 		}
