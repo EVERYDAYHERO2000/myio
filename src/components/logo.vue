@@ -30,8 +30,12 @@
 
 
 <script>
+	import cssVars from '../functions/css-vars.js';
+	
 	export default {
-
+		created: function(){
+			console.log( cssVars('.color-active').color ); 	
+		}
 	}
 </script>
 
@@ -39,7 +43,11 @@
 <style lang="less">
 	@import '../less/variables.less';
 	
-	.logo {
+	.color-active {
+		color: @color-active;
+	}
+	
+	.logo { 
 		width: 90px;
 		height: 135px;
 		background-position: center;

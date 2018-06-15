@@ -63,9 +63,10 @@
 </script>
 
 <style lang="less">
+	@import '~normalize.css/normalize.css';
 	@import './less/font.less'; 
 	@import './less/variables.less'; 
-	@import './less/loading-spinner.less'; 
+	@import './less/loading-spinner.less';
 
 	body {
 		margin: 0;

@@ -60,6 +60,17 @@
 
 <style lang="less">
 	@import '../less/variables.less';
+	
+		input:-webkit-autofill,
+		input:-webkit-autofill:hover, 
+		input:-webkit-autofill:focus
+		input:-webkit-autofill {
+			background-color: transparent!important;
+			-webkit-text-fill-color: @color-active;
+			-webkit-box-shadow: 0 0 0px 1000px #fff inset;
+			transition: background-color 5000s ease-in-out 0s;
+		}
+	
 	.text-field {
 		display: flex;
 		flex-direction: column;
@@ -88,8 +99,8 @@
 				//background-color: @color-active!important;
 			}
 
-		}
-
+		}		
+		
 		& input:focus {
 			outline: none;
 		}
