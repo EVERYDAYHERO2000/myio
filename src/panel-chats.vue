@@ -2,21 +2,25 @@
 	<div class="panel-chats">
 
 	<panel-header
-		v-bind:type="type"
 		v-bind:title="panelTitle" 
 		v-bind:opt="opt">
-	</panel-header>
+		
+		<text-field 
+			v-bind:lable="''"
+			v-bind:placeholder="'Search'"
+			v-bind:type="'search'">
+		</text-field>
+		
+	</panel-header> 
 
-	<div v-if="type == 'chats'" class="panel-chats__list">
+	<div class="panel-chats__list">
+	
 		<chat-list-item 
 			v-for="chat in opt.inboxList" 
 			v-bind:chat="chat"
 			v-bind:key="chat.id">
 		</chat-list-item>
-	</div>
-
-	<div v-if="type == 'tasks'" class="panel-chats__list">
-2
+		
 	</div>
 
 </div>
@@ -24,8 +28,9 @@
 
 
 <script>
-	import panelHeader from './panel-header.vue';
+	import panelHeader from './components/panel-header.vue';
 	import chatListItem from './chat-list-item.vue';
+	import textField from './components/text-field.vue';
 	
 	export default {
 		props: {
@@ -35,7 +40,8 @@
 		},
 		components: {
 			panelHeader : panelHeader,
-			chatListItem : chatListItem
+			chatListItem : chatListItem,
+			textField: textField
 		},
 		created: function(){
 

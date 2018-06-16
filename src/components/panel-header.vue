@@ -1,62 +1,25 @@
 <template>
-	<div class="panel-header">
-
-	<template v-if="type == 'chats'">
+	<div class="panel-header"> 
+	
 		<div class="panel-header__titlebar" v-on:click="toggleHeaderPanel">{{title}}</div>
 		<div class="panel-header__form">
-
-			<text-field 
-				v-bind:lable="''"
-				v-bind:placeholder="'Search'"
-				v-bind:type="'search'">
-			</text-field>
-
+			<slot></slot>
 		</div>
-	</template>
-
-	<template v-if="type == 'tasks'">
-		<div class="panel-header__titlebar" v-on:click="toggleHeaderPanel">{{title}}</div>
-		<div class="panel-header__form">
-
-			<select-list 
-				v-bind:name="'test'" 
-				v-bind:options="this.dataTaskState" 
-				v-bind:active="this.active"
-				v-bind:k="'value'"
-				v-bind:v="'name'"
-				v-on:onActive="">
-			</select-list>
-
-			<text-field 
-				v-bind:lable="''" 
-				v-bind:type="'search'">
-			</text-field>
-
-		</div>
-	</template>
-
-	<template v-if="type == 'messages'">
-		<div class="panel-header__titlebar" v-on:click="toggleHeaderPanel">{{title}}</div>
-	</template>
-
+	
 </div>
 </template>
 
 
 <script>
 	import $ from 'jquery';
-	import selectList from './components/select-list.vue';
-	import textField from './components/text-field.vue';
 	
 	export default {
 		props: {
 			opt : Object,
-			title : String,
-			type : String
+			title : String
 		},
 		components: {
-			selectList : selectList,
-			textField : textField
+
 		},
 		methods: {
 			toggleHeaderPanel: function() {
@@ -67,21 +30,7 @@
 		},
 		data: function() {
 			return {
-				isShowed: false,
-				active: 0,
-				dataTaskState: [{
-						value: '1',
-						name: 'All tasks'
-					},
-					{
-						value: '2',
-						name: 'Created by me'
-					},
-					{
-						value: '3',
-						name: 'Assigned to me'
-					}
-				]
+				isShowed: false
 			}
 		}
 	}
@@ -89,7 +38,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import '../less/variables.less';
 
 
 	.panel-header {
@@ -139,7 +88,7 @@
 				content: '';
 				height: @height-header;
 				width: @height-header;
-				background-image: ~'url(./assets/more-vert.svg)';
+				background-image: ~'url(../assets/more-vert.svg)';
 				background-size: 20px;
 				background-position: center;
 				background-repeat: no-repeat;

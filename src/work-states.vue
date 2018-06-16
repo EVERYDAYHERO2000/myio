@@ -10,39 +10,51 @@
 				v-on:onDragStart="onDragStart" 
 				v-on:onDrag="onDrag">
 
+				<!--CHATS-->
 				<SplitArea 
 				 class="panel panel_white"
 				 v-bind:size="this.panelsSettings.panelLeft" 
 				 v-bind:minSize="300">
 
-					 <panel-chats 
+					<panel-chats 
 						v-bind:opt="opt" 
 						v-bind:type="'chats'" 
 						v-bind:panelTitle="'Chats'">
 					</panel-chats>
 
 				</SplitArea>
-
+				<!--CHATS END-->
+				
+				<!--MESSAGES-->
 				<SplitArea 
-				 class="panel panel_chat"
+				 class="panel panel_messages"
 				 v-bind:size="this.panelsSettings.panelCenter" 
 				 v-bind:minSize="300">
-					chat
+				 
+					<panel-messages 
+						v-bind:opt="opt"
+						v-bind:type="'messages'"
+						v-bind:panelTitle="'Messages'">
+					</panel-messages>
+					
 				</SplitArea>
-
+				<!--MESSAGES END-->
+				
+				<!--TASKS-->  
 				<SplitArea 
 				 class="panel panel_white"
 				 v-bind:size="this.panelsSettings.panelRight" 
 				 v-bind:minSize="300">
 
-					<panel-chats 
+					<panel-tasks 
 						v-bind:opt="opt"
 						v-bind:type="'tasks'" 
 						v-bind:panelTitle="'Tasks'">
-					</panel-chats>
+					</panel-tasks>
 
 				</SplitArea>
-
+				<!--TASKS END-->
+				
 			</Split>
 		</div>
 
@@ -71,8 +83,10 @@
 	import data from './functions/data.js';
 
 	import panelChats from './panel-chats.vue';
+	import panelTasks from './panel-tasks.vue';
 	import VueSplit from 'vue-split-panel';
 	import settingsForm from './settings-form.vue';
+	import panelMessages from './panel-messages.vue';
 
 	export default {
 		props: {
@@ -80,9 +94,11 @@
 		},
 		components: {
 			panelChats: panelChats,
+			panelTasks: panelTasks,
 			Split: VueSplit.Split,
 			SplitArea: VueSplit.SplitArea,
-			settingsForm: settingsForm
+			settingsForm: settingsForm,
+			panelMessages: panelMessages
 		},
 		methods: {
 			loadData: function() {
@@ -172,7 +188,7 @@
 		&_white {
 			background: #fff;
 		}
-		&_chat {
+		&_messages {
 			box-shadow: inset 0px 0px 50px rgba(0, 0, 0, 0.03);
 		}
 	}
