@@ -1,48 +1,66 @@
 <template>
 	
+	<div class="work-states">
+	
+		<div class="work-states__state" v-if="opt.options.app.state === 'chats'">
+			<Split 
+				v-bind:gutterSize="1" 
+				class="split_flex"
+				v-on:onDragEnd="onDragEnd" 
+				v-on:onDragStart="onDragStart" 
+				v-on:onDrag="onDrag">
+
+				<SplitArea 
+				 class="panel panel_white"
+				 v-bind:size="this.panelsSettings.panelLeft" 
+				 v-bind:minSize="300">
+
+					 <panel-chats 
+						v-bind:opt="opt" 
+						v-bind:type="'chats'" 
+						v-bind:panelTitle="'Chats'">
+					</panel-chats>
+
+				</SplitArea>
+
+				<SplitArea 
+				 class="panel panel_chat"
+				 v-bind:size="this.panelsSettings.panelCenter" 
+				 v-bind:minSize="300">
+					chat
+				</SplitArea>
+
+				<SplitArea 
+				 class="panel panel_white"
+				 v-bind:size="this.panelsSettings.panelRight" 
+				 v-bind:minSize="300">
+
+					<panel-chats 
+						v-bind:opt="opt"
+						v-bind:type="'tasks'" 
+						v-bind:panelTitle="'Tasks'">
+					</panel-chats>
+
+				</SplitArea>
+
+			</Split>
+		</div>
+
+		<div class="work-states__state" v-if="opt.options.app.state === 'settings'">
+			<settings-form 
+				v-bind:opt="opt">
+			</settings-form>
+		</div>
 		
-		<Split 
-			v-if="opt.options.app.state === 'chats'"
-			v-bind:gutterSize="1" 
-			class="work-states"
-			v-on:onDragEnd="onDragEnd" 
-			v-on:onDragStart="onDragStart" 
-			v-on:onDrag="onDrag">
+		<div class="work-states__state" v-if="opt.options.app.state === 'files'">
+		files
+		</div>
 		
-			<SplitArea 
-			 class="panel panel_white"
-			 v-bind:size="this.panelsSettings.panelLeft" 
-			 v-bind:minSize="300">
-			 
-				 <panel-chats 
-					v-bind:opt="opt" 
-					v-bind:type="'chats'" 
-					v-bind:panelTitle="'Chats'">
-				</panel-chats>
-				
-    	</SplitArea>
-    	
-    	<SplitArea 
-       class="panel panel_chat"
-       v-bind:size="this.panelsSettings.panelCenter" 
-			 v-bind:minSize="300">
-        chat
-    	</SplitArea>
-    	
-    	<SplitArea 
-       class="panel panel_white"
-       v-bind:size="this.panelsSettings.panelRight" 
-       v-bind:minSize="300">
-       
-        <panel-chats 
-					v-bind:opt="opt"
-					v-bind:type="'tasks'" 
-					v-bind:panelTitle="'Tasks'">
-				</panel-chats>
-				
-    	</SplitArea>
-    	
-		</Split>
+		<div class="work-states__state" v-if="opt.options.app.state === 'calendar'">
+		calendar
+		</div>
+
+	</div>
 
 </template>
 
@@ -54,6 +72,7 @@
 
 	import panelChats from './panel-chats.vue';
 	import VueSplit from 'vue-split-panel';
+	import settingsForm from './settings-form.vue';
 
 	export default {
 		props: {
@@ -62,7 +81,8 @@
 		components: {
 			panelChats: panelChats,
 			Split: VueSplit.Split,
-			SplitArea: VueSplit.SplitArea
+			SplitArea: VueSplit.SplitArea,
+			settingsForm: settingsForm
 		},
 		methods: {
 			loadData: function() {
@@ -116,11 +136,23 @@
 		width: calc(100% - @width-toolbar);
 		height: 100vh;
 		transform: translateX(@width-toolbar);
+		box-sizing: border-box;
+		
+		&__state {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+	}
+
+	.split_flex {
 		display: flex;
 		box-sizing: border-box;
 		position: absolute;
+		width:100%;
+		height:100%;
 	}
-
+	
 	.panel {
 		box-sizing: border-box;
 		overflow: hidden;
