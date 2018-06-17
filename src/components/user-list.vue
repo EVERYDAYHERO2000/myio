@@ -18,7 +18,7 @@
 	<select-list 
 		v-if="UsersCanBeAdded.length"
 		v-bind:class="'user-list__list'"
-		v-bind:name="'test'" 
+		v-bind:name="name" 
 		v-bind:options="UsersCanBeAdded" 
 		v-bind:active="0"
 		v-bind:k="'id'"
@@ -38,7 +38,8 @@
 	
 	export default {
 		props: {
-			opt: Object
+			opt: Object,
+			name: String
 		},
 		components: {
 			selectList: selectList,
@@ -55,12 +56,15 @@
 				this.UsersCanBeRemoved.splice(e, 1);
 			}
 		},
+		created: function(){
+			
+		},
 		mounted: function() {
-			//this.UsersCanBeAdded = JSON.parse(JSON.stringify(this.opt.users));
+			this.UsersCanBeAdded = JSON.parse(JSON.stringify(this.opt.users));
 		},
 		data: function() {
 			return {
-				UsersCanBeAdded: this.opt.users,
+				UsersCanBeAdded: [],
 				UsersCanBeRemoved: []
 			}
 		}

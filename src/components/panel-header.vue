@@ -15,7 +15,8 @@
 	
 	export default {
 		props: {
-			title : String
+			title : String,
+			opt: Object
 		},
 		components: {
 

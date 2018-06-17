@@ -3,10 +3,12 @@
 	<div class="panel-messages">	
 		
 		<panel-header
+			v-bind:opt="opt"
 			v-bind:title="panelTitle">
 			
 			<user-list 
 				v-on:onValue="setUserList"
+				v-bind:name="'users_2'"
 				v-bind:opt="opt">
 			</user-list>
 			
