@@ -1,5 +1,9 @@
 <template>
-	<div v-on:click="toggleState" class="toolbar-tool"></div>
+	<div 
+		v-on:click="toggleState" 
+		class="toolbar-tool"
+		v-bind:title="title">
+	</div>
 </template>
 
 
@@ -10,7 +14,8 @@
 		props: {
 			opt: Object,
 			icon: String,
-			data: String
+			data: String,
+			title: String
 		},
 		methods: {
 			toggleState: function() {
@@ -39,7 +44,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 	
 	.toolbar-tool {
 		width: @width-toolbar;

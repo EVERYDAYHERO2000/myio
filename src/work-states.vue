@@ -146,7 +146,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 
 	.work-states {
 		width: calc(100% - @width-toolbar);
@@ -178,15 +178,15 @@
 		min-width: 300px;
 
 		&:first-child {
-			border-right: 1px solid @color-border;
+			.f-border(right);
 		}
 
 		&:last-child {
-			border-left: 1px solid @color-border;
+			.f-border(left);
 		}
 
 		&_white {
-			background: #fff;
+			background-color: @color-white;
 		}
 		&_messages {
 			box-shadow: inset 0px 0px 50px rgba(0, 0, 0, 0.03);

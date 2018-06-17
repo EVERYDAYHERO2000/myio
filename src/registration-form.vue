@@ -113,7 +113,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 	.registration-form {
 		width: 250px;
 		margin: 0 auto;

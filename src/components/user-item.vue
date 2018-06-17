@@ -42,7 +42,7 @@
 
 
 <style lang="less">
-	@import '../less/variables.less';
+	@import '../less/main.less';
 	
 	.user-item {
 		display: flex;

@@ -32,7 +32,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 	
 	.app-modal {
 		position: fixed;

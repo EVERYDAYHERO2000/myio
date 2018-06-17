@@ -26,7 +26,7 @@
 </script>
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 	
 	@left-side: 15px;
 	
@@ -39,7 +39,7 @@
 		&__setting-list {
 			width: 269px;
 			height: 100%;
-			border-right: 1px solid @color-border;
+			.f-border(right);
 			box-sizing: border-box;
 		}
 		

@@ -2,8 +2,7 @@
 	<div class="panel-tasks">
 
 	<panel-header
-		v-bind:title="panelTitle" 
-		v-bind:opt="opt">
+		v-bind:title="panelTitle">
 		
 			<select-list 
 				v-bind:name="'test'" 
@@ -11,7 +10,7 @@
 				v-bind:active="this.active"
 				v-bind:k="'value'"
 				v-bind:v="'name'"
-				v-on:onActive="this.selectTaskType">
+				v-on:onActive="this.setActive">
 			</select-list>
 
 			<text-field 
@@ -25,6 +24,7 @@
 		<chat-list-item 
 			v-for="task in opt.taskList" 
 			v-bind:chat="task"
+			v-bind:type="'task'"
 			v-bind:key="task.id">
 		</chat-list-item>
 	</div>
@@ -39,7 +39,7 @@
 	import panelHeader from './components/panel-header.vue';
 	import selectList from './components/select-list.vue';
 	import textField from './components/text-field.vue';
-	import chatListItem from './chat-list-item.vue';
+	import chatListItem from './components/chat-list-item.vue';
 	
 	export default {
 		props: {
@@ -57,7 +57,7 @@
 			
 		},
 		methods: {
-			selectTaskType: function(e){
+			setActive: function(e){
 				this.active = e;
 			}
 		},
@@ -84,7 +84,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 
 	.panel-tasks {
 		display: flex;

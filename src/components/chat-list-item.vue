@@ -1,6 +1,9 @@
 <template>
 <div v-on:click="setInboxActive" class="chat-list-item" v-bind:class="{ 'chat-list-item_active' : chat.isActive }">
-	<contact-icon-chip v-bind:title="chat.title"></contact-icon-chip>
+	<contact-icon-chip 
+		v-bind:type="type"
+		v-bind:title="chat.title">
+	</contact-icon-chip>
 	<div class="chat-list-item__content">
 		<div class="chat-list-item__title">{{ chat.title }}</div>
 		<div class="chat-list-item__description">
@@ -17,19 +20,22 @@
 
 
 <script>
-	import contactIconChip from './components/contact-icon-chip.vue';
+	import $ from 'jquery';
+	
+	import contactIconChip from '../components/contact-icon-chip.vue';
 
 	export default {
 		props: {
-			chat: Object
+			chat: Object,
+			type: String
 		},
 		components: {
 			contactIconChip: contactIconChip
 		},
 		methods: {
 			setInboxActive: function() {
-				var id = this._props.chat.id;
-				var data = APP.$data;
+				let id = this._props.chat.id;
+				let data = APP.$data;
 				for (var i = 0; i < data.inboxList.length; i++) {
 					data.inboxList[i].isActive = false;
 					if (data.inboxList[i].id === id) {
@@ -44,7 +50,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import '../less/main.less';
 
 	.chat-list-item {
 
@@ -52,7 +58,7 @@
 		@padding: 8px;
 
 		box-sizing: border-box;
-		border-bottom: 1px solid @color-border;
+		.f-border(bottom);
 		box-sizing: border-box;
 		display: flex;
 		padding: @padding;
@@ -86,11 +92,11 @@
 		&_active &__date,
 		&_active:hover &__date {
 			background-color: @color-active;
-			color: #fff;
+			color: @color-white;
 		}
 
 		&_active &__username {
-			color: #fff;
+			color: @color-white;
 		}
 
 		&_active,
@@ -110,7 +116,7 @@
 			width: auto;
 			line-height: 22px;
 
-			color: #000;
+			color: @color-black;
 			flex-grow: 1;
 			overflow: hidden;
 			justify-content: center;
@@ -122,7 +128,7 @@
 		}
 
 		&_active &__content {
-			color: #fff;
+			color: @color-white;
 
 		}
 
@@ -135,7 +141,7 @@
 		&__keep {
 			width: 20px;
 			height: 20px;
-			background-image: ~"url(./assets/keep.svg)";
+			background-image: ~"url(../assets/keep.svg)";
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
@@ -157,7 +163,7 @@
 			line-height: 20px;
 			position: absolute;
 			right: 0;
-			background-color: #fff;
+			background-color: @color-white;
 			padding: 8px;
 			transform: translate(10px, -8px);
 

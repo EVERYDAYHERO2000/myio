@@ -2,8 +2,7 @@
 	<div class="panel-chats">
 
 	<panel-header
-		v-bind:title="panelTitle" 
-		v-bind:opt="opt">
+		v-bind:title="panelTitle">
 		
 		<text-field 
 			v-bind:lable="''"
@@ -18,6 +17,7 @@
 		<chat-list-item 
 			v-for="chat in opt.inboxList" 
 			v-bind:chat="chat"
+			v-bind:type="'chat'"
 			v-bind:key="chat.id">
 		</chat-list-item>
 		
@@ -29,7 +29,7 @@
 
 <script>
 	import panelHeader from './components/panel-header.vue';
-	import chatListItem from './chat-list-item.vue';
+	import chatListItem from './components/chat-list-item.vue';
 	import textField from './components/text-field.vue';
 	
 	export default {
@@ -51,7 +51,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 
 	.panel-chats {
 		display: flex;

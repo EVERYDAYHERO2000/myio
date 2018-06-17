@@ -51,7 +51,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less'; 
+	@import './less/main.less'; 
 	
 	.app-states {
 		width: 100vw;

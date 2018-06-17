@@ -65,7 +65,7 @@
 
 
 <style lang="less">
-	@import '../less/variables.less';
+	@import '../less/main.less';
 	.select-list {
 		display: flex;
 		flex-direction: column;

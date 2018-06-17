@@ -107,7 +107,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 
 	.login-form {
 		width: 250px;

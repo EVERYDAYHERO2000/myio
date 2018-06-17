@@ -59,7 +59,7 @@
 
 
 <style lang="less">
-	@import '../less/variables.less';
+	@import '../less/main.less';
 	
 		input:-webkit-autofill,
 		input:-webkit-autofill:hover, 
@@ -67,7 +67,7 @@
 		input:-webkit-autofill {
 			background-color: transparent!important;
 			-webkit-text-fill-color: @color-active;
-			-webkit-box-shadow: 0 0 0px 1000px #fff inset;
+			-webkit-box-shadow: 0 0 0px 1000px @color-white inset;
 			transition: background-color 5000s ease-in-out 0s;
 		}
 	

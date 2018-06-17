@@ -44,7 +44,7 @@
 
 
 <style lang="less">
-	@import '../less/variables.less';
+	@import '../less/main.less';
 	.btn {
 		color: @color-white;
 		font-size: @font-size-main;

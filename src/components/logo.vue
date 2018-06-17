@@ -41,7 +41,7 @@
 
 
 <style lang="less">
-	@import '../less/variables.less';
+	@import '../less/main.less';
 	
 	.color-active {
 		color: @color-active;

@@ -1,16 +1,12 @@
 <template>
-	<div 
-	v-if="image && image.length" 
-	v-bind:style="'background-image:url(' + image + ')'" 
-	class="contact-icon-chip">
-</div>
 
-<div 
-	v-else 
-	v-bind:style="'background-color:' + color"
-	class="contact-icon-chip" >
-		{{title[0]}}
-</div>
+	<div 
+		v-bind:style="stylize()"
+		class="contact-icon-chip"
+		v-bind:class="cssClass()" >
+			{{ (title) ? title[0] : '' }}
+	</div>
+	
 </template>
 
 
@@ -21,11 +17,22 @@
 	export default {
 		props: {
 			title: String,
-			image: String
+			image: String,
+			type: String,
+			size: String
 		},
-		data: function() {
-			return {
-				color: changeColor(this.title)
+		methods: {
+			stylize : function(){
+				let cssRule = `background-color: ${changeColor(this.title)};`;
+				if (this.image && this.image.length) {
+					cssRule = cssRule + `background-image: url( ${this.image} ); color: transparent`;
+				}
+				return cssRule;
+			},
+			cssClass : function(){
+				let typeCssClass = (this.type == 'task') ? 'contact-icon-chip_task' : 'contact-icon-chip_chat';
+				let sizeCssClass = (this.size) ? 'contact-icon-chip' + this.size : 'contact-icon-chip_m';
+				return [typeCssClass, sizeCssClass];
 			}
 		},
 		created: function() {
@@ -36,24 +43,36 @@
 
 
 <style lang="less">
-	@import '../less/variables.less';
+	@import '../less/main.less';
 	
 	.contact-icon-chip {
 		@size-m: 50px;
 		@size-s: 35px;
-		border-radius: 50%;
-		height: @size-m;
-		width: @size-m;
-		min-height: @size-m;
-		min-width: @size-m;
+		
 		background-color: #eaeaea;
 		overflow: hidden;
 		background-size: cover;
 		text-align: center;
-		color: #fff;
+		color: @color-white;
 		font-size: 24px;
 		line-height: 50px;
+		box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.02);
 
+		&_chat {
+			border-radius: 50%;
+		}
+		
+		&_task {
+			border-radius: 5px;
+		}
+		
+		&_m {
+			height: @size-m;
+			width: @size-m;
+			min-height: @size-m;
+			min-width: @size-m;
+		}
+		
 		&_s {
 			height: @size-s;
 			width: @size-s;

@@ -33,7 +33,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 	.forgot-form {
 		width: 250px;
 		margin: 0 auto;

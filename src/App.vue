@@ -64,8 +64,9 @@
 
 <style lang="less">
 	@import '~normalize.css/normalize.css';
+	@import './less/prefixer.less';
 	@import './less/font.less'; 
-	@import './less/variables.less'; 
+	@import './less/main.less'; 
 	@import './less/loading-spinner.less';
 
 	body {

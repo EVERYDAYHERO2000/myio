@@ -170,7 +170,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 	.add-form {
 		margin: 0 auto;
 		height: 100vh;

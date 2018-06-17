@@ -55,12 +55,12 @@
 				this.UsersCanBeRemoved.splice(e, 1);
 			}
 		},
-		created: function() {
-			
+		mounted: function() {
+			//this.UsersCanBeAdded = JSON.parse(JSON.stringify(this.opt.users));
 		},
 		data: function() {
 			return {
-				UsersCanBeAdded: JSON.parse(JSON.stringify(this.opt.users)),
+				UsersCanBeAdded: this.opt.users,
 				UsersCanBeRemoved: []
 			}
 		}
@@ -69,7 +69,8 @@
 
 
 <style lang="less">
-	@import '../less/variables.less';
+	@import '../less/main.less';
+	
 	.user-list {
 		box-sizing: border-box;
 		padding: 40px 0 0 0;

@@ -15,7 +15,6 @@
 	
 	export default {
 		props: {
-			opt : Object,
 			title : String
 		},
 		components: {
@@ -38,7 +37,7 @@
 
 
 <style lang="less">
-	@import '../less/variables.less';
+	@import '../less/main.less';
 
 
 	.panel-header {
@@ -53,8 +52,8 @@
 		max-height: @height-header;
 		z-index: 1000;
 		box-sizing: border-box;
-		border-bottom: 1px solid @color-border;
-		background-color: #fff;
+		.f-border(bottom);
+		background-color: @color-white;
 		box-shadow: 0px 2px 20px rgba(0, 0, 0, .05);
 		transition: max-height @animation-speed ease;
 		color: @color-gray-font;
@@ -103,6 +102,7 @@
 		&__form {
 			padding: 0 10px 10px 10px;
 
+			
 
 			&>div:first-child {
 				padding-top: 20px;

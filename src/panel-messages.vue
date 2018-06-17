@@ -3,14 +3,21 @@
 	<div class="panel-messages">	
 		
 		<panel-header
-			v-bind:title="panelTitle" 
-			v-bind:opt="opt">
-			<div>wewewewew</div>
+			v-bind:title="panelTitle">
+			
+			<user-list 
+				v-on:onValue="setUserList"
+				v-bind:opt="opt">
+			</user-list>
+			
 		</panel-header> 
 		
 		<div class="panel-messages__inner">
 			<div class="panel-messages__messages-list">chat</div>
-			<div class="panel-messages__input">123</div>
+			<div class="panel-messages__input">
+				<chat-input>
+				</chat-input>
+			</div>
 		</div>
 	</div>
 	
@@ -23,6 +30,8 @@
 	import panelHeader from './components/panel-header.vue';
 	import selectList from './components/select-list.vue';
 	import textField from './components/text-field.vue';
+	import userList from './components/user-list.vue';
+	import chatInput from './chat-input.vue';
 	
 	export default {
 		props: {
@@ -33,12 +42,22 @@
 		components : {
 			panelHeader: panelHeader,
 			selectList: selectList,
-			textField: textField
+			textField: textField,
+			chatInput: chatInput,
+			userList: userList
+		},
+		methods: {
+			setUserList: function(e) {
+				this.userList = e;
+			}
 		},
 		data : function(){
 			return {
-				
+				userList: []
 			}
+		},
+		created:function(){
+			
 		}
 	}
 
@@ -46,7 +65,7 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 	
 	.panel-messages {
 		height: 100vh;

@@ -4,14 +4,16 @@
 
     <toolbar-tool 
       v-if="opt.options.app.state == 'chats'" 
-      v-on:click.native="toggleToolbarAdd" 
+      v-on:click.native="toggleToolbarAdd"
+      v-bind:title="'Create new'" 
       v-bind:icon="this.icons.icon_add">
     </toolbar-tool>
 
     <div class="toolbar__sizer"></div>
 
 		<toolbar-tool 
-      v-on:click.native="toggleToolbarSpace" 
+      v-on:click.native="toggleToolbarSpace"
+      v-bind:title="'Work spaces'" 
       v-bind:opt="opt" v-bind:icon="this.icons.icon_space">
     </toolbar-tool>
 
@@ -19,28 +21,32 @@
 
     <toolbar-tool 
       v-bind:data="'chats'" 
-      v-on:click.native="closeToolbar" 
+      v-on:click.native="closeToolbar"
+      v-bind:title="'Chats'" 
       v-bind:opt="opt" v-bind:icon="this.icons.icon_forum">
     </toolbar-tool>
 
     <toolbar-tool 
       v-bind:data="'calendar'" 
       v-on:click.native="closeToolbar" 
-      v-bind:opt="opt" 
+      v-bind:opt="opt"
+      v-bind:title="'Calendar'" 
       v-bind:icon="this.icons.icon_event">
     </toolbar-tool>
 
     <toolbar-tool 
       v-bind:data="'files'" 
       v-on:click.native="closeToolbar"
-      v-bind:opt="opt" 
+      v-bind:opt="opt"
+      v-bind:title="'Files'" 
       v-bind:icon="this.icons.icon_cloudQueue">
     </toolbar-tool>
 
     <toolbar-tool 
       v-bind:data="'settings'" 
       v-on:click.native="closeToolbar" 
-      v-bind:opt="opt" 
+      v-bind:opt="opt"
+      v-bind:title="'Settings'" 
       v-bind:icon="this.icons.icon_settings">
     </toolbar-tool>
   </div>
@@ -121,16 +127,16 @@
 
 
 <style lang="less">
-	@import './less/variables.less';
+	@import './less/main.less';
 	.toolbar {
 
 		@width-toolbar_active: 320px;
 
 		width: @width-toolbar;
 		height: 100vh;
-		background: #fff;
+		background-color: @color-white;
 		box-sizing: border-box;
-		border-right: 1px solid @color-border;
+		.f-border(right);
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -182,7 +188,7 @@
 		}
 
 		&__divider {
-			border-bottom: solid 1px @color-border;
+			.f-border(bottom);
 			margin: 10px 0;
 		}
 
