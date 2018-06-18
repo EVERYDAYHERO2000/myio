@@ -23,7 +23,7 @@
 		},
 		methods: {
 			toggleHeaderPanel: function() {
-				var el = this.$el;
+				let el = this.$el;
 				$(el).toggleClass('panel-header_active');
 				this.isShowed = !this.isShowed;
 			}

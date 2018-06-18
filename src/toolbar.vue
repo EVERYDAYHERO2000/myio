@@ -53,9 +53,12 @@
 
   <div class="toolbar__form">
     <add-form v-if="addForm.isVisible" v-bind:opt="opt"></add-form>
+    <space-form v-if="spaceForm.isVisible" v-bind:opt="opt"></space-form>
   </div>
 
-	<div v-if="addForm.isVisible" class="toolbar__bar" v-on:click="toggleToolbarAdd"></div>
+	<div v-if="addForm.isVisible" class="toolbar__bar" v-on:click="toggleToolbarAdd">
+		
+	</div>
 
 </div>
 </template>
@@ -66,6 +69,7 @@
 	
 	import toolbarTool from './toolbar-tool.vue';
 	import addForm from './add-form.vue';
+	import spaceForm from './space-form.vue';
 	
 	import icon_add from './assets/add.svg';
 	import icon_space from './assets/space.svg';
@@ -80,7 +84,8 @@
 		},
 		components: {
 			toolbarTool : toolbarTool,
-			addForm : addForm
+			addForm : addForm,
+			spaceForm : spaceForm
 		},
 		methods: {
 			toggleToolbarAdd: function() {

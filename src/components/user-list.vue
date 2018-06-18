@@ -59,14 +59,33 @@
 		created: function(){
 			
 		},
+		beforeUpdate: function(){
+			
+		},
 		mounted: function() {
-			this.UsersCanBeAdded = JSON.parse(JSON.stringify(this.opt.users));
+			
+			
+			
 		},
 		data: function() {
 			return {
-				UsersCanBeAdded: [],
+				
 				UsersCanBeRemoved: []
 			}
+		},
+		computed: {
+				UsersCanBeAdded : function(){
+					let idArrays = [];
+					for(var i = 0; i < this.opt.users.length; i++){
+						idArrays.push({
+							name: this.opt.users[i].name,
+							id: this.opt.users[i].id,
+							avatar: this.opt.users[i].avatar
+						});
+					}
+					return idArrays;
+					
+				}
 		}
 	}
 </script>

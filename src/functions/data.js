@@ -125,7 +125,7 @@ data.getData = function (newData, currentData) {
 		});
 		return message;
 	}
-
+	
 	return DATA;
 }
 

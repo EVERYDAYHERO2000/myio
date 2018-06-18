@@ -106,7 +106,7 @@
 				$.get(URL.testData, function(d) {
 
 					APP.$data.opt = data.getData(d, APP.$data.opt);
-
+					
 				});
 			},
 			onDragStart(size) {
@@ -127,6 +127,7 @@
 		},
 		created: function() { 
 			this.loadData();
+			
 		},
 		data: function(){
 			return {
