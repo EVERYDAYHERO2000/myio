@@ -74,10 +74,10 @@
 		width: 100%;
 		
 		&__inner {
-			display: flex;
+			.flex-block();
 			flex-direction:column;
 			height: calc(100vh - @height-header);
-			transform: translateY(@height-header);
+			.transform(translateY(@height-header));
 			width: 100%;
 		}
 		

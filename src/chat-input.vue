@@ -96,7 +96,7 @@
 
 	.chat-input {
 		@icon-size: 20px;
-		display: flex;
+		.flex-block();
 		width: 100%;
 		box-sizing: border-box;
 		min-height: 50px;

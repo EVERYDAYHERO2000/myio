@@ -67,7 +67,7 @@
 <style lang="less">
 	@import '../less/main.less';
 	.select-list {
-		display: flex;
+		.flex-block();
 		flex-direction: column;
 		padding: 40px 0 0 0;
 		box-sizing: border-box;
@@ -75,7 +75,7 @@
 
 		&__placeholder {
 			border: none;
-			border-radius: 0;
+			.border-radius(0);
 			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 			box-sizing: border-box;
 			font-size: @font-size-main;
@@ -96,7 +96,7 @@
 				position: absolute;
 				bottom: 0;
 				right: 0;
-				transform: translateY(-10px);
+				.transform(translateY(-10px));
 				opacity: 0.7;
 
 			}
@@ -112,7 +112,7 @@
 			position: absolute;
 			box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 			transform-origin: top center;
-			transform: translateY(-20px);
+			.transform(translateY(-20px));
 			width: calc( 100% + 20px);
 			margin: 0 -10px;
 			padding: 10px 0;
@@ -122,7 +122,7 @@
 				box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
 				pointer-events: all;
 				transition: all .1s ease;
-				transform: translateY(-10px);
+				.transform(translateY(-10px));
 			}
 		}
 
@@ -164,9 +164,9 @@
 		}
 
 		&__bar {
-			transform: translate(0, -2px);
+			.transform(translate(0, -2px));
 			width: 100%;
-			display: flex;
+			.flex-block();
 			align-items: center;
 			flex-direction: column;
 			margin: 0 0 -2px 0;

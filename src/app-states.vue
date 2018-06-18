@@ -62,7 +62,7 @@
 		left: 0;
 		box-sizing: border-box;
 		background-color: @color-background;
-		filter: blur(0px);
+		.filter(blur(0px));
 		transition: all .3s ease;
 
 		&__loading {
@@ -91,7 +91,7 @@
 		}
 
 		&_blur {
-			filter: blur(3px);
+			.filter(blur(3px));
 			transition: all .3s .2s ease;
 		}
 

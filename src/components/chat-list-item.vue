@@ -60,7 +60,7 @@
 		box-sizing: border-box;
 		.f-border(bottom);
 		box-sizing: border-box;
-		display: flex;
+		.flex-block();
 		padding: @padding;
 		position: relative;
 
@@ -105,13 +105,13 @@
 		}
 
 		&_active &__keep {
-			filter: brightness(10);
+			.filter(brightness(10));
 		}
 
 		&__content {
 			box-sizing: border-box;
 			padding: 0 0 0 @padding;
-			display: flex;
+			.flex-block();
 			flex-direction: column;
 			width: auto;
 			line-height: 22px;
@@ -149,11 +149,11 @@
 			right: 0;
 			bottom: 0;
 			opacity: 0.2;
-			filter: grayscale(100);
+			.filter(grayscale(100));
 
 			&_pined {
 				opacity: 1;
-				filter: none;
+				.filter(none);
 			}
 		}
 
@@ -165,7 +165,7 @@
 			right: 0;
 			background-color: @color-white;
 			padding: 8px;
-			transform: translate(10px, -8px);
+			.transform(translate(10px, -8px));
 
 			& span {
 				display: inline-block;

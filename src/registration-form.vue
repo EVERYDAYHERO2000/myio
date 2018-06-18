@@ -118,13 +118,13 @@
 		width: 250px;
 		margin: 0 auto;
 		height: 100vh;
-		display: flex;
+		.flex-block();
 		flex-direction: column;
 		justify-content: center;
 		opacity: 1;
 
 		&__button-group {
-			display: flex;
+			.flex-block();
 			justify-content: space-between;
 
 			& .btn:first-child {
@@ -133,7 +133,7 @@
 		}
 
 		&__logo {
-			display: flex;
+			.flex-block();
 			justify-content: center;
 		}
 

@@ -61,7 +61,7 @@
 		&__list {
 			height: calc(100vh - @height-header);
 			width: 100%;
-			transform: translateY(@height-header);
+			.transform(translateY(@height-header));
 			overflow: hidden;
 			overflow-y: scroll;
 		}

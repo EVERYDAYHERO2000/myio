@@ -72,7 +72,7 @@
 		}
 	
 	.text-field {
-		display: flex;
+		.flex-block();
 		flex-direction: column;
 		padding: 40px 0 0 0;
 		box-sizing: border-box;
@@ -106,7 +106,7 @@
 		}
 
 		& input~label {
-			transform: translate(0, 0) scale(1);
+			.transform(translate(0, 0) scale(1));
 			transform-origin: left center;
 			padding: 10px 10px 10px 5px;
 			font-size: @font-size-main;
@@ -122,19 +122,19 @@
 
 		& input:focus~label,
 		& input:valid~label {
-			transform: translate(0px, -20px) scale(0.9);
+			.transform(translate(0px, -20px) scale(0.9));
 			transition: all .2s ease;
 			color: @color-active;
 		}
 
 		& input[type='date']~label {
-			transform: translate(0px, -20px) scale(0.9);
+			.transform(translate(0px, -20px) scale(0.9));
 		}
 
 		&__bar {
-			transform: translate(0, -2px);
+			.transform(translate(0, -2px));
 			width: 100%;
-			display: flex;
+			.flex-block();
 			align-items: center;
 			flex-direction: column;
 
@@ -179,7 +179,7 @@
 				background-position: center;
 				background-repeat: no-repeat;
 				width: 20px;
-				transform: translateX(14px);
+				.transform(translateX(14px));
 			}
 
 			& input::-webkit-calendar-picker-indicator:hover {}

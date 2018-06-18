@@ -102,7 +102,7 @@
 			font-size: @font-size-main;
 			padding: 0 5px;
 			box-sizing: border-box;
-			display: flex;
+			.flex-block();
 			justify-content: space-between;
 
 		}
@@ -120,7 +120,7 @@
 		}
 
 		&__add-user {
-			display: flex;
+			.flex-block();
 			align-items: flex-end;
 		}
 

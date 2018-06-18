@@ -50,7 +50,7 @@
 		font-size: @font-size-main;
 		line-height: 42px;
 		background-color: @color-active;
-		border-radius: 5px;
+		.border-radius(5px);
 		text-align: center;
 		margin: 40px 0 0 0;
 		box-sizing: border-box;
@@ -66,8 +66,8 @@
 			font-size: @font-size-main;
 			border: none;
 			box-sizing: border-box;
-			border-radius: 5px;
-			display: flex;
+			.border-radius(5px);
+			.flex-block();
 			align-items: center;
 			flex-direction: column;
 
@@ -91,7 +91,7 @@
 
 
 		&__drop {
-			border-radius: 50%;
+			.border-radius(50%);
 			position: absolute;
 			background-color: rgba(255, 255, 255, 0.3);
 			width: 1px;
@@ -109,11 +109,11 @@
 
 			@keyframes btn-down {
 				0% {
-					transform: scale(1);
+					.transform(scale(1));
 					opacity: 1;
 				}
 				100% {
-					transform: scale(300);
+					.transform(scale(300));
 					opacity: 0;
 				}
 			}

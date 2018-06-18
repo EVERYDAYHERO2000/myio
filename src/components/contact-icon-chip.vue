@@ -59,11 +59,11 @@
 		box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.02);
 
 		&_chat {
-			border-radius: 50%;
+			.border-radius(50%);
 		}
 		
 		&_task {
-			border-radius: 5px;
+			.border-radius(5px);
 		}
 		
 		&_m {

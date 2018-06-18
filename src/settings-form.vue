@@ -34,7 +34,7 @@
 		width: 100%;
 		height: 100%;
 		background: @color-white;
-		display:flex;
+		.flex-block();
 		
 		&__setting-list {
 			width: 269px;

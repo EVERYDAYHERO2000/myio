@@ -87,14 +87,14 @@
 	@import './less/main.less';
 
 	.panel-tasks {
-		display: flex;
+		.flex-block();
 		height: 100vh;
 		flex-direction: row;
 
 		&__list {
 			height: calc(100vh - @height-header);
 			width: 100%;
-			transform: translateY(@height-header);
+			.transform(translateY(@height-header));
 			overflow: hidden;
 			overflow-y: scroll;
 		}

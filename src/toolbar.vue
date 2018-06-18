@@ -148,7 +148,7 @@
 		z-index: 10000;
 		box-shadow: 0px 0px 0px rgba(0, 0, 0, .2);
 		transition: width .3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .6s;
-		display: flex;
+		.flex-block();
 		flex-direction: row;
 		overflow: hidden;
 
@@ -163,7 +163,7 @@
 		}
 
 		&__tools {
-			display: flex;
+			.flex-block();
 			flex-direction: column;
 			position: fixed;
 			height: 100vh;

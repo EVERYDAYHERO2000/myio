@@ -182,7 +182,7 @@
 		box-sizing: border-box;
 
 		&__button-group {
-			display: flex;
+			.flex-block();
 			justify-content: space-between;
 			background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 1) 100%);
 			position: sticky;
@@ -195,7 +195,7 @@
 		}
 
 		&__logo {
-			display: flex;
+			.flex-block();
 			justify-content: center;
 		}
 

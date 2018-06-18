@@ -152,7 +152,7 @@
 	.work-states {
 		width: calc(100% - @width-toolbar);
 		height: 100vh;
-		transform: translateX(@width-toolbar);
+		.transform(translateX(@width-toolbar));
 		box-sizing: border-box;
 		
 		&__state {
@@ -163,7 +163,7 @@
 	}
 
 	.split_flex {
-		display: flex;
+		.flex-block();
 		box-sizing: border-box;
 		position: absolute;
 		width:100%;
@@ -173,7 +173,7 @@
 	.panel {
 		box-sizing: border-box;
 		overflow: hidden;
-		display: flex;
+		.flex-block();
 		flex-direction: column;
 		position: relative;
 		min-width: 300px;
@@ -204,11 +204,11 @@
 		transition: all .2s ease;
 
 		& {
-			transform: scaleX(10) translateX(-0.1px);
+			.transform(scaleX(10) translateX(-0.1px));
 		}
 
 		&+.panel+& {
-			transform: scaleX(10) translateX(0.1px);
+			.transform(scaleX(10) translateX(0.1px));
 		}
 
 		&:hover,
