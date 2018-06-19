@@ -53,7 +53,7 @@
 				let classList = '';
 				classList = classList + platform.os.family.replace(/ /g, '-').toLowerCase() + ' ';
 				classList = classList + platform.name.replace(/ /g, '-').toLowerCase() + ' ';
-				console.log(platform)	
+				
 				return classList.trim();
 			})
 				
