@@ -66,5 +66,11 @@
 			transition: all .2s;
 			pointer-events: none;
 		}
+		
+		&:hover {
+			/*.f-recolor(@color-active);
+			.transition(none);
+			opacity: 1;*/
+		}
 	}
 </style>
