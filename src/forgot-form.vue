@@ -39,13 +39,13 @@
 		margin: 0 auto;
 		height: 100vh;
 		.flex-block();
-		flex-direction: column;
-		justify-content: center;
+		.flex-direction(column);
+		.justify-content(center);
 		opacity: 1;
 
 		&__button-group {
 			.flex-block();
-			justify-content: space-between;
+			.justify-content(space-between);
 
 			& .btn:first-child {
 				margin-right: 20px;
@@ -54,12 +54,12 @@
 
 		&__logo {
 			.flex-block();
-			justify-content: center;
+			.justify-content(center);
 		}
 
 		&_hide {
 			opacity: 0;
-			transition: all 0.2s ease;
+			.transition(all 0.2s ease);
 		}
 	}
 </style>

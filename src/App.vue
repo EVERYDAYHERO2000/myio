@@ -7,6 +7,10 @@
 
 <script>
 	import $ from 'jquery';
+	import platform from 'platform';
+	
+	
+	
 	import auth from './functions/auth.js';
 
 	import appStates from './app-states.vue';
@@ -44,6 +48,14 @@
 		created: function () {
 			window.APP = this;
 			if (this.auth.authValid == 'true') this.opt.options.app.screen = 'main';
+			
+			$('body').addClass(function(){
+				let classList = '';
+				classList = classList + platform.os.family.replace(/ /g, '-').toLowerCase() + ' ';
+				classList = classList + platform.name.replace(/ /g, '-').toLowerCase() + ' ';
+				console.log(platform)	
+				return classList.trim();
+			})
 				
 		},
 		mounted: function () {
@@ -72,11 +84,13 @@
 	body {
 		margin: 0;
 		padding: 0;
-		user-select: none;
+		.user-select(none);
 		overflow: hidden;
 		font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
 		font-size: @font-size-main;
 		color: @color-black;
+		.f-font-smooth();
+		cursor:default;
 	}
 
 	a {

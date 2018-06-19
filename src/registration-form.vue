@@ -119,13 +119,13 @@
 		margin: 0 auto;
 		height: 100vh;
 		.flex-block();
-		flex-direction: column;
-		justify-content: center;
+		.flex-direction(column);
+		.justify-content(center);
 		opacity: 1;
 
 		&__button-group {
 			.flex-block();
-			justify-content: space-between;
+			.justify-content(space-between);
 
 			& .btn:first-child {
 				margin-right: 20px;
@@ -134,7 +134,7 @@
 
 		&__logo {
 			.flex-block();
-			justify-content: center;
+			.justify-content(center);
 		}
 
 		&__header {

@@ -54,7 +54,9 @@
 			removeUser: function(e) {
 				this.UsersCanBeAdded.push(this.UsersCanBeRemoved[e]);
 				this.UsersCanBeRemoved.splice(e, 1);
-			}
+			},
+			
+			
 		},
 		created: function(){
 			
@@ -64,28 +66,15 @@
 		},
 		mounted: function() {
 			
-			
-			
 		},
 		data: function() {
 			return {
-				
+				UsersCanBeAdded: JSON.parse(JSON.stringify(this.opt.users)),
 				UsersCanBeRemoved: []
 			}
 		},
 		computed: {
-				UsersCanBeAdded : function(){
-					let idArrays = [];
-					for(var i = 0; i < this.opt.users.length; i++){
-						idArrays.push({
-							name: this.opt.users[i].name,
-							id: this.opt.users[i].id,
-							avatar: this.opt.users[i].avatar
-						});
-					}
-					return idArrays;
-					
-				}
+
 		}
 	}
 </script>
@@ -103,7 +92,7 @@
 			padding: 0 5px;
 			box-sizing: border-box;
 			.flex-block();
-			justify-content: space-between;
+			.justify-content(space-between);
 
 		}
 
@@ -121,7 +110,7 @@
 
 		&__add-user {
 			.flex-block();
-			align-items: flex-end;
+			.align-items(flex-end);
 		}
 
 		&__list {}

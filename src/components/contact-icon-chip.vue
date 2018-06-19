@@ -53,7 +53,7 @@
 		overflow: hidden;
 		background-size: cover;
 		text-align: center;
-		color: @color-white;
+		color: rgba(red(@color-white),green(@color-white),blue(@color-white), 0.7);
 		font-size: 24px;
 		line-height: 50px;
 		box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.02);

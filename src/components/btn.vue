@@ -68,8 +68,8 @@
 			box-sizing: border-box;
 			.border-radius(5px);
 			.flex-block();
-			align-items: center;
-			flex-direction: column;
+			.align-items(center);
+			.flex-direction(column);
 
 			&:focus {
 				outline: none;
@@ -98,7 +98,7 @@
 			height: 1px;
 			top: 0;
 			left: 0;
-			transform-origin: center;
+			.transform-origin(center);
 			opacity: 1;
 			pointer-events: none;
 

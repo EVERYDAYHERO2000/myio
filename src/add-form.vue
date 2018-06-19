@@ -183,7 +183,7 @@
 
 		&__button-group {
 			.flex-block();
-			justify-content: space-between;
+			.justify-content(space-between);
 			background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 1) 100%);
 			position: sticky;
 			bottom: 0px;
@@ -196,7 +196,7 @@
 
 		&__logo {
 			.flex-block();
-			justify-content: center;
+			.justify-content(center);
 		}
 
 		&__header {
@@ -208,7 +208,7 @@
 
 		&_hide {
 			opacity: 0;
-			transition: all 0.2s ease;
+			.transition(all 0.2s ease);
 		}
 	}
 </style>

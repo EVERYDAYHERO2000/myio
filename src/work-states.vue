@@ -174,7 +174,7 @@
 		box-sizing: border-box;
 		overflow: hidden;
 		.flex-block();
-		flex-direction: column;
+		.flex-direction(column);
 		position: relative;
 		min-width: 300px;
 
@@ -197,7 +197,7 @@
 	.gutter.gutter-horizontal {
 		background-image: none;
 		background-color: @color-active;
-		transform-origin: center center;
+		.transform-origin(center center);
 		position: relative;
 		z-index: 10000;
 		opacity: 0;

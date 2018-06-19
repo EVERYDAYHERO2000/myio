@@ -68,16 +68,20 @@
 			background-color: transparent!important;
 			-webkit-text-fill-color: @color-active;
 			-webkit-box-shadow: 0 0 0px 1000px @color-white inset;
-			transition: background-color 5000s ease-in-out 0s;
+			.transition(background-color 5000s ease-in-out 0s);
 		}
 	
 	.text-field {
 		.flex-block();
-		flex-direction: column;
+		.flex-direction(column);
 		padding: 40px 0 0 0;
-		box-sizing: border-box;
+		.box-sizing(border-box);
 		position: relative;
 
+		.safari & {
+			padding:0;
+			margin: 40px 0 0 0; 
+		}
 
 
 		& input {
@@ -86,7 +90,7 @@
 			display: block;
 			border: none;
 			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-			box-sizing: border-box;
+			.box-sizing(border-box);
 		}
 
 		& input[type='date'] {
@@ -107,13 +111,17 @@
 
 		& input~label {
 			.transform(translate(0, 0) scale(1));
-			transform-origin: left center;
+			.transform-origin(left center);
 			padding: 10px 10px 10px 5px;
 			font-size: @font-size-main;
 			pointer-events: none;
 			position: absolute;
-			transition: all .2s ease;
+			.transition(all .2s ease);
 			color: rgba(0, 0, 0, 0.3);
+			
+			.safari & {
+				top:0;
+			}
 		}
 
 		& input:valid:not(:focus)~label {
@@ -123,7 +131,7 @@
 		& input:focus~label,
 		& input:valid~label {
 			.transform(translate(0px, -20px) scale(0.9));
-			transition: all .2s ease;
+			.transition(all .2s ease);
 			color: @color-active;
 		}
 
@@ -135,22 +143,22 @@
 			.transform(translate(0, -2px));
 			width: 100%;
 			.flex-block();
-			align-items: center;
-			flex-direction: column;
+			.align-items(center);
+			.flex-direction(column);
 
 			&::after {
 				content: '';
 				height: 2px;
 				background: @color-active;
 				width: 0%;
-				transition: all .2s ease;
+				.transition(all .2s ease);
 				margin: 0 0 -2px 0;
 			}
 		}
 
 		& input:focus~&__bar::after {
 			width: 100%;
-			transition: all .2s ease;
+			.transition(all .2s ease);
 		}
 
 		&_date {

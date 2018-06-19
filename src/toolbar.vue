@@ -93,6 +93,9 @@
 					let el = this.$el;
 					$(el).toggleClass('toolbar_active');
 					this.addForm.isVisible = !this.addForm.isVisible;
+				} else {
+					this.closeToolbar();
+					
 				}
 			},
 			toggleToolbarSpace: function() {
@@ -100,6 +103,9 @@
 					let el = this.$el;
 					$(el).toggleClass('toolbar_active');
 					this.spaceForm.isVisible = !this.spaceForm.isVisible;
+				} else {
+					this.closeToolbar();
+					
 				}
 			},
 			closeToolbar: function() {
@@ -149,7 +155,7 @@
 		box-shadow: 0px 0px 0px rgba(0, 0, 0, .2);
 		transition: width .3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .6s;
 		.flex-block();
-		flex-direction: row;
+		.flex-direction(row);
 		overflow: hidden;
 
 		&_active {
@@ -164,7 +170,7 @@
 
 		&__tools {
 			.flex-block();
-			flex-direction: column;
+			.flex-direction(column);
 			position: fixed;
 			height: 100vh;
 			top: 0;

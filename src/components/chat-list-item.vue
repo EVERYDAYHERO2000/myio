@@ -112,14 +112,14 @@
 			box-sizing: border-box;
 			padding: 0 0 0 @padding;
 			.flex-block();
-			flex-direction: column;
+			.flex-direction(column);
 			width: auto;
 			line-height: 22px;
 
 			color: @color-black;
 			flex-grow: 1;
 			overflow: hidden;
-			justify-content: center;
+			.justify-content(center);
 		}
 
 		&__username {

@@ -40,7 +40,7 @@
 		left: 0;
 		width: 100vw;
 		.flex-block();
-		justify-content: center;
+		.justify-content(center);
 
 		&__panel {
 			background: @color-white;
@@ -49,7 +49,7 @@
 			position: absolute;
 			top: 0;
 			box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
-			transform-origin: center top;
+			.transform-origin(center top);
 			.transform(translateY(-50vh));
 			transition: all .3s ease;
 

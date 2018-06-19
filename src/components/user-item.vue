@@ -46,7 +46,7 @@
 	
 	.user-item {
 		.flex-block();
-		justify-content: space-between;
+		.justify-content(space-between);
 		box-sizing: border-box;
 		padding: 10px 0 10px 0;
 

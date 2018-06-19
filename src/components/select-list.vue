@@ -68,7 +68,7 @@
 	@import '../less/main.less';
 	.select-list {
 		.flex-block();
-		flex-direction: column;
+		.flex-direction(column);
 		padding: 40px 0 0 0;
 		box-sizing: border-box;
 		position: relative;
@@ -77,6 +77,7 @@
 			border: none;
 			.border-radius(0);
 			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+			background-color: transparent;
 			box-sizing: border-box;
 			font-size: @font-size-main;
 			padding: 10px 10px 10px 5px;
@@ -111,7 +112,7 @@
 			background-color: @color-white;
 			position: absolute;
 			box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
-			transform-origin: top center;
+			.transform-origin(top center);
 			.transform(translateY(-20px));
 			width: calc( 100% + 20px);
 			margin: 0 -10px;
@@ -167,8 +168,8 @@
 			.transform(translate(0, -2px));
 			width: 100%;
 			.flex-block();
-			align-items: center;
-			flex-direction: column;
+			.align-items(center);
+			.flex-direction(column);
 			margin: 0 0 -2px 0;
 
 			&::after {

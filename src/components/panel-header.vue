@@ -2,7 +2,7 @@
 	<div class="panel-header"> 
 	
 		<div class="panel-header__titlebar" v-on:click="toggleHeaderPanel">{{title}}</div>
-		<div class="panel-header__form">
+		<div v-if="isShowed" class="panel-header__form">
 			<slot></slot>
 		</div>
 	

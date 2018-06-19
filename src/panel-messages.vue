@@ -75,7 +75,7 @@
 		
 		&__inner {
 			.flex-block();
-			flex-direction:column;
+			.flex-direction(column);
 			height: calc(100vh - @height-header);
 			.transform(translateY(@height-header));
 			width: 100%;
