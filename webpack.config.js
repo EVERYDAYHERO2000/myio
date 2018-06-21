@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
 		filename: 'build.js'
 	},
 	plugins: [
-		
+
   	new UglifyJsPlugin({
 			test: /\.js($|\?)/i,
 			sourceMap: true,
@@ -26,7 +27,10 @@ module.exports = {
 				safari10: false
 			}
 		})
+
 		
+
+
 	],
 	module: {
 		rules: [
@@ -82,16 +86,17 @@ module.exports = {
 					}
 					// other vue-loader options go here
 				}
-      },/*
-			{
-				test: /\.js$/,
-				loader: 'babel-loader',
-				exclude: /node_modules/,
-				query: {
-					presets: ['env'],
-					comments: false
-				}
-      },*/
+      },
+			/*
+						{
+							test: /\.js$/,
+							loader: 'babel-loader',
+							exclude: /node_modules/,
+							query: {
+								presets: ['env'],
+								comments: false
+							}
+			      },*/
 			{
 				test: /\.(png|jpg|gif|svg)$/,
 				loader: 'file-loader',
@@ -149,7 +154,7 @@ if (process.env.NODE_ENV === 'production') {
 				safari10: false
 			}
 		}),
-		
+
     new webpack.LoaderOptionsPlugin({
 			minimize: true
 		})
