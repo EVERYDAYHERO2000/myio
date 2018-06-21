@@ -27,7 +27,7 @@
 
 
 <script>
-	import loadingSpinner from './loading-spinner.vue';
+	import loadingSpinner from './components/loading-spinner.vue';
 	import toolbar from './toolbar.vue';
 	import registrationForm from './registration-form.vue';
 	import forgotForm from './forgot-form.vue';

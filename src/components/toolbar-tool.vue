@@ -44,7 +44,7 @@
 
 
 <style lang="less">
-	@import './less/main.less';
+	@import '../less/main.less';
 	
 	.toolbar-tool {
 		width: @width-toolbar;

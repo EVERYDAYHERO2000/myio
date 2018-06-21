@@ -67,7 +67,7 @@
 <script>
 	import $ from 'jquery';
 	
-	import toolbarTool from './toolbar-tool.vue';
+	import toolbarTool from './components/toolbar-tool.vue';
 	import addForm from './add-form.vue';
 	import spaceForm from './space-form.vue';
 	

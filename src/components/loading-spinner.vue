@@ -13,6 +13,6 @@
 
 
 <style lang="less">
-	@import './less/main.less';
-	@import './less/loading-spinner.less';
+	@import '../less/main.less';
+	@import '../less/loading-spinner.less';
 </style>
