@@ -53,13 +53,7 @@
 <style lang="less">
 	@import '../less/main.less';
 	
-	:root {
-		--logo-color-main: @color-active;
-		--logo-color-main-tint: darken(@color-active, 20%);
-		--logo-color-font: @color-black;
-		--logo-color-second: @color-white;
-		--logo-color-second-tint: darken(@color-white, 20%);
-	}
+
 	
 	.logo { 
 		width: 90px;
