@@ -1,10 +1,12 @@
 "use strict";
 
-const URL = {};
-URL.base = 'http://localhost/chattask_server';
-URL.auth = URL.base + '/auth.php';
-URL.registration = URL.base + '/registration.php';
-URL.addNew = URL.base + '/addnew.php';
+const URL = {};;
+URL.port = ':' + 3000;
+URL.base = 'http://localhost';
+URL.api = '/api';
+URL.auth = URL.base + URL.port + URL.api;
+URL.registration = URL.base + URL.port + URL.api;
+URL.addNew = URL.base + URL.port + URL.api;
 URL.testData = './data/data.json'; 
 
 export default URL;

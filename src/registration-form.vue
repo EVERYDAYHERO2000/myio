@@ -92,7 +92,9 @@
 					__pass = this.__pass;
 
 				if (__login && __email && __pass) {
+					console.log(URL.registration)
 					$.post(URL.registration, {
+						eventType: 'registration',
 						login: __login,
 						email: __email,
 						pass: __pass

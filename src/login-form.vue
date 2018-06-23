@@ -87,18 +87,19 @@
 					__pass = this.__pass;
 
 				if (__email && __pass) {
-
+					console.log('start')
 					$.post(URL.auth, {
+						eventType: 'login',
 						email: __email,
 						pass: __pass
-					}, function(e) {
-
-						if (e == true) {
+					}, function(data) {
+						console.log(1, data);
+						if (data == true) {
 							auth.setup(__email, __pass);
 							__this.setState('main');
 						}
 
-					});
+					}, 'json');
 				}
 			}
 		}
