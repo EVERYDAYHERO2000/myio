@@ -93,8 +93,8 @@
 						email: __email,
 						pass: __pass
 					}, function(data) {
-						console.log(1, data);
-						if (data == true) {
+						
+						if (data.status == true) {
 							auth.setup(__email, __pass);
 							__this.setState('main');
 						}

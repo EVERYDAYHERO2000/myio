@@ -2,7 +2,8 @@
 
 const getDateTime = function (date) {
 	date = date || new Date();
-	date = (date instanceof Date) ? date : new Date(date);
+	date = (date instanceof Date) ? date : new Date( date.replace(/-/g, '/') );
+	console.log(date);
 	let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	let dateTime = {
 		raw: date,
@@ -15,7 +16,9 @@ const getDateTime = function (date) {
 		minute: null,
 		date: null,
 		dateTime: null,
-		formated: null
+		formated: null,
+		currentTimeZoneOffsetInHours: date.getTimezoneOffset() / 60,
+		unix: Date.parse(date)
 	}
 	dateTime.hours = stringifyNumber(date.getHours());
 	dateTime.minute = stringifyNumber(date.getMinutes());
@@ -32,8 +35,8 @@ const getDateTime = function (date) {
 	function stringifyNumber(n) {
 		return (n < 10) ? '0' + n : n.toString();
 	}
-
-	return dateTime;
+	console.log(dateTime)
+	return dateTime; 
 }
 
 

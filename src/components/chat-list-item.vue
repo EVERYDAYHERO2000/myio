@@ -29,6 +29,9 @@
 			chat: Object,
 			type: String
 		},
+		created: function(){
+			
+		},
 		components: {
 			contactIconChip: contactIconChip
 		},

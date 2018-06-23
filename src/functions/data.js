@@ -121,6 +121,7 @@ data.getData = function (newData, currentData) {
 				})(users, e.author_id);
 				message.text = e.message;
 				message.date = getDateTime(e.date);
+				
 			}
 		});
 		return message;
