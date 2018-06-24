@@ -36,6 +36,7 @@
 
 				$($el).delay(150).queue(function() {
 					__this__.$emit('onClick', true);
+					$(this).dequeue(); 
 				});
 			}
 		}
@@ -94,11 +95,11 @@
 			.border-radius(50%);
 			position: absolute;
 			background-color: rgba(255, 255, 255, 0.3);
-			width: 1px;
-			height: 1px;
+
 			top: 0;
 			left: 0;
 			.transform-origin(center);
+			.transform(translate(-50%, -50%));
 			opacity: 1;
 			pointer-events: none;
 
@@ -109,11 +110,13 @@
 
 			@keyframes btn-down {
 				0% {
-					.transform(scale(1));
+					width: 1px;
+					height: 1px;
 					opacity: 1;
 				}
 				100% {
-					.transform(scale(300));
+					width: 300px;
+					height: 300px;
 					opacity: 0;
 				}
 			}

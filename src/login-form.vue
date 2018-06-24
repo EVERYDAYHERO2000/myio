@@ -86,8 +86,9 @@
 					__email = this.__email,
 					__pass = this.__pass;
 
+				console.log('start')
 				if (__email && __pass) {
-					console.log('start')
+					
 					$.post(URL.auth, {
 						eventType: 'login',
 						email: __email,

@@ -3,7 +3,6 @@
 const getDateTime = function (date) {
 	date = date || new Date();
 	date = (date instanceof Date) ? date : new Date( date.replace(/-/g, '/') );
-	console.log(date);
 	let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	let dateTime = {
 		raw: date,
@@ -35,7 +34,7 @@ const getDateTime = function (date) {
 	function stringifyNumber(n) {
 		return (n < 10) ? '0' + n : n.toString();
 	}
-	console.log(dateTime)
+	
 	return dateTime; 
 }
 
