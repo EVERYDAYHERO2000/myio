@@ -86,7 +86,7 @@
 					__email = this.__email,
 					__pass = this.__pass;
 
-				console.log('start')
+				
 				if (__email && __pass) {
 					
 					$.post(URL.auth, {
@@ -101,8 +101,17 @@
 						}
 
 					}, 'json');
+				} else {
+					this.incorrect();
 				}
-			}
+			},
+			incorrect: function() {
+				let $el = this.$el;
+				$($el).addClass('login-form_incorrect').delay(500).queue(function() {
+					$(this).removeClass('login-form_incorrect');
+					$(this).dequeue(); 
+				});
+			} 
 		}
 	}
 </script>
@@ -110,6 +119,7 @@
 
 <style lang="less">
 	@import './less/main.less';
+	@import './less/animations.less';
 
 	.login-form {
 		width: 250px;
@@ -144,5 +154,10 @@
 			opacity: 0;
 			.transition(all 0.2s ease);
 		}
+		
+		&_incorrect {
+			animation: form-bounce .5s 1 ease;
+		}
+
 	}
 </style>
