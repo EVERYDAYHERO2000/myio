@@ -77,12 +77,12 @@
 		padding: 40px 0 0 0;
 		.box-sizing(border-box);
 		position: relative;
+		.transition(all 0.2s ease);
 
 		.safari & {
 			padding:0;
 			margin: 40px 0 0 0; 
 		}
-
 
 		& input {
 			font-size: @font-size-main;
@@ -231,6 +231,11 @@
 			font-size: 12px;
 			margin: 0px 0 -15px 0;
 			min-height: 15px;
+		}
+		
+		&_disabled {
+			.filter(grayscale(100%));
+			.transition(all 0.2s ease); 
 		}
 
 	}
