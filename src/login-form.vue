@@ -157,7 +157,11 @@
 		
 		&_incorrect {
 			animation: form-bounce .5s 1 ease;
+			
+			& * {
+				pointer-events: none;
+			}
 		}
-
+	
 	}
 </style>

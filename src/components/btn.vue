@@ -36,7 +36,7 @@
 
 				$($el).delay(150).queue(function() {
 					__this__.$emit('onClick', true);
-					$(this).dequeue(); 
+					$(this).dequeue();
 				});
 			}
 		}
@@ -58,6 +58,7 @@
 		width: max-content;
 		overflow: hidden;
 		position: relative;
+		.transition(all 0.2s ease);
 
 		& button {
 			background: none;
@@ -85,8 +86,8 @@
 				display: block;
 			}
 			&:focus::after {
-				width: 100%;
-				transition: all .2s ease;
+				//width: 100%;
+				//transition: all .2s ease;
 			}
 		}
 
@@ -126,26 +127,35 @@
 		& span {
 			pointer-events: none;
 		}
-	}
 
-	.btn_link {
-		background-color: @color-white;
-		color: @color-active;
-		font-weight: 300;
-
-
-		& button {
+		&_link {
+			background-color: @color-white;
 			color: @color-active;
-			font-weight: 500;
+			font-weight: 300;
 
-			&::after {
-				background: @color-active;
+
+			& button {
+				color: @color-active;
+				font-weight: 500;
+
+				&::after {
+					background: @color-active;
+				}
+
 			}
-
 		}
-
-		& .btn__drop {
+		
+		&_link &__drop {
 			background-color: rgba(red(@color-active), green(@color-active), blue(@color-active), 0.1);
 		}
+		
+		&_disabled {
+			pointer-events: none;
+			.filter(grayscale(100%));
+			opacity: 0.5;
+			.transition(all 0.2s ease); 
+		}
+
+
 	}
 </style>
