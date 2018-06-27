@@ -6,13 +6,13 @@
 
 		<text-field 
 			v-on:onValue="setEmail" 
-			v-bind:lable="'Email'" 
+			v-bind:label="'Email'" 
 			v-bind:type="'email'">
 		</text-field>
 
 		<text-field 
 			v-on:onValue="setPass"
-			v-bind:lable="'Password'" 
+			v-bind:label="'Password'" 
 			v-bind:type="'password'">
 		</text-field>
 
@@ -20,12 +20,12 @@
 		<div class="login-form__button-group">
 
 			<btn 
-				v-bind:title="'Login'" 
+				v-bind:label="'Login'" 
 				v-on:onClick="login">
 			</btn>
 
 			<btn 
-				v-bind:title="'Sign in'" 
+				v-bind:label="'Sign in'" 
 				v-bind:class="'btn_link'" 
 				v-on:onClick="setState('registration')" >
 			</btn>

@@ -15,20 +15,20 @@
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:lable="'Title'">
+				v-bind:label="'Title'">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDescription" 
 				v-bind:type="'text'"
-				v-bind:lable="'Description'">
+				v-bind:label="'Description'">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDate"
 				v-bind:value="this.date"
 				v-bind:type="'date'"
-				v-bind:lable="'Deadline date'">
+				v-bind:label="'Deadline date'">
 			</text-field>
 
       <user-list 
@@ -38,7 +38,7 @@
 			</user-list>
 
       <div class="add-form__button-group">
-		    <btn v-bind:title="'Create'" v-on:click.native="createNew"></btn>
+		    <btn v-bind:label="'Create'" v-on:click.native="createNew"></btn>
       </div>
     </div>
 
@@ -47,13 +47,13 @@
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:lable="'Title'">
+				v-bind:label="'Title'">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDescription"
 				v-bind:type="'text'"
-				v-bind:lable="'Description'">
+				v-bind:label="'Description'">
 			</text-field>
 
       <user-list 
@@ -63,7 +63,7 @@
 			</user-list>
 
       <div class="add-form__button-group">
-		    <btn v-bind:title="'Create'" v-on:click.native="createNew"></btn>
+		    <btn v-bind:label="'Create'" v-on:click.native="createNew"></btn>
       </div>
     </div>
 
@@ -72,11 +72,11 @@
       <text-field 
 				v-on:onValue="setEmail" 
 				v-bind:type="'email'"
-				v-bind:lable="'Email'">
+				v-bind:label="'Email'">
 			</text-field>
 
       <div class="add-form__button-group">
-		    <btn v-bind:title="'Invite'" v-on:click.native="createNew"></btn>
+		    <btn v-bind:label="'Invite'" v-on:click.native="createNew"></btn>
       </div>
     </div>
 

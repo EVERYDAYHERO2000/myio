@@ -3,23 +3,83 @@
 		<div class="settings-form__setting-list">
 			<div class="settings-form__header">Settings</div>
 			<div class="link-list">
-				<div class="link-list__link link-list__link_active">Profile</div>
-				<div class="link-list__link">General</div>
-				<div class="link-list__link">Spaces</div>
+				<div v-for="settingListItem in settingList" 
+						 v-bind:class="setStileForActive(settingListItem.name)"
+						 v-on:click="setActiveTabName(settingListItem.name)"
+						 class="link-list__link">{{settingListItem.title}}
+				</div>
 			</div>
 		</div>	
 		<div class="settings-form__form">
-			<div class="settings-form__header">Profile</div>
+		
+			<div v-for="settingListItem in settingList" 
+					 v-if="activeTabName == settingListItem.name">
+				<div class="settings-form__header">
+					{{settingListItem.title}}
+				</div>
+				<super-component 
+					v-for="elem in settingListItem.form"
+					v-bind:com="elem">
+				</super-component>
+			</div>
+			
+			
+			
 		</div>
 	</div>
 </template>
 
 
 <script>
+	import $ from 'jquery';
+	import superComponent from './components/super-component.vue';
 	
 	export default {
 		props: {
 			opt: Object
+		},
+		components: {
+			superComponent: superComponent
+		},
+		methods: {
+			setStileForActive: function(name){
+				return (this.activeTabName == name) ? 'link-list__link_active' : '';
+			},
+			setActiveTabName: function(name){
+				this.activeTabName = name;
+			}
+		},
+		created: function(){
+			
+		}, 
+		data: function(){
+			return {
+				activeTabName: 'profile',
+				settingList: [
+					{
+						name: 'profile',
+						title: 'Profile',
+						form: [
+							{
+								component: 'textField',
+								label: 'User Name'	
+							},
+							{
+								component: 'btn',
+								label: 'Add Name' 
+							}
+						]
+					},
+					{
+						name: 'general',
+						title: 'General',
+					},
+					{
+						name: 'spaces',
+						title: 'Spaces'
+					}
+				]
+			}
 		}
 	}
 	

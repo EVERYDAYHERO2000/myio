@@ -1,7 +1,7 @@
 "use strict";
 
 let Dictionary = function(word,lang){
-	let lang = lang || 'eng';
+	let lang = lang || 'eng'; 
 	let w = word.toLowerCase();
 	let words = {
 		help : {

@@ -5,7 +5,7 @@
 		v-bind:title="panelTitle">
 		
 		<text-field 
-			v-bind:lable="''"
+			v-bind:label="''"
 			v-bind:placeholder="'Search'"
 			v-bind:type="'search'">
 		</text-field>

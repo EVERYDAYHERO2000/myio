@@ -14,7 +14,7 @@
 			</select-list>
 
 			<text-field 
-				v-bind:lable="''" 
+				v-bind:label="''" 
 				v-bind:type="'search'">
 			</text-field>
 			

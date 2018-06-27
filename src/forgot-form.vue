@@ -1,10 +1,10 @@
 <template>
 	<div class="forgot-form">
 		<div class="login-form__logo"><logo></logo></div>
-			<text-field v-bind:lable="'Email'" v-bind:type="'email'"></text-field>
+			<text-field v-bind:label="'Email'" v-bind:type="'email'"></text-field>
 			<div class="login-form__button-group">
 
-			<btn v-bind:title="'Request Password'"></btn>
+			<btn v-bind:label="'Request Password'"></btn>
 		</div>
 	</div>
 </template>

@@ -1,7 +1,7 @@
 <template>
 	<div v-on:mousedown="click" v-on:mousemove="getCoordinate" class="btn">
 		<button>
-			<span>{{title}}</span>
+			<span>{{label}}</span>
 		</button>
 		<div class="btn__drop"></div>
 	</div>
@@ -12,7 +12,7 @@
 	import $ from 'jquery';
 	export default {
 		props: {
-			title: String
+			label: String
 		},
 		methods: {
 			getCoordinate: function(e) {

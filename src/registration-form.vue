@@ -4,36 +4,36 @@
 
 			<text-field 
 				v-on:onValue="setLogin" 
-				v-bind:lable="'Login'">
+				v-bind:label="'Login'">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setEmail" 
-				v-bind:lable="'Email'" 
+				v-bind:label="'Email'" 
 				v-bind:type="'email'">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setPass" 
-				v-bind:lable="'Password'" 
+				v-bind:label="'Password'" 
 				v-bind:type="'password'">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setPass"
-				v-bind:lable="'Confirm password'" 
+				v-bind:label="'Confirm password'" 
 				v-bind:type="'password'">
 			</text-field>
 
 			<div class="registration-form__button-group">
 
 				<btn 
-					v-bind:title="'Sign in'" 
+					v-bind:label="'Sign in'" 
 					v-on:onClick="registration">
 				</btn>
 
 				<btn
-					v-bind:title="'Login'" 
+					v-bind:label="'Login'" 
 					v-bind:class="'btn_link'" 
 					v-on:onClick="setState('login')" >
 				</btn>

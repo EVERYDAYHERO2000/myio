@@ -9,7 +9,7 @@
 			v-bind:type="fieldType" 
 			v-on:keyup="onChange" required />
 
-		<label>{{lable}}</label>
+		<label>{{label}}</label>
 		<div class="text-field__bar"></div>
 		<div class="text-field__error">{{error}}</div>
 	</div>
@@ -21,7 +21,7 @@
 	
 	export default {
 		props: {
-			lable: String,
+			label: String,
 			type: String,
 			value: String,
 			placeholder: String,
