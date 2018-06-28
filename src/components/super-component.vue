@@ -7,16 +7,26 @@
 		</btn>
 		
 		<select-list 
-			v-if="com.component == 'selectList'">
+			v-if="com.component == 'selectList'"
+			v-bind:name="com.name" 
+			v-bind:options="com.options" 
+			v-bind:active="com.active"
+			v-bind:k="com.k"
+			v-bind:v="com.v">
 		</select-list>
 		
 		<text-field 
 	    v-if="com.component == 'textField'" 
-		  v-bind:label="com.label">
+		  v-bind:label="com.label"
+		  v-bind:placeholder="com.placeholder"
+			v-bind:value="com.value"
+			v-bind:type="com.fieldType">
 		</text-field>
 		
 		<user-list 
-			v-if="com.component == 'userList'">
+			v-if="com.component == 'userList'"
+			v-bind:opt="com.opt"
+			v-bind:name="com.name">
 		</user-list>
 	
 	</div>

@@ -34,7 +34,7 @@
 
 				<btn
 					v-bind:label="'Login'" 
-					v-bind:class="'btn_link'" 
+					v-bind:type="'link'"
 					v-on:onClick="setState('login')" >
 				</btn>
 

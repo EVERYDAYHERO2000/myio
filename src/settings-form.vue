@@ -13,7 +13,7 @@
 		<div class="settings-form__form">
 		
 			<div v-for="settingListItem in settingList" 
-					 v-if="activeTabName == settingListItem.name">
+					 v-show="activeTabName == settingListItem.name">
 				<div class="settings-form__header">
 					{{settingListItem.title}}
 				</div>
@@ -63,16 +63,31 @@
 							{
 								component: 'textField',
 								label: 'User Name'	
-							},
-							{
-								component: 'btn',
-								label: 'Add Name' 
 							}
 						]
 					},
 					{
 						name: 'general',
 						title: 'General',
+						form: [
+							{
+								component: 'selectList',
+								name: 'lang',
+								active: 0,
+								options: [
+									{
+										id : 0,
+										value : 'eng'
+									},
+									{
+										id : 1,
+										value : 'ru'
+									}
+								],
+								k : 'id',
+								v : 'value'
+							}
+						]
 					},
 					{
 						name: 'spaces',

@@ -4,6 +4,7 @@
 		<div v-if="type == 'search'" class="text-field__search-icon"></div>
 
 		<input 
+			v-bind:name="name"
 			v-bind:placeholder="placeholder"
 			v-bind:value="value"
 			v-bind:type="fieldType" 
@@ -22,6 +23,7 @@
 	export default {
 		props: {
 			label: String,
+			name: String,
 			type: String,
 			value: String,
 			placeholder: String,

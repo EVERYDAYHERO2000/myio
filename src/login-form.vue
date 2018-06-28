@@ -26,7 +26,7 @@
 
 			<btn 
 				v-bind:label="'Sign in'" 
-				v-bind:class="'btn_link'" 
+				v-bind:type="'link'"
 				v-on:onClick="setState('registration')" >
 			</btn>
 

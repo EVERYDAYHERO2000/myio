@@ -1,5 +1,6 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import $ from 'jquery';
+import App from './App.vue';
 import VueSocketio from 'vue-socket.io';
 import URL from './functions/urls-option.js';
 
@@ -21,6 +22,7 @@ new Vue({
 		this.$socket.on('chat message',function(msg){console.log(msg)});
 		this.$options.sockets.event_name = (data) => {
 			console.log(data)
+			
 		}
 	}
 });

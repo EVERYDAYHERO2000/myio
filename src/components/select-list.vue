@@ -32,7 +32,7 @@
 			name: String,
 			active: Number,
 			k: String,
-			v: String
+			v: String 
 		},
 		created: function() {
 			
