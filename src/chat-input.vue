@@ -15,7 +15,7 @@
 
 	export default {
 		props: {
-
+			opt: Object 
 		},
 		created: function() {
 			$(this.$el).find('.chat-input__input').focus();
@@ -28,6 +28,9 @@
 				if ((e.metaKey || e.ctrlKey) && e.keyCode == 13) {
 					this.addNewMessage();
 				}
+			},
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
 			},
 			addNewMessage: function() {
 				/*

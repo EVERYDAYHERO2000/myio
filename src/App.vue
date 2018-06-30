@@ -9,9 +9,9 @@
 	import $ from 'jquery';
 	import platform from 'platform';
 	
-	
-	
 	import auth from './functions/auth.js';
+	import lang from './functions/lang.js';
+	import d from './functions/dictionary.js';
 
 	import appStates from './app-states.vue';
 	import appModal from './app-modal.vue';
@@ -28,6 +28,7 @@
 					inboxList: [],
 					messages: [],
 					options: {
+						d: d, 
 						email: null,
 						id: null,
 						login: null,
@@ -36,7 +37,8 @@
 						app: {
 							modal: false,
 							screen: "login",
-							state: "chats"
+							state: "chats",
+							lang: lang.load()
 						}
 					},
 					taskList: [],
@@ -45,9 +47,13 @@
 				auth: auth.load()
 			}
 		},
+		methods: {
+			setLang: lang.setLang
+		},
 		created: function () {
 			window.APP = this;
 			if (this.auth.authValid == 'true') this.opt.options.app.screen = 'main';
+			
 			
 			$('body').addClass(function(){
 				let classList = '';

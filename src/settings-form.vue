@@ -50,7 +50,7 @@
 			}
 		},
 		created: function(){
-			
+			this.settingList[0].form[1].test();
 		}, 
 		data: function(){
 			return {
@@ -63,6 +63,13 @@
 							{
 								component: 'textField',
 								label: 'User Name'	
+							},
+							{
+								component: 'checkbox',
+								label: 'Auto login',
+								test: function(){
+									console.log(1212121)
+								}
 							}
 						]
 					},
@@ -72,7 +79,6 @@
 						form: [
 							{
 								component: 'selectList',
-								name: 'lang',
 								active: 0,
 								options: [
 									{

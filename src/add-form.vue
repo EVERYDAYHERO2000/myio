@@ -15,30 +15,29 @@
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:label="'Title'">
+				v-bind:label="this.d('title')">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDescription" 
 				v-bind:type="'text'"
-				v-bind:label="'Description'">
+				v-bind:label="this.d('description')">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDate"
 				v-bind:value="this.date"
 				v-bind:type="'date'"
-				v-bind:label="'Deadline date'">
+				v-bind:label="this.d('deadlined')">
 			</text-field>
 
       <user-list 
 				v-on:onValue="setUserList"
-				v-bind:name="'users_1'"
 				v-bind:opt="opt">
 			</user-list>
 
       <div class="add-form__button-group">
-		    <btn v-bind:label="'Create'" v-on:click.native="createNew"></btn>
+		    <btn v-bind:label="this.d('create')" v-on:click.native="createNew"></btn>
       </div>
     </div>
 
@@ -47,23 +46,25 @@
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:label="'Title'">
+				v-bind:label="this.d('title')">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDescription"
 				v-bind:type="'text'"
-				v-bind:label="'Description'">
+				v-bind:label="this.d('description')">
 			</text-field>
 
       <user-list 
 				v-on:onValue="setUserList"
-				v-bind:name="'users_1'"
 				v-bind:opt="opt">
 			</user-list>
 
       <div class="add-form__button-group">
-		    <btn v-bind:label="'Create'" v-on:click.native="createNew"></btn>
+		    <btn 
+		    	v-bind:label="this.d('create')" 
+		    	v-on:click.native="createNew">
+		    </btn>
       </div>
     </div>
 
@@ -72,11 +73,14 @@
       <text-field 
 				v-on:onValue="setEmail" 
 				v-bind:type="'email'"
-				v-bind:label="'Email'">
+				v-bind:label="this.d('email')">
 			</text-field>
 
       <div class="add-form__button-group">
-		    <btn v-bind:label="'Invite'" v-on:click.native="createNew"></btn>
+		    <btn 
+		    	v-bind:label="this.d('invite')" 
+		    	v-on:click.native="createNew">
+		    </btn>
       </div>
     </div>
 
@@ -86,25 +90,28 @@
 
 <script>
 	import $ from 'jquery';
+
 	import getDateTime from './functions/date-time.js';
+	import d from './functions/dictionary.js';
 
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
 	import selectList from './components/select-list.vue';
 	import userList from './components/user-list.vue';
 
+	
 	export default {
 		props: {
 			opt: Object
 		},
 		components: {
-			btn : btn,
-			textField : textField,
-			selectList : selectList,
-			userList : userList
+			btn: btn,
+			textField: textField,
+			selectList: selectList,
+			userList: userList
 		},
-		created: function(){
-			
+		created: function() {
+			console.log(this.opt.options.app.lang)
 		},
 		methods: {
 			setState: function(s) {
@@ -131,6 +138,9 @@
 			setUserList: function(e) {
 				this.userList = e;
 			},
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+			},
 			createNew: function() {
 
 				let data = {
@@ -146,25 +156,30 @@
 		},
 		data: function() {
 			return {
-				dataType: [{
-						value: '1',
-						name: 'New task'
-					},
-					{
-						value: '2',
-						name: 'New chat'
-					},
-					{
-						value: '3',
-						name: 'Add user'
-					}
-				],
 				active: 0,
 				title: '',
 				description: '',
 				email: '',
 				date: getDateTime().dateOnly,
 				userList: []
+			}
+		},
+		computed: {
+			dataType: function() {
+				return [
+					{
+						value: '1',
+						name: this.d('new task')
+					},
+					{
+						value: '2',
+						name: this.d('new chat')
+					},
+					{
+						value: '3',
+						name: this.d('add user')
+					}
+				]
 			}
 		}
 	}

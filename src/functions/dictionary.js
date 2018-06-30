@@ -1,159 +1,199 @@
 "use strict";
 
-let Dictionary = function(word,lang){
-	let lang = lang || 'eng'; 
-	let w = word.toLowerCase();
-	let words = {
+let d = {
 
-		help : {
+		'help' : {
+			eng: 'Help',
 			ru : 'Помощь'
 		},
-		email : {
-			ru : 'email'
+		'email' : {
+			eng: 'Email',
+			ru : 'Email'
 		},
-		name : {
+		'name' : {
+			eng: 'Name',
 			ru : 'Имя'
 		},
-		login : {
+		'login' : {
+			eng: 'Login',
 			ru : 'Логин'
 		},
-		pass : {
+		'log in' : {
+			eng: 'Login',
+			ru: 'Войти'
+		},
+		'pass' : {
+			eng: 'Pass',
 			ru : 'Пароль'
 		},
-		password : {
+		'password' : {
+			eng: 'Password',
 			ru : 'Пароль'
 		},
-		settings : {
+		'settings' : {
+			eng: 'Settings',
 			ru : 'Настройки'
 		},
-		spaces : {
+		'spaces' : {
+			eng: 'Spaces',
 			ru : 'Пространства'
 		},
-		profile : {
+		'profile' : {
+			eng: 'Profile',
 			ru : 'Профиль'
 		},
-		general : {
+		'general' : {
+			eng: 'General',
 			ru : 'Основные'
 		},
-		forgot : {
+		'forgot password' : {
 			eng: 'Forgot password',
 			ru : 'Напомнить пароль'
 		},
-		calendar : {
+		'request password' : {
+			eng: 'Request Password',
+			ru : 'Отправить пароль'
+		},
+		'calendar' : {
+			eng: 'Calendar',
 			ru : 'Календарь'
 		},
-		files : {
+		'files' : {
+			eng: 'Files',
 			ru : 'Файлы'
 		},
-		user : {
+		'user' : {
+			eng: 'User',
 			ru : 'Пользователь'
 		},
-		users : {
+		'users' : {
+			eng: 'Users',
 			ru : 'Пользователи'
 		},
-		add : {
+		'add' : {
+			eng: 'Add',
 			ru : 'Добавить'
 		},
-		addF : {
+		'add file' : {
 			eng : 'Add file',
 			ru : 'Добавить файл'
 		},
-		addU : {
+		'add user' : {
 			eng : 'Add user',
 			ru : 'Добавить пользователя'
 		},
-		create : {
+		'create' : {
+			eng: 'Create',
 			ru : 'Создать'
 		},
-		createN : {
+		'create new' : {
 			eng : 'Create new',
 			ru : 'Создать новый'
 		},
-		chats : {
+		'chats' : {
+			eng: 'Chats',
 			ru : 'Чаты'
 		},
-		tasks : {
+		'tasks' : {
+			eng: 'Tasks',
 			ru : 'Задачи'
 		},
-		messages : {
+		'messages' : {
+			eng: 'Messages',
 			ru : 'Сообщения'
 		},
-		search : {
+		'search' : {
+			eng: 'Search',
 			ru : 'Поиск'
 		},
-		find : {
+		'find' : {
+			eng: 'Find',
 			ru : 'Найти'
 		},
-		findC : {
+		'find chat' : {
 			eng : 'Find chat',
 			ru : 'Найти чат'
 		},
-		findT : {
+		'find task' : {
 			eng : 'Find task',
 			ru : 'Найти задачу'
 		},
-		all : {
+		'all' : {
+			eng: 'All',
 			ru : 'Всё'
 		},
-		allT : {
+		'all task' : {
 			eng : 'All task',
 			ru : 'Все задачи'
 		},
-		createdT : {
+		'created by me' : {
 			eng : 'Created by me',
 			ru : 'Созданные мной'
 		},
-		assignedT : {
+		'assigned to me' : {
 			eng : 'Assigned to me',
 			ru : 'Назначенные на меня'
 		},
-		send : {
+		'sign in': {
+			eng: 'Sign in',
+			ru: 'Регистрация'
+		},
+		'send' : {
+			eng: 'Send',
 			ru : 'Отправить'
 		},
-		sendM : {
+		'send message' : {
 			eng : 'Send message',
 			ru : 'Отправить сообщение'
 		},
-		newT : {
+		'new task' : {
 			eng : 'New task',
 			ru : 'Новая задача'
 		},
-		newC : {
+		'new chat' : {
 			eng : 'New chat',
 			ru : 'Новый чат'
 		}, 
-		title : {
+		'title' : {
+			eng: 'Title',
 			ru : 'Название'
 		},
-		description : {
+		'description' : {
+			eng: 'Description',
 			ru : 'Описание'
 		},
-		deadlineD : {
+		'confirm password' : {
+			eng: 'Confirm password',
+			ru: 'Проверка пароля'
+		},
+		'deadlined' : {
 			eng : 'Done until',
 			ru : 'Сделать до'
 		},
-		invite : {
+		'invite' : {
+			eng: 'Invite',
 			ru : 'Пригласить'
 		},
-		pin : {
+		'pin' : {
+			eng: 'Pin',
 			ru : 'Закрепить'
 		},
-		pinC : {
+		'pin chat' : {
 			eng : 'Pin chat',
 			ru : 'Закрепить чат'
 		},
-		pinT : {
+		'pin task' : {
 			eng : 'Pin task',
 			ru : 'Закрепить задачу'
 		},
-		pinM : {
+		'pin message' : {
 			eng : 'Pin message',
 			ru : 'Закрепить сообщение'
+		},
+		'create your account' : {
+			eng: 'Create your account',
+			ru : 'Новый аккаунт'
 		}
 	};
-	
-	return (words[w][lang]) ? words[w][lang] : word;
-	
-}
 
-export default Dictionary;
+export default d;

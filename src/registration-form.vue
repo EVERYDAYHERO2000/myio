@@ -1,39 +1,39 @@
 <template>
 	<div class="registration-form">
-			<div class="registration-form__header">Create your account</div>
+			<div class="registration-form__header">{{this.d('Create your account')}}</div>
 
 			<text-field 
 				v-on:onValue="setLogin" 
-				v-bind:label="'Login'">
+				v-bind:label="this.d('Login')">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setEmail" 
-				v-bind:label="'Email'" 
+				v-bind:label="this.d('Email')" 
 				v-bind:type="'email'">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setPass" 
-				v-bind:label="'Password'" 
+				v-bind:label="this.d('Password')" 
 				v-bind:type="'password'">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setPass"
-				v-bind:label="'Confirm password'" 
+				v-bind:label="this.d('Confirm password')" 
 				v-bind:type="'password'">
 			</text-field>
 
 			<div class="registration-form__button-group">
 
 				<btn 
-					v-bind:label="'Sign in'" 
+					v-bind:label="this.d('Sign in')" 
 					v-on:onClick="registration">
 				</btn>
 
 				<btn
-					v-bind:label="'Login'" 
+					v-bind:label="this.d('Log in')" 
 					v-bind:type="'link'"
 					v-on:onClick="setState('login')" >
 				</btn>
@@ -76,6 +76,9 @@
 					__this__.opt.options.app.screen = s;
 				});
 			},
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+			},
 			setPass: function(e) {
 				this.__pass = e;
 			},
@@ -117,7 +120,7 @@
 <style lang="less">
 	@import './less/main.less';
 	.registration-form {
-		width: 250px;
+		width: @width-form;
 		margin: 0 auto;
 		height: 100vh;
 		.flex-block();

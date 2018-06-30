@@ -6,6 +6,8 @@ import URL from './functions/urls-option.js';
 
 Vue.use(VueSocketio, URL.sockets); 
 
+
+
 new Vue({
 	el: '#app',
 	render: h => h(App),

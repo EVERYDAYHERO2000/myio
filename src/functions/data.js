@@ -3,6 +3,7 @@
 import $ from 'jquery';
 import getDateTime from '../functions/date-time.js';
 import changeColor from '../functions/change-color.js';
+import d from '../functions/dictionary.js';
 
 const data = {};
 
@@ -20,6 +21,7 @@ data.getData = function (newData, currentData) {
 
 	if (newData.options) {
 		DATA.options = {
+			d:d,
 			login: newData.options.login,
 			id: newData.options.id,
 			email: newData.options.email,

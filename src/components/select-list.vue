@@ -1,20 +1,22 @@
 <template>
 	<div class="select-list">
-	<button class="select-list__placeholder" v-on:click="toggleShow">{{getActive}}</button>
+	<button 
+		class="select-list__placeholder" 
+		v-on:click="toggleShow">{{getActive}}</button>
   <div class="select-list__bar"></div>
   <div class="select-list__back" v-on:click="toggleShow"></div>
 	<div class="select-list__list">
 		<div v-for="(option, index) in options" class="select-list__option">
 			<input 
 				type="radio" 
-				v-bind:name="name" 
+				v-bind:name="setId()" 
 				v-bind:value="option[k]" 
-				v-bind:id="name + '_' + index"
+				v-bind:id="setId() + '_' + index"
 				v-bind:data-key="index">
     	<label 
 				v-bind:data-key="index" 
 				v-on:click="select" 
-				v-bind:for="name + '_' + index">{{option[v]}}
+				v-bind:for="setId() + '_' + index">{{option[v]}}
       </label>
 		</div>
 	</div>
@@ -29,7 +31,6 @@
 	export default {
 		props: {
 			options: Array,
-			name: String,
 			active: Number,
 			k: String,
 			v: String 
@@ -38,6 +39,9 @@
 			
 		},
 		methods: {
+			setId: function(){
+				return  'select-list_' + this._uid;
+			},
 			toggleShow: function() {
 				let $el = this.$el;
 				let zIndex = findZindex('div');
@@ -66,6 +70,7 @@
 
 <style lang="less">
 	@import '../less/main.less';
+	
 	.select-list {
 		.flex-block();
 		.flex-direction(column);

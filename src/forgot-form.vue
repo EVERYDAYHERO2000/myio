@@ -1,10 +1,10 @@
 <template>
 	<div class="forgot-form">
 		<div class="login-form__logo"><logo></logo></div>
-			<text-field v-bind:label="'Email'" v-bind:type="'email'"></text-field>
+			<text-field v-bind:label="this.d('Email')" v-bind:type="'email'"></text-field>
 			<div class="login-form__button-group">
 
-			<btn v-bind:label="'Request Password'"></btn>
+			<btn v-bind:label="this.d('request password')"></btn>
 		</div>
 	</div>
 </template>
@@ -27,6 +27,11 @@
 			btn : btn,
 			textField : textField,
 			logo : logo
+		},
+		methods: {
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+			}
 		}
 	}
 </script>
@@ -35,7 +40,7 @@
 <style lang="less">
 	@import './less/main.less';
 	.forgot-form {
-		width: 250px;
+		width: @width-form;
 		margin: 0 auto;
 		height: 100vh;
 		.flex-block();

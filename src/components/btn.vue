@@ -69,7 +69,13 @@
 		width: max-content;
 		overflow: hidden;
 		position: relative;
+		.box-shadow(0 0 0 rgba(0,0,0,0));
 		.transition(all 0.2s ease);
+		
+		&:hover {
+			.box-shadow( 0px 1px 3px rgba(0,0,0,0.3));
+			.transition(all 0.2s ease);
+		}
 
 		& button {
 			background: none;
@@ -143,7 +149,7 @@
 			background-color: @color-white;
 			color: @color-active;
 			font-weight: 300;
-
+			
 
 			& button {
 				color: @color-active;
@@ -154,6 +160,10 @@
 				}
 
 			}
+		}
+		
+		&_link:hover {
+			box-shadow: none;
 		}
 		
 		&_link &__drop {

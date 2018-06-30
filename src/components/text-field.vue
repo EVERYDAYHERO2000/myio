@@ -4,13 +4,16 @@
 		<div v-if="type == 'search'" class="text-field__search-icon"></div>
 
 		<input 
-			v-bind:name="name"
 			v-bind:placeholder="placeholder"
 			v-bind:value="value"
 			v-bind:type="fieldType" 
+			v-bind:id="setId()"
+			v-bind:name="setId()"
 			v-on:keyup="onChange" required />
 
-		<label>{{label}}</label>
+		<label 
+			v-bind:for="setId()"
+			v-if="label">{{label}}</label>
 		<div class="text-field__bar"></div>
 		<div class="text-field__error">{{error}}</div>
 	</div>
@@ -23,7 +26,6 @@
 	export default {
 		props: {
 			label: String,
-			name: String,
 			type: String,
 			value: String,
 			placeholder: String,
@@ -52,9 +54,15 @@
 			}
 		},
 		methods: {
+			setId: function(){
+				return this.type + '_' + this._uid;
+			},
 			onChange: function(e) {
 				this.$emit('onValue', $(this.$el).find('input').val());
 			}
+		},
+		created: function(){
+			
 		}
 	}
 </script>

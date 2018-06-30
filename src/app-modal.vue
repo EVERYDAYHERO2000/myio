@@ -19,6 +19,9 @@
 					$($el).find('.app-modal__panel').toggleClass('app-modal__panel_active');
 					//$('.app-states').toggleClass('app-states_blur');
 				});
+			},
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
 			}
 		},
 		mounted: function() {

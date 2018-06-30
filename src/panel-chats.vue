@@ -6,7 +6,7 @@
 		
 		<text-field 
 			v-bind:label="''"
-			v-bind:placeholder="'Search'"
+			v-bind:placeholder="this.d('Search')"
 			v-bind:type="'search'">
 		</text-field>
 		
@@ -45,6 +45,11 @@
 		},
 		created: function(){
 
+		},
+		methods: {
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+			}
 		}
 	}
 </script>

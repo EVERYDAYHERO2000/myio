@@ -18,7 +18,6 @@
 	<select-list 
 		v-if="UsersCanBeAdded.length"
 		v-bind:class="'user-list__list'"
-		v-bind:name="name" 
 		v-bind:options="UsersCanBeAdded" 
 		v-bind:active="0"
 		v-bind:k="'id'"
@@ -39,7 +38,6 @@
 	export default {
 		props: {
 			opt: Object,
-			name: String
 		},
 		components: {
 			selectList: selectList,
