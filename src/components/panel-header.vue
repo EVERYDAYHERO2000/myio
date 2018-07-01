@@ -3,6 +3,7 @@
 	
 		<div 
 			class="panel-header__titlebar" 
+			v-bind:title="this.d('expand')"
 			v-on:click="toggleHeaderPanel">{{title}}
 		</div>
 		<div 
@@ -31,6 +32,9 @@
 				let el = this.$el;
 				$(el).toggleClass('panel-header_active');
 				this.isShowed = !this.isShowed;
+			},
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
 			}
 		},
 		data: function() {

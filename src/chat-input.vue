@@ -15,6 +15,14 @@
 			class="chat-input__send" 
 			v-on:click="addNewMessage" 
 			v-bind:title="this.d('send') + ': ⌘ + Enter'">
+			
+			<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    		<polygon 
+    			transform="translate(0, 1)" 
+    			points="0 18 20 9 0 0 0 7 14 9 0 11">
+    		</polygon>
+			</svg>
+	
 		</div>
 	</div>
 </template>
@@ -25,7 +33,7 @@
 
 	export default {
 		props: {
-			opt: Object 
+			opt: Object
 		},
 		created: function() {
 			$(this.$el).find('.chat-input__input').focus();
@@ -39,7 +47,7 @@
 					this.addNewMessage();
 				}
 			},
-			d: function(w){
+			d: function(w) {
 				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
 			},
 			addNewMessage: function() {
@@ -88,7 +96,7 @@
 			resizeTextarea: function() {
 				let el = this.$el;
 				let $textarea = $(el).find('.chat-input__input');
-				let offset = $textarea[0].offsetHeight - $textarea[0].clientHeight;	
+				let offset = $textarea[0].offsetHeight - $textarea[0].clientHeight;
 
 				$textarea.removeAttr('style').css({
 					'height': $textarea[0].scrollHeight + offset + 'px'
@@ -99,7 +107,7 @@
 			return {
 				textInput: ''
 			}
-		} 
+		}
 	}
 </script>
 
@@ -138,9 +146,7 @@
 			min-height: 50px;
 			height: 50px;
 			resize: none;
-			overflow: hidden;
-			//transition: height .2s;
-
+			overflow: hidden; //transition: height .2s;
 			&:focus {
 				outline: none;
 			}
@@ -155,10 +161,13 @@
 			min-width: @icon-size;
 			min-height: @icon-size;
 			margin: 8px;
-			background-image: ~"url(./assets/send.svg)";
-			background-size: @icon-size @icon-size;
-			background-position: center;
-			background-repeat: no-repeat;
+			display: flex;
+    	align-items: center;
+			
+			& polygon {
+				fill: @color-active;
+				stroke: none;
+			}
 		}
 	}
 </style>

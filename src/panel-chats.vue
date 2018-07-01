@@ -2,6 +2,7 @@
 	<div class="panel-chats">
 
 	<panel-header
+		v-bind:opt="opt"
 		v-bind:title="panelTitle">
 		
 		<text-field 

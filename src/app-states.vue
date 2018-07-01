@@ -82,7 +82,7 @@
 		box-sizing: border-box;
 		background-color: @color-background;
 		.filter(blur(0px));
-		transition: all .3s ease;
+		.transition(all .3s ease);
 
 		&__loading {
 			width: 100%;
@@ -94,14 +94,14 @@
 			width: 100%;
 			height: 100%;
 			background-color: @color-white;
-			animation: app-states_show .3s ease 1;
+			.animation(app-states_show .3s ease 1);
 		}
 
 		&__login {
 			width: 100%;
 			height: 100%;
 			background-color: @color-white;
-			animation: app-states_show .3s ease 1;
+			.animation(app-states_show .3s ease 1);
 		}
 
 		&__main {
@@ -111,7 +111,7 @@
 
 		&_blur {
 			.filter(blur(3px));
-			transition: all .3s .2s ease;
+			.transition(all .3s .2s ease);
 		}
 
 		@keyframes app-states_show {

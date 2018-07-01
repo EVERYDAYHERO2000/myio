@@ -2,6 +2,7 @@
 	<div class="panel-tasks">
 
 	<panel-header
+		v-bind:opt="opt"
 		v-bind:title="panelTitle">
 		
 			<select-list 

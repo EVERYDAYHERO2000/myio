@@ -62,7 +62,7 @@
 		font-size: @font-size-main;
 		line-height: 42px;
 		background-color: @color-active;
-		.border-radius(5px);
+		.border-radius(@radius-border);
 		text-align: center;
 		margin: 40px 0 0 0;
 		box-sizing: border-box;
@@ -85,7 +85,7 @@
 			font-size: @font-size-main;
 			border: none;
 			box-sizing: border-box;
-			.border-radius(5px);
+			.border-radius(@radius-border);
 			.flex-block();
 			.align-items(center);
 			.flex-direction(column);
@@ -123,7 +123,7 @@
 
 			&_down {
 				opacity: 0;
-				animation: btn-down 0.8s ease;
+				.animation(btn-down 0.8s ease);
 			}
 
 			@keyframes btn-down {
@@ -163,7 +163,7 @@
 		}
 		
 		&_link:hover {
-			box-shadow: none;
+			.box-shadow(none);
 		}
 		
 		&_link &__drop {
