@@ -1,5 +1,7 @@
 <template>
-	<div v-if="opt.options.app.modal" class="app-modal">
+	<div 
+		v-if="opt.options.app.modal" 
+		class="app-modal">
 		<div class="app-modal__panel"></div>
 	</div>
 </template>

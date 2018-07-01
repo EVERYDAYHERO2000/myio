@@ -1,5 +1,8 @@
 <template>
-<div v-on:click="setInboxActive" class="chat-list-item" v-bind:class="{ 'chat-list-item_active' : chat.isActive }">
+<div 
+	v-on:click="setInboxActive" 
+	class="chat-list-item" 
+	v-bind:class="{ 'chat-list-item_active' : chat.isActive }">
 	<contact-icon-chip 
 		v-bind:type="type"
 		v-bind:title="chat.title">
@@ -12,8 +15,14 @@
 		</div>
 	</div>
   <div class="chat-list-item__info">
-    <div class="chat-list-item__date"><span>{{ chat.last_message.date.dateTime }}</span></div>
-    <div v-on:click.stop="chat.isPined = !chat.isPined" class="chat-list-item__keep" v-bind:class="{ 'chat-list-item__keep_pined' : chat.isPined }"></div>
+    <div class="chat-list-item__date">
+    	<span>{{ chat.last_message.date.dateTime }}</span>
+    </div>
+    <div 
+    	v-on:click.stop="chat.isPined = !chat.isPined" 
+    	class="chat-list-item__keep" 
+    	v-bind:class="{ 'chat-list-item__keep_pined' : chat.isPined }">
+    </div>
   </div>
 </div>
 </template>

@@ -17,7 +17,7 @@
 		<div class="panel-messages__inner">
 			<div class="panel-messages__messages-list">chat</div>
 			<div class="panel-messages__input">
-				<chat-input>
+				<chat-input v-bind:opt="opt">
 				</chat-input>
 			</div>
 		</div>

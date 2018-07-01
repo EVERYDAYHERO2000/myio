@@ -5,7 +5,7 @@
     <toolbar-tool 
       v-if="opt.options.app.state == 'chats'" 
       v-on:click.native="toggleToolbarAdd"
-      v-bind:title="'Create new'" 
+      v-bind:title="this.d('Create new')" 
       v-bind:icon="this.icons.icon_add">
     </toolbar-tool>
 
@@ -13,8 +13,9 @@
 
 		<toolbar-tool 
       v-on:click.native="toggleToolbarSpace"
-      v-bind:title="'Work spaces'" 
-      v-bind:opt="opt" v-bind:icon="this.icons.icon_space">
+      v-bind:title="this.d('Work spaces')" 
+      v-bind:opt="opt" 
+      v-bind:icon="this.icons.icon_space">
     </toolbar-tool>
 
 		<div class="toolbar__divider"></div>
@@ -22,7 +23,7 @@
     <toolbar-tool 
       v-bind:data="'chats'" 
       v-on:click.native="closeToolbar"
-      v-bind:title="'Chats'" 
+      v-bind:title="this.d('Chats')" 
       v-bind:opt="opt" v-bind:icon="this.icons.icon_forum">
     </toolbar-tool>
 
@@ -30,7 +31,7 @@
       v-bind:data="'calendar'" 
       v-on:click.native="closeToolbar" 
       v-bind:opt="opt"
-      v-bind:title="'Calendar'" 
+      v-bind:title="this.d('Calendar')" 
       v-bind:icon="this.icons.icon_event">
     </toolbar-tool>
 
@@ -38,7 +39,7 @@
       v-bind:data="'files'" 
       v-on:click.native="closeToolbar"
       v-bind:opt="opt"
-      v-bind:title="'Files'" 
+      v-bind:title="this.d('Files')" 
       v-bind:icon="this.icons.icon_cloudQueue">
     </toolbar-tool>
 
@@ -46,18 +47,26 @@
       v-bind:data="'settings'" 
       v-on:click.native="closeToolbar" 
       v-bind:opt="opt"
-      v-bind:title="'Settings'" 
+      v-bind:title="this.d('Settings')" 
       v-bind:icon="this.icons.icon_settings">
     </toolbar-tool>
   </div>
 
   <div class="toolbar__form">
-    <add-form v-if="addForm.isVisible" v-bind:opt="opt"></add-form>
-    <space-form v-if="spaceForm.isVisible" v-bind:opt="opt"></space-form>
+    <add-form 
+    	v-if="addForm.isVisible" 
+    	v-bind:opt="opt">
+    </add-form>
+    <space-form 
+    	v-if="spaceForm.isVisible" 
+    	v-bind:opt="opt">
+    </space-form>
   </div>
 
-	<div v-if="addForm.isVisible" class="toolbar__bar" v-on:click="toggleToolbarAdd">
-		
+	<div 
+		v-if="addForm.isVisible" 
+		class="toolbar__bar" 
+		v-on:click="toggleToolbarAdd">
 	</div>
 
 </div>
@@ -113,6 +122,9 @@
 				$(el).removeClass('toolbar_active');
 				this.addForm.isVisible = false;
 				this.spaceForm.isVisible = false;
+			},
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
 			}
 		},
 		data: function() {

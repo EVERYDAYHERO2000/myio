@@ -1,7 +1,12 @@
 <template>
-	<div class="text-field" v-bind:class="classList">
+	<div 
+		class="text-field" 
+		v-bind:class="classList">
 
-		<div v-if="type == 'search'" class="text-field__search-icon"></div>
+		<div 
+			v-if="type == 'search'" 
+			class="text-field__search-icon">
+		</div>
 
 		<input 
 			v-bind:placeholder="placeholder"
@@ -9,11 +14,15 @@
 			v-bind:type="fieldType" 
 			v-bind:id="setId()"
 			v-bind:name="setId()"
-			v-on:keyup="onChange" required />
+			v-on:keyup="onChange" 
+			required />
 
 		<label 
 			v-bind:for="setId()"
-			v-if="label">{{label}}</label>
+			v-if="label">
+			{{label}}
+		</label>
+		
 		<div class="text-field__bar"></div>
 		<div class="text-field__error">{{error}}</div>
 	</div>

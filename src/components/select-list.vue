@@ -2,11 +2,18 @@
 	<div class="select-list">
 	<button 
 		class="select-list__placeholder" 
-		v-on:click="toggleShow">{{getActive}}</button>
+		v-on:click="toggleShow">
+		{{getActive}}
+	</button>
   <div class="select-list__bar"></div>
-  <div class="select-list__back" v-on:click="toggleShow"></div>
+  <div 
+  	class="select-list__back" 
+  	v-on:click="toggleShow">
+  </div>
 	<div class="select-list__list">
-		<div v-for="(option, index) in options" class="select-list__option">
+		<div 
+			v-for="(option, index) in options" 
+			class="select-list__option">
 			<input 
 				type="radio" 
 				v-bind:name="setId()" 
@@ -16,7 +23,8 @@
     	<label 
 				v-bind:data-key="index" 
 				v-on:click="select" 
-				v-bind:for="setId() + '_' + index">{{option[v]}}
+				v-bind:for="setId() + '_' + index">
+     		{{option[v]}}
       </label>
 		</div>
 	</div>

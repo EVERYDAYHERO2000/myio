@@ -2,7 +2,9 @@
 	
 	<div class="work-states">
 	
-		<div class="work-states__state" v-if="opt.options.app.state === 'chats'">
+		<div 
+			class="work-states__state" 
+			v-if="opt.options.app.state === 'chats'">
 			<Split 
 				v-bind:gutterSize="1" 
 				class="split_flex"
@@ -12,14 +14,14 @@
 
 				<!--CHATS-->
 				<SplitArea 
-				 class="panel panel_white"
-				 v-bind:size="this.panelsSettings.panelLeft" 
-				 v-bind:minSize="300">
+					class="panel panel_white"
+					v-bind:size="this.panelsSettings.panelLeft" 
+					v-bind:minSize="300">
 
 					<panel-chats 
 						v-bind:opt="opt" 
 						v-bind:type="'chats'" 
-						v-bind:panelTitle="'Chats'">
+						v-bind:panelTitle="this.d('Chats')">
 					</panel-chats>
 
 				</SplitArea>
@@ -27,14 +29,14 @@
 				
 				<!--MESSAGES-->
 				<SplitArea 
-				 class="panel panel_messages"
-				 v-bind:size="this.panelsSettings.panelCenter" 
-				 v-bind:minSize="300">
+					class="panel panel_messages"
+					v-bind:size="this.panelsSettings.panelCenter" 
+					v-bind:minSize="300">
 				 
 					<panel-messages 
 						v-bind:opt="opt"
 						v-bind:type="'messages'"
-						v-bind:panelTitle="'Messages'">
+						v-bind:panelTitle="this.d('Messages')">
 					</panel-messages>
 					
 				</SplitArea>
@@ -49,7 +51,7 @@
 					<panel-tasks 
 						v-bind:opt="opt"
 						v-bind:type="'tasks'" 
-						v-bind:panelTitle="'Tasks'">
+						v-bind:panelTitle="this.d('Tasks')">
 					</panel-tasks>
 
 				</SplitArea>
@@ -58,17 +60,23 @@
 			</Split>
 		</div>
 
-		<div class="work-states__state" v-if="opt.options.app.state === 'settings'">
+		<div 
+			class="work-states__state" 
+			v-if="opt.options.app.state === 'settings'">
 			<settings-form 
 				v-bind:opt="opt">
 			</settings-form>
 		</div>
 		
-		<div class="work-states__state" v-if="opt.options.app.state === 'files'">
+		<div 
+			class="work-states__state" 
+			v-if="opt.options.app.state === 'files'">
 		files
 		</div>
 		
-		<div class="work-states__state" v-if="opt.options.app.state === 'calendar'">
+		<div 
+			class="work-states__state" 
+			v-if="opt.options.app.state === 'calendar'">
 		calendar
 		</div>
 
@@ -108,6 +116,9 @@
 					APP.$data.opt = data.getData(d, APP.$data.opt);
 					
 				});
+			},
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
 			},
 			onDragStart(size) {
 				

@@ -15,6 +15,7 @@
 
 			<text-field 
 				v-bind:label="''" 
+				v-bind:placeholder="this.d('Search')"
 				v-bind:type="'search'">
 			</text-field>
 			
@@ -59,22 +60,30 @@
 		methods: {
 			setActive: function(e){
 				this.active = e;
+			},
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
 			}
 		},
 		data: function(){
 			return {
-				active: 0,
-				dataTaskState: [{
+				active: 0
+			}
+		},
+		computed : {
+			dataTaskState: function(){
+				return [
+					{
 						value: '1',
-						name: 'All tasks'
+						name: this.d('All tasks')
 					},
 					{
 						value: '2',
-						name: 'Created by me'
+						name: this.d('Created by me')
 					},
 					{
 						value: '3',
-						name: 'Assigned to me'
+						name: this.d('Assigned to me')
 					}
 				]
 			}

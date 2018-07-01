@@ -16,7 +16,10 @@
 			v-bind:type="'password'">
 		</text-field>
 
-		<div class="login-form__link_forgot" v-on:click="setState('forgot')">{{this.d('forgot password')}}</div>
+		<div 
+			class="login-form__link_forgot" 
+			v-on:click="setState('forgot')">{{this.d('forgot password')}}
+		</div>
 		<div class="login-form__button-group">
 
 			<btn 

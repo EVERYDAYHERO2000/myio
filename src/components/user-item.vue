@@ -1,5 +1,7 @@
 <template>
-<div class="user-item" v-bind:data-index="index">
+<div 
+ 	class="user-item" 
+ 	v-bind:data-index="index">
 
  	<contact-icon-chip 
 		v-bind:title="opt.name" 
@@ -9,7 +11,10 @@
 	<div class="user-item__content">
 		<div class="user-item__user-name">{{opt.name}}</div>
 	</div>	
-	<div class="user-item__remove" v-on:click="onRemove"></div>
+	<div 
+		class="user-item__remove" 
+		v-on:click="onRemove">
+	</div>
 
 </div>
 </template>

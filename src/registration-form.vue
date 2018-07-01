@@ -1,6 +1,7 @@
 <template>
 	<div class="registration-form">
-			<div class="registration-form__header">{{this.d('Create your account')}}</div>
+			<div class="registration-form__header">{{this.d('Create your account')}}
+			</div>
 
 			<text-field 
 				v-on:onValue="setLogin" 

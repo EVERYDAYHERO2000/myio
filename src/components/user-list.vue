@@ -1,11 +1,13 @@
 <template>
 <div class="user-list">
   <div class="user-list__header">
-    <div class="user-list__title">Users</div>
+    <div class="user-list__title">{{this.d('Users')}}</div>
     <div class="user-list__counter">{{UsersCanBeRemoved.length}}</div>
   </div>
 
-  <div class="user-list__users" v-if="UsersCanBeRemoved.length">
+  <div 
+  	class="user-list__users" 
+  	v-if="UsersCanBeRemoved.length">
 		<user-item 
 			v-for="(user, index) in UsersCanBeRemoved" 
 			v-on:onRemove="removeUser" 
@@ -53,8 +55,9 @@
 				this.UsersCanBeAdded.push(this.UsersCanBeRemoved[e]);
 				this.UsersCanBeRemoved.splice(e, 1);
 			},
-			
-			
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+			}
 		},
 		created: function(){
 			

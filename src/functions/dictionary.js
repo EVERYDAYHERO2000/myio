@@ -122,8 +122,8 @@ let d = {
 			eng: 'All',
 			ru : 'Всё'
 		},
-		'all task' : {
-			eng : 'All task',
+		'all tasks' : {
+			eng : 'All tasks',
 			ru : 'Все задачи'
 		},
 		'created by me' : {
@@ -193,6 +193,10 @@ let d = {
 		'create your account' : {
 			eng: 'Create your account',
 			ru : 'Новый аккаунт'
+		},
+		'work spaces' : {
+			eng : 'Work spaces',
+			ru : 'Рабочие пространства'
 		}
 	};
 

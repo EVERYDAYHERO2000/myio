@@ -1,19 +1,22 @@
 <template>
 	<div class="settings-form">
 		<div class="settings-form__setting-list">
-			<div class="settings-form__header">Settings</div>
+			<div class="settings-form__header">{{this.d('Settings')}}</div>
 			<div class="link-list">
-				<div v-for="settingListItem in settingList" 
-						 v-bind:class="setStileForActive(settingListItem.name)"
-						 v-on:click="setActiveTabName(settingListItem.name)"
-						 class="link-list__link">{{settingListItem.title}}
+				<div 
+					v-for="settingListItem in settingList" 
+					v-bind:class="setStileForActive(settingListItem.name)"
+					v-on:click="setActiveTabName(settingListItem.name)"
+					class="link-list__link">
+					{{settingListItem.title}}
 				</div>
 			</div>
 		</div>	
 		<div class="settings-form__form">
 		
-			<div v-for="settingListItem in settingList" 
-					 v-show="activeTabName == settingListItem.name">
+			<div 
+				v-for="settingListItem in settingList" 
+				v-show="activeTabName == settingListItem.name">
 				<div class="settings-form__header">
 					{{settingListItem.title}}
 				</div>
@@ -47,18 +50,20 @@
 			},
 			setActiveTabName: function(name){
 				this.activeTabName = name;
+			},
+			d: function(w){
+				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
 			}
 		},
 		created: function(){
 			this.settingList[0].form[1].test();
 		}, 
-		data: function(){
-			return {
-				activeTabName: 'profile',
-				settingList: [
+		computed: {
+			settingList : function(){
+				return [
 					{
 						name: 'profile',
-						title: 'Profile',
+						title: this.d('Profile'),
 						form: [
 							{
 								component: 'textField',
@@ -75,7 +80,7 @@
 					},
 					{
 						name: 'general',
-						title: 'General',
+						title: this.d('General'),
 						form: [
 							{
 								component: 'selectList',
@@ -97,9 +102,14 @@
 					},
 					{
 						name: 'spaces',
-						title: 'Spaces'
+						title: this.d('Spaces')
 					}
 				]
+			}
+		},
+		data: function(){
+			return {
+				activeTabName: 'profile'
 			}
 		}
 	}

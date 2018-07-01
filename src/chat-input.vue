@@ -1,11 +1,21 @@
 <template>
 	<div class="chat-input">
-		<div class="chat-input__add-file"></div>
-		<textarea autofocus class="chat-input__input" 
-				v-model="textInput"
-				v-on:keyup="resizeTextarea"
-				v-on:keydown="handleCmdEnter($event)"></textarea>
-		<div class="chat-input__send" v-on:click="addNewMessage" title="⌘ + Enter"></div>
+		<div 	
+			v-bind:title="this.d('add file')" 
+			class="chat-input__add-file">
+		</div>
+		<textarea 
+			autofocus 
+		  class="chat-input__input" 
+			v-model="textInput"
+			v-on:keyup="resizeTextarea"
+			v-on:keydown="handleCmdEnter($event)">
+		</textarea>
+		<div 
+			class="chat-input__send" 
+			v-on:click="addNewMessage" 
+			v-bind:title="this.d('send') + ': ⌘ + Enter'">
+		</div>
 	</div>
 </template>
 

@@ -37,7 +37,10 @@
 			</user-list>
 
       <div class="add-form__button-group">
-		    <btn v-bind:label="this.d('create')" v-on:click.native="createNew"></btn>
+		    <btn 
+		    	v-bind:label="this.d('create')" 
+		    	v-on:click.native="createNew">
+		    </btn>
       </div>
     </div>
 
@@ -92,7 +95,6 @@
 	import $ from 'jquery';
 
 	import getDateTime from './functions/date-time.js';
-	import d from './functions/dictionary.js';
 
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
