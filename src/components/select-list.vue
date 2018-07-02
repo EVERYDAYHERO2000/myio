@@ -43,6 +43,9 @@
 			k: String,
 			v: String 
 		},
+		updated: function(){
+			
+		},
 		created: function() {
 			
 		},
@@ -68,7 +71,6 @@
 		},
 		computed: {
 			getActive: function() {
-				
 				return this.options[this.active][this.v];
 			}
 		}

@@ -61,8 +61,15 @@
 		},
 		methods: {
 			change: function(e){
-				this.$emit('onChange', e);
+				this.$emit('onChange', {
+					value:e,
+					props: this.com
+				});
+				this.$forceUpdate();
 			}
+		},
+		created: function(){
+			
 		}
 	}
 </script>
