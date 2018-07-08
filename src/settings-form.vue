@@ -97,7 +97,7 @@
 									case 'ru':
 										i = 1;
 										break;
-									case 'ch':
+									case 'zh':
 										i = 2;
 										break;
 								}
@@ -113,7 +113,7 @@
 								},
 								{
 									id: 2,
-									value: 'ch'
+									value: 'zh'
 								}
 							],
 							k: 'id',

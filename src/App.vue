@@ -1,5 +1,5 @@
 <template>
-	<div class="app__inner">
+	<div class="app__inner" v-bind:lang="opt.options.app.lang">
 	<app-states v-bind:opt="opt"></app-states>
 	<app-modal v-bind:opt="opt"></app-modal>
 	</div>

@@ -13,6 +13,11 @@
 				v-bind:label="this.d('Email')" 
 				v-bind:type="'email'">
 			</text-field>
+			
+			<text-field 
+				v-on:onValue="setSpace" 
+				v-bind:label="this.d('Space')">
+			</text-field>
 
 			<text-field 
 				v-on:onValue="setPass" 
@@ -61,6 +66,7 @@
 			return {
 				__login: '',
 				__pass: '',
+				__space: '',
 				__email: ''
 			}
 		},
@@ -86,6 +92,9 @@
 			setEmail: function(e) {
 				this.__email = e;
 			},
+			setSpace: function(e) {
+				this.__space = e;
+			},
 			setLogin: function(e) {
 				this.__login = e;
 			},
@@ -93,6 +102,7 @@
 				let __this = this,
 					__login = this.__login,
 					__email = this.__email,
+					__space = this.__space,	
 					__pass = this.__pass;
 
 				if (__login && __email && __pass) {
@@ -101,6 +111,7 @@
 						eventType: 'registration',
 						login: __login,
 						email: __email,
+						space: __space,
 						pass: __pass
 
 					}, function(e) {

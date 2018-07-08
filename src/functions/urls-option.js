@@ -2,7 +2,7 @@
 
 const URL = {};;
 URL.port = ':' + 3000;
-URL.base = 'http://82.202.212.221';
+URL.base = 'http://localhost';//'http://82.202.212.221';
 URL.api = '/api';
 URL.sockets = URL.base + URL.port;
 URL.auth = URL.base + URL.port + URL.api;
