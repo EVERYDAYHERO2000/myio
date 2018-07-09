@@ -161,7 +161,7 @@
 			min-width: @icon-size;
 			min-height: @icon-size;
 			margin: 8px;
-			display: flex;
+			.flex-block();
     	align-items: center;
 			
 			& polygon {

@@ -105,8 +105,7 @@
 			height: calc(100vh - @height-header);
 			width: 100%;
 			.transform(translateY(@height-header));
-			overflow: hidden;
-			overflow-y: scroll;
+			.vertical-scroll();
 		}
 	}
 </style>

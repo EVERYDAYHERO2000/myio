@@ -83,8 +83,7 @@
 		
 		&__messages-list {
 			width: 100%;
-			overflow: hidden;
-			overflow-y: scroll;
+			.vertical-scroll();
 			flex-grow: 1;
 			align-content: flex-end;
 		}

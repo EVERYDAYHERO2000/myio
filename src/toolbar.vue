@@ -192,7 +192,7 @@
 		&__form {
 			flex-grow: 1;
 			padding: 0 0 0 calc(@width-toolbar + 5px);
-			overflow: scroll;
+			.vertical-scroll();
 		}
 
 		&__bar {

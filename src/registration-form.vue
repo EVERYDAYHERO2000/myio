@@ -132,12 +132,7 @@
 <style lang="less">
 	@import './less/main.less';
 	.registration-form {
-		width: @width-form;
-		margin: 0 auto;
-		height: 100vh;
-		.flex-block();
-		.flex-direction(column);
-		.justify-content(center);
+		.fullscreen-form();
 		opacity: 1;
 
 		&__button-group {
@@ -155,15 +150,14 @@
 		}
 
 		&__header {
-			font-size: 24px;
-			font-weight: 500;
+			.form-header();
 			text-align: center;
 			padding: 0 5px;
 		}
 
 		&_hide {
 			opacity: 0;
-			transition: all 0.2s ease;
+			.transition(all 0.2s ease);
 		}
 	}
 </style>

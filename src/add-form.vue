@@ -217,8 +217,7 @@
 		}
 
 		&__header {
-			font-size: 24px;
-			font-weight: 500;
+			.form-header();
 			text-align: center;
 			padding: 0 5px;
 		}

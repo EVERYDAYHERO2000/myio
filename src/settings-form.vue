@@ -168,14 +168,12 @@
 		}
 
 		&__form &__header {
-			font-weight: 300;
+			.form-header(300);
 		}
 
 		&__header {
-			font-size: 24px;
-			font-weight: 500;
+			.form-header();
 			text-align: left;
-			line-height: 3;
 		}
 	}
 
@@ -185,7 +183,7 @@
 
 		&__link {
 			padding: 10px 10px 10px @left-side;
-			transition: all .2s ease;
+			.transition(all .2s ease);
 		}
 
 		&__link_active {
@@ -195,7 +193,7 @@
 		&__link:hover {
 			color: @color-active;
 			background-color: lighten(@color-active, 40%);
-			transition: all .2s ease;
+			.transition(all .2s ease);
 		}
 
 	}

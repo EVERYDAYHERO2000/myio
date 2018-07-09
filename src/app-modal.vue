@@ -56,11 +56,11 @@
 			box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 			.transform-origin(center top);
 			.transform(translateY(-50vh));
-			transition: all .3s ease;
+			.transition(all .3s ease); 
 
 			&_active {
 				.transform(translateY(0px));
-				transition: all .3s ease;
+				.transition(all .3s ease);
 			}
 		}
 	}

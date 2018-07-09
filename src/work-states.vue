@@ -212,7 +212,7 @@
 		position: relative;
 		z-index: 10000;
 		opacity: 0;
-		transition: all .2s ease;
+		.transition(all .2s ease);
 
 		& {
 			.transform(scaleX(10) translateX(-0.1px));
@@ -225,7 +225,7 @@
 		&:hover,
 		&:active {
 			opacity: 0.05;
-			transition: all .2s .2s ease;
+			.transition(all .2s .2s ease);
 		}
 	}
 </style>

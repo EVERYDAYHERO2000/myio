@@ -128,12 +128,7 @@
 	@import './less/animations.less';
 
 	.login-form {
-		width: @width-form;
-		margin: 0 auto;
-		height: 100vh;
-		.flex-block();
-		.flex-direction(column);
-		.justify-content(center);
+		.fullscreen-form();
 		opacity: 1;
 
 		&__link_forgot {
@@ -162,7 +157,7 @@
 		}
 		
 		&_incorrect {
-			animation: form-bounce .5s 1 ease;
+			.animation(form-bounce .5s 1 ease);
 			
 			& * {
 				pointer-events: none;

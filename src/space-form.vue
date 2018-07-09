@@ -38,10 +38,8 @@
 		
 		&__header {
 			padding: 0 15px;
-			font-size: 24px;
-			font-weight: 500;
 			text-align: left;
-			line-height: 3;
+			.form-header();
 		}
 		
 	}
@@ -52,7 +50,7 @@
 		
 		&__link {
 			padding: 10px 10px 10px @left-side;	
-			transition: all .2s ease;
+			.transition(all .2s ease);
 		}
 		
 		&__link_active {
@@ -62,7 +60,7 @@
 		&__link:hover {
 			color: @color-active;
 			background-color: lighten(@color-active, 40%);
-			transition: all .2s ease;
+			.transition(all .2s ease);
 		}
 		
 	}

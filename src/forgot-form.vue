@@ -46,12 +46,7 @@
 <style lang="less">
 	@import './less/main.less';
 	.forgot-form {
-		width: @width-form;
-		margin: 0 auto;
-		height: 100vh;
-		.flex-block();
-		.flex-direction(column);
-		.justify-content(center);
+		.fullscreen-form();
 		opacity: 1;
 
 		&__button-group {
