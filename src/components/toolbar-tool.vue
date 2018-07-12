@@ -55,7 +55,7 @@
 		background-repeat: no-repeat;
 		background-size: auto;
 		opacity: 0.8;
-		transition: all .2s;
+		.transition( all .2s );
 
 		&:last-child {
 			margin: 0 0 10px 0;
@@ -63,7 +63,7 @@
 
 		&_active {
 			opacity: .2;
-			transition: all .2s;
+			.transition( all .2s );
 			pointer-events: none;
 		}
 		

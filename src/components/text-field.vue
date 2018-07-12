@@ -168,7 +168,7 @@
 			&::after {
 				content: '';
 				height: 2px;
-				background: @color-active;
+				background-color: @color-active;
 				width: 0%;
 				.transition(all .2s ease);
 				margin: 0 0 -2px 0;

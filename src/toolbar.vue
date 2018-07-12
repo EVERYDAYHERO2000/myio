@@ -165,7 +165,7 @@
 		left: 0;
 		z-index: 10000;
 		box-shadow: 0px 0px 0px rgba(0, 0, 0, .2);
-		transition: width .3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .6s;
+		.transition( ~'width .3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow .6s' );
 		.flex-block();
 		.flex-direction(row);
 		overflow: hidden;
@@ -173,7 +173,7 @@
 		&_active {
 			width: @width-toolbar_active;
 			box-shadow: 0px 0px 30px rgba(0, 0, 0, .2);
-			transition: width .6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 1s;
+			.transition( ~'width .6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 1s' );
 		}
 
 		&__sizer {

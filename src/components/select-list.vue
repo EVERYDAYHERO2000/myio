@@ -137,7 +137,7 @@
 				opacity: 1;
 				box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
 				pointer-events: all;
-				transition: all .1s ease;
+				.transition( all .1s ease );
 				.transform(translateY(-10px));
 			}
 		}
@@ -154,12 +154,12 @@
 				padding: 10px 10px 10px 15px;
 				display: block;
 				background-color: @color-white;
-				transition: all .2s ease;
+				.transition( all .2s ease );
 
 				&:hover {
 					color: @color-active;
 					background-color: lighten(@color-active, 40%);
-					transition: all .2s ease;
+					.transition( all .2s ease );
 				}
 			}
 
@@ -192,13 +192,13 @@
 				height: 2px;
 				background: @color-active;
 				width: 0%;
-				transition: all .2s ease;
+				.transition( all .2s ease );
 			}
 		}
 
 		&__placeholder:focus~&__bar::after {
 			width: 100%;
-			transition: all .2s ease;
+			.transition( all .2s ease );
 		}
 	}
 </style>

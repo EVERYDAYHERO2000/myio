@@ -78,12 +78,12 @@
 			background-repeat: no-repeat;
 			opacity: .1;
 			margin: 10px 0 0 0;
-			transition: all .2s;
+			.transition( all .2s );
 		}
 
 		&:hover &__remove {
 			opacity: .7;
-			transition: all .2s;
+			.transition( all .2s );
 		}
 
 

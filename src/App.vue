@@ -115,6 +115,7 @@
 		color: @color-black;
 		.f-font-smooth();
 		cursor:default;
+		scroll-behavior: smooth;
 	}
 
 	a {

@@ -65,7 +65,7 @@
 		.f-border(bottom);
 		background-color: @color-white;
 		box-shadow: 0px 2px 20px rgba(0, 0, 0, .05);
-		transition: max-height @animation-speed ease;
+		.transition( max-height @animation-speed ease );
 		color: @color-gray-font;
 		overflow: hidden;
 
@@ -73,9 +73,9 @@
 		&_active {
 
 			max-height: calc(100vh - @height-header);
-			transition: max-height @animation-speed ease;
+			.transition( max-height @animation-speed ease );
 			overflow: visible;
-			animation: overflowed @animation-speed 1 ease;
+			.animation( overflowed @animation-speed 1 ease );
 		}
 
 		@keyframes overflowed {
