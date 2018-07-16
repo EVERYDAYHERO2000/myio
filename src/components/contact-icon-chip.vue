@@ -31,7 +31,7 @@
 			},
 			cssClass : function(){
 				let typeCssClass = (this.type == 'task') ? 'contact-icon-chip_task' : 'contact-icon-chip_chat';
-				let sizeCssClass = (this.size) ? 'contact-icon-chip' + this.size : 'contact-icon-chip_m';
+				let sizeCssClass = (this.size) ? 'contact-icon-chip_' + this.size : 'contact-icon-chip_m';
 				return [typeCssClass, sizeCssClass];
 			}
 		},
@@ -54,8 +54,6 @@
 		background-size: cover;
 		text-align: center;
 		color: rgba(red(@color-white),green(@color-white),blue(@color-white), 0.7);
-		font-size: 24px;
-		line-height: 52px;
 		box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.02);
 
 		&_chat {
@@ -71,6 +69,10 @@
 			width: @size-m;
 			min-height: @size-m;
 			min-width: @size-m;
+			max-height: @size-m;
+			max-width: @size-m;
+			font-size: 24px;
+			line-height: 52px;
 		}
 		
 		&_s {
@@ -78,6 +80,10 @@
 			width: @size-s;
 			min-height: @size-s;
 			min-width: @size-s;
+			max-height: @size-s;
+			max-width: @size-s;
+			font-size: 18px;
+			line-height: 38px;
 		}
 	}
 </style>

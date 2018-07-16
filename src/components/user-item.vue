@@ -5,11 +5,12 @@
 
  	<contact-icon-chip 
 		v-bind:title="opt.name" 
+		v-bind:size="'s'"
 		v-bind:image="opt.avatar">
 	</contact-icon-chip>
 
 	<div class="user-item__content">
-		<div class="user-item__user-name">{{opt.name}}</div>
+		<user-name v-bind:name="opt.name"></user-name>
 	</div>	
 	<div 
 		class="user-item__remove" 
@@ -24,6 +25,7 @@
 	import $ from 'jquery';
 	
 	import contactIconChip from '../components/contact-icon-chip.vue';
+	import userName from '../components/user-name.vue';
 	
 	export default {
 		props: {
@@ -31,12 +33,14 @@
 			index: Number
 		},
 		components : {
-			contactIconChip : contactIconChip
+			contactIconChip : contactIconChip,
+			userName: userName
 		},
 		methods: {
 			onRemove: function() {
 				let index = $(this.$el).data('index');
 				this.$emit('onRemove', index);
+				console.log(12121)
 			}
 		},
 		created: function() {
@@ -50,35 +54,33 @@
 	@import '../less/main.less';
 	
 	.user-item {
+		
+		@icon-size: 20px;
+		
 		.flex-block();
 		.justify-content(space-between);
 		box-sizing: border-box;
-		padding: 10px 0 10px 0;
+		padding: 10px 0 0 0;
 
 		&__content {
 			flex-grow: 1;
 			box-sizing: border-box;
-			padding: 0px 0px 0 10px;
-		}
-
-		&__user-name {
-			color: @color-active;
-			font-size: @font-size-main;
-			margin: 10px 0 0 0;
+			padding: 10px 0px 0 10px;
 		}
 
 		&__remove {
-			width: 20px;
-			height: 20px;
-			min-width: 20px;
-			min-height: 20px;
+			width: @icon-size;
+			height: @icon-size;
+			min-width: @icon-size;
+			min-height: @icon-size;
 			background-image: ~'url(../assets/remove-circle-outline.svg)';
-			background-size: 20px;
+			background-size: @icon-size;
 			background-position: center;
 			background-repeat: no-repeat;
 			opacity: .1;
 			margin: 10px 0 0 0;
 			.transition( all .2s );
+			pointer-events: all;
 		}
 
 		&:hover &__remove {

@@ -10,13 +10,16 @@
 	<div class="chat-list-item__content">
 		<div class="chat-list-item__title">{{ chat.title }}</div>
 		<div class="chat-list-item__description">
-      <span class="chat-list-item__username">{{chat.last_message.author}}</span> 
-      {{ chat.last_message.text }}
+      <user-name v-bind:name="chat.last_message.author"></user-name> 
+			<div>{{ chat.last_message.text }}</div>
 		</div>
 	</div>
   <div class="chat-list-item__info">
     <div class="chat-list-item__date">
-    	<span>{{ chat.last_message.date.dateTime }}</span>
+			<date-time 
+				v-bind:format="'dateTime'"
+				v-bind:date="chat.last_message.date.dateTime">
+			</date-time>
     </div>
     <div 
     	v-on:click.stop="chat.isPined = !chat.isPined" 
@@ -32,6 +35,8 @@
 	import $ from 'jquery';
 	
 	import contactIconChip from '../components/contact-icon-chip.vue';
+	import userName from '../components/user-name.vue';
+	import dateTime from '../components/date-time.vue';
 
 	export default {
 		props: {
@@ -42,7 +47,9 @@
 			
 		},
 		components: {
-			contactIconChip: contactIconChip
+			contactIconChip: contactIconChip,
+			userName: userName,
+			dateTime: dateTime
 		},
 		methods: {
 			setInboxActive: function() {
@@ -107,7 +114,7 @@
 			color: @color-white;
 		}
 
-		&_active &__username {
+		&_active {
 			color: @color-white;
 		}
 
@@ -134,10 +141,6 @@
 			.justify-content(center);
 		}
 
-		&__username {
-			color: @color-active;
-			font-weight: 500;
-		}
 
 		&_active &__content {
 			color: @color-white;
@@ -211,6 +214,7 @@
 			text-overflow: ellipsis;
 			overflow: hidden;
 			padding: 0 20px 0 0;
+			display: flex;
 		}
 
 	}

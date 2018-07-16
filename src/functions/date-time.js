@@ -1,6 +1,6 @@
 "use strict";
 
-const getDateTime = function (date) {
+const getDateTime = function (date) { 
 	date = date || new Date();
 	date = (date instanceof Date) ? date : new Date( date.replace(/-/g, '/') );
 	let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

@@ -136,7 +136,7 @@
 			pointer-events: none;
 			position: absolute;
 			.transition(all .2s ease);
-			color: rgba(0, 0, 0, 0.3);
+			color: @color-gray-font;
 			
 			.safari & {
 				top:0;

@@ -37,6 +37,7 @@
 	import selectList from '../components/select-list.vue';
 	import userItem from '../components/user-item.vue';
 	
+	
 	export default {
 		props: {
 			opt: Object,
@@ -98,7 +99,8 @@
 		}
 
 		&__users+&__list {
-			margin: -30px 0 0 0 !important;
+			margin: 0px 0 0 0 !important;
+			padding: 20px 0 0 0;
 		}
 
 		&__title {

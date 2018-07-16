@@ -190,7 +190,7 @@ let d = {
 		'new task' : {
 			eng : 'New task',
 			ru : 'Новая задача',
-			ch : '新任務'
+			zh : '新任務'
 		},
 		'new chat' : {
 			eng : 'New chat',
