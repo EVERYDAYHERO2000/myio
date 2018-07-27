@@ -4,10 +4,9 @@
 
 
 <script>
-	import $ from 'jquery';
+
 	import dateTitme from '../functions/date-time.js';
-	
-	
+		
 	export default {
 		props: {
 			date: String,

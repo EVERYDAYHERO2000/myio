@@ -46,7 +46,7 @@
 		box-sizing: border-box;
 		min-height: 50px;
 		.flex-block();
-		padding: 5px;
+		padding: 5px 8px;
 		width: 100%;
 		
 		&__content {

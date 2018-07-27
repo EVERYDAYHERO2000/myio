@@ -40,7 +40,6 @@
 			onRemove: function() {
 				let index = $(this.$el).data('index');
 				this.$emit('onRemove', index);
-				console.log(12121)
 			}
 		},
 		created: function() {

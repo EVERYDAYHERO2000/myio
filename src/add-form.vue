@@ -113,7 +113,7 @@
 			userList: userList
 		},
 		created: function() {
-			console.log(this.opt.options.app.lang)
+			
 		},
 		methods: {
 			setState: function(s) {

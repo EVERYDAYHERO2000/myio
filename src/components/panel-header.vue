@@ -64,16 +64,16 @@
 		box-sizing: border-box;
 		.f-border(bottom);
 		background-color: @color-white;
-		box-shadow: 0px 2px 20px rgba(0, 0, 0, .05);
-		.transition( max-height @animation-speed ease );
+		box-shadow: 0px 0px 0px rgba(0, 0, 0, .05);
+		transition: max-height @animation-speed ease, box-shadow @animation-speed / 2 ease;
 		color: @color-gray-font;
 		overflow: hidden;
 
 
 		&_active {
-
+			box-shadow: 0px 2px 20px rgba(0, 0, 0, .05);
 			max-height: calc(100vh - @height-header);
-			.transition( max-height @animation-speed ease );
+			transition: max-height @animation-speed ease, box-shadow @animation-speed / 2 ease;
 			overflow: visible;
 			.animation( overflowed @animation-speed 1 ease );
 		}
