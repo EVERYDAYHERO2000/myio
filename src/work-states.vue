@@ -93,6 +93,7 @@
 	import $ from 'jquery';
 	import URL from './functions/urls-option.js';
 	import data from './functions/data.js';
+	import auth from './functions/auth.js';
 
 	import panelChats from './panel-chats.vue';
 	import panelTasks from './panel-tasks.vue';
@@ -131,10 +132,28 @@
 				}
 				localStorage.setItem("panelsSettings", JSON.stringify(this.panelsSettings));
 				
+			},
+			loadMessages(email,pass,chatsId){
+				if (this.opt.chats){
+					let __this = this;
+				
+					$.post(URL.auth, {
+							eventType: 'loadMessages',
+							email: email,
+							pass: pass,
+							chatsId: chatsId.join()
+					}, function(d) {
+						
+						APP.$set(APP.opt, 'messages', d.messages);
+
+					}, 'json');
+					
+				}
 			}
 		},
 		created: function() { 
-			
+			let user = auth.load();
+			this.loadMessages(user.email, user.pass, [1]);
 			
 		},
 		data: function(){
