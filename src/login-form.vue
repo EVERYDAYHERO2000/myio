@@ -42,6 +42,7 @@
 	import $ from 'jquery';
 	import auth from './functions/auth.js';
 	import URL from './functions/urls-option.js';
+	import data from './functions/data.js';
 	
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
@@ -49,7 +50,8 @@
 	
 	export default {
 		props: {
-			opt: Object
+			opt: Object,
+			app: Object
 		},
 		components: {
 			btn : btn,
@@ -66,20 +68,21 @@
 			
 		},
 		beforeMount: function() {
-			//if (localStorage['authValid']) __this__.setState('main');
+			let __auth = auth.load();
+			if (__auth.authValid == 'true') this.loadData(__auth.email, __auth.pass);
 		},
 		methods: {
 			setState: function(s) {
 				let $el = this.$el;
 				let __this__ = this;
 				$($el).addClass('login-form_hide').delay(200).queue(function() {
-					//APP.$.$data.opt.options.app.screen = s;
-					__this__.opt.options.app.screen = s;
+					
+					__this__.app.screen = s;
 					
 				});
 			},
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
 			setPass: function(e) {
 				this.__pass = e;
@@ -92,24 +95,32 @@
 					__email = this.__email,
 					__pass = this.__pass;
 
-				
 				if (__email && __pass) {
+					this.loadData(__email, __pass);
 					
-					$.post(URL.auth, {
-						eventType: 'login',
-						email: __email,
-						pass: __pass
-					}, function(data) {
-						
-						if (data.status == true) {
-							auth.setup(__email, __pass);
-							__this.setState('main');
-						}
-
-					}, 'json');
 				} else {
 					this.incorrect();
 				}
+			},
+			loadData: function(email, pass) {
+				let __this = this;
+				
+				$.post(URL.auth, {
+						eventType: 'login',
+						email: email,
+						pass: pass
+				}, function(d) {
+						
+					if (d.status == true) {
+						
+						APP.$data.opt = data.loadData(d.data);
+						auth.setup(email, pass);
+						__this.setState('main');
+						
+					}
+
+				}, 'json');
+				
 			},
 			incorrect: function() {
 				let $el = this.$el;

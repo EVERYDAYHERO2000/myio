@@ -60,7 +60,8 @@
 	
 	export default {
 		props: {
-			opt: Object
+			opt: Object,
+			app: Object
 		},
 		data: function() {
 			return {
@@ -80,11 +81,11 @@
 				let $el = this.$el;
 				let __this__ = this;
 				$($el).addClass('registration-form_hide').delay(200).queue(function() {
-					__this__.opt.options.app.screen = s;
+					__this__.app.screen = s;
 				});
 			},
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
 			setPass: function(e) {
 				this.__pass = e;
@@ -106,7 +107,7 @@
 					__pass = this.__pass;
 
 				if (__login && __email && __pass) {
-					console.log(URL.registration)
+					
 					$.post(URL.registration, {
 						eventType: 'registration',
 						login: __login,

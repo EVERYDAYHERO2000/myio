@@ -33,7 +33,8 @@
 
 	export default {
 		props: {
-			opt: Object
+			opt: Object,
+			app: Object
 		},
 		created: function() {
 			$(this.$el).find('.chat-input__input').focus();
@@ -48,7 +49,7 @@
 				}
 			},
 			d: function(w) {
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
 			addNewMessage: function() {
 				/*

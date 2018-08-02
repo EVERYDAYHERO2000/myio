@@ -1,7 +1,7 @@
 <template>
-	<div class="app__inner" v-bind:lang="opt.options.app.lang">
-	<app-states v-bind:opt="opt"></app-states>
-	<app-modal v-bind:opt="opt"></app-modal>
+	<div class="app__inner" v-bind:lang="app.lang">
+	<app-states v-bind:opt="opt" v-bind:app="app"></app-states>
+	<app-modal v-bind:opt="opt" v-bind:app="app"></app-modal>
 	</div>
 </template>
 
@@ -24,27 +24,15 @@
 		},
 		data: function() {
 			return {
-				opt: {
-					inboxList: [],
-					messages: [],
-					options: {
-						d: d, 
-						email: null,
-						id: null,
-						login: null,
-						name: null,
-						pined_id: null,
-						app: {
-							modal: false,
-							screen: "login",
-							state: "chats",
-							lang: lang.load()
-						}
-					},
-					taskList: [],
-					users: []
-				},
-				auth: auth.load()
+				opt: {},
+				auth: auth.load(),
+				app: {
+					modal: false,
+					screen: "login",
+					state: "chats",
+					lang: lang.load(),
+					d : d
+				}
 			}
 		},
 		methods: {
@@ -52,7 +40,7 @@
 		},
 		created: function () {
 			window.APP = this;
-			if (this.auth.authValid == 'true') this.opt.options.app.screen = 'main';
+			//if (this.auth.authValid == 'true') this.opt.options.app.screen = 'main';
 			
 			
 			$('body').addClass(function(){

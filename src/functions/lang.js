@@ -15,7 +15,7 @@ lang.setup = function(l){
 lang.setLang = function(l){
 	l = l || 'eng';
 	localStorage.setItem('lang', l);
-	APP.$set(APP.opt.options.app, 'lang', l);
+	APP.$set(APP.app, 'lang', l);
 	return l;
 }
 

@@ -4,11 +4,13 @@
 		
 		<panel-header
 			v-bind:opt="opt"
+			v-bind:app="app"
 			v-bind:title="panelTitle">
 			
 			<user-list 
 				v-on:onValue="setUserList"
 				v-bind:name="'users_2'"
+				v-bind:app="app"
 				v-bind:opt="opt">
 			</user-list>
 			
@@ -46,7 +48,9 @@
 				</div>	
 			</div>
 			<div class="panel-messages__input">
-				<chat-input v-bind:opt="opt">
+				<chat-input 
+					v-bind:app="app"
+					v-bind:opt="opt">
 				</chat-input>
 			</div>
 		</div>
@@ -68,6 +72,7 @@
 	export default {
 		props: {
 			opt : Object,
+			app: Object,
 			type: String,
 			panelTitle: String
 		},

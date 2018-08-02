@@ -23,7 +23,7 @@
 		v-bind:options="UsersCanBeAdded" 
 		v-bind:active="0"
 		v-bind:k="'id'"
-		v-bind:v="'name'"
+		v-bind:v="'email'"
 		v-on:onActive="this.addUser">
   </select-list>
 		
@@ -41,6 +41,7 @@
 	export default {
 		props: {
 			opt: Object,
+			app: Object
 		},
 		components: {
 			selectList: selectList,
@@ -57,7 +58,7 @@
 				this.UsersCanBeRemoved.splice(e, 1);
 			},
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		},
 		created: function(){
@@ -71,7 +72,7 @@
 		},
 		data: function() {
 			return {
-				UsersCanBeAdded: JSON.parse(JSON.stringify(this.opt.users)),
+				UsersCanBeAdded: JSON.parse(JSON.stringify(this.opt.userList)),
 				UsersCanBeRemoved: []
 			}
 		},

@@ -3,7 +3,7 @@
   <div class="toolbar__tools">
 
     <toolbar-tool 
-      v-if="opt.options.app.state == 'chats'" 
+      v-if="app.state == 'chats'" 
       v-on:click.native="toggleToolbarAdd"
       v-bind:title="this.d('Create new')" 
       v-bind:icon="this.icons.icon_add">
@@ -14,7 +14,8 @@
 		<toolbar-tool 
       v-on:click.native="toggleToolbarSpace"
       v-bind:title="this.d('Work spaces')" 
-      v-bind:opt="opt" 
+      v-bind:opt="opt"
+      v-bind:app="app" 
       v-bind:icon="this.icons.icon_space">
     </toolbar-tool>
 
@@ -24,13 +25,16 @@
       v-bind:data="'chats'" 
       v-on:click.native="closeToolbar"
       v-bind:title="this.d('Chats')" 
-      v-bind:opt="opt" v-bind:icon="this.icons.icon_forum">
+      v-bind:opt="opt"
+      v-bind:app="app" 
+      v-bind:icon="this.icons.icon_forum">
     </toolbar-tool>
 
     <toolbar-tool 
       v-bind:data="'calendar'" 
       v-on:click.native="closeToolbar" 
       v-bind:opt="opt"
+      v-bind:app="app"
       v-bind:title="this.d('Calendar')" 
       v-bind:icon="this.icons.icon_event">
     </toolbar-tool>
@@ -39,6 +43,7 @@
       v-bind:data="'files'" 
       v-on:click.native="closeToolbar"
       v-bind:opt="opt"
+      v-bind:app="app"
       v-bind:title="this.d('Files')" 
       v-bind:icon="this.icons.icon_cloudQueue">
     </toolbar-tool>
@@ -47,6 +52,7 @@
       v-bind:data="'settings'" 
       v-on:click.native="closeToolbar" 
       v-bind:opt="opt"
+      v-bind:app="app"
       v-bind:title="this.d('Settings')" 
       v-bind:icon="this.icons.icon_settings">
     </toolbar-tool>
@@ -55,10 +61,12 @@
   <div class="toolbar__form">
     <add-form 
     	v-if="addForm.isVisible" 
+    	v-bind:app="app"
     	v-bind:opt="opt">
     </add-form>
     <space-form 
-    	v-if="spaceForm.isVisible" 
+    	v-if="spaceForm.isVisible"
+    	v-bind:app="app" 
     	v-bind:opt="opt">
     </space-form>
   </div>
@@ -89,7 +97,8 @@
 
 	export default {
 		props: {
-			opt: Object
+			opt: Object,
+			app: Object
 		},
 		components: {
 			toolbarTool : toolbarTool,
@@ -124,7 +133,7 @@
 				this.spaceForm.isVisible = false;
 			},
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		},
 		data: function() {

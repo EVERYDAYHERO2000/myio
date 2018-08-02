@@ -5,20 +5,20 @@
 	v-bind:class="{ 'chat-list-item_active' : chat.isActive }">
 	<contact-icon-chip 
 		v-bind:type="type"
-		v-bind:title="chat.title">
+		v-bind:title="chat.name">
 	</contact-icon-chip>
 	<div class="chat-list-item__content">
-		<div class="chat-list-item__title">{{ chat.title }}</div>
+		<div class="chat-list-item__title">{{ chat.name }}</div>
 		<div class="chat-list-item__description">
-      <user-name v-bind:name="chat.last_message.author"></user-name> 
-			<div>{{ chat.last_message.text }}</div>
+      <user-name v-bind:name="'username'"></user-name> 
+			<div>{{ 'last message text' }}</div>
 		</div>
 	</div>
   <div class="chat-list-item__info">
     <div class="chat-list-item__date">
 			<date-time 
 				v-bind:format="'dateTime'"
-				v-bind:date="chat.last_message.date.dateTime">
+				v-bind:date="'00:00:00'">
 			</date-time>
     </div>
     <div 
@@ -41,6 +41,7 @@
 	export default {
 		props: {
 			chat: Object,
+			app: Object,
 			type: String
 		},
 		created: function(){
@@ -62,6 +63,12 @@
 						data.user.activeChat_id = data.inboxList[i].id;
 					}
 				}
+			}
+		},
+		computed: {
+			getLastMassage: function(){
+				let message = ''
+				return message
 			}
 		}
 	}

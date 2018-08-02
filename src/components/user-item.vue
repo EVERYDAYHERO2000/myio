@@ -4,13 +4,13 @@
  	v-bind:data-index="index">
 
  	<contact-icon-chip 
-		v-bind:title="opt.name" 
+		v-bind:title="opt.email" 
 		v-bind:size="'s'"
 		v-bind:image="opt.avatar">
 	</contact-icon-chip>
 
 	<div class="user-item__content">
-		<user-name v-bind:name="opt.name"></user-name>
+		<user-name v-bind:name="opt.email"></user-name>
 	</div>	
 	<div 
 		class="user-item__remove" 

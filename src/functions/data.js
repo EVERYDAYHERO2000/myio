@@ -7,8 +7,36 @@ import d from '../functions/dictionary.js';
 
 const data = {};
 
-data.getData = function (newData, currentData) {
+data.loadData = function (newData, callback) {
+	
+	let DATA = {
+		chats:[],
+		chatsRooms:[],
+		spaces:[],
+		tags:[],
+		userList:[],
+		user:{
+			avatar: null,
+			email: null,
+			firstName: null,
+			id: null,
+			lang: null,
+			lastName: null,
+			login: null,
+			password: null,
+			registerDate: null,
+			lastSessionDate: null
+		}
+	}
+	console.log(newData);
+	
+	if (callback) callback(newData);
+	return newData;
+}
 
+data.getData = function (newData, currentData, callback) {
+
+	console.log(newData, currentData)
 
 	const DATA = {
 		inboxList: currentData.inboxList || [],
@@ -128,6 +156,8 @@ data.getData = function (newData, currentData) {
 		});
 		return message;
 	}
+	
+	if (callback) callback(DATA);
 	
 	return DATA;
 }

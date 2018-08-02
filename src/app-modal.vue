@@ -1,6 +1,6 @@
 <template>
 	<div 
-		v-if="opt.options.app.modal" 
+		v-if="app.modal" 
 		class="app-modal">
 		<div class="app-modal__panel"></div>
 	</div>
@@ -12,7 +12,8 @@
 	
 	export default {
 		props: {
-			opt : Object
+			opt : Object,
+			app : Object
 		},
 		methods: {
 			toggleShow: function() {
@@ -23,7 +24,7 @@
 				});
 			},
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		},
 		mounted: function() {

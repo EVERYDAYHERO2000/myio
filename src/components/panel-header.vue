@@ -22,7 +22,8 @@
 	export default {
 		props: {
 			title : String,
-			opt: Object
+			opt: Object,
+			app: Object
 		},
 		components: {
 
@@ -34,7 +35,7 @@
 				this.isShowed = !this.isShowed;
 			},
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		},
 		data: function() {

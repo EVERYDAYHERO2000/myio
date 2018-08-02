@@ -13,19 +13,20 @@
 	export default {
 		props: {
 			opt: Object,
+			app: Object,
 			icon: String,
 			data: String,
 			title: String
 		},
 		methods: {
 			toggleState: function() {
-				if (this.data && this.opt.options.app.state !== this.data) {
-					this.opt.options.app.state = this.data;
+				if (this.data && this.app.state !== this.data) {
+					this.app.state = this.data;
 					this.setActive();
 				}
 			},
 			setActive: function() {
-				if (this.data && this.opt.options.app.state === this.data) {
+				if (this.data && this.app.state === this.data) {
 					let $el = this.$el;
 					$('.toolbar-tool').removeClass('toolbar-tool_active');
 					$($el).addClass('toolbar-tool_active');

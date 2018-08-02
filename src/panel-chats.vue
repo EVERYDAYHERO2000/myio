@@ -3,6 +3,7 @@
 
 	<panel-header
 		v-bind:opt="opt"
+		v-bind:app="app"
 		v-bind:title="panelTitle">
 		
 		<text-field 
@@ -16,7 +17,9 @@
 	<div class="panel-chats__list">
 	
 		<chat-list-item 
-			v-for="chat in opt.inboxList" 
+			v-for="chat in opt.chats"
+			v-if="chat.taskStatus == 'chat'"
+			v-bind:app="app" 
 			v-bind:chat="chat"
 			v-bind:type="'chat'"
 			v-bind:key="chat.id">
@@ -36,6 +39,7 @@
 	export default {
 		props: {
 			opt: Object,
+			app: Object,
 			panelTitle: String,
 			type: String
 		},
@@ -49,7 +53,7 @@
 		},
 		methods: {
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		}
 	}

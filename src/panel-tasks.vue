@@ -3,6 +3,7 @@
 
 	<panel-header
 		v-bind:opt="opt"
+		v-bind:app="app"
 		v-bind:title="panelTitle">
 		
 			<select-list 
@@ -46,6 +47,7 @@
 	export default {
 		props: {
 			opt: Object,
+			app: Object,
 			panelTitle: String,
 			type: String
 		},
@@ -63,7 +65,7 @@
 				this.active = e;
 			},
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		},
 		data: function(){

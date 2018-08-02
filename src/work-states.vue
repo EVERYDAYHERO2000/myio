@@ -4,7 +4,7 @@
 	
 		<div 
 			class="work-states__state" 
-			v-if="opt.options.app.state === 'chats'">
+			v-if="app.state === 'chats'">
 			<Split 
 				v-bind:gutterSize="1" 
 				class="split_flex"
@@ -20,6 +20,7 @@
 
 					<panel-chats 
 						v-bind:opt="opt" 
+						v-bind:app="app" 
 						v-bind:type="'chats'" 
 						v-bind:panelTitle="this.d('Chats')">
 					</panel-chats>
@@ -35,6 +36,7 @@
 				 
 					<panel-messages 
 						v-bind:opt="opt"
+						v-bind:app="app"
 						v-bind:type="'messages'"
 						v-bind:panelTitle="this.d('Messages')">
 					</panel-messages>
@@ -50,6 +52,7 @@
 
 					<panel-tasks 
 						v-bind:opt="opt"
+						v-bind:app="app"
 						v-bind:type="'tasks'" 
 						v-bind:panelTitle="this.d('Tasks')">
 					</panel-tasks>
@@ -62,21 +65,22 @@
 
 		<div 
 			class="work-states__state" 
-			v-if="opt.options.app.state === 'settings'">
+			v-if="app.state === 'settings'">
 			<settings-form 
+				v-bind:app="app"
 				v-bind:opt="opt">
 			</settings-form>
 		</div>
 		
 		<div 
 			class="work-states__state" 
-			v-if="opt.options.app.state === 'files'">
+			v-if="app.state === 'files'">
 		files
 		</div>
 		
 		<div 
 			class="work-states__state" 
-			v-if="opt.options.app.state === 'calendar'">
+			v-if="app.state === 'calendar'">
 		calendar
 		</div>
 
@@ -98,7 +102,8 @@
 
 	export default {
 		props: {
-			opt: Object
+			opt: Object,
+			app: Object
 		},
 		components: {
 			panelChats: panelChats,
@@ -109,16 +114,8 @@
 			panelMessages: panelMessages
 		},
 		methods: {
-			loadData: function() {
-				let __this__ = this;
-				$.get(URL.testData, function(d) {
-
-					APP.$data.opt = data.getData(d, APP.$data.opt);
-					
-				});
-			},
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
 			onDragStart(size) {
 				
@@ -137,14 +134,14 @@
 			}
 		},
 		created: function() { 
-			this.loadData();
+			
 			
 		},
 		data: function(){
 			return {
 				panelsSettings : (function() {
 					let localPanelsSettings = localStorage.getItem("panelsSettings");
-					let defaultWidth = 33.333333;
+					let defaultWidth = 100 / 3;//33.333333;
 					return (localPanelsSettings) ? JSON.parse(localPanelsSettings) : {
 						panelLeft : defaultWidth,
 						panelCenter : defaultWidth,

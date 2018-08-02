@@ -2,9 +2,12 @@
 	<div class="space-form">
 		<div class="space-form__header">{{this.d('Spaces')}}</div>
 		<div class="link-list">
-			<div class="link-list__link link-list__link_active">Company 1</div>
-			<div class="link-list__link">Company 2</div>
-			<div class="link-list__link">Company 3</div>
+			
+			<div 
+				v-for="space in opt.spaces" 
+				class="link-list__link link-list__link_active">
+				{{ space.name }}
+			</div>
 		</div>
 	</div>
 </template>
@@ -15,11 +18,12 @@
 	
 	export default {
 		props : {
-			opt: Object
+			opt: Object,
+			app: Object
 		},
 		methods: {
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		}
 	}

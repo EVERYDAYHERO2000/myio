@@ -33,6 +33,7 @@
 
       <user-list 
 				v-on:onValue="setUserList"
+				v-bind:app="app"
 				v-bind:opt="opt">
 			</user-list>
 
@@ -60,6 +61,7 @@
 
       <user-list 
 				v-on:onValue="setUserList"
+				v-bind:app="app"
 				v-bind:opt="opt">
 			</user-list>
 
@@ -104,7 +106,8 @@
 	
 	export default {
 		props: {
-			opt: Object
+			opt: Object,
+			app: Object
 		},
 		components: {
 			btn: btn,
@@ -141,12 +144,12 @@
 				this.userList = e;
 			},
 			d: function(w){
-				return this.opt.options.d[w.toLowerCase()][this.opt.options.app.lang];
+				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
 			createNew: function() {
 
 				let data = {
-					author: this.opt.options.id,
+					author: this.opt.user.id,
 					eventType: this.dataType[this.active].name,
 					title: this.title,
 					description: this.description,

@@ -3,41 +3,48 @@
 
 	<div 
 		class="app-states__loading" 
-		v-if="opt.options.app.screen === 'loading'">
+		v-if="app.screen === 'loading'">
 		<loading-spinner>
 		</loading-spinner>
 	</div>
 
 	<div 
 		class="app-states__main" 
-		v-else-if="opt.options.app.screen === 'main'">
-		<toolbar v-bind:opt="opt"></toolbar>
+		v-else-if="app.screen === 'main'">
+		<toolbar 
+			v-bind:opt="opt" 
+			v-bind:app="app">
+		</toolbar>
 		<work-states 
-			v-bind:opt="opt">
+			v-bind:opt="opt"
+			v-bind:app="app">
 		</work-states>
 	</div>
 
 	<div 
 		class="app-states__registration" 
-		v-else-if="opt.options.app.screen === 'registration'">
+		v-else-if="app.screen === 'registration'">
 		<registration-form 
-			v-bind:opt="opt">
+			v-bind:opt="opt"
+			v-bind:app="app">
 		</registration-form>
 	</div>
 
 	<div 
 		class="app-states__registration" 
-		v-else-if="opt.options.app.screen === 'forgot'">
+		v-else-if="app.screen === 'forgot'">
 		<forgot-form 
-			v-bind:opt="opt">
+			v-bind:opt="opt"
+			v-bind:app="app">
 		</forgot-form>
 	</div>
 
 	<div 
    class="app-states__login" 
-   v-else-if="opt.options.app.screen === 'login'">
+   v-else-if="app.screen === 'login'">
     <login-form 
-    	v-bind:opt="opt">
+    	v-bind:opt="opt"
+    	v-bind:app="app">
     </login-form>
 	</div>
 
@@ -55,7 +62,8 @@
 	
 	export default {
 		props: {
-			opt : Object
+			opt : Object,
+			app : Object
 		},
 		components : {
 			workStates : workStates,
