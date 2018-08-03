@@ -153,7 +153,12 @@
 		},
 		created: function() { 
 			let user = auth.load();
-			this.loadMessages(user.email, user.pass, [1]);
+			let chatsId = [];
+			let length = APP.opt.chatsRooms.length;
+			for (var i = 0; i < length; i++){
+				chatsId.push(APP.opt.chatsRooms[i].chatsId);
+			}
+			if (chatsId.length) this.loadMessages(user.email, user.pass, chatsId);
 			
 		},
 		data: function(){

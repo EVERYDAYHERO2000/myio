@@ -10,15 +10,15 @@
 	<div class="chat-list-item__content">
 		<div class="chat-list-item__title">{{ chat.name }}</div>
 		<div class="chat-list-item__description">
-      <user-name v-bind:name="'username'"></user-name> 
-			<div>{{ 'last message text' }}</div>
+      <user-name v-bind:name="(getLastMessage.isVisible) ? getLastMessage.author.email : ''"></user-name> 
+			<div>{{ (getLastMessage.isVisible) ? getLastMessage.text : '' }}</div>
 		</div>
 	</div>
   <div class="chat-list-item__info">
     <div class="chat-list-item__date">
 			<date-time 
 				v-bind:format="'dateTime'"
-				v-bind:date="'00:00:00'">
+				v-bind:date="(getLastMessage.isVisible) ? getLastMessage.date : ''">
 			</date-time>
     </div>
     <div 
@@ -42,6 +42,7 @@
 		props: {
 			chat: Object,
 			app: Object,
+			opt: Object,
 			type: String
 		},
 		created: function(){
@@ -66,8 +67,44 @@
 			}
 		},
 		computed: {
-			getLastMassage: function(){
-				let message = ''
+			getLastMessage: function(){
+				let message = {
+					isVisible : false,
+					date: null,
+					author: {},
+					text: null,
+					id: null,
+					userId: null,
+					chatsId: null
+				}
+				
+				let chatId = this.chat.Id;
+				let messages = this.opt.messages;
+				let length = (this.opt.messages) ? this.opt.messages.length : 0;
+				var temp = {id: -1};
+				
+				if (length){
+					for (var i = 0; i < length; i++ ) {
+						if (this.opt.messages[i].chatsId == chatId){
+							if (this.opt.messages[i].id > temp.id) temp = this.opt.messages[i];
+						}
+					}
+					
+					message.isVisible = true;
+					message.date = temp.date;
+					message.text = temp.text;
+					message.userId = temp.userId;
+					message.chatsId = temp.chatsId;
+					message.id = temp.id;
+					message.author = (function(userId, userList){
+						let length = (userList) ? userList.length : 0;
+						for (var i = 0; i < length; i++){
+							if (message.userId == userList[i].id) return userList[i]; 
+						}
+					})(message.userId, this.opt.userList);
+					
+				} 
+				
 				return message
 			}
 		}
