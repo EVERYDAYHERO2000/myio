@@ -52,7 +52,7 @@
 <script>
 	import $ from 'jquery';
 	import auth from './functions/auth.js';
-	import URL from './functions/urls-option.js';
+	import request from './functions/request.js';
 	
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
@@ -108,20 +108,15 @@
 
 				if (__login && __email && __pass) {
 					
-					$.post(URL.registration, {
-						eventType: 'registration',
+					request.post('registration', {
 						login: __login,
 						email: __email,
 						space: __space,
 						pass: __pass
-
-					}, function(e) {
-
-						if (e == true) {
-							__this.setState('login');
-						}
-
+					}, function(e){
+						__this.setState('login');	
 					});
+					
 				}
 
 			}

@@ -41,8 +41,9 @@
 <script>
 	import $ from 'jquery';
 	import auth from './functions/auth.js';
-	import URL from './functions/urls-option.js';
+	import request from './functions/request.js';
 	import data from './functions/data.js';
+	import lang from './functions/lang.js';
 	
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
@@ -105,21 +106,16 @@
 			loadData: function(email, pass) {
 				let __this = this;
 				
-				$.post(URL.auth, {
-						eventType: 'login',
-						email: email,
-						pass: pass
-				}, function(d) {
-						
-					if (d.status == true) {
-						
-						APP.$data.opt = data.loadData(d.data);
-						auth.setup(email, pass);
-						__this.setState('main');
-						
-					}
-
-				}, 'json');
+				request.post('login',{
+					email: email,
+					pass: pass
+				}, function(e){
+					APP.$data.opt = data.loadData(e.data);
+					auth.setup(email, pass);
+					lang.setLang(e.data.user.lang);
+					__this.setState('main');
+					
+				});
 				
 			},
 			incorrect: function() {

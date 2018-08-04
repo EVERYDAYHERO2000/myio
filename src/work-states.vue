@@ -91,7 +91,7 @@
 
 <script>
 	import $ from 'jquery';
-	import URL from './functions/urls-option.js';
+	import request from './functions/request.js';
 	import data from './functions/data.js';
 	import auth from './functions/auth.js';
 
@@ -135,19 +135,13 @@
 			},
 			loadMessages(email,pass,chatsId){
 				if (this.opt.chats){
-					let __this = this;
-				
-					$.post(URL.auth, {
-							eventType: 'loadMessages',
-							email: email,
-							pass: pass,
-							chatsId: chatsId.join()
-					}, function(d) {
-						
-						APP.$set(APP.opt, 'messages', d.messages);
-
-					}, 'json');
-					
+			
+					request.post('loadMessages', {
+						chatsId: chatsId.join()
+					}, function(e){
+						APP.$set(APP.opt, 'messages', e.messages);
+					});
+	
 				}
 			}
 		},

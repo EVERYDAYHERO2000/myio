@@ -13,7 +13,7 @@ lang.setup = function(l){
 }
 
 lang.setLang = function(l){
-	l = l || 'eng';
+	l = l.toLowerCase() || 'eng';
 	localStorage.setItem('lang', l);
 	APP.$set(APP.app, 'lang', l);
 	return l;

@@ -1,8 +1,8 @@
 <template>
 <div 
-	v-on:click="setInboxActive" 
+	v-on:click="setChatActive" 
 	class="chat-list-item" 
-	v-bind:class="{ 'chat-list-item_active' : chat.isActive }">
+	v-bind:class="{ 'chat-list-item_active' : activeMessage }">
 	<contact-icon-chip 
 		v-bind:type="type"
 		v-bind:title="chat.name">
@@ -10,15 +10,15 @@
 	<div class="chat-list-item__content">
 		<div class="chat-list-item__title">{{ chat.name }}</div>
 		<div class="chat-list-item__description">
-      <user-name v-bind:name="(getLastMessage.isVisible) ? getLastMessage.author.email : ''"></user-name> 
-			<div>{{ (getLastMessage.isVisible) ? getLastMessage.text : '' }}</div>
+      <user-name v-bind:name="(lastMessage.isVisible) ? lastMessage.author.email : ''"></user-name> 
+			<div>{{ (lastMessage.isVisible) ? lastMessage.text : '' }}</div>
 		</div>
 	</div>
   <div class="chat-list-item__info">
     <div class="chat-list-item__date">
 			<date-time 
 				v-bind:format="'dateTime'"
-				v-bind:date="(getLastMessage.isVisible) ? getLastMessage.date : ''">
+				v-bind:date="(lastMessage.isVisible) ? lastMessage.date : ''">
 			</date-time>
     </div>
     <div 
@@ -46,7 +46,7 @@
 			type: String
 		},
 		created: function(){
-			
+
 		},
 		components: {
 			contactIconChip: contactIconChip,
@@ -54,29 +54,26 @@
 			dateTime: dateTime
 		},
 		methods: {
-			setInboxActive: function() {
-				let id = this._props.chat.id;
-				let data = APP.$data;
-				for (var i = 0; i < data.inboxList.length; i++) {
-					data.inboxList[i].isActive = false;
-					if (data.inboxList[i].id === id) {
-						data.inboxList[i].isActive = true;
-						data.user.activeChat_id = data.inboxList[i].id;
-					}
-				}
+			setChatActive: function() {
+				
 			}
 		},
 		computed: {
-			getLastMessage: function(){
-				let message = {
-					isVisible : false,
-					date: null,
-					author: {},
-					text: null,
-					id: null,
-					userId: null,
-					chatsId: null
-				}
+			//сделать активным
+			activeMessage: function(){
+				let activeChatId = this.opt.user.activeChatId;
+				return (this.chat.id == activeChatId) ? true : false;
+			},
+			//последнее сообщение в чате
+			lastMessage: function(){
+				let message = {};
+				message.isVisible = false;
+				message.date = null;
+				message.author = {};
+				message.text = null;
+				message.id = null;
+				message.userId = null;
+				message.chatsId = null;
 				
 				let chatId = this.chat.Id;
 				let messages = this.opt.messages;
