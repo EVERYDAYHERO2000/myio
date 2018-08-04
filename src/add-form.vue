@@ -97,6 +97,7 @@
 	import $ from 'jquery';
 
 	import getDateTime from './functions/date-time.js';
+	import request from './functions/request.js';
 
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
@@ -119,12 +120,7 @@
 			
 		},
 		methods: {
-			setState: function(s) {
-				let $el = this.$el;
-				$($el).addClass('add-form_hide').delay(200).queue(function() {
-
-				});
-			},
+			
 			setActive: function(e) {
 				this.active = e;
 			},
@@ -147,16 +143,55 @@
 				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
 			createNew: function() {
-
-				let data = {
+				let __this__ = this;
+				
+				//типа события
+				let eventType = (function(e){
+					return (e != '3') ? 'createNewChat' : 'addNewUser';
+				})(this.dataType[this.active].value);
+				
+				//тип чата:чат/задача
+				let chatType = (function(e){
+					var temp = null
+					if (e == '1'){
+						temp = 'started';
+					} else if (e == '2') {
+						temp = 'chat';
+					} 
+					return temp;
+				})(this.dataType[this.active].value);
+				
+				//список пользователей
+				let userList = (function(arr){
+					var tempList = [];
+					for(var i = 0; i < arr.length; i++ ){
+						tempList.push(arr[i].id);
+					}
+					return tempList.join();
+				})(this.userList);
+				
+				//текущее пространство
+				let currentSpace = (function(opt){
+					var temp;
+					for (var i = 0; i < opt.chats.length; i++){
+						if (opt.chats[i].id == opt.user.activeChatId) temp = opt.chats[i].spacesId;
+					}
+					return temp;
+				})(this.opt);
+				
+				request.post(eventType, {
 					author: this.opt.user.id,
-					eventType: this.dataType[this.active].name,
-					title: this.title,
+					name: this.title,
 					description: this.description,
-					email: this.email,
 					date: this.date,
-					userList: this.userList
-				}
+					userList: userList,
+					chatType: chatType,
+					newUser: this.email || null,
+					space: currentSpace
+				}, function(e){
+					
+				});
+				__this__.$emit('success', true);
 			}
 		},
 		data: function() {

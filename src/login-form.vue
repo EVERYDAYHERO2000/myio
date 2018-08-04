@@ -71,6 +71,7 @@
 		beforeMount: function() {
 			let __auth = auth.load();
 			if (__auth.authValid == 'true') this.loadData(__auth.email, __auth.pass);
+			
 		},
 		methods: {
 			setState: function(s) {
@@ -105,6 +106,7 @@
 			},
 			loadData: function(email, pass) {
 				let __this = this;
+				this.app.screen = 'loading';
 				
 				request.post('login',{
 					email: email,

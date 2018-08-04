@@ -60,7 +60,8 @@
 
   <div class="toolbar__form">
     <add-form 
-    	v-if="addForm.isVisible" 
+    	v-if="addForm.isVisible"
+    	v-on:success="toggleToolbarAdd" 
     	v-bind:app="app"
     	v-bind:opt="opt">
     </add-form>

@@ -25,10 +25,13 @@
 
 	<div class="panel-tasks__list">
 		<chat-list-item 
-			v-for="task in opt.taskList" 
-			v-bind:chat="task"
-			v-bind:type="'task'"
-			v-bind:key="task.id">
+			v-for="chat in opt.chats"
+			v-if="chat.taskStatus != 'chat'"
+			v-bind:app="app"
+			v-bind:opt="opt" 
+			v-bind:chat="chat"
+			v-bind:type="'chat'"
+			v-bind:key="chat.id">
 		</chat-list-item>
 	</div>
 
