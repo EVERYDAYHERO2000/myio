@@ -1,7 +1,12 @@
 "use strict";
 
 const getDateTime = function (date) { 
+	
 	date = date || new Date();
+	
+	date = (date && typeof date == 'string' && date.indexOf('T') + 1 ) ? date.split('.')[0].replace(/T/gi, ' ') : date;	
+	
+	
 	date = (date instanceof Date) ? date : new Date( date.replace(/-/g, '/') );
 	let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	let dateTime = {

@@ -18,7 +18,7 @@
     <div class="chat-list-item__date">
 			<date-time 
 				v-bind:format="'dateTime'"
-				v-bind:date="(lastMessage.isVisible) ? lastMessage.date : ''">
+				v-bind:date="lastMessage.date">
 			</date-time>
     </div>
     <div 
@@ -68,7 +68,7 @@
 			lastMessage: function(){
 				let message = {};
 				message.isVisible = false;
-				message.date = null;
+				message.date = this.chat.creationDate;
 				message.author = {};
 				message.text = null;
 				message.id = null;
@@ -88,7 +88,7 @@
 					}
 					
 					message.isVisible = true;
-					message.date = temp.date;
+					message.date = temp.date || message.date;
 					message.text = temp.text;
 					message.userId = temp.userId;
 					message.chatsId = temp.chatsId;
