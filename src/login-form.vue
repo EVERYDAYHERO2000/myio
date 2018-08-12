@@ -76,10 +76,10 @@
 		methods: {
 			setState: function(s) {
 				let $el = this.$el;
-				let __this__ = this;
+				let __this = this;
 				$($el).addClass('login-form_hide').delay(200).queue(function() {
 					
-					__this__.app.screen = s;
+					__this.app.screen = s;
 					
 				});
 			},

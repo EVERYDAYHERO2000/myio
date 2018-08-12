@@ -4,7 +4,7 @@ import $ from 'jquery';
  
 const changeColor = function (str) {
 
-  let char = str[0];
+  let char = str[0].toUpperCase();
   let color = '#eaeaea';
   let colors = [
     {

@@ -139,7 +139,7 @@
 					request.post('loadMessages', {
 						chatsId: chatsId.join()
 					}, function(e){
-						APP.$set(APP.opt, 'messages', e.messages);
+						APP.$set(APP.opt, 'messages', e.data);
 					});
 	
 				}

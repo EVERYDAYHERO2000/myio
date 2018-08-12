@@ -42,11 +42,11 @@
 			},
 			click: function(e) {
 				let $el = this.$el;
-				let __this__ = this;
+				let __this = this;
 				this.makeDrop(e);
 
 				$($el).delay(150).queue(function() {
-					__this__.$emit('onClick', true);
+					__this.$emit('onClick', true);
 					$(this).dequeue();
 				});
 			}

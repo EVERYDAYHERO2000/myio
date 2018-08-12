@@ -40,16 +40,13 @@
 		},
 		created: function () {
 			window.APP = this;
-			//if (this.auth.authValid == 'true') this.opt.options.app.screen = 'main';
-			
 			
 			$('body').addClass(function(){
-				let classList = '';
-				classList = classList + platform.os.family.replace(/ /g, '-').toLowerCase() + ' ';
-				classList = classList + platform.name.replace(/ /g, '-').toLowerCase() + ' ';
-				
-				return classList.trim();
-			})
+				return [
+					platform.os.family.replace(/ /g, '-').toLowerCase(),
+					platform.name.replace(/ /g, '-').toLowerCase()
+				].join(' ');
+			});
 				
 		},
 		mounted: function () {
@@ -60,7 +57,7 @@
           event.preventDefault();
         }
       });
-      $(document).bind("contextmenu", function (e) {
+      $(document).bind('contextmenu', function (e) {
         //return false;
       });
     }

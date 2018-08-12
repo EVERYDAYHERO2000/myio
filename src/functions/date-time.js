@@ -24,6 +24,7 @@ const getDateTime = function (date) {
 		currentTimeZoneOffsetInHours: date.getTimezoneOffset() / 60,
 		unix: Date.parse(date)
 	}
+	
 	dateTime.hours = stringifyNumber(date.getHours());
 	dateTime.minute = stringifyNumber(date.getMinutes());
 	dateTime.fullYear = stringifyNumber(date.getFullYear());

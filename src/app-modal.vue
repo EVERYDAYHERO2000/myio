@@ -20,7 +20,6 @@
 				let $el = this.$el;
 				$($el).find('.app-modal__panel').delay(100).queue(function() {
 					$($el).find('.app-modal__panel').toggleClass('app-modal__panel_active');
-					//$('.app-states').toggleClass('app-states_blur');
 				});
 			},
 			d: function(w){

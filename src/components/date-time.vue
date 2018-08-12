@@ -26,8 +26,8 @@
 	
 	.date-time {
 		font-size: 12px;
-		color: @color-gray-font;
 		white-space: nowrap;
 		font-weight: 500;
+		opacity: 0.7;
 	}
 </style>

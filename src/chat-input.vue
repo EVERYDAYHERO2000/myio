@@ -56,7 +56,7 @@
 				if (this.newText) {
 					var date = __F__.getDateTime(new String(new Date()));
 					var v_data = APP.$data;
-					var __this__ = this;
+					var __this = this;
 					v_data.app.newText = this.newText;
 					this.newText = '';
 
@@ -64,7 +64,7 @@
 						event: 'new_message',
 						message: v_data.app.newText,
 						author_id: v_data.user.id,
-						chat_id: __this__.prop,
+						chat_id: __this.prop,
 						date: date.formated
 					}
 
@@ -74,7 +74,7 @@
 							message: v_data.app.newText,
 							author: v_data.user.name,
 							author_id: v_data.user.id,
-							chat_id: __this__.prop,
+							chat_id: __this.prop,
 							date: date.dateTime,
 							id: parseInt(d, 10)
 						});

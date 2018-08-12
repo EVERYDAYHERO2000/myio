@@ -143,7 +143,7 @@
 				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
 			createNew: function() {
-				let __this__ = this;
+				let __this = this;
 				
 				//типа события
 				let eventType = (function(e){
@@ -152,7 +152,7 @@
 				
 				//тип чата:чат/задача
 				let chatType = (function(e){
-					var temp = null
+					let temp = null
 					if (e == '1'){
 						temp = 'started';
 					} else if (e == '2') {
@@ -163,7 +163,7 @@
 				
 				//список пользователей
 				let userList = (function(arr){
-					var tempList = [];
+					let tempList = [];
 					for(var i = 0; i < arr.length; i++ ){
 						tempList.push(arr[i].id);
 					}
@@ -172,7 +172,7 @@
 				
 				//текущее пространство
 				let currentSpace = (function(opt){
-					var temp;
+					let temp;
 					for (var i = 0; i < opt.chats.length; i++){
 						if (opt.chats[i].id == opt.user.activeChatId) temp = opt.chats[i].spacesId;
 					}
@@ -189,9 +189,10 @@
 					newUser: this.email || null,
 					space: currentSpace
 				}, function(e){
-					
+					APP.$data.opt.chats.push(e.data.chats[0]);
+					APP.$data.opt.chatsRooms.push(e.data.chatsRooms[0]);
 				});
-				__this__.$emit('success', true);
+				__this.$emit('success', true);
 			}
 		},
 		data: function() {

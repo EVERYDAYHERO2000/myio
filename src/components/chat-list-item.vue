@@ -2,7 +2,7 @@
 <div 
 	v-on:click="setChatActive" 
 	class="chat-list-item" 
-	v-bind:class="{ 'chat-list-item_active' : activeMessage }">
+	v-bind:class="{ 'chat-list-item_active' : isActive }">
 	<contact-icon-chip 
 		v-bind:type="type"
 		v-bind:title="chat.name">
@@ -22,9 +22,9 @@
 			</date-time>
     </div>
     <div 
-    	v-on:click.stop="chat.isPined = !chat.isPined" 
+    	v-on:click.stop="setChatPinned" 
     	class="chat-list-item__keep" 
-    	v-bind:class="{ 'chat-list-item__keep_pined' : chat.isPined }">
+    	v-bind:class="{ 'chat-list-item__keep_pined' : isPinned }">
     </div>
   </div>
 </div>
@@ -33,6 +33,7 @@
 
 <script>
 	import $ from 'jquery';
+	import request from '../functions/request.js';
 	
 	import contactIconChip from '../components/contact-icon-chip.vue';
 	import userName from '../components/user-name.vue';
@@ -54,16 +55,61 @@
 			dateTime: dateTime
 		},
 		methods: {
+			
 			setChatActive: function() {
+				let __this = this;
+				request.post('setChatActive', {
+					userId: this.opt.user.id,
+					chatId: this.chat.id
+				}, function(e){
+					APP.$set(APP.opt.user, 'activeChatId', __this.chat.id);
+				});
+			},
+			
+			setChatPinned: function() {
+				let __this = this;
 				
+				this.getChatRoom(function(i,e){
+					let pin = !e.isPinned;
+					
+					request.post('setChatPinned', {
+						userId: __this.opt.user.id,
+						chatId: __this.chat.id,
+						isPinned: (pin) ? 1 : 0
+					}, function(){
+						
+					});
+					APP.$set(APP.opt.chatsRooms[i], 'isPinned', pin);
+				});
+				
+			},
+			
+			getChatRoom: function(callback) {
+				let chatsRooms = this.opt.chatsRooms;
+				for (var i = 0; i < chatsRooms.length; i++){
+					if (chatsRooms[i].chatsId == this.chat.id && chatsRooms[i].usersId == this.opt.user.id) {
+						if (callback) callback(i, chatsRooms[i]);
+						return chatsRooms[i];
+					}
+				}
 			}
 		},
 		computed: {
-			//сделать активным
-			activeMessage: function(){
-				let activeChatId = this.opt.user.activeChatId;
-				return (this.chat.id == activeChatId) ? true : false;
+			//активный/неактивный
+			isActive: function(){
+				return (this.chat.id == this.opt.user.activeChatId) ? true : false;
 			},
+			
+			//запиненый да/нет
+			isPinned: function(){
+				return (this.chatRoom.isPinned) ? true : false;
+			},
+			
+			//роль в чате
+			chatRoom: function(){
+				return this.getChatRoom();
+			},
+			
 			//последнее сообщение в чате
 			lastMessage: function(){
 				let message = {};

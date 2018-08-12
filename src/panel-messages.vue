@@ -19,7 +19,7 @@
 		<div class="panel-messages__chat">
 			<div class="panel-messages__list">
 				<div class="panel-messages__list-inner">	
-				<message>1</message>
+				<!--<message>1</message>
 				<message>2</message>
 				<message>3</message>
 				<message>4</message>
@@ -42,7 +42,7 @@
 				<message>21</message>
 				<message>22</message>
 				<message>23</message>
-				<message>24</message>
+				<message>24</message>-->
 
 
 				</div>	

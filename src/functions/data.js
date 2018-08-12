@@ -16,7 +16,7 @@ data.loadData = function (newData, callback) {
 		tags:[],
 		userList:[],
 		messages:[],
-		user:{
+		user: {
 			avatar: null,
 			email: null,
 			firstName: null,
