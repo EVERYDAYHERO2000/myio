@@ -24,7 +24,7 @@
     <div 
     	v-on:click.stop="setChatPinned" 
     	class="chat-list-item__keep" 
-    	v-bind:class="{ 'chat-list-item__keep_pined' : isPinned }">
+    	v-bind:class="{ 'chat-list-item__keep_pined' : chat.isPinned }">
     </div>
   </div>
 </div>
@@ -55,7 +55,7 @@
 			dateTime: dateTime
 		},
 		methods: {
-			
+			//сделать чат активным
 			setChatActive: function() {
 				let __this = this;
 				request.post('setChatActive', {
@@ -65,23 +65,18 @@
 					APP.$set(APP.opt.user, 'activeChatId', __this.chat.id);
 				});
 			},
-			
+			//запинить/распинить чат
 			setChatPinned: function() {
 				let __this = this;
 				
-				this.getChatRoom(function(i,e){
-					let pin = !e.isPinned;
-					
-					request.post('setChatPinned', {
-						userId: __this.opt.user.id,
-						chatId: __this.chat.id,
-						isPinned: (pin) ? 1 : 0
-					}, function(){
-						
-					});
-					APP.$set(APP.opt.chatsRooms[i], 'isPinned', pin);
-				});
-				
+				let pin = !this.chat.isPinned;
+				request.post('setChatPinned', {
+					userId: __this.opt.user.id,
+					chatId: __this.chat.id,
+					isPinned: (pin) ? 1 : 0
+				}, function(e){
+					APP.$set(APP.opt.chatsRooms[__this.chat.chatsRoomsIndex], 'isPinned', pin);	
+				});	
 			},
 			
 			getChatRoom: function(callback) {
@@ -100,16 +95,6 @@
 				return (this.chat.id == this.opt.user.activeChatId) ? true : false;
 			},
 			
-			//запиненый да/нет
-			isPinned: function(){
-				return (this.chatRoom.isPinned) ? true : false;
-			},
-			
-			//роль в чате
-			chatRoom: function(){
-				return this.getChatRoom();
-			},
-			
 			//последнее сообщение в чате
 			lastMessage: function(){
 				let message = {};
@@ -124,7 +109,7 @@
 				let chatId = this.chat.Id;
 				let messages = this.opt.messages;
 				let length = (this.opt.messages) ? this.opt.messages.length : 0;
-				var temp = {id: -1};
+				let temp = {id: -1};
 				
 				if (length){
 					for (var i = 0; i < length; i++ ) {

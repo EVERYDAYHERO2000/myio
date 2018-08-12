@@ -24,15 +24,27 @@
 	</panel-header> 
 
 	<div class="panel-tasks__list">
+	
 		<chat-list-item 
-			v-for="chat in opt.chats"
-			v-if="chat.taskStatus != 'chat'"
+			v-for="chat in chatList"
+			v-if="chat.isPinned"
 			v-bind:app="app"
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
 			v-bind:type="'chat'"
 			v-bind:key="chat.id">
 		</chat-list-item>
+	
+		<chat-list-item 
+			v-for="chat in chatList"
+			v-if="!chat.isPinned"
+			v-bind:app="app"
+			v-bind:opt="opt" 
+			v-bind:chat="chat"
+			v-bind:type="'chat'"
+			v-bind:key="chat.id">
+		</chat-list-item>
+		
 	</div>
 
 </div>
@@ -92,6 +104,42 @@
 						name: this.d('Assigned to me')
 					}
 				]
+			},
+			chatList : function(){
+				let chats = this.opt.chats;
+				let chatsRooms = this.opt.chatsRooms
+				let chatsLength = chats.length;
+				let chatsRoomsLength = chatsRooms.length;
+				let newList = [];
+				for(var i = 0; i < chatsLength; i++){
+					if (chats[i].taskStatus != 'chat'){
+						for(var c = 0; c < chatsRoomsLength; c++){
+							if (chats[i].id == chatsRooms[c].chatsId){
+								newList.push({
+									createrId: chats[i].createrId,
+									creationDate: chats[i].creationDate,
+									deadlineDate: chats[i].deadlineDate,
+									endDate: chats[i].endDate,
+									icon: chats[i].icon,
+									id: chats[i].id,
+									isDeleted: chats[i].isDeleted,
+									name: chats[i].name,
+									parentId: chats[i].parentId,
+									spacesId: chats[i].spacesId,
+									taskStatus: chats[i].taskStatus,
+									updateDate: chats[i].updateDate,
+									joinDate: chatsRooms[c].joinDate,
+									lastSeenDate: chatsRooms[c].lastSeenDate,
+									chatRole: chatsRooms[c].chatRole,
+									isPinned: chatsRooms[c].isPinned,
+									chatsIndex: i,
+									chatsRoomsIndex: c
+								});
+							}
+						}
+					}
+				}
+				return newList;
 			}
 		}
 	}
