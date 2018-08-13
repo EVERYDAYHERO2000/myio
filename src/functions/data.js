@@ -29,7 +29,7 @@ data.loadData = function (newData, callback) {
 			lastSessionDate: null
 		}
 	}
-	console.log(newData);
+	
 	
 	if (callback) callback(newData);
 	return newData;

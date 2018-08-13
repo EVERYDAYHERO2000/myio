@@ -30,6 +30,8 @@
 
 <script>
 	import $ from 'jquery';
+	import dateTitme from '../functions/date-time.js';
+	import request from '../functions/request.js';
 
 	export default {
 		props: {
@@ -52,47 +54,21 @@
 				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
 			addNewMessage: function() {
-				/*
-				if (this.newText) {
-					var date = __F__.getDateTime(new String(new Date()));
-					var v_data = APP.$data;
-					var __this = this;
-					v_data.app.newText = this.newText;
-					this.newText = '';
-
-					var newMessage = {
-						event: 'new_message',
-						message: v_data.app.newText,
-						author_id: v_data.user.id,
-						chat_id: __this.prop,
-						date: date.formated
-					}
-
-					DATA.save(newMessage, function(d) {
-						var v_data = APP.$data;
-						APP.$data.messages.push({
-							message: v_data.app.newText,
-							author: v_data.user.name,
-							author_id: v_data.user.id,
-							chat_id: __this.prop,
-							date: date.dateTime,
-							id: parseInt(d, 10)
-						});
-
-						$.each(v_data.inboxList, function(i, e) {
-							if (e.id === v_data.user.activeChat_id) {
-								e.last_message.author = v_data.user.name;
-								e.last_message.text = v_data.app.newText;
-								e.last_message.date = date;
-							}
-						});
-					});
-				}
-				var input = this.$el;
-				$(this.$el).find('.chat-input__input').css({
-					'height': '50px'
-				}).focus();
-				*/
+				let __this = this;
+				
+				request.post('newMessage',{
+					pass : this.opt.user.password,
+					email : this.opt.user.email,
+					text : this.textInput,
+					userId: this.opt.user.id,
+					chatsId: this.opt.user.activeChatId,
+				}, function(e){
+					
+					__this.textInput = '';
+					__this.$socket.emit('chat message', JSON.stringify(e));
+					
+				});
+				
 			},
 			resizeTextarea: function() {
 				let el = this.$el;
@@ -114,7 +90,7 @@
 
 
 <style lang="less">
-	@import './less/main.less';
+	@import '../less/main.less';
 
 	.chat-input {
 		@icon-size: 20px;
@@ -130,7 +106,7 @@
 			min-width: @icon-size;
 			min-height: @icon-size;
 			margin: 8px;
-			background-image: ~"url(./assets/add-file.svg)";
+			background-image: ~"url(../assets/add-file.svg)";
 			background-size: @icon-size @icon-size;
 			background-position: center;
 			background-repeat: no-repeat;

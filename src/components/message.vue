@@ -1,16 +1,17 @@
 <template>
 	<div class="message">
 		<contactIconChip
-			v-bind:title="'User Name'" 
+			v-bind:title="user.login" 
 			v-bind:image="''"
 			v-bind:size="'s'">
 		</contactIconChip>
 		<div class="message__content">
-			<user-name v-bind:name="'User Name'">User name</user-name>
-			<div><slot></slot></div>
+			<user-name v-bind:name="user.login"></user-name>
+			<div>{{message.text}}</div>
 		</div>
 		<div class="message__info">
 			<date-time 
+				v-bind:date="message.date"
 				v-bind:format="'dateTime'">
 			</date-time>
 		</div>
@@ -27,12 +28,25 @@
 	
 	export default {
 		props : {
-			opt: Object
+			opt: Object,
+			message: Object
 		},
 		components : {
 			contactIconChip: contactIconChip,
 			userName: userName,
 			dateTime: dateTime
+		},
+		computed : {
+			user : function(){
+				let userList = this.opt.userList;
+				let userListLength = userList.length;
+				for(var i = 0; i < userListLength; i++ ){
+					if (userList[i].id == this.message.userId){
+						
+						return userList[i];
+					}
+				}
+			}
 		}
 	}
 

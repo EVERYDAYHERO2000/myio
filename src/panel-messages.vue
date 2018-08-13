@@ -19,32 +19,12 @@
 		<div class="panel-messages__chat">
 			<div class="panel-messages__list">
 				<div class="panel-messages__list-inner">	
-				<!--<message>1</message>
-				<message>2</message>
-				<message>3</message>
-				<message>4</message>
-				<message>5</message>
-				<message>6</message>
-				<message>7</message>
-				<message>8</message>
-				<message>9</message>
-				<message>10</message>
-				<message>11</message>
-				<message>12</message>
-				<message>13</message>
-				<message>14</message>
-				<message>15</message>
-				<message>16</message>
-				<message>17</message>
-				<message>18</message>
-				<message>19</message>
-				<message>20</message>
-				<message>21</message>
-				<message>22</message>
-				<message>23</message>
-				<message>24</message>-->
-
-
+					
+					<message
+						v-for="message in messages"
+						v-bind:opt="opt"
+						v-bind:message="message"></message>
+					
 				</div>	
 			</div>
 			<div class="panel-messages__input">
@@ -66,7 +46,7 @@
 	import selectList from './components/select-list.vue';
 	import textField from './components/text-field.vue';
 	import userList from './components/user-list.vue';
-	import chatInput from './chat-input.vue';
+	import chatInput from './components/chat-input.vue';
 	import message from './components/message.vue';
 	
 	export default {
@@ -96,6 +76,22 @@
 		},
 		created:function(){
 			
+		},
+		computed: {
+			messages : function(){
+				let activeChat = this.opt.user.activeChatId;
+				let messages = this.opt.messages;
+				let messagesLength = messages.length;
+				let tempList = [];
+				
+				for (var i = 0; i < messagesLength; i++){
+					if ( messages[i].chatsId == activeChat ){
+						tempList.push(messages[i]);
+					}
+				}
+				return tempList;
+				
+			}
 		}
 	}
 

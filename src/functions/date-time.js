@@ -27,6 +27,7 @@ const getDateTime = function (date) {
 	
 	dateTime.hours = stringifyNumber(date.getHours());
 	dateTime.minute = stringifyNumber(date.getMinutes());
+	dateTime.seconds = stringifyNumber(date.getSeconds());
 	dateTime.fullYear = stringifyNumber(date.getFullYear());
 	dateTime.month = stringifyNumber(date.getMonth() + 1);
 	dateTime.monthName = monthNames[date.getMonth()];
@@ -36,6 +37,7 @@ const getDateTime = function (date) {
 	dateTime.dateTime = dateTime.date + ', ' + dateTime.time;
 	dateTime.formated = dateTime.fullYear + '-' + dateTime.month + '-' + dateTime.day + ' ' + dateTime.time;
 	dateTime.dateOnly = dateTime.fullYear + '-' + dateTime.month + '-' + dateTime.day;
+	dateTime.value = dateTime.fullYear + '' + dateTime.month + '' + dateTime.day + '' + dateTime.hours + '' + dateTime.minute + '' + dateTime.seconds;
 
 	function stringifyNumber(n) {
 		return (n < 10) ? '0' + n : n.toString();

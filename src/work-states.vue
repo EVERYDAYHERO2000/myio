@@ -95,6 +95,7 @@
 	import data from './functions/data.js';
 	import auth from './functions/auth.js';
 
+
 	import panelChats from './panel-chats.vue';
 	import panelTasks from './panel-tasks.vue';
 	import VueSplit from 'vue-split-panel';
@@ -105,6 +106,14 @@
 		props: {
 			opt: Object,
 			app: Object
+		},
+		sockets: {
+			connect: function () {
+				console.log('socket connected')
+			},
+			customEmit: function (val) {
+				console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+			}
 		},
 		components: {
 			panelChats: panelChats,
@@ -135,7 +144,7 @@
 			},
 			loadMessages(email,pass,chatsId){
 				if (this.opt.chats){
-			
+				
 					request.post('loadMessages', {
 						chatsId: chatsId.join()
 					}, function(e){
@@ -146,6 +155,7 @@
 			}
 		},
 		created: function() { 
+			let __this = this;
 			let user = auth.load();
 			let chatsId = [];
 			let length = APP.opt.chatsRooms.length;
@@ -154,6 +164,22 @@
 			}
 			if (chatsId.length) this.loadMessages(user.email, user.pass, chatsId);
 			
+			//////////
+			this.$socket.on('chat message',function(msg){
+				let temp = JSON.parse(msg);
+				let chats = __this.opt.chats;
+				let chatsLength = chats.length;
+				for(var i = 0; i < chatsLength; i++){
+					if (chats[i].id == temp.data.chatsId) {
+						APP.$data.opt.messages.push(temp.data);
+					}
+				}
+			});
+			this.$options.sockets.event_name = (data) => {
+				console.log(data)
+			
+			}
+			/////////
 		},
 		data: function(){
 			return {

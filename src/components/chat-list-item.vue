@@ -23,7 +23,8 @@
     </div>
     <div 
     	v-on:click.stop="setChatPinned" 
-    	class="chat-list-item__keep" 
+    	class="chat-list-item__keep"
+    	v-bind:title="this.d('pin')" 
     	v-bind:class="{ 'chat-list-item__keep_pined' : chat.isPinned }">
     </div>
   </div>
@@ -55,6 +56,11 @@
 			dateTime: dateTime
 		},
 		methods: {
+			
+			d: function(w){
+				return this.app.d[w.toLowerCase()][this.app.lang];
+			},
+			
 			//сделать чат активным
 			setChatActive: function() {
 				let __this = this;
@@ -100,21 +106,23 @@
 				let message = {};
 				message.isVisible = false;
 				message.date = this.chat.creationDate;
-				message.author = {};
+				message.author = {
+					email : ''
+				};
 				message.text = null;
 				message.id = null;
 				message.userId = null;
 				message.chatsId = null;
 				
-				let chatId = this.chat.Id;
+				let chatId = this.chat.id;
 				let messages = this.opt.messages;
 				let length = (this.opt.messages) ? this.opt.messages.length : 0;
-				let temp = {id: -1};
+				let temp = {};
 				
 				if (length){
 					for (var i = 0; i < length; i++ ) {
 						if (this.opt.messages[i].chatsId == chatId){
-							if (this.opt.messages[i].id > temp.id) temp = this.opt.messages[i];
+							temp = this.opt.messages[i];
 						}
 					}
 					
@@ -126,8 +134,14 @@
 					message.id = temp.id;
 					message.author = (function(userId, userList){
 						let length = (userList) ? userList.length : 0;
+						
 						for (var i = 0; i < length; i++){
-							if (message.userId == userList[i].id) return userList[i]; 
+							if (message.userId == userList[i].id) {
+						
+								return userList[i]; 
+							} else {
+								return {email:''}
+							}
 						}
 					})(message.userId, this.opt.userList);
 					
