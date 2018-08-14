@@ -6,7 +6,7 @@ import auth from '../functions/auth.js';
 const request = {};
 
 request.post = function(eventType, data, success, error){
-	let url = URL.base + URL.port + URL.api;
+	let url = [URL.base,URL.port,URL.api].join('');
 	let __auth = auth.load();
 	let email = data.email || __auth.email;
 	let pass = data.pass || __auth.pass;

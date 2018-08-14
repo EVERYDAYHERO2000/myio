@@ -76,7 +76,7 @@
 				let offset = $textarea[0].offsetHeight - $textarea[0].clientHeight;
 
 				$textarea.removeAttr('style').css({
-					'height': $textarea[0].scrollHeight + offset + 'px'
+					'height': [$textarea[0].scrollHeight + offset,'px'].join('')
 				});
 			}
 		},

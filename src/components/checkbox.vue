@@ -29,7 +29,7 @@
 		},
 		methods: {
 			setId: function(){
-				return 'checkbox_' + this._uid;
+				return ['checkbox',this._uid].join('_');
 			},
 			check: function(){
 				this.$emit('onActive', this.isChecked);

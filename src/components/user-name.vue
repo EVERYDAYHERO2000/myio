@@ -21,4 +21,8 @@
 		color: @color-active;
 		font-size: @font-size-main;
 	}
+	
+	.user-name__on-active {
+		color: @color-white;
+	}
 </style>

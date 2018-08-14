@@ -4,7 +4,7 @@
 		v-bind:style="stylize()"
 		class="contact-icon-chip"
 		v-bind:class="cssClass()" >
-			{{ (title) ? title[0] : '' }}
+			{{ (title) ? title[0].toUpperCase() : '' }}
 	</div>
 	
 </template>
@@ -23,9 +23,9 @@
 		},
 		methods: {
 			stylize : function(){
-				let cssRule = `background-color: ${changeColor(this.title)};`;
+				let cssRule = `background-color: ${changeColor(this.title)}`;
 				if (this.image && this.image.length) {
-					cssRule = cssRule + `background-image: url( ${this.image} ); color: transparent`;
+					cssRule = [cssRule,`background-image: url( ${this.image} )`,`color: transparent`].join(';');
 				}
 				return cssRule;
 			},

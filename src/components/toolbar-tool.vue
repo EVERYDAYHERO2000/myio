@@ -36,7 +36,7 @@
 		mounted: function() {
 			let $el = this.$el;
 			$($el).css({
-				'background-image': 'url(' + this.icon + ')'
+				'background-image': ['url(',this.icon,')'].join('')
 			});
 			this.setActive();
 		}

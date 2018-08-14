@@ -31,7 +31,7 @@
 			v-bind:app="app"
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
-			v-bind:type="'chat'"
+			v-bind:type="'task'"
 			v-bind:key="chat.id">
 		</chat-list-item>
 	
@@ -41,7 +41,7 @@
 			v-bind:app="app"
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
-			v-bind:type="'chat'"
+			v-bind:type="'task'"
 			v-bind:key="chat.id">
 		</chat-list-item>
 		

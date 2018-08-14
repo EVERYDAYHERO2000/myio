@@ -10,8 +10,10 @@
 	<div class="chat-list-item__content">
 		<div class="chat-list-item__title">{{ chat.name }}</div>
 		<div class="chat-list-item__description">
-      <user-name v-bind:name="(lastMessage.isVisible) ? lastMessage.author.email : ''"></user-name> 
-			<div>{{ (lastMessage.isVisible) ? lastMessage.text : '' }}</div>
+      <user-name 
+      	v-bind:class="{ 'user-name__on-active' : isActive }" 
+      	v-bind:name="(lastMessage.isVisible) ? lastMessage.author.login : ''"></user-name> 
+			<div class="chat-list-item__last-message"> {{ (lastMessage.isVisible) ? lastMessage.text : '' }}</div>
 		</div>
 	</div>
   <div class="chat-list-item__info">
@@ -219,7 +221,7 @@
 			.flex-block();
 			.flex-direction(column);
 			width: auto;
-			line-height: 22px;
+			line-height: 20px;
 
 			color: @color-black;
 			flex-grow: 1;
@@ -261,11 +263,11 @@
 		&__date {
 			text-align: right;
 			font-size: 12px;
-			line-height: 20px;
+			line-height: 10px;
 			position: absolute;
 			right: 0;
 			background-color: @color-white;
-			padding: 8px;
+			padding: 5px 10px 0 0;
 			.transform(translate(10px, -8px));
 
 			& span {
@@ -273,34 +275,32 @@
 				opacity: .35;
 				white-space: nowrap;
 			}
-
-			&::before {
-				@size: 20px;
-				content: '';
-				display: block;
-				position: absolute;
-				width: @size;
-				height: 36px;
-				background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 70%);
-				left: -@size;
-				top: 0px
-			}
 		}
 
 		&__title {
 			font-size: @font-size-main;
-			opacity: .8;
+			opacity: 1;
 			white-space: nowrap;
+			font-weight: 500;
+			box-sizing: border-box;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		&__description {
 			font-size: 14px;
-			opacity: .6;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
 			padding: 0 20px 0 0;
 			display: flex;
+		}
+		
+		&__last-message {
+			text-overflow: ellipsis;
+    	padding: 0 0 0 5px;
+    	box-sizing: border-box;
+    	overflow: hidden;
 		}
 
 	}

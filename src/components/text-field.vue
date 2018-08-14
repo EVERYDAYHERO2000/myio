@@ -64,7 +64,7 @@
 		},
 		methods: {
 			setId: function(){
-				return this.type + '_' + this._uid;
+				return [this.type,this._uid].join('_');
 			},
 			onChange: function(e) {
 				this.$emit('onValue', $(this.$el).find('input').val());
