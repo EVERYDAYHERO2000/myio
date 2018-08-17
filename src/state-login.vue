@@ -1,42 +1,44 @@
 <template>
-	<div class="login-form">
-		<div class="login-form__logo">
-			<logo></logo>
-		</div>
+	<screen
+		v-bind:param="nextScreen"
+		v-bind:logo="true"
+		v-bind:incorrect="incorrect"
+		v-on:onClose="setState">
 
 		<text-field 
 			v-on:onValue="setEmail" 
-			v-bind:label="this.d('Email')" 
+			v-bind:label="d('Email')" 
 			v-bind:type="'email'">
 		</text-field>
 
 		<text-field 
 			v-on:onValue="setPass"
-			v-bind:label="this.d('Password')" 
+			v-bind:label="d('Password')" 
 			v-bind:type="'password'">
 		</text-field>
 
 		<div 
-			class="login-form__link_forgot" 
-			v-on:click="setState('forgot')">{{this.d('forgot password')}}
+			class="link_forgot" 
+			v-on:click="nextScreen = 'forgot'">
+			{{d('forgot password')}}
 		</div>
 		
 		<btn-group>
 
 			<btn 
-				v-bind:label="this.d('log in')" 
+				v-bind:label="d('log in')" 
 				v-on:onClick="login">
 			</btn>
 
 			<btn 
-				v-bind:label="this.d('Sign in')" 
+				v-bind:label="d('Sign in')" 
 				v-bind:type="'link'"
-				v-on:onClick="setState('registration')" >
+				v-on:onClick="nextScreen = 'registration'" >
 			</btn>
 
 		</btn-group>
 		
-	</div>
+	</screen>
 </template>
 
 
@@ -51,6 +53,7 @@
 	import textField from './components/text-field.vue';
 	import logo from './components/logo.vue';
 	import btnGroup from './components/btn-group.vue';
+	import screen from './components/screen.vue';
 	
 	export default {
 		props: {
@@ -61,31 +64,24 @@
 			btn : btn,
 			textField : textField,
 			logo : logo,
-			btnGroup : btnGroup
+			btnGroup : btnGroup,
+			screen : screen
 		},
 		data: function() {
 			return {
 				__pass: '',
-				__email: ''
+				__email: '',
+				incorrect: false,
+				nextScreen: ''
 			}
-		},
-		created: function(){
-			
 		},
 		beforeMount: function() {
 			let __auth = auth.load();
 			if (__auth.authValid == 'true') this.loadData(__auth.email, __auth.pass);
-			
 		},
 		methods: {
 			setState: function(s) {
-				let $el = this.$el;
-				let __this = this;
-				$($el).addClass('login-form_hide').delay(200).queue(function() {
-					
-					__this.app.screen = s;
-					
-				});
+				this.app.screen = s; 
 			},
 			d: function(w){
 				return this.app.d[w.toLowerCase()][this.app.lang];
@@ -105,12 +101,12 @@
 					this.loadData(__email, __pass);
 					
 				} else {
-					this.incorrect();
+					this.incorrect = true;
 				}
 			},
 			loadData: function(email, pass) {
 				let __this = this;
-				this.app.screen = 'loading';
+				__this.setState('loading');
 				
 				request.post('login',{
 					email: email,
@@ -122,15 +118,7 @@
 					__this.setState('main');
 					
 				});
-				
-			},
-			incorrect: function() {
-				let $el = this.$el;
-				$($el).addClass('login-form_incorrect').delay(500).queue(function() {
-					$(this).removeClass('login-form_incorrect');
-					$(this).dequeue(); 
-				});
-			} 
+			}
 		}
 	}
 </script>
@@ -138,35 +126,9 @@
 
 <style lang="less">
 	@import './less/main.less';
-	@import './less/animations.less';
-
-	.login-form {
-		.fullscreen-form();
-		opacity: 1;
-
-		&__link_forgot {
-			text-align: right;
-			line-height: 32px;
-			color: @color-active;
-		}
-
-		&__logo {
-			.flex-block();
-			.justify-content(center);
-		}
-
-		&_hide {
-			opacity: 0;
-			.transition(all 0.2s ease);
-		}
-		
-		&_incorrect {
-			.animation(form-bounce .5s 1 ease);
-			
-			& * {
-				pointer-events: none;
-			}
-		}
-	
+	.link_forgot {
+		text-align: right;
+		line-height: 32px;
+		color: @color-active;
 	}
 </style>

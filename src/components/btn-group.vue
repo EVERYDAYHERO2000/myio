@@ -1,8 +1,15 @@
 <template>
-	<div class="btn-group">
+	<div 
+		v-bind:class="{
+			'btn-group_left'   : align == 'left', 
+			'btn-group_right'  : align == 'right',
+			'btn-group_center' : align == 'center'}" 
+		class="btn-group">
+		
 		<slot>
 			
 		</slot>
+		
 	</div>
 </template>
 
@@ -10,7 +17,12 @@
 <script>
 
 	export default {
-		
+		props: {
+			align : {
+				default: 'left',
+				type: String
+			}
+		}
 	}
 	
 </script>
@@ -20,10 +32,25 @@
 	@import '../less/main.less';
 	.btn-group {
 		.flex-block();
-		.justify-content(space-between);
 
 		& .btn:first-child {
 			margin-right: 20px;
+		}
+		
+		& .btn:only-child {
+			margin-right: 0;
+		}
+		
+		&_left {
+			.justify-content(space-between);
+		}
+		
+		&_right {
+			.justify-content(flex-end);
+		}
+		
+		&_center {
+			.justify-content(center);
 		}
 		
 		&_shade {

@@ -1,7 +1,10 @@
 <template>
 	<div 
 		class="text-field" 
-		v-bind:class="classList">
+		v-bind:class="{
+			'text-field_search' : type == 'search',
+			'text-field_date' : type == 'date'
+		}">
 
 		<div 
 			v-if="type == 'search'" 
@@ -11,7 +14,7 @@
 		<input 
 			v-bind:placeholder="placeholder"
 			v-bind:value="value"
-			v-bind:type="fieldType" 
+			v-bind:type="type" 
 			v-bind:id="setId()"
 			v-bind:name="setId()"
 			v-on:keyup="onChange" 
@@ -34,33 +37,23 @@
 	
 	export default {
 		props: {
-			label: String,
-			type: String,
-			value: String,
-			placeholder: String,
-			error: String
-		},
-		computed: {
-			fieldType: function() {
-				return (this.type) ? this.type : 'text';
+			label: {
+				default : '',
+				type: String
 			},
-			classList: function() {
-				let classList;
-				switch (this.type) {
-					case 'search':
-						classList = 'text-field_search';
-						break;
-
-					case 'date':
-						classList = 'text-field_date';
-						break;
-
-					default:
-						classList = '';
-						break;
-				}
-				return classList;
-			}
+			type: {
+				default: 'text',
+				type: String
+			},
+			value: {
+				default: '',
+				type: String
+			},
+			placeholder: {
+				default: '', 
+				type: String
+			},
+			error: String
 		},
 		methods: {
 			setId: function(){
@@ -69,9 +62,6 @@
 			onChange: function(e) {
 				this.$emit('onValue', $(this.$el).find('input').val());
 			}
-		},
-		created: function(){
-			
 		}
 	}
 </script>

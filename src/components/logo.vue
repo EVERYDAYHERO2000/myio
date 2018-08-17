@@ -36,11 +36,9 @@
 		created: function(){
 			this.colors = cssVars(':root');
 		},
-		
 		methods: {
 			
 		},
-
 		date: function(){
 			return {
 				colors : {}
@@ -52,14 +50,11 @@
 
 <style lang="less">
 	@import '../less/main.less';
-	
-
-	
+		
 	.logo { 
 		width: 90px;
 		height: 135px;
 		background-position: center;
 		background-repeat: no-repeat;
-
 	}
 </style>

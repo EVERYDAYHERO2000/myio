@@ -3,7 +3,7 @@
 		v-on:mousedown="click" 
 		v-on:mousemove="getCoordinate" 
 		class="btn" 
-		v-bind:class="setType()">
+		v-bind:class="{'btn_link' : type == 'link'}">
 		
 		<button v-bind:name="name">
 			<span>{{label}}</span>
@@ -16,16 +16,23 @@
 
 <script>
 	import $ from 'jquery';
+	
 	export default {
 		props: {
-			label: String,
-			name: String,
-			type: String
+			label: {
+				default: 'Label',
+				type: String
+			},
+			name: {
+				default: '',
+				type: String
+			},
+			type: {
+				default : '',
+				type : String
+			}
 		},
 		methods: {
-			setType: function(){
-				return (this.type == 'link') ? 'btn_link' : '';
-			},
 			getCoordinate: function(e) {
 				let $el = this.$el;
 				$($el).find('.btn__drop').css({

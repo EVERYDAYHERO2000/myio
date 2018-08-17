@@ -331,6 +331,11 @@ let d = {
 			eng: 'December',
 			ru: 'Декабрь',
 			zh: '十二月'
+		},
+		'back' : {
+			eng: 'Back',
+			ru: 'Назад',
+			zh: ''
 		}
 	};
 

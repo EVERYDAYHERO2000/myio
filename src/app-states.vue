@@ -2,7 +2,7 @@
 	<div class="app-states">
 
 	<div 
-		class="app-states__loading" 
+		class="app-states__screen" 
 		v-if="app.screen === 'loading'">
 		<loading-spinner>
 		</loading-spinner>
@@ -22,30 +22,30 @@
 	</div>
 
 	<div 
-		class="app-states__registration" 
+		class="app-states__screen" 
 		v-else-if="app.screen === 'registration'">
-		<registration-form 
+		<state-registration 
 			v-bind:opt="opt"
 			v-bind:app="app">
-		</registration-form>
+		</state-registration>
 	</div>
 
 	<div 
-		class="app-states__registration" 
+		class="app-states__screen" 
 		v-else-if="app.screen === 'forgot'">
-		<forgot-form 
+		<state-forgot 
 			v-bind:opt="opt"
 			v-bind:app="app">
-		</forgot-form>
+		</state-forgot>
 	</div>
 
 	<div 
-   class="app-states__login" 
+   class="app-states__screen" 
    v-else-if="app.screen === 'login'">
-    <login-form 
+    <state-login 
     	v-bind:opt="opt"
     	v-bind:app="app">
-    </login-form>
+    </state-login>
 	</div>
 
 </div>
@@ -55,9 +55,9 @@
 <script>
 	import loadingSpinner from './components/loading-spinner.vue';
 	import toolbar from './toolbar.vue';
-	import registrationForm from './registration-form.vue';
-	import forgotForm from './forgot-form.vue';
-	import loginForm from './login-form.vue';
+	import stateRegistration from './state-registration.vue';
+	import stateForgot from './state-forgot.vue';
+	import stateLogin from './state-login.vue';
 	import workStates from './work-states.vue';
 	
 	export default {
@@ -69,16 +69,17 @@
 			workStates : workStates,
 			loadingSpinner : loadingSpinner,
 			toolbar : toolbar,
-			registrationForm : registrationForm,
-			forgotForm : forgotForm,
-			loginForm : loginForm
+			stateRegistration : stateRegistration,
+			stateForgot : stateForgot,
+			stateLogin : stateLogin
 		}
 	}
 </script>
 
 
 <style lang="less">
-	@import './less/main.less'; 
+	@import './less/main.less';
+	@import './less/animations.less';
 	
 	.app-states {
 		width: 100vw;
@@ -89,17 +90,9 @@
 		left: 0;
 		box-sizing: border-box;
 		background-color: @color-background;
-		.filter(blur(0px));
 		.transition(all .3s ease);
 		
-
-		&__loading {
-			width: 100%;
-			height: 100%;
-			background-color: @color-white;
-		}
-
-		&__registration {
+		&__screen {
 			width: 100%;
 			height: 100%;
 			background-color: @color-white;
@@ -107,32 +100,9 @@
 			.vertical-scroll();
 		}
 
-		&__login {
-			width: 100%;
-			height: 100%;
-			background-color: @color-white;
-			.animation(app-states_show .3s ease 1);
-			.vertical-scroll();		
-		}
-
 		&__main {
 			width: 100%;
 			height: 100%;
 		}
-
-		&_blur {
-			.filter(blur(3px));
-			.transition(all .3s .2s ease);
-		}
-
-		@keyframes app-states_show {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
-
 	}
 </style>

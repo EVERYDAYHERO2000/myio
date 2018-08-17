@@ -1,51 +1,57 @@
 <template>
-	<div class="registration-form">
-			<div class="registration-form__header">{{this.d('Create your account')}}
-			</div>
 
+	<screen
+		v-bind:param="nextScreen"
+		v-bind:logo="false"
+		v-bind:incorrect="incorrect"
+		v-bind:header="d('Create your account')"
+		v-on:onClose="setState">
+		
 			<text-field 
 				v-on:onValue="setLogin" 
-				v-bind:label="this.d('Login')">
+				v-bind:label="d('Login')">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setEmail" 
-				v-bind:label="this.d('Email')" 
+				v-bind:label="d('Email')" 
 				v-bind:type="'email'">
 			</text-field>
 			
 			<text-field 
 				v-on:onValue="setSpace" 
-				v-bind:label="this.d('Space')">
+				v-bind:label="d('Space')">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setPass" 
-				v-bind:label="this.d('Password')" 
+				v-bind:label="d('Password')" 
 				v-bind:type="'password'">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setPass"
-				v-bind:label="this.d('Confirm password')" 
+				v-bind:label="d('Confirm password')" 
 				v-bind:type="'password'">
 			</text-field>
 
 			<btn-group>
 
 				<btn 
-					v-bind:label="this.d('Sign in')" 
+					v-bind:label="d('Sign in')" 
 					v-on:onClick="registration">
 				</btn>
 
 				<btn
-					v-bind:label="this.d('Log in')" 
+					v-bind:label="d('Log in')" 
 					v-bind:type="'link'"
-					v-on:onClick="setState('login')" >
+					v-on:onClick="nextScreen = 'login'" >
 				</btn>
 
 			</btn-group>
-	</div>
+			
+	</screen>
+	
 </template>
 
 
@@ -58,6 +64,7 @@
 	import textField from './components/text-field.vue';
 	import logo from './components/logo.vue';
 	import btnGroup from './components/btn-group.vue';
+	import screen from './components/screen.vue';
 	
 	export default {
 		props: {
@@ -69,25 +76,24 @@
 				__login: '',
 				__pass: '',
 				__space: '',
-				__email: ''
+				__email: '',
+				incorrect: false,
+				nextScreen: ''
 			}
 		},
 		components: {
 			btn : btn,
 			textField : textField,
 			logo : logo,
-			btnGroup : btnGroup 
+			btnGroup : btnGroup,
+			screen : screen
 		},
 		methods: {
-			setState: function(s) {
-				let $el = this.$el;
-				let __this = this;
-				$($el).addClass('registration-form_hide').delay(200).queue(function() {
-					__this.app.screen = s;
-				});
-			},
 			d: function(w){
 				return this.app.d[w.toLowerCase()][this.app.lang];
+			},
+			setState: function(s) {
+				this.app.screen = s;
 			},
 			setPass: function(e) {
 				this.__pass = e;
@@ -129,24 +135,4 @@
 
 <style lang="less">
 	@import './less/main.less';
-	.registration-form {
-		.fullscreen-form();
-		opacity: 1;
-
-		&__logo {
-			.flex-block();
-			.justify-content(center);
-		}
-
-		&__header {
-			.form-header();
-			text-align: center;
-			padding: 0 5px;
-		}
-
-		&_hide {
-			opacity: 0;
-			.transition(all 0.2s ease);
-		}
-	}
 </style>
