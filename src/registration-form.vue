@@ -31,7 +31,7 @@
 				v-bind:type="'password'">
 			</text-field>
 
-			<div class="registration-form__button-group">
+			<btn-group>
 
 				<btn 
 					v-bind:label="this.d('Sign in')" 
@@ -44,7 +44,7 @@
 					v-on:onClick="setState('login')" >
 				</btn>
 
-			</div>
+			</btn-group>
 	</div>
 </template>
 
@@ -57,6 +57,7 @@
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
 	import logo from './components/logo.vue';
+	import btnGroup from './components/btn-group.vue';
 	
 	export default {
 		props: {
@@ -74,7 +75,8 @@
 		components: {
 			btn : btn,
 			textField : textField,
-			logo : logo
+			logo : logo,
+			btnGroup : btnGroup 
 		},
 		methods: {
 			setState: function(s) {
@@ -130,15 +132,6 @@
 	.registration-form {
 		.fullscreen-form();
 		opacity: 1;
-
-		&__button-group {
-			.flex-block();
-			.justify-content(space-between);
-
-			& .btn:first-child {
-				margin-right: 20px;
-			}
-		}
 
 		&__logo {
 			.flex-block();

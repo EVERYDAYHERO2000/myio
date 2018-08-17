@@ -7,11 +7,13 @@
 				v-bind:label="this.d('Email')" 
 				v-bind:type="'email'">
 			</text-field>
-			<div class="login-form__button-group">
+			
+		<btn-group>
 			<btn 
 				v-bind:label="this.d('request password')">
 			</btn>
-		</div>
+		</btn-group>
+		
 	</div>
 </template>
 
@@ -24,6 +26,7 @@
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
 	import logo from './components/logo.vue';
+	import btnGroup from './components/btn-group.vue';
 	
 	export default {
 		props: {
@@ -33,7 +36,8 @@
 		components: {
 			btn : btn,
 			textField : textField,
-			logo : logo
+			logo : logo,
+			btnGroup : btnGroup 
 		},
 		methods: {
 			d: function(w){
@@ -49,15 +53,6 @@
 	.forgot-form {
 		.fullscreen-form();
 		opacity: 1;
-
-		&__button-group {
-			.flex-block();
-			.justify-content(space-between);
-
-			& .btn:first-child {
-				margin-right: 20px;
-			}
-		}
 
 		&__logo {
 			.flex-block();

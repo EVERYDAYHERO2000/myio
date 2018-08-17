@@ -37,12 +37,13 @@
 				v-bind:opt="opt">
 			</user-list>
 
-      <div class="add-form__button-group">
+      <btn-group class="btn-group_shade">
 		    <btn 
 		    	v-bind:label="this.d('create')" 
 		    	v-on:click.native="createNew">
 		    </btn>
-      </div>
+      </btn-group>
+      
     </div>
 
     <div v-if="this.active == 1">
@@ -65,12 +66,13 @@
 				v-bind:opt="opt">
 			</user-list>
 
-      <div class="add-form__button-group">
+      <btn-group class="btn-group_shade">
 		    <btn 
 		    	v-bind:label="this.d('create')" 
 		    	v-on:click.native="createNew">
 		    </btn>
-      </div>
+      </btn-group>
+      
     </div>
 
     <div v-if="this.active == 2">
@@ -81,12 +83,13 @@
 				v-bind:label="this.d('email')">
 			</text-field>
 
-      <div class="add-form__button-group">
+      <btn-group class="btn-group_shade">
 		    <btn 
 		    	v-bind:label="this.d('invite')" 
 		    	v-on:click.native="createNew">
 		    </btn>
-      </div>
+      </btn-group>
+      
     </div>
 
 </div>
@@ -103,6 +106,7 @@
 	import textField from './components/text-field.vue';
 	import selectList from './components/select-list.vue';
 	import userList from './components/user-list.vue';
+	import btnGroup from './components/btn-group.vue';
 
 	
 	export default {
@@ -114,7 +118,8 @@
 			btn: btn,
 			textField: textField,
 			selectList: selectList,
-			userList: userList
+			userList: userList,
+			btnGroup: btnGroup
 		},
 		created: function() {
 			
@@ -229,26 +234,13 @@
 
 <style lang="less">
 	@import './less/main.less';
+	
 	.add-form {
 		margin: 0 auto;
 		height: 100vh;
-
 		opacity: 1;
 		padding: 20px 20px 0 0;
 		box-sizing: border-box;
-
-		&__button-group {
-			.flex-block();
-			.justify-content(space-between);
-			background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 1) 100%);
-			position: sticky;
-			bottom: 0px;
-			padding: 0 0 20px 0;
-
-			& .btn:first-child {
-				margin-right: 20px;
-			}
-		}
 
 		&__logo {
 			.flex-block();

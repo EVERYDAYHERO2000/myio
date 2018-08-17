@@ -20,7 +20,8 @@
 			class="login-form__link_forgot" 
 			v-on:click="setState('forgot')">{{this.d('forgot password')}}
 		</div>
-		<div class="login-form__button-group">
+		
+		<btn-group>
 
 			<btn 
 				v-bind:label="this.d('log in')" 
@@ -33,7 +34,8 @@
 				v-on:onClick="setState('registration')" >
 			</btn>
 
-		</div>
+		</btn-group>
+		
 	</div>
 </template>
 
@@ -48,6 +50,7 @@
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
 	import logo from './components/logo.vue';
+	import btnGroup from './components/btn-group.vue';
 	
 	export default {
 		props: {
@@ -57,7 +60,8 @@
 		components: {
 			btn : btn,
 			textField : textField,
-			logo : logo
+			logo : logo,
+			btnGroup : btnGroup
 		},
 		data: function() {
 			return {
@@ -144,15 +148,6 @@
 			text-align: right;
 			line-height: 32px;
 			color: @color-active;
-		}
-
-		&__button-group {
-			.flex-block();
-			.justify-content(space-between);
-
-			& .btn:first-child {
-				margin-right: 20px;
-			}
 		}
 
 		&__logo {
