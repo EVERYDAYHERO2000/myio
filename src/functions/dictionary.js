@@ -271,6 +271,66 @@ let d = {
 			eng: 'Chinese',
 			ru: 'Китайский',
 			zh: '中國'
+		},
+		'january' : {
+			eng: 'January',
+			ru: 'Январь',
+			zh: '一月'
+		},
+		'february': {
+			eng: 'February',
+			ru: 'Февраль',
+			zh: '二月'
+		},
+		'march': {
+			eng: 'March',
+			ru: 'Март',
+			zh: '三月'
+		},
+		'april': {
+			eng: 'April',
+			ru: 'Апрель',
+			zh: '四月'
+		},
+		'may' : {
+			eng: 'May',
+			ru: 'Май',
+			zh: '五月'
+		},
+		'june': {
+			eng: 'June',
+			ru: 'Июнь',
+			zh: '六月'
+		},
+		'july': {
+			eng: 'July',
+			ru: 'Июль',
+			zh: '七月'
+		},
+		'august': {
+			eng: 'August',
+			ru: 'Август',
+			zh: '八月'
+		},
+		'september' : {
+			eng: 'September',
+			ru: 'Сентябрь',
+			zh: '九月'
+		},
+		'october' : {
+			eng: 'October',
+			ru: 'Октябрь',
+			zh: '十月'
+		},
+		'november': {
+			eng: 'November',
+			ru : 'Ноябрь',
+			zh : '十一月'
+		},
+		'december' : {
+			eng: 'December',
+			ru: 'Декабрь',
+			zh: '十二月'
 		}
 	};
 

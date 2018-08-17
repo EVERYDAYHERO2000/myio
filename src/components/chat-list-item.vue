@@ -3,32 +3,43 @@
 	v-on:click="setChatActive" 
 	class="chat-list-item" 
 	v-bind:class="{ 'chat-list-item_active' : isActive }">
+	
 	<contact-icon-chip 
 		v-bind:type="type"
 		v-bind:title="chat.name">
 	</contact-icon-chip>
+	
 	<div class="chat-list-item__content">
 		<div class="chat-list-item__title">{{ chat.name }}</div>
 		<div class="chat-list-item__description">
+     
       <user-name 
       	v-bind:class="{ 'user-name__on-active' : isActive }" 
-      	v-bind:name="(lastMessage.isVisible) ? lastMessage.author.login : ''"></user-name> 
+      	v-bind:name="(lastMessage.isVisible) ? lastMessage.author.login : ''">
+      </user-name> 
+      	
 			<div class="chat-list-item__last-message"> {{ (lastMessage.isVisible) ? lastMessage.text : '' }}</div>
 		</div>
 	</div>
   <div class="chat-list-item__info">
     <div class="chat-list-item__date">
+    
 			<date-time 
 				v-bind:format="'dateTime'"
 				v-bind:date="lastMessage.date">
 			</date-time>
+			
     </div>
-    <div 
-    	v-on:click.stop="setChatPinned" 
-    	class="chat-list-item__keep"
-    	v-bind:title="this.d('pin')" 
-    	v-bind:class="{ 'chat-list-item__keep_pined' : chat.isPinned }">
+    
+    <div class="chat-list-item__keep" v-on:click.stop="setChatPinned" >
+    	
+			<pin 
+				v-bind:title="this.d('pin')"
+				v-bind:class="{ 'pin_pined' : chat.isPinned }">
+			</pin>
+			
     </div>
+    
   </div>
 </div>
 </template>
@@ -41,6 +52,7 @@
 	import contactIconChip from '../components/contact-icon-chip.vue';
 	import userName from '../components/user-name.vue';
 	import dateTime from '../components/date-time.vue';
+	import pin from '../components/pin.vue';
 
 	export default {
 		props: {
@@ -55,7 +67,8 @@
 		components: {
 			contactIconChip: contactIconChip,
 			userName: userName,
-			dateTime: dateTime
+			dateTime: dateTime,
+			pin: pin
 		},
 		methods: {
 			
@@ -211,10 +224,6 @@
 			background-color: @color-active;
 		}
 
-		&_active &__keep {
-			.filter(brightness(10));
-		}
-
 		&__content {
 			box-sizing: border-box;
 			padding: 0 0 0 @padding;
@@ -242,22 +251,9 @@
 		}
 
 		&__keep {
-			width: 20px;
-			height: 20px;
-			background-image: ~"url(../assets/keep.svg)";
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: center;
 			position: absolute;
 			right: 0;
 			bottom: 0;
-			opacity: 0.2;
-			.filter(grayscale(100));
-
-			&_pined {
-				opacity: 1;
-				.filter(none);
-			}
 		}
 
 		&__date {

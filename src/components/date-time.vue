@@ -5,7 +5,7 @@
 
 <script>
 
-	import dateTitme from '../functions/date-time.js';
+	import getDateTitme from '../functions/date-time.js';
 		
 	export default {
 		props: {
@@ -14,7 +14,7 @@
 		},
 		methods: {
 			setDate : function(){
-				return dateTitme(this.date)[this.format];
+				return getDateTitme(this.date)[this.format];
 			}
 		}
 	}

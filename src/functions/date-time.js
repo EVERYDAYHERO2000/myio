@@ -1,4 +1,5 @@
-"use strict";
+'use strict';
+import d from '../functions/dictionary.js';
 
 const getDateTime = function (date) { 
 	
@@ -6,9 +7,8 @@ const getDateTime = function (date) {
 	
 	date = (date && typeof date == 'string' && date.indexOf('T') + 1 ) ? date.split('.')[0].replace(/T/gi, ' ') : date;	
 	
-	
 	date = (date instanceof Date) ? date : new Date( date.replace(/-/g, '/') );
-	let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	let monthNames = [d.january, d.february, d.march, d.april, d.may, d.june, d.july, d.august, d.september, d.october, d.november, d.december];
 	let dateTime = {}
 	
 	dateTime.raw = date;
@@ -19,7 +19,7 @@ const getDateTime = function (date) {
 	dateTime.seconds = stringifyNumber(date.getSeconds());
 	dateTime.fullYear = stringifyNumber(date.getFullYear());
 	dateTime.month = stringifyNumber(date.getMonth() + 1);
-	dateTime.monthName = monthNames[date.getMonth()];
+	dateTime.monthName = monthNames[date.getMonth()][APP.$data.app.lang || 'eng'];
 	dateTime.day = stringifyNumber(date.getDate());
 	dateTime.time = [dateTime.hours,dateTime.minute].join(':');
 	dateTime.date = [dateTime.monthName,dateTime.day].join(' ');

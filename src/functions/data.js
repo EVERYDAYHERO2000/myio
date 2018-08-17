@@ -1,9 +1,7 @@
 "use strict";
 
 import $ from 'jquery';
-import getDateTime from '../functions/date-time.js';
 import changeColor from '../functions/change-color.js';
-import d from '../functions/dictionary.js';
 
 const data = {};
 
