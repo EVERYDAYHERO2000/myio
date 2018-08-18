@@ -3,7 +3,7 @@
 	
 		<div 
 			class="panel-header__titlebar" 
-			v-bind:title="this.d('expand')"
+			v-bind:title="d('expand')"
 			v-on:click="toggleHeaderPanel">{{title}}
 		</div>
 		<div 
@@ -21,8 +21,10 @@
 	
 	export default {
 		props: {
-			title : String,
-			opt: Object,
+			title : {
+				default : '', 
+				type : String
+			},
 			app: Object
 		},
 		components: {

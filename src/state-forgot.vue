@@ -8,14 +8,14 @@
 		v-on:onClose="setState">
 		
 		<text-field 
-			v-bind:label="this.d('Email')" 
+			v-bind:label="d('Email')" 
 			v-bind:type="'email'">
 		</text-field>
 			
 		<btn-group>
 			
 			<btn 
-				v-bind:label="this.d('send')">
+				v-bind:label="d('send')">
 			</btn>
 			
 			<btn 

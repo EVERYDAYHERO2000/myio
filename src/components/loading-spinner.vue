@@ -1,5 +1,5 @@
 <template>
-	<svg class="loading-spinner" viewBox="0 0 50 50">
+	<svg class="loading-spinner" viewBox="0 0 50 50" v-bind:class="{ 'loading-spinner_local' : type == 'local' }" >
  		<circle class="path" cx="25" cy="25" r="20"></circle>
 	</svg>
 </template>
@@ -7,7 +7,12 @@
 
 <script>
 	export default {
-
+		props: {
+			type : {
+				default: 'fullscreen',
+				type: String
+			}
+		}
 	}
 </script>
 

@@ -1,7 +1,7 @@
 <template>
 <div class="user-list">
   <div class="user-list__header">
-    <div class="user-list__title">{{this.d('Users')}}</div>
+    <div class="user-list__title">{{d('Users')}}</div>
     <div class="user-list__counter">{{UsersCanBeRemoved.length}}</div>
   </div>
 

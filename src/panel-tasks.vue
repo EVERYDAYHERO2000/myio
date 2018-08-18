@@ -17,7 +17,7 @@
 
 			<text-field 
 				v-bind:label="''" 
-				v-bind:placeholder="this.d('Search')"
+				v-bind:placeholder="d('Search')"
 				v-bind:type="'search'">
 			</text-field>
 			

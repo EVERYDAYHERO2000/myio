@@ -1,7 +1,7 @@
 <template>
 	<div class="settings-form">
 		<div class="settings-form__setting-list">
-			<div class="settings-form__header">{{this.d('Settings')}}</div>
+			<div class="settings-form__header">{{d('Settings')}}</div>
 			<div class="link-list">
 				<div 
 					v-for="settingListItem in settingList" 

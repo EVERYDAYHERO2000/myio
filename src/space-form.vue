@@ -1,6 +1,6 @@
 <template>
 	<div class="space-form">
-		<div class="space-form__header">{{this.d('Spaces')}}</div>
+		<div class="space-form__header">{{d('Spaces')}}</div>
 		<div class="link-list">
 			
 			<div 

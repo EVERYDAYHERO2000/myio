@@ -34,8 +34,8 @@
     <div class="chat-list-item__keep" v-on:click.stop="setChatPinned" >
     	
 			<pin 
-				v-bind:title="this.d('pin')"
-				v-bind:class="{ 'pin_pined' : chat.isPinned }">
+				v-bind:title="d('pin')"
+				v-bind:state="(chat.isPinned) ? true : false">
 			</pin>
 			
     </div>

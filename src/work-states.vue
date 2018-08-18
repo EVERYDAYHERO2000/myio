@@ -15,14 +15,14 @@
 				<!--CHATS-->
 				<SplitArea 
 					class="panel panel_white"
-					v-bind:size="this.panelsSettings.panelLeft" 
+					v-bind:size="panelsSettings.panelLeft" 
 					v-bind:minSize="300">
 
 					<panel-chats 
 						v-bind:opt="opt" 
 						v-bind:app="app" 
 						v-bind:type="'chats'" 
-						v-bind:panelTitle="this.d('Chats')">
+						v-bind:panelTitle="d('Chats')">
 					</panel-chats>
 
 				</SplitArea>
@@ -31,14 +31,14 @@
 				<!--MESSAGES-->
 				<SplitArea 
 					class="panel panel_messages"
-					v-bind:size="this.panelsSettings.panelCenter" 
+					v-bind:size="panelsSettings.panelCenter" 
 					v-bind:minSize="300">
 				 
 					<panel-messages 
 						v-bind:opt="opt"
 						v-bind:app="app"
 						v-bind:type="'messages'"
-						v-bind:panelTitle="this.d('Messages')">
+						v-bind:panelTitle="d('Messages')">
 					</panel-messages>
 					
 				</SplitArea>
@@ -47,14 +47,14 @@
 				<!--TASKS-->  
 				<SplitArea 
 				 class="panel panel_white"
-				 v-bind:size="this.panelsSettings.panelRight" 
+				 v-bind:size="panelsSettings.panelRight" 
 				 v-bind:minSize="300">
 
 					<panel-tasks 
 						v-bind:opt="opt"
 						v-bind:app="app"
 						v-bind:type="'tasks'" 
-						v-bind:panelTitle="this.d('Tasks')">
+						v-bind:panelTitle="d('Tasks')">
 					</panel-tasks>
 
 				</SplitArea>

@@ -10,25 +10,26 @@
     v-on:onActive="this.setActive">
   </select-list>
     
+    <!--CREATE TASK-->
     <div v-if="this.active == 0">
 
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:label="this.d('title')">
+				v-bind:label="d('title')">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDescription" 
 				v-bind:type="'text'"
-				v-bind:label="this.d('description')">
+				v-bind:label="d('description')">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDate"
 				v-bind:value="this.date"
 				v-bind:type="'date'"
-				v-bind:label="this.d('deadlined')">
+				v-bind:label="d('deadlined')">
 			</text-field>
 
       <user-list 
@@ -39,25 +40,27 @@
 
       <btn-group class="btn-group_shade">
 		    <btn 
-		    	v-bind:label="this.d('create')" 
+		    	v-bind:label="d('create')" 
 		    	v-on:click.native="createNew">
 		    </btn>
       </btn-group>
       
     </div>
+    <!--CREATE TASK END-->
 
+   	<!--CREATE CHAT-->
     <div v-if="this.active == 1">
 
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:label="this.d('title')">
+				v-bind:label="d('title')">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDescription"
 				v-bind:type="'text'"
-				v-bind:label="this.d('description')">
+				v-bind:label="d('description')">
 			</text-field>
 
       <user-list 
@@ -68,29 +71,24 @@
 
       <btn-group class="btn-group_shade">
 		    <btn 
-		    	v-bind:label="this.d('create')" 
+		    	v-bind:label="d('create')" 
 		    	v-on:click.native="createNew">
 		    </btn>
       </btn-group>
       
     </div>
+    <!--CREATE CHAT END-->
 
+   	<!--ADD USER-->
     <div v-if="this.active == 2">
 
-      <text-field 
-				v-on:onValue="setEmail" 
-				v-bind:type="'email'"
-				v-bind:label="this.d('email')">
-			</text-field>
-
-      <btn-group class="btn-group_shade">
-		    <btn 
-		    	v-bind:label="this.d('invite')" 
-		    	v-on:click.native="createNew">
-		    </btn>
-      </btn-group>
+     	<add-user
+     		v-bind:opt="opt"
+     		v-bind:app="app">
+     	</add-user>
       
     </div>
+    <!--ADD USER END-->
 
 </div>
 </template>
@@ -102,6 +100,7 @@
 	import getDateTime from './functions/date-time.js';
 	import request from './functions/request.js';
 
+	import addUser from './add-user.vue';
 	import btn from './components/btn.vue';
 	import textField from './components/text-field.vue';
 	import selectList from './components/select-list.vue';
@@ -119,7 +118,8 @@
 			textField: textField,
 			selectList: selectList,
 			userList: userList,
-			btnGroup: btnGroup
+			btnGroup: btnGroup,
+			addUser: addUser
 		},
 		created: function() {
 			
@@ -135,9 +135,6 @@
 			setDescription: function(e) {
 				this.description = e;
 			},
-			setEmail: function(e) {
-				this.email = e;
-			},
 			setDate: function(e) {
 				this.date = e;
 			},
@@ -149,11 +146,6 @@
 			},
 			createNew: function() {
 				let __this = this;
-				
-				//типа события
-				let eventType = (function(e){
-					return (e != '3') ? 'createNewChat' : 'addNewUser';
-				})(this.dataType[this.active].value);
 				
 				//тип чата:чат/задача
 				let chatType = (function(e){
@@ -184,7 +176,7 @@
 					return temp;
 				})(this.opt);
 				
-				request.post(eventType, {
+				request.post('createNewChat', {
 					author: this.opt.user.id,
 					name: this.title,
 					description: this.description,

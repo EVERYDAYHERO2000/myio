@@ -11,8 +11,10 @@
 
 	<div class="user-item__content">
 		<user-name v-bind:name="opt.email"></user-name>
-	</div>	
+	</div>
+		
 	<div 
+		v-if="removeble"
 		class="user-item__remove" 
 		v-on:click="onRemove">
 	</div>
@@ -30,7 +32,14 @@
 	export default {
 		props: {
 			opt: Object,
-			index: Number
+			removeble : {
+				default: true,
+				type: Boolean
+			},
+			index: {
+				default: 0,
+				type: Number
+			}
 		},
 		components : {
 			contactIconChip : contactIconChip,

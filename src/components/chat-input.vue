@@ -1,7 +1,7 @@
 <template>
 	<div class="chat-input">
 		<div 	
-			v-bind:title="this.d('add file')" 
+			v-bind:title="d('add file')" 
 			class="chat-input__add-file">
 		</div>
 		<textarea 
@@ -14,7 +14,7 @@
 		<div 
 			class="chat-input__send" 
 			v-on:click="addNewMessage" 
-			v-bind:title="this.d('send') + ': ⌘ + Enter'">
+			v-bind:title="d('send') + ': ⌘ + Enter'">
 			
 			<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     		<polygon 

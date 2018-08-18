@@ -3,7 +3,12 @@
 	<div 
 		v-bind:style="stylize()"
 		class="contact-icon-chip"
-		v-bind:class="cssClass()" >
+		v-bind:class="{
+			'contact-icon-chip_task' : type == 'task',
+			'contact-icon-chip_chat' : type == 'chat',
+			'contact-icon-chip_s' 	 : size == 's',
+			'contact-icon-chip_m' 	 : size == 'm'
+		}" >
 			{{ (title) ? title[0].toUpperCase() : '' }}
 	</div>
 	
@@ -16,10 +21,22 @@
 
 	export default {
 		props: {
-			title: String,
-			image: String,
-			type: String,
-			size: String
+			title: {
+				default : '',
+				type : String
+			},
+			image: {
+				default: '',
+				type: String
+			},
+			type: {
+				default: 'chat',
+				type: String
+			},
+			size: {
+				default: 'm',
+				type: String
+			}
 		},
 		methods: {
 			stylize : function(){
@@ -28,15 +45,7 @@
 					cssRule = [cssRule,`background-image: url( ${this.image} )`,`color: transparent`].join(';');
 				}
 				return cssRule;
-			},
-			cssClass : function(){
-				let typeCssClass = (this.type == 'task') ? 'contact-icon-chip_task' : 'contact-icon-chip_chat';
-				let sizeCssClass = (this.size) ? 'contact-icon-chip_' + this.size : 'contact-icon-chip_m';
-				return [typeCssClass, sizeCssClass];
 			}
-		},
-		created: function() {
-
 		}
 	}
 </script>
