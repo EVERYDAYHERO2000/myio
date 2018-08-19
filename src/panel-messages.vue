@@ -41,6 +41,7 @@
 
 <script>
 	import $ from 'jquery';
+	import F from './functions/functions.js';
 	
 	import panelHeader from './components/panel-header.vue';
 	import selectList from './components/select-list.vue';
@@ -79,18 +80,11 @@
 		},
 		computed: {
 			messages : function(){
-				let activeChat = this.opt.user.activeChatId;
-				let messages = this.opt.messages;
-				let messagesLength = messages.length;
 				let tempList = [];
-				
-				for (var i = 0; i < messagesLength; i++){
-					if ( messages[i].chatsId == activeChat ){
-						tempList.push(messages[i]);
-					}
-				}
+				F.ifExist(this.opt.messages, 'chatsId', this.opt.user.activeChatId, function(e){
+					tempList.push(e.object);
+				});
 				return tempList;
-				
 			}
 		}
 	}

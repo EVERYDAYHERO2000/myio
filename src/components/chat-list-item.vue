@@ -48,6 +48,7 @@
 <script>
 	import $ from 'jquery';
 	import request from '../functions/request.js';
+	import F from '../functions/functions.js';
 	
 	import contactIconChip from '../components/contact-icon-chip.vue';
 	import userName from '../components/user-name.vue';
@@ -61,7 +62,7 @@
 			opt: Object,
 			type: String
 		},
-		created: function(){
+		created: function(){ 
 
 		},
 		components: {
@@ -98,16 +99,6 @@
 				}, function(e){
 					APP.$set(APP.opt.chatsRooms[__this.chat.chatsRoomsIndex], 'isPinned', pin);	
 				});	
-			},
-			
-			getChatRoom: function(callback) {
-				let chatsRooms = this.opt.chatsRooms;
-				for (var i = 0; i < chatsRooms.length; i++){
-					if (chatsRooms[i].chatsId == this.chat.id && chatsRooms[i].usersId == this.opt.user.id) {
-						if (callback) callback(i, chatsRooms[i]);
-						return chatsRooms[i];
-					}
-				}
 			}
 		},
 		computed: {
@@ -135,11 +126,8 @@
 				let temp = {};
 				
 				if (length){
-					for (var i = 0; i < length; i++ ) {
-						if (this.opt.messages[i].chatsId == chatId){
-							temp = this.opt.messages[i];
-						}
-					}
+					
+					temp = F.ifExist(this.opt.messages, 'chatsId', this.chat.id).object;
 					
 					message.isVisible = true;
 					message.date = temp.date || message.date;
