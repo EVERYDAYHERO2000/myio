@@ -33,11 +33,12 @@
 
 <script>
 	import $ from 'jquery';
-	
+	import F from '../functions/functions.js';
+
 	import selectList from '../components/select-list.vue';
 	import userItem from '../components/user-item.vue';
-	
-	
+
+
 	export default {
 		props: {
 			opt: Object,
@@ -57,22 +58,31 @@
 				this.UsersCanBeAdded.push(this.UsersCanBeRemoved[e]);
 				this.UsersCanBeRemoved.splice(e, 1);
 			},
-			d: function(w){
+			d: function(w) {
 				return this.app.d[w.toLowerCase()][this.app.lang];
+			},
+			users: function() {
+				let temp = JSON.parse(JSON.stringify(this.opt.userList));
+
+				F.ifExist(temp, 'id', APP.$data.opt.user.id, function(e) {}, function(e) {
+					temp.splice(e.index, 1);
+				});
+
+				return temp;
 			}
 		},
-		created: function(){
+		created: function() {
 			
 		},
-		beforeUpdate: function(){
-			
+		beforeUpdate: function() {
+
 		},
 		mounted: function() {
-			
+
 		},
 		data: function() {
 			return {
-				UsersCanBeAdded: JSON.parse(JSON.stringify(this.opt.userList)),
+				UsersCanBeAdded: this.users(),
 				UsersCanBeRemoved: []
 			}
 		},
@@ -85,7 +95,7 @@
 
 <style lang="less">
 	@import '../less/main.less';
-	
+
 	.user-list {
 		box-sizing: border-box;
 		padding: 40px 0 0 0;

@@ -83,6 +83,7 @@
     <div v-if="this.active == 2">
 
      	<add-user
+     		v-on:userSubmit="close"
      		v-bind:opt="opt"
      		v-bind:app="app">
      	</add-user>
@@ -99,6 +100,7 @@
 
 	import getDateTime from './functions/date-time.js';
 	import request from './functions/request.js';
+	import F from './functions/functions.js';
 
 	import addUser from './add-user.vue';
 	import btn from './components/btn.vue';
@@ -144,6 +146,9 @@
 			d: function(w){
 				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
+			close: function(){
+				this.$emit('success', true);
+			},
 			createNew: function() {
 				let __this = this;
 				
@@ -159,22 +164,10 @@
 				})(this.dataType[this.active].value);
 				
 				//список пользователей
-				let userList = (function(arr){
-					let tempList = [];
-					for(var i = 0; i < arr.length; i++ ){
-						tempList.push(arr[i].id);
-					}
-					return tempList.join();
-				})(this.userList);
+				let userList = F.joinObjectsKeys(this.userList,'id').string;
 				
 				//текущее пространство
-				let currentSpace = (function(opt){
-					let temp;
-					for (var i = 0; i < opt.chats.length; i++){
-						if (opt.chats[i].id == opt.user.activeChatId) temp = opt.chats[i].spacesId;
-					}
-					return temp;
-				})(this.opt);
+				let currentSpace = F.ifExist(this.opt.chats, 'id', this.opt.user.activeChatId).object.spacesId;
 				
 				request.post('createNewChat', {
 					author: this.opt.user.id,

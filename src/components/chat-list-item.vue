@@ -14,6 +14,7 @@
 		<div class="chat-list-item__description">
      
       <user-name 
+      	v-if="lastMessage.isVisible"
       	v-bind:class="{ 'user-name__on-active' : isActive }" 
       	v-bind:name="(lastMessage.isVisible) ? lastMessage.author.login : ''">
       </user-name> 
@@ -49,7 +50,7 @@
 	import $ from 'jquery';
 	import request from '../functions/request.js';
 	import F from '../functions/functions.js';
-	
+
 	import contactIconChip from '../components/contact-icon-chip.vue';
 	import userName from '../components/user-name.vue';
 	import dateTime from '../components/date-time.vue';
@@ -62,7 +63,7 @@
 			opt: Object,
 			type: String
 		},
-		created: function(){ 
+		created: function() {
 
 		},
 		components: {
@@ -72,85 +73,59 @@
 			pin: pin
 		},
 		methods: {
-			
-			d: function(w){
+
+			d: function(w) {
 				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
-			
+
 			//сделать чат активным
 			setChatActive: function() {
 				let __this = this;
 				request.post('setChatActive', {
 					userId: this.opt.user.id,
 					chatId: this.chat.id
-				}, function(e){
+				}, function(e) {
 					APP.$set(APP.opt.user, 'activeChatId', __this.chat.id);
 				});
 			},
 			//запинить/распинить чат
 			setChatPinned: function() {
 				let __this = this;
-				
+
 				let pin = !this.chat.isPinned;
 				request.post('setChatPinned', {
 					userId: __this.opt.user.id,
 					chatId: __this.chat.id,
 					isPinned: (pin) ? 1 : 0
-				}, function(e){
-					APP.$set(APP.opt.chatsRooms[__this.chat.chatsRoomsIndex], 'isPinned', pin);	
-				});	
+				}, function(e) {
+					APP.$set(APP.opt.chatsRooms[__this.chat.chatsRoomsIndex], 'isPinned', pin);
+				});
 			}
 		},
 		computed: {
 			//активный/неактивный
-			isActive: function(){
+			isActive: function() {
 				return (this.chat.id == this.opt.user.activeChatId) ? true : false;
 			},
-			
+
 			//последнее сообщение в чате
-			lastMessage: function(){
+			lastMessage: function() {
+				let __this = this;
 				let message = {};
-				message.isVisible = false;
-				message.date = this.chat.creationDate;
-				message.author = {
-					email : ''
-				};
-				message.text = null;
-				message.id = null;
-				message.userId = null;
-				message.chatsId = null;
+
+				F.ifExist(this.opt.messages, 'chatsId', this.chat.id, undefined, function(e){
+					if (e.status){
+						message.isVisible = true;
+						message.date = e.object.date || __this.chat.creationDate;
+						message.text = e.object.text || null;
+						message.userId = e.object.userId || null;
+						message.chatsId = e.object.chatsId || null;
+						message.id = e.object.id || null;
+						message.author = F.ifExist(__this.opt.userList, 'id', message.userId).object || { email:null };
+					}
+				});
 				
-				let chatId = this.chat.id;
-				let messages = this.opt.messages;
-				let length = (this.opt.messages) ? this.opt.messages.length : 0;
-				let temp = {};
-				
-				if (length){
-					
-					temp = F.ifExist(this.opt.messages, 'chatsId', this.chat.id).object;
-					
-					message.isVisible = true;
-					message.date = temp.date || message.date;
-					message.text = temp.text;
-					message.userId = temp.userId;
-					message.chatsId = temp.chatsId;
-					message.id = temp.id;
-					message.author = (function(userId, userList){
-						let length = (userList) ? userList.length : 0;
-						
-						for (var i = 0; i < length; i++){
-							if (message.userId == userList[i].id) {
-						
-								return userList[i]; 
-							} else {
-								return {email:''}
-							}
-						}
-					})(message.userId, this.opt.userList);
-					
-				} 
-				
-				return message
+				return message;
 			}
 		}
 	}
@@ -279,12 +254,12 @@
 			padding: 0 20px 0 0;
 			display: flex;
 		}
-		
+
 		&__last-message {
 			text-overflow: ellipsis;
-    	padding: 0 0 0 5px;
-    	box-sizing: border-box;
-    	overflow: hidden;
+			padding: 0 0 0 5px;
+			box-sizing: border-box;
+			overflow: hidden;
 		}
 
 	}

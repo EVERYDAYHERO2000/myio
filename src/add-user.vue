@@ -12,13 +12,15 @@
 			</loading-spinner>
       
       <div 
+      	class="add-user__info"
       	v-if="state == 2">
-      	Вы не можете пригласить сами себя
+      	😺 {{d('you cant invite yourself')}}
 			</div>
      
      	<div
+     		class="add-user__info"
      		v-if="state == 4">
-     		Пользователь уже есть в списке пользователей	
+     		🙄 {{d('this user is already available in the list of users')}}	
      	</div>
       
       <user-item
@@ -29,7 +31,7 @@
       
 
       <btn-group 
-      	v-if="state != 2 && state != 4"	
+      	v-if="state != 2 && state != 4 && state != 1"	
 				class="btn-group_shade">
 		    <btn 
 		    	v-bind:label="d('invite')" 
@@ -119,7 +121,7 @@
 				}
 			},
 			addUser: function(){
-				
+				let __this = this;
 				if (this.user.id){
 					let userId = this.user.id;
 					let spaceId = F.ifExist(this.opt.chats, 'id', this.opt.user.activeChatId).object.spacesId;
@@ -128,7 +130,15 @@
 						userId: userId,
 						spaceId: spaceId
 					}, function(d){
-						console.log(d)
+						let temp = {
+							userId: d.data.userId,
+							spaceId: d.data.spaceId,
+							spaceRoleId: d.data.spaceRoleId
+						}
+						
+						__this.$socket.emit('add user', JSON.stringify(temp));
+						__this.$emit('userSubmit', true);
+						
 					});
 					
 				}
@@ -149,6 +159,8 @@
 <style lang="less">
 	@import './less/main.less';
 	.add-user {
-		
+		&__info {
+			margin: 40px 0 0 0;
+		}
 	}
 </style>

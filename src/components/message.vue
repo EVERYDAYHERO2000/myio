@@ -22,6 +22,8 @@
 
 <script>
 	import $ from 'jquery';
+	import F from '../functions/functions.js';
+	
 	import contactIconChip from '../components/contact-icon-chip.vue';
 	import userName from '../components/user-name.vue';
 	import dateTime from '../components/date-time.vue';
@@ -38,14 +40,7 @@
 		},
 		computed : {
 			user : function(){
-				let userList = this.opt.userList;
-				let userListLength = userList.length;
-				for(var i = 0; i < userListLength; i++ ){
-					if (userList[i].id == this.message.userId){
-						
-						return userList[i];
-					}
-				}
+				return F.ifExist(this.opt.userList, 'id', this.message.userId).object;
 			}
 		}
 	}

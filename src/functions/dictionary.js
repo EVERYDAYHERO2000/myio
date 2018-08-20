@@ -336,6 +336,16 @@ let d = {
 			eng: 'Back',
 			ru: 'Назад',
 			zh: ''
+		},
+		'you cant invite yourself' : {
+			eng: 'You can\'t invite yourself.',
+			ru: 'Вы не можете пригласить сами себя',
+			zh: '你不能邀请自己'
+		},
+		'this user is already available in the list of users':{
+			eng: 'This user is already available in the list of users',
+			ru: 'Пользователь уже добавлен',
+			ch: '此用户已在用户列表中可用'
 		}
 	};
 

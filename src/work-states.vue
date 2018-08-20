@@ -94,6 +94,7 @@
 	import request from './functions/request.js';
 	import data from './functions/data.js';
 	import auth from './functions/auth.js';
+	import F from './functions/functions.js';
 
 
 	import panelChats from './panel-chats.vue';
@@ -159,6 +160,7 @@
 			let user = auth.load();
 			let chatsId = [];
 			let length = APP.opt.chatsRooms.length;
+			
 			for (var i = 0; i < length; i++){
 				chatsId.push(APP.opt.chatsRooms[i].chatsId);
 			}
@@ -167,14 +169,29 @@
 			//////////
 			this.$socket.on('chat message',function(msg){
 				let temp = JSON.parse(msg);
-				let chats = __this.opt.chats;
-				let chatsLength = chats.length;
-				for(var i = 0; i < chatsLength; i++){
-					if (chats[i].id == temp.data.chatsId) {
-						APP.$data.opt.messages.push(temp.data);
-					}
-				}
+				
+				F.ifExist(__this.opt.chats, 'id', temp.data.chatsId, undefined, function(e){
+					APP.$data.opt.messages.push(temp.data);
+				});
+				
 			});
+			
+			this.$socket.on('add user',function(msg){
+				let temp = JSON.parse(msg);
+				
+				if (F.ifExist(APP.$data.opt.spaceRoles, 'spaceId', temp.spaceId)){
+
+					request.post('loadUser', {
+						id : temp.userId
+					}, function(d){
+						APP.$data.opt.userList.push(d.data[0]);
+					});
+				}
+				
+				
+				
+			});
+			
 			this.$options.sockets.event_name = (data) => {
 				console.log(data)
 			
