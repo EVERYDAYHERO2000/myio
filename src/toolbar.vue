@@ -6,6 +6,8 @@
       v-if="app.state == 'chats'" 
       v-on:click.native="toggleToolbarAdd"
       v-bind:title="d('Create new')" 
+      v-bind:opt="opt"
+      v-bind:app="app"
       v-bind:icon="icons.icon_add">
     </toolbar-tool>
 

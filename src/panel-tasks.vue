@@ -53,6 +53,7 @@
 
 <script>
 	import $ from 'jquery';
+	import F from './functions/functions.js';
 	
 	import panelHeader from './components/panel-header.vue';
 	import selectList from './components/select-list.vue';
@@ -111,6 +112,8 @@
 				let chatsLength = chats.length;
 				let chatsRoomsLength = chatsRooms.length;
 				let newList = [];
+				let __this = this;
+				
 				for(var i = 0; i < chatsLength; i++){
 					if (chats[i].taskStatus != 'chat'){
 						for(var c = 0; c < chatsRoomsLength; c++){

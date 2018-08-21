@@ -338,7 +338,7 @@ let d = {
 			zh: ''
 		},
 		'you cant invite yourself' : {
-			eng: 'You can\'t invite yourself.',
+			eng: 'You can\'t invite yourself',
 			ru: 'Вы не можете пригласить сами себя',
 			zh: '你不能邀请自己'
 		},

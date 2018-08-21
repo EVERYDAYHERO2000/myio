@@ -2,6 +2,8 @@
 	<div 
 		v-on:click="toggleState" 
 		class="toolbar-tool"
+		v-bind:class="{ 'toolbar-tool_active' : app.state === data }"
+		v-bind:style="'background-image: url(' + icon + ');'"
 		v-bind:title="title">
 	</div>
 </template>
@@ -15,30 +17,16 @@
 			opt: Object,
 			app: Object,
 			icon: String,
-			data: String,
+			data: {
+				default: '',
+				type: String
+			},
 			title: String
 		},
 		methods: {
 			toggleState: function() {
-				if (this.data && this.app.state !== this.data) {
-					this.app.state = this.data;
-					this.setActive();
-				}
-			},
-			setActive: function() {
-				if (this.data && this.app.state === this.data) {
-					let $el = this.$el;
-					$('.toolbar-tool').removeClass('toolbar-tool_active');
-					$($el).addClass('toolbar-tool_active');
-				}
+				if (this.data && this.app.state !== this.data) this.app.state = this.data;
 			}
-		},
-		mounted: function() {
-			let $el = this.$el;
-			$($el).css({
-				'background-image': ['url(',this.icon,')'].join('')
-			});
-			this.setActive();
 		}
 	}
 </script>

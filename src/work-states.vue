@@ -158,12 +158,8 @@
 		created: function() { 
 			let __this = this;
 			let user = auth.load();
-			let chatsId = [];
-			let length = APP.opt.chatsRooms.length;
+			let chatsId = F.joinObjectsKeys(APP.opt.chatsRooms, 'chatsId').array;
 			
-			for (var i = 0; i < length; i++){
-				chatsId.push(APP.opt.chatsRooms[i].chatsId);
-			}
 			if (chatsId.length) this.loadMessages(user.email, user.pass, chatsId);
 			
 			//////////

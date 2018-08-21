@@ -32,17 +32,18 @@ func.ifExist = function(arr, key, value, step, final) {
 }
 
 /**
- * 
+ * Соединяет ключи объектов из массива в массив и строку
  * @param {Array} arr массив с объектами
- * @param {[[type]]} key ключ объекта
- * @param {[[type]]} step функция получает результат выполнения итерации цикла
- * @param {[[type]]} final функция получает результат выполнения
- * @return {[[type]]} Возвращает объект с массивом и массивом склеиным в строку
+ * @param {String} key ключ объекта
+ * @param {Function} step функция получает результат выполнения итерации цикла
+ * @param {Function} final функция получает результат выполнения
+ * @return {Object} Возвращает объект с массивом и массивом склеиным в строку
  */
 func.joinObjectsKeys = function(arr, key, step, final){
+	let length = arr.length;
 	let tempList = [];
 	let result = {};
-	for(var i = 0; i < arr.length; i++ ){
+	for(var i = 0; i < length; i++ ){
 		tempList.push(arr[i][key]);
 		if (step) step({
 			object: arr[i],
@@ -54,6 +55,21 @@ func.joinObjectsKeys = function(arr, key, step, final){
 	result.string = tempList.join();
 	if (final) final(result)
 	return result
+}
+
+/**
+ * Переберает массив
+ * @param {Array} arr Входящий массив
+ * @param {Function} step функция получает объект с индексом итерации цикла и собержимым по ключу
+ */
+func.each = function(arr,step){
+	let length = arr.length;
+	for(var i = 0; i < length; i++){
+		step({
+			index: i,
+			elem: arr[i]
+		});
+	}
 }
 
 export default func;
