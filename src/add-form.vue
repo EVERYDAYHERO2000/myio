@@ -16,20 +16,20 @@
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:label="d('title')">
+				v-bind:label="$d('title')">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDescription" 
 				v-bind:type="'text'"
-				v-bind:label="d('description')">
+				v-bind:label="$d('description')">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDate"
 				v-bind:value="this.date"
 				v-bind:type="'date'"
-				v-bind:label="d('deadlined')">
+				v-bind:label="$d('deadlined')">
 			</text-field>
 
       <user-list 
@@ -40,7 +40,7 @@
 
       <btn-group class="btn-group_shade">
 		    <btn 
-		    	v-bind:label="d('create')" 
+		    	v-bind:label="$d('create')" 
 		    	v-on:click.native="createNew">
 		    </btn>
       </btn-group>
@@ -54,13 +54,13 @@
       <text-field 
 				v-on:onValue="setTitle"
 				v-bind:type="'text'"
-				v-bind:label="d('title')">
+				v-bind:label="$d('title')">
 			</text-field>
 
       <text-field 
 				v-on:onValue="setDescription"
 				v-bind:type="'text'"
-				v-bind:label="d('description')">
+				v-bind:label="$d('description')">
 			</text-field>
 
       <user-list 
@@ -71,7 +71,7 @@
 
       <btn-group class="btn-group_shade">
 		    <btn 
-		    	v-bind:label="d('create')" 
+		    	v-bind:label="$d('create')" 
 		    	v-on:click.native="createNew">
 		    </btn>
       </btn-group>
@@ -143,9 +143,6 @@
 			setUserList: function(e) {
 				this.userList = e;
 			},
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			},
 			close: function(){
 				this.$emit('success', true);
 			},
@@ -200,15 +197,15 @@
 				return [
 					{
 						value: '1',
-						name: this.d('new task')
+						name: this.$d('new task')
 					},
 					{
 						value: '2',
-						name: this.d('new chat')
+						name: this.$d('new chat')
 					},
 					{
 						value: '3',
-						name: this.d('add user')
+						name: this.$d('add user')
 					}
 				]
 			}

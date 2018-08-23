@@ -8,7 +8,7 @@
 		
 		<text-field 
 			v-bind:label="''"
-			v-bind:placeholder="d('Search')"
+			v-bind:placeholder="$d('Search')"
 			v-bind:type="'search'">
 		</text-field>
 		
@@ -37,6 +37,7 @@
 		</chat-list-item>
 		
 	</div>
+	
 
 </div>
 </template>
@@ -63,9 +64,7 @@
 
 		},
 		methods: {
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			}
+
 		},
 		computed : {
 			chatList : function(){

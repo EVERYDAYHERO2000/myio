@@ -1,7 +1,7 @@
 <template>
 	<div class="settings-form">
 		<div class="settings-form__setting-list">
-			<div class="settings-form__header">{{d('Settings')}}</div>
+			<div class="settings-form__header">{{$d('Settings')}}</div>
 			<div class="link-list">
 				<div 
 					v-for="settingListItem in settingList" 
@@ -66,7 +66,7 @@
 				return [{
 						//profile settings
 						name: 'profile',
-						title: this.d('Profile'),
+						title: this.$d('Profile'),
 						form: [{
 								component: 'textField',
 								label: 'User Name',
@@ -86,7 +86,7 @@
 					{
 						//general settings
 						name: 'general',
-						title: this.d('General'),
+						title: this.$d('General'),
 						form: [{
 							component: 'selectList',
 							active: (() => {
@@ -127,7 +127,7 @@
 					},
 					{
 						name: 'spaces',
-						title: this.d('Spaces')
+						title: this.$d('Spaces')
 					}
 				]
 			}

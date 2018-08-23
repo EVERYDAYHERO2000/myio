@@ -7,31 +7,31 @@
 
 		<text-field 
 			v-on:onValue="setEmail" 
-			v-bind:label="d('Email')" 
+			v-bind:label="$d('Email')" 
 			v-bind:type="'email'">
 		</text-field>
 
 		<text-field 
 			v-on:onValue="setPass"
-			v-bind:label="d('Password')" 
+			v-bind:label="$d('Password')" 
 			v-bind:type="'password'">
 		</text-field>
 
 		<div 
 			class="link_forgot" 
 			v-on:click="nextScreen = 'forgot'">
-			{{d('forgot password')}}
+			{{$d('forgot password')}}
 		</div>
 		
 		<btn-group>
 
 			<btn 
-				v-bind:label="d('log in')" 
+				v-bind:label="$d('log in')" 
 				v-on:onClick="login">
 			</btn>
 
 			<btn 
-				v-bind:label="d('Sign in')" 
+				v-bind:label="$d('Sign in')" 
 				v-bind:type="'link'"
 				v-on:onClick="nextScreen = 'registration'" >
 			</btn>
@@ -82,9 +82,6 @@
 		methods: {
 			setState: function(s) {
 				this.app.screen = s; 
-			},
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
 			},
 			setPass: function(e) {
 				this.__pass = e;

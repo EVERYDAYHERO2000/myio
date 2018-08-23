@@ -3,7 +3,7 @@
 		<text-field 
 				v-on:onValue="setEmail" 
 				v-bind:type="'email'"
-				v-bind:label="d('email')">
+				v-bind:label="$d('email')">
 			</text-field>
 			
 			<loading-spinner 
@@ -14,13 +14,13 @@
       <div 
       	class="add-user__info"
       	v-if="state == 2">
-      	😺 {{d('you cant invite yourself')}}
+      	😺 {{$d('you cant invite yourself')}}
 			</div>
      
      	<div
      		class="add-user__info"
      		v-if="state == 4">
-     		🙄 {{d('this user is already available in the list of users')}}	
+     		🙄 {{$d('this user is already available in the list of users')}}	
      	</div>
       
       <user-item
@@ -34,7 +34,7 @@
       	v-if="state != 2 && state != 4 && state != 1"	
 				class="btn-group_shade">
 		    <btn 
-		    	v-bind:label="d('invite')" 
+		    	v-bind:label="$d('invite')" 
 		    	v-on:click.native="addUser">
 		    </btn>
       </btn-group>
@@ -67,9 +67,6 @@
 			userItem: userItem
 		},
 		methods: {
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			},
 			setEmail: function(e) {
 				function validateEmail(email) {
     			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

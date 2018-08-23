@@ -5,7 +5,7 @@
     <toolbar-tool 
       v-if="app.state == 'chats'" 
       v-on:click.native="toggleToolbarAdd"
-      v-bind:title="d('Create new')" 
+      v-bind:title="$d('Create new')" 
       v-bind:opt="opt"
       v-bind:app="app"
       v-bind:icon="icons.icon_add">
@@ -15,7 +15,7 @@
 
 		<toolbar-tool 
       v-on:click.native="toggleToolbarSpace"
-      v-bind:title="d('Work spaces')" 
+      v-bind:title="$d('Work spaces')" 
       v-bind:opt="opt"
       v-bind:app="app" 
       v-bind:icon="icons.icon_space">
@@ -26,7 +26,7 @@
     <toolbar-tool 
       v-bind:data="'chats'" 
       v-on:click.native="closeToolbar"
-      v-bind:title="d('Chats')" 
+      v-bind:title="$d('Chats')" 
       v-bind:opt="opt"
       v-bind:app="app" 
       v-bind:icon="icons.icon_forum">
@@ -37,7 +37,7 @@
       v-on:click.native="closeToolbar" 
       v-bind:opt="opt"
       v-bind:app="app"
-      v-bind:title="d('Calendar')" 
+      v-bind:title="$d('Calendar')" 
       v-bind:icon="icons.icon_event">
     </toolbar-tool>
 
@@ -46,7 +46,7 @@
       v-on:click.native="closeToolbar"
       v-bind:opt="opt"
       v-bind:app="app"
-      v-bind:title="d('Files')" 
+      v-bind:title="$d('Files')" 
       v-bind:icon="icons.icon_cloudQueue">
     </toolbar-tool>
 
@@ -55,7 +55,7 @@
       v-on:click.native="closeToolbar" 
       v-bind:opt="opt"
       v-bind:app="app"
-      v-bind:title="d('Settings')" 
+      v-bind:title="$d('Settings')" 
       v-bind:icon="icons.icon_settings">
     </toolbar-tool>
   </div>

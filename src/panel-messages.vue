@@ -23,16 +23,19 @@
 					<message
 						v-for="message in messages"
 						v-bind:opt="opt"
-						v-bind:message="message"></message>
+						v-bind:message="message">
+					</message>
 					
 				</div>	
 			</div>
+			
 			<div class="panel-messages__input">
 				<chat-input 
 					v-bind:app="app"
 					v-bind:opt="opt">
 				</chat-input>
 			</div>
+			
 		</div>
 	</div>
 	

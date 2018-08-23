@@ -4,46 +4,46 @@
 		v-bind:param="nextScreen"
 		v-bind:logo="false"
 		v-bind:incorrect="incorrect"
-		v-bind:header="d('Create your account')"
+		v-bind:header="$d('Create your account')"
 		v-on:onClose="setState">
 		
 			<text-field 
 				v-on:onValue="setLogin" 
-				v-bind:label="d('Login')">
+				v-bind:label="$d('Login')">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setEmail" 
-				v-bind:label="d('Email')" 
+				v-bind:label="$d('Email')" 
 				v-bind:type="'email'">
 			</text-field>
 			
 			<text-field 
 				v-on:onValue="setSpace" 
-				v-bind:label="d('Space')">
+				v-bind:label="$d('Space')">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setPass" 
-				v-bind:label="d('Password')" 
+				v-bind:label="$d('Password')" 
 				v-bind:type="'password'">
 			</text-field>
 
 			<text-field 
 				v-on:onValue="setPass"
-				v-bind:label="d('Confirm password')" 
+				v-bind:label="$d('Confirm password')" 
 				v-bind:type="'password'">
 			</text-field>
 
 			<btn-group>
 
 				<btn 
-					v-bind:label="d('Sign in')" 
+					v-bind:label="$d('Sign in')" 
 					v-on:onClick="registration">
 				</btn>
 
 				<btn
-					v-bind:label="d('Log in')" 
+					v-bind:label="$d('Log in')" 
 					v-bind:type="'link'"
 					v-on:onClick="nextScreen = 'login'" >
 				</btn>
@@ -89,9 +89,6 @@
 			screen : screen
 		},
 		methods: {
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			},
 			setState: function(s) {
 				this.app.screen = s;
 			},

@@ -1,15 +1,23 @@
 <template>
-	<div class="panel-header"> 
+	<div
+		v-on:contextmenu.prevent="context"
+		v-bind:class="{ 'panel-header_active' : isShowed }" 
+		class="panel-header"> 
 	
 		<div 
 			class="panel-header__titlebar" 
-			v-bind:title="d('expand')"
+			v-bind:title="$d('expand')"
 			v-on:click="toggleHeaderPanel">{{title}}
 		</div>
+		
 		<div 
-			v-if="isShowed" 
+			v-show="isShowed" 
 			class="panel-header__form">
-			<slot></slot>
+			
+			<slot>
+				
+			</slot>
+			
 		</div>
 	
 </div>
@@ -32,12 +40,21 @@
 		},
 		methods: {
 			toggleHeaderPanel: function() {
-				let el = this.$el;
-				$(el).toggleClass('panel-header_active');
 				this.isShowed = !this.isShowed;
 			},
 			d: function(w){
 				return this.app.d[w.toLowerCase()][this.app.lang];
+			},
+			context: function(e){
+				APP.$data.app.context.isShowed = true;
+				APP.$data.app.context.x = e.clientX;
+				APP.$data.app.context.y = e.clientY;
+				APP.$data.app.context.menu = [
+					{name: 'Развернуть'},
+					{name: 'Добавить'},
+					{name: 'Убавить'},
+					{name: 'Новый'}
+				]
 			}
 		},
 		data: function() {

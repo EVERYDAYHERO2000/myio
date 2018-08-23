@@ -1,8 +1,8 @@
 <template>
 	<div 
 		v-if="app.modal" 
-		class="app-modal">
-		<div class="app-modal__panel"></div>
+		class="modal">
+		<div class="modal__panel"></div>
 	</div>
 </template>
 
@@ -18,12 +18,9 @@
 		methods: {
 			toggleShow: function() {
 				let $el = this.$el;
-				$($el).find('.app-modal__panel').delay(100).queue(function() {
-					$($el).find('.app-modal__panel').toggleClass('app-modal__panel_active');
+				$($el).find('.modal__panel').delay(100).queue(function() {
+					$($el).find('.modal__panel').toggleClass('modal__panel_active');
 				});
-			},
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		},
 		mounted: function() {
@@ -37,9 +34,9 @@
 
 
 <style lang="less">
-	@import './less/main.less';
+	@import '../less/main.less';
 	
-	.app-modal {
+	.modal {
 		position: fixed;
 		top: 0;
 		left: 0;

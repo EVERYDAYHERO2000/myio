@@ -1,5 +1,6 @@
 <template>
 <div 
+	v-on:contextmenu.prevent="context"
 	v-on:click="setChatActive" 
 	class="chat-list-item" 
 	v-bind:class="{ 'chat-list-item_active' : isActive }">
@@ -35,7 +36,7 @@
     <div class="chat-list-item__keep" v-on:click.stop="setChatPinned" >
     	
 			<pin 
-				v-bind:title="d('pin')"
+				v-bind:title="$d('pin')"
 				v-bind:state="(chat.isPinned) ? true : false">
 			</pin>
 			
@@ -76,6 +77,16 @@
 
 			d: function(w) {
 				return this.app.d[w.toLowerCase()][this.app.lang];
+			},
+			context: function(e){
+				APP.$data.app.context.isShowed = true;
+				APP.$data.app.context.x = e.clientX;
+				APP.$data.app.context.y = e.clientY;
+				APP.$data.app.context.menu = [
+					{name: 'Копировать'},
+					{name: 'Вставить'},
+					{name: 'Удалить'}
+				]
 			},
 
 			//сделать чат активным

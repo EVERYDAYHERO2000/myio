@@ -1,7 +1,25 @@
 <template>
-	<div class="app__inner" v-bind:lang="app.lang">
-	<app-states v-bind:opt="opt" v-bind:app="app"></app-states>
-	<app-modal v-bind:opt="opt" v-bind:app="app"></app-modal>
+	<div 
+		class="app__inner" 
+		v-bind:lang="app.lang">
+		
+		<app-states 
+			v-bind:opt="opt" 
+			v-bind:app="app">	
+		</app-states>
+		
+		<modal 
+			v-bind:opt="opt" 
+			v-bind:app="app">
+		</modal>
+		
+		<context-menu
+			v-bind:isShowed="app.context.isShowed"
+			v-bind:menu="app.context.menu"
+			v-bind:y="app.context.y"
+			v-bind:x="app.context.x">
+		</context-menu>
+	
 	</div>
 </template>
 
@@ -11,16 +29,17 @@
 	
 	import auth from './functions/auth.js';
 	import lang from './functions/lang.js';
-	import d from './functions/dictionary.js';
-
+	
+	import contextMenu from './components/context-menu.vue';
 	import appStates from './app-states.vue';
-	import appModal from './app-modal.vue';
+	import modal from './components/modal.vue';
 
 	export default {
 		name: 'app',
 		components: {
 			appStates : appStates,
-			appModal : appModal
+			modal : modal,
+			contextMenu : contextMenu
 		},
 		data: function() {
 			return {
@@ -30,8 +49,13 @@
 					modal: false,
 					screen: "login",
 					state: "chats",
-					lang: lang.load(),
-					d : d
+					context: {
+						isShowed: false,
+						menu: [],
+						x: null,
+						y: null
+					},
+					lang: lang.load()
 				}
 			}
 		},

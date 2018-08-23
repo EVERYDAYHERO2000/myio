@@ -22,7 +22,7 @@
 						v-bind:opt="opt" 
 						v-bind:app="app" 
 						v-bind:type="'chats'" 
-						v-bind:panelTitle="d('Chats')">
+						v-bind:panelTitle="$d('Chats')">
 					</panel-chats>
 
 				</SplitArea>
@@ -38,7 +38,7 @@
 						v-bind:opt="opt"
 						v-bind:app="app"
 						v-bind:type="'messages'"
-						v-bind:panelTitle="d('Messages')">
+						v-bind:panelTitle="$d('Messages')">
 					</panel-messages>
 					
 				</SplitArea>
@@ -54,7 +54,7 @@
 						v-bind:opt="opt"
 						v-bind:app="app"
 						v-bind:type="'tasks'" 
-						v-bind:panelTitle="d('Tasks')">
+						v-bind:panelTitle="$d('Tasks')">
 					</panel-tasks>
 
 				</SplitArea>
@@ -125,9 +125,6 @@
 			panelMessages: panelMessages
 		},
 		methods: {
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			},
 			onDragStart(size) {
 				
 			},

@@ -3,23 +3,23 @@
 	<screen
 		v-bind:param="nextScreen"
 		v-bind:logo="false"
-		v-bind:header="d('request password')"
+		v-bind:header="$d('request password')"
 		v-bind:incorrect="incorrect"
 		v-on:onClose="setState">
 		
 		<text-field 
-			v-bind:label="d('Email')" 
+			v-bind:label="$d('Email')" 
 			v-bind:type="'email'">
 		</text-field>
 			
 		<btn-group>
 			
 			<btn 
-				v-bind:label="d('send')">
+				v-bind:label="$d('send')">
 			</btn>
 			
 			<btn 
-				v-bind:label="d('Back')" 
+				v-bind:label="$d('Back')" 
 				v-bind:type="'link'"
 				v-on:onClick="nextScreen = 'login'" >
 			</btn>
@@ -61,9 +61,6 @@
 			}
 		},
 		methods: {
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			},
 			setState: function(s) {
 				this.app.screen = s; 
 			},
