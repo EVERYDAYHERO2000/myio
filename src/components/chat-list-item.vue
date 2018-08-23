@@ -20,9 +20,13 @@
       	v-bind:name="(lastMessage.isVisible) ? lastMessage.author.login : ''">
       </user-name> 
       	
-			<div class="chat-list-item__last-message"> {{ (lastMessage.isVisible) ? lastMessage.text : '' }}</div>
+			<div class="chat-list-item__last-message"> 
+				{{ (lastMessage.isVisible) ? lastMessage.text : '' }}
+			</div>
+			
 		</div>
 	</div>
+	
   <div class="chat-list-item__info">
     <div class="chat-list-item__date">
     
@@ -33,7 +37,9 @@
 			
     </div>
     
-    <div class="chat-list-item__keep" v-on:click.stop="setChatPinned" >
+    <div 
+    	class="chat-list-item__keep" 
+    	v-on:click.stop="setChatPinned" >
     	
 			<pin 
 				v-bind:title="$d('pin')"
@@ -43,7 +49,9 @@
     </div>
     
   </div>
+  
 </div>
+
 </template>
 
 
