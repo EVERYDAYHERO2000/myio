@@ -21,7 +21,7 @@
       v-bind:icon="icons.icon_space">
     </toolbar-tool>
 
-		<div class="toolbar__divider"></div>
+    <divider></divider>
 
     <toolbar-tool 
       v-bind:data="'chats'" 
@@ -90,6 +90,7 @@
 	import toolbarTool from './components/toolbar-tool.vue';
 	import addForm from './add-form.vue';
 	import spaceForm from './space-form.vue';
+	import divider from './components/divider.vue';
 	
 	import icon_add from './assets/add.svg';
 	import icon_space from './assets/space.svg';
@@ -106,7 +107,8 @@
 		components: {
 			toolbarTool : toolbarTool,
 			addForm : addForm,
-			spaceForm : spaceForm
+			spaceForm : spaceForm,
+			divider : divider
 		},
 		methods: {
 			toggleToolbarAdd: function() {
@@ -220,11 +222,6 @@
 		&_active &__bar {
 			width: calc(100vw - @width-toolbar_active);
 			pointer-events: all;
-		}
-
-		&__divider {
-			.f-border(bottom);
-			margin: 10px 0;
 		}
 
 	}

@@ -1,6 +1,6 @@
 <template>
 <div 
-	v-on:contextmenu.prevent="context"
+	v-on:contextmenu.prevent="setContextMenu"
 	v-on:click="setChatActive" 
 	class="chat-list-item" 
 	v-bind:class="{ 'chat-list-item_active' : isActive }">
@@ -64,6 +64,8 @@
 	import userName from '../components/user-name.vue';
 	import dateTime from '../components/date-time.vue';
 	import pin from '../components/pin.vue';
+	
+	import contextMenu__mixin from '../mixins/context-menu.js'; 
 
 	export default {
 		props: {
@@ -72,9 +74,7 @@
 			opt: Object,
 			type: String
 		},
-		created: function() {
-
-		},
+		mixins: [contextMenu__mixin],
 		components: {
 			contactIconChip: contactIconChip,
 			userName: userName,
@@ -82,21 +82,6 @@
 			pin: pin
 		},
 		methods: {
-
-			d: function(w) {
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			},
-			context: function(e){
-				APP.$data.app.context.isShowed = true;
-				APP.$data.app.context.x = e.clientX;
-				APP.$data.app.context.y = e.clientY;
-				APP.$data.app.context.menu = [
-					{name: 'Копировать'},
-					{name: 'Вставить'},
-					{name: 'Удалить'}
-				]
-			},
-
 			//сделать чат активным
 			setChatActive: function() {
 				let __this = this;
@@ -119,6 +104,17 @@
 				}, function(e) {
 					APP.$set(APP.opt.chatsRooms[__this.chat.chatsRoomsIndex], 'isPinned', pin);
 				});
+			}
+		},
+		data : function(){
+			return {
+				menu : [
+					{name: this.$d('add user')},
+					{type: 'divider'},
+					{name: this.$d('pin')},
+					{name: this.$d('delete')}, 
+					{name: this.$d('convert to task')}
+				]
 			}
 		},
 		computed: {

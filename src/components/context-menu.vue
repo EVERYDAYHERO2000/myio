@@ -5,12 +5,22 @@
 		v-if="isShowed"
 		class="context-menu">
 		
-		<div
-			v-on:contextmenu.prevent="hideNative"
-			v-for="(item,index) in menu" 
-			class="context-menu__item">
-			{{item.name}}
-		</div>
+		<template v-for="(item,index) in menu">
+		
+
+			<menu-item
+				v-if="item.name"
+				v-on:contextmenu.prevent="hideNative"
+				v-bind:title="item.name">
+			</menu-item>
+
+			<divider
+				v-bind:margin="0"
+				v-on:contextmenu.prevent="hideNative" 
+				v-if="item.type && item.type == 'divider'">		
+			</divider>
+		
+		</template>
 		
 	</div>
 	
@@ -21,12 +31,19 @@
 	import $ from 'jquery';
 	import findZindex from '../functions/find-zindex.js'
 	
+	import divider from '../components/divider.vue';
+	import menuItem from '../components/menu-item.vue';
+	
 	export default {
 		props: {
 			x: Number,
 			y: Number,
 			isShowed: Boolean,
 			menu: Array
+		},
+		components:{
+			divider : divider,
+			menuItem : menuItem
 		},
 		methods: {
 			position: function(){
@@ -48,14 +65,13 @@
 					y = (this.y + height < winHeight) ? 'top: ' + (this.y - offset) + 'px;' : 'bottom: 0;';
 					$(this.$el).attr('style', [x,y,zIndex].join(''));
 					
-					
 				});
 				return [y,x,zIndex].join('');
 			},
 			hideMenu: function(event){
 				
 				let target = event.toElement || event.relatedTarget;
-				if ( !$(target).is('.context-menu__item') ){
+				if ( !$(target).is('.menu-item, .divider, .context-menu') ){
 					APP.$data.app.context.isShowed = false;
 				}
 			},
@@ -65,6 +81,11 @@
 		},
 		updated: function(){
 			
+		},
+		created: function(){
+			$(document).bind('contextmenu', function(e) {
+				//return false;
+			});
 		}
 	}
 </script>
@@ -83,19 +104,7 @@
 		min-width: @menu-width;
 		overflow: hidden;
 		border-radius: 3px;
+		transform:scale(1);
 		.animation(show-menu 0.1s 1 ease); 
-		
-		&__item {
-			box-sizing: border-box;
-			padding: 10px 10px 10px 15px;
-			.transition(all .2s ease);
-		}
-		
-		&__item:hover {
-			color: @color-active;
-			background-color: lighten(@color-active, 40%);
-			.transition(all .2s ease);
-		}
-		
 	}
 </style>

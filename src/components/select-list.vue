@@ -1,34 +1,44 @@
 <template>
 	<div class="select-list">
-	<button 
-		class="select-list__placeholder" 
-		v-on:click="toggleShow">
-		{{getActive}}
-	</button>
-  <div class="select-list__bar"></div>
-  <div 
-  	class="select-list__back" 
-  	v-on:click="toggleShow">
-  </div>
-	<div class="select-list__list">
+	
+		<button 
+			class="select-list__placeholder" 
+			v-on:click="toggleShow">
+			{{getActive}}
+		</button>
+		
+		<div class="select-list__bar"></div>
+		
 		<div 
-			v-for="(option, index) in options" 
-			class="select-list__option">
-			<input 
-				type="radio" 
-				v-bind:name="setId()" 
-				v-bind:value="option[k]" 
-				v-bind:id="setId() + '_' + index"
-				v-bind:data-key="index">
-    	<label 
-				v-bind:data-key="index" 
-				v-on:click="select" 
-				v-bind:for="setId() + '_' + index">
-     		{{option[v]}}
-      </label>
+			class="select-list__back" 
+			v-on:click="toggleShow">
 		</div>
+		
+		<div class="select-list__list">
+			<div 
+				v-for="(option, index) in options" 
+				class="select-list__option">
+				
+				<input 
+					type="radio" 
+					v-bind:name="setId()" 
+					v-bind:value="option[k]" 
+					v-bind:id="setId() + '_' + index"
+					v-bind:data-key="index">
+					
+				<menu-item
+					v-bind:type="'label'"
+					v-bind:title="option[v]"
+					v-bind:data-key="index" 
+					v-on:click.native="select" 
+					v-bind:forId="setId() + '_' + index">
+				</menu-item>
+				
+			</div>
+			
+		</div>
+		
 	</div>
-</div>
 </template>
 
 
@@ -36,12 +46,17 @@
 	import $ from 'jquery';
 	import findZindex from '../functions/find-zindex.js';
 	
+	import menuItem from '../components/menu-item.vue';
+	
 	export default {
 		props: {
 			options: Array,
 			active: Number,
 			k: String,
 			v: String 
+		},
+		components: {
+			menuItem: menuItem
 		},
 		updated: function(){
 			
@@ -64,6 +79,7 @@
 			select: function(e) {
 				let index = Number( $(e.target).attr('data-key') );
 				let selected = this.options[index];
+				
 				this.toggleShow();
 
 				this.$emit('onActive', index);
@@ -147,20 +163,6 @@
 			& input[type="radio"] {
 				display: none;
 
-			}
-
-			& label {
-				font-size: @font-size-main;
-				padding: 10px 10px 10px 15px;
-				display: block;
-				background-color: @color-white;
-				.transition( all .2s ease );
-
-				&:hover {
-					color: @color-active;
-					background-color: lighten(@color-active, 40%);
-					.transition( all .2s ease );
-				}
 			}
 
 		}

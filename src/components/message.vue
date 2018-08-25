@@ -1,20 +1,26 @@
 <template>
 	<div class="message">
+	
 		<contactIconChip
 			v-bind:title="user.login" 
 			v-bind:image="''"
 			v-bind:size="'s'">
 		</contactIconChip>
+		
 		<div class="message__content">
-			<user-name v-bind:name="user.login"></user-name>
+			<user-name 
+				v-bind:name="user.login">
+			</user-name>
 			<div>{{message.text}}</div>
 		</div>
+		
 		<div class="message__info">
 			<date-time 
 				v-bind:date="message.date"
 				v-bind:format="'dateTime'">
 			</date-time>
 		</div>
+		
 	</div>
 	
 </template>

@@ -3,10 +3,56 @@
 		class="app__inner" 
 		v-bind:lang="app.lang">
 		
-		<app-states 
-			v-bind:opt="opt" 
-			v-bind:app="app">	
-		</app-states>
+		<div class="app-states">
+				
+			<div 
+				class="app-states__screen" 
+				v-if="app.screen === 'loading'">
+				<loading-spinner>
+				</loading-spinner>
+			</div>
+
+			<div 
+				class="app-states__main" 
+				v-else-if="app.screen === 'main'">
+				<toolbar 
+					v-bind:opt="opt" 
+					v-bind:app="app">
+				</toolbar>
+				<work-states 
+					v-bind:opt="opt"
+					v-bind:app="app">
+				</work-states>
+			</div>
+
+			<div 
+				class="app-states__screen" 
+				v-else-if="app.screen === 'registration'">
+				<state-registration 
+					v-bind:opt="opt"
+					v-bind:app="app">
+				</state-registration>
+			</div>
+
+			<div 
+				class="app-states__screen" 
+				v-else-if="app.screen === 'forgot'">
+				<state-forgot 
+					v-bind:opt="opt"
+					v-bind:app="app">
+				</state-forgot>
+			</div>
+
+			<div 
+			 class="app-states__screen" 
+			 v-else-if="app.screen === 'login'">
+				<state-login 
+					v-bind:opt="opt"
+					v-bind:app="app">
+				</state-login>
+			</div>
+
+		</div>
 		
 		<modal 
 			v-bind:opt="opt" 
@@ -24,22 +70,32 @@
 </template>
 
 <script>
-	import $ from 'jquery';
-	import platform from 'platform';
-	
-	import auth from './functions/auth.js';
-	import lang from './functions/lang.js';
-	
-	import contextMenu from './components/context-menu.vue';
-	import appStates from './app-states.vue';
-	import modal from './components/modal.vue';
+	import $ 									from 'jquery';
+	import platform 					from 'platform';
+
+	import auth 							from './functions/auth.js';
+	import lang 							from './functions/lang.js';
+
+	import contextMenu 				from './components/context-menu.vue';
+	import modal 							from './components/modal.vue';
+	import loadingSpinner 		from './components/loading-spinner.vue';
+	import toolbar 						from './toolbar.vue';
+	import stateRegistration 	from './state-registration.vue';
+	import stateForgot 				from './state-forgot.vue';
+	import stateLogin 				from './state-login.vue';
+	import workStates 				from './work-states.vue';
 
 	export default {
 		name: 'app',
 		components: {
-			appStates : appStates,
-			modal : modal,
-			contextMenu : contextMenu
+			modal: modal,
+			contextMenu: contextMenu,
+			workStates: workStates,
+			loadingSpinner: loadingSpinner,
+			toolbar: toolbar,
+			stateRegistration: stateRegistration,
+			stateForgot: stateForgot,
+			stateLogin: stateLogin
 		},
 		data: function() {
 			return {
@@ -62,40 +118,38 @@
 		methods: {
 			setLang: lang.setLang
 		},
-		created: function () {
+		created: function() {
 			window.APP = this;
-			
-			$('body').addClass(function(){
+
+			$('body').addClass(function() {
 				return [
 					platform.os.family.replace(/ /g, '-').toLowerCase(),
 					platform.name.replace(/ /g, '-').toLowerCase()
 				].join(' ');
 			});
-				
-		},
-		mounted: function () {
-      $('#loading').remove();
 
-      $(window).bind('mousewheel DOMMouseScroll', function (event) {
-        if (event.ctrlKey == true) {
-          event.preventDefault();
-        }
-      });
-      $(document).bind('contextmenu', function (e) {
-        //return false;
-      });
-    }
+		},
+		mounted: function() {
+			$('#loading').remove();
+
+			$(window).bind('mousewheel DOMMouseScroll', function(event) {
+				if (event.ctrlKey == true) {
+					event.preventDefault();
+				}
+			});
+			
+		}
 	}
-	
 </script>
 
 <style lang="less">
 	@import '~normalize.css/normalize.css';
 	@import './less/prefixer.less';
-	@import './less/font.less'; 
-	@import './less/main.less'; 
+	@import './less/font.less';
+	@import './less/main.less';
 	@import './less/loading-spinner.less';
-	
+	@import './less/animations.less';
+
 	:root {
 		--color-background: @color-background;
 		--color-white: @color-white;
@@ -113,7 +167,7 @@
 		--logo-color-second: @color-white;
 		--logo-color-second-tint: darken(@color-white, 20%);
 	}
-	
+
 	body {
 		margin: 0;
 		padding: 0;
@@ -123,7 +177,7 @@
 		font-size: @font-size-main;
 		color: @color-black;
 		.f-font-smooth();
-		cursor:default;
+		cursor: default;
 		scroll-behavior: smooth;
 	}
 
@@ -144,7 +198,8 @@
 		color: @color-black;
 	}
 
-	#app, .app__inner {
+	#app,
+	.app__inner {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -157,5 +212,30 @@
 		width: 100%;
 		height: 100%;
 		background-color: @color-white;
+	}
+
+	.app-states {
+		width: 100vw;
+		height: 100vh;
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+		box-sizing: border-box;
+		background-color: @color-background;
+		.transition(all .3s ease);
+
+		&__screen {
+			width: 100%;
+			height: 100%;
+			background-color: @color-white;
+			.animation(app-states_show .3s ease 1);
+			.vertical-scroll();
+		}
+
+		&__main {
+			width: 100%;
+			height: 100%;
+		}
 	}
 </style>

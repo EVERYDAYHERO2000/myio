@@ -224,17 +224,6 @@
 		padding: 20px 20px 0 0;
 		box-sizing: border-box;
 
-		&__logo {
-			.flex-block();
-			.justify-content(center);
-		}
-
-		&__header {
-			.form-header();
-			text-align: center;
-			padding: 0 5px;
-		}
-
 		&_hide {
 			opacity: 0;
 			.transition(all 0.2s ease);

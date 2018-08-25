@@ -344,9 +344,35 @@ let d = {
 		},
 		'this user is already available in the list of users':{
 			eng: 'This user is already available in the list of users',
-			ru: 'Пользователь уже добавлен',
-			ch: '此用户已在用户列表中可用'
+			ru: 'Пользователь уже добавлен', 
+			zh: '此用户已在用户列表中可用'
+		},
+		'delete chat' : {
+			eng : 'Delete chat',
+			ru: 'Удалить чат',
+			zh: ''
+		},
+		'delete task' : {
+			eng : 'Delete task',
+			ru: 'Удалить задачу',
+			zh: ''
+		},
+		'delete' : {
+			eng : 'Delete',
+			ru: 'Удалить',
+			zh: ''
+		},
+		'convert to task': {
+			eng : 'Convert to task',
+			ru: 'Конвертировать в задачу',
+			zh: ''
+		},
+		'mute notification' : {
+			eng: 'Mute notification',
+			ru : 'Выключить натификации',
+			zh:  ''
 		}
+	
 	};
 
 export default d;

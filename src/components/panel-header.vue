@@ -1,6 +1,6 @@
 <template>
 	<div
-		v-on:contextmenu.prevent="context"
+		v-on:contextmenu.prevent="setContextMenu"
 		v-bind:class="{ 'panel-header_active' : isShowed }" 
 		class="panel-header"> 
 	
@@ -27,34 +27,26 @@
 <script>
 	import $ from 'jquery';
 	
+	import contextMenu__mixin from '../mixins/context-menu.js';
+	
 	export default {
 		props: {
 			title : {
 				default : '', 
 				type : String
 			},
-			app: Object
+			menu : {
+				type : Array
+			}
+			
 		},
+		mixins: [contextMenu__mixin],
 		components: {
 
 		},
 		methods: {
 			toggleHeaderPanel: function() {
 				this.isShowed = !this.isShowed;
-			},
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			},
-			context: function(e){
-				APP.$data.app.context.isShowed = true;
-				APP.$data.app.context.x = e.clientX;
-				APP.$data.app.context.y = e.clientY;
-				APP.$data.app.context.menu = [
-					{name: 'Развернуть'},
-					{name: 'Добавить'},
-					{name: 'Убавить'},
-					{name: 'Новый'}
-				]
 			}
 		},
 		data: function() {
@@ -72,7 +64,7 @@
 
 	.panel-header {
 
-		@animation-speed: 0.3s;
+		@animation-speed: 0.5s;
 
 		position: absolute;
 		top: 0;

@@ -1,13 +1,19 @@
 <template>
 	<div class="space-form">
-		<div class="space-form__header">{{$d('Spaces')}}</div>
+	
+		<header-title 
+			v-bind:title="$d('Spaces')"
+			class="space-form__header">
+		</header-title>
+		
 		<div class="link-list">
 			
-			<div 
-				v-for="space in opt.spaces" 
-				class="link-list__link link-list__link_active">
-				{{ space.name }}
-			</div>
+			<menu-item
+				v-for="space in opt.spaces"
+				v-bind:isActive="true"
+				v-bind:title="space.name">
+			</menu-item>
+			
 		</div>
 	</div>
 </template>
@@ -16,15 +22,20 @@
 <script>
 	import $ from 'jquery';
 	
+	import menuItem from './components/menu-item.vue';
+	import headerTitle from './components/header-title.vue';
+	
 	export default {
 		props : {
 			opt: Object,
 			app: Object
 		},
+		components: {
+			menuItem : menuItem,
+			headerTitle : headerTitle
+		},
 		methods: {
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			}
+			
 		}
 	}
 	
@@ -40,10 +51,8 @@
 		box-sizing: border-box;
 		
 		
-		&__header {
+		& .header-title {
 			padding: 0 15px;
-			text-align: left;
-			.form-header();
 		}
 		
 	}
@@ -51,21 +60,6 @@
 	.link-list {
 		width: 100%;
 		box-sizing: border-box;
-		
-		&__link {
-			padding: 10px 10px 10px @left-side;	
-			.transition(all .2s ease);
-		}
-		
-		&__link_active {
-			font-weight: 600;
-		}
-		
-		&__link:hover {
-			color: @color-active;
-			background-color: lighten(@color-active, 40%);
-			.transition(all .2s ease);
-		}
 		
 	}
 	

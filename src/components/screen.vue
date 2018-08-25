@@ -1,14 +1,15 @@
 <template>
 	<div class="screen" v-bind:class="{ 'screen_fullscreen' : fullscreen }">
+	
+		<logo 
+				v-if="logo"
+				class="screen__logo">
+		</logo>
 		
-		<div v-if="(logo)" class="screen__logo">
-			<logo>
-			</logo>
-		</div>
-		
-		<div class="screen__header" v-if="header">
-			{{header}}
-		</div>
+		<header-title
+			v-bind:align="'center'"
+			v-bind:title="header">
+		</header-title>
 			
 		<slot>
 				
@@ -21,6 +22,7 @@
 <script>
 	import $ from 'jquery'; 
 	import logo from '../components/logo.vue';
+	import headerTitle from '../components/header-title.vue';
 	
 	export default {
 		props: {
@@ -46,7 +48,8 @@
 			}
 		},
 		components : {
-			logo : logo
+			logo : logo,
+			headerTitle : headerTitle
 		},
 		methods : {
 			setIncorrect: function() {
@@ -86,14 +89,7 @@
 		opacity: 1;
 		
 		&__logo {
-			.flex-block();
-			.justify-content(center);
-		}
-		
-		&__header {
-			.form-header();
-			text-align: center;
-			padding: 0 5px;
+			margin: 0 auto;
 		}
 		
 		&_fullscreen {

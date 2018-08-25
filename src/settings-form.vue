@@ -1,33 +1,42 @@
 <template>
 	<div class="settings-form">
 		<div class="settings-form__setting-list">
-			<div class="settings-form__header">{{$d('Settings')}}</div>
+		
+			<header-title 
+				v-bind:title="$d('Settings')" 
+				class="settings-form__header">
+			</header-title>
+			
 			<div class="link-list">
-				<div 
+				
+				<menu-item
 					v-for="settingListItem in settingList" 
-					v-bind:class="setStileForActive(settingListItem.name)"
-					v-on:click="setActiveTabName(settingListItem.name)"
-					class="link-list__link">
-					{{settingListItem.title}}
-				</div>
+					v-bind:isActive="settingListItem.name == activeTabName"
+					v-bind:title="settingListItem.title"
+					v-on:click.native="setActiveTabName(settingListItem.name)">
+				</menu-item>
+				
 			</div>
 		</div>	
+		
 		<div class="settings-form__form">
 		
 			<div 
 				v-for="settingListItem in settingList" 
 				v-show="activeTabName == settingListItem.name">
-				<div class="settings-form__header">
-					{{settingListItem.title}}
-				</div>
+				
+				<header-title
+					v-bind:w="'light'" 
+					v-bind:title="settingListItem.title">
+				</header-title>
+				
 				<super-component 
 					v-for="elem in settingListItem.form"
 					v-on:onChange="elem.onChange"
 					v-bind:com="elem">
 				</super-component>
+				
 			</div>
-			
-			
 			
 		</div>
 	</div>
@@ -37,7 +46,10 @@
 <script>
 	import $ from 'jquery';
 	import lang from './functions/lang.js';
+	
 	import superComponent from './components/super-component.vue';
+	import menuItem from './components/menu-item.vue';
+	import headerTitle from './components/header-title.vue';
 
 	export default {
 		props: {
@@ -45,17 +57,13 @@
 			app: Object
 		},
 		components: {
-			superComponent: superComponent
+			superComponent : superComponent,
+			menuItem : menuItem,
+			headerTitle : headerTitle
 		},
 		methods: {
-			setStileForActive: function(name) {
-				return (this.activeTabName == name) ? 'link-list__link_active' : '';
-			},
 			setActiveTabName: function(name) {
 				this.activeTabName = name;
-			},
-			d: function(w) {
-				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		},
 		created: function() {
@@ -158,7 +166,7 @@
 			box-sizing: border-box;
 		}
 
-		&__setting-list &__header {
+		&__setting-list .header-title {
 			padding: 0 @left-side;
 		}
 
@@ -168,34 +176,12 @@
 			padding: 0 @left-side;
 		}
 
-		&__form &__header {
-			.form-header(300);
-		}
-
-		&__header {
-			.form-header();
-			text-align: left;
-		}
 	}
 
 	.link-list {
 		width: 100%;
 		box-sizing: border-box;
 
-		&__link {
-			padding: 10px 10px 10px @left-side;
-			.transition(all .2s ease);
-		}
-
-		&__link_active {
-			font-weight: 600;
-		}
-
-		&__link:hover {
-			color: @color-active;
-			background-color: lighten(@color-active, 40%);
-			.transition(all .2s ease);
-		}
 
 	}
 </style>

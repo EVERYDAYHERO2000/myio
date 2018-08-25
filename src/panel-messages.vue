@@ -3,8 +3,7 @@
 	<div class="panel-messages">	
 		
 		<panel-header
-			v-bind:opt="opt"
-			v-bind:app="app"
+
 			v-bind:title="panelTitle">
 			
 			<user-list 
