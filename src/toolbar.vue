@@ -17,8 +17,12 @@
       v-on:click.native="toggleToolbarSpace"
       v-bind:title="$d('Work spaces')" 
       v-bind:opt="opt"
-      v-bind:app="app" 
-      v-bind:icon="icons.icon_space">
+      v-bind:app="app">
+      
+			<logo 
+				v-bind:size="'s'">
+			</logo>
+			
     </toolbar-tool>
 
     <divider></divider>
@@ -91,6 +95,7 @@
 	import addForm from './add-form.vue';
 	import spaceForm from './space-form.vue';
 	import divider from './components/divider.vue';
+	import logo from './components/logo.vue';
 	
 	import icon_add from './assets/add.svg';
 	import icon_space from './assets/space.svg';
@@ -108,7 +113,8 @@
 			toolbarTool : toolbarTool,
 			addForm : addForm,
 			spaceForm : spaceForm,
-			divider : divider
+			divider : divider,
+			logo : logo
 		},
 		methods: {
 			toggleToolbarAdd: function() {

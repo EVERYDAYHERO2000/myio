@@ -7,23 +7,21 @@
 				class="settings-form__header">
 			</header-title>
 			
-			<div class="link-list">
-				
-				<menu-item
-					v-for="settingListItem in settingList" 
-					v-bind:isActive="settingListItem.name == activeTabName"
-					v-bind:title="settingListItem.title"
-					v-on:click.native="setActiveTabName(settingListItem.name)">
-				</menu-item>
-				
-			</div>
+			<menu-list
+				v-bind:v="'name'"
+				v-bind:k="'title'"
+				v-bind:active="activeTab"
+				v-on:onActive="setActiveTabName"
+				v-bind:list="settingList">
+			</menu-list>
+			
 		</div>	
 		
 		<div class="settings-form__form">
 		
 			<div 
 				v-for="settingListItem in settingList" 
-				v-show="activeTabName == settingListItem.name">
+				v-show="activeTab == settingListItem.index">
 				
 				<header-title
 					v-bind:w="'light'" 
@@ -47,8 +45,8 @@
 	import $ from 'jquery';
 	import lang from './functions/lang.js';
 	
+	import menuList from './components/menu-list.vue';
 	import superComponent from './components/super-component.vue';
-	import menuItem from './components/menu-item.vue';
 	import headerTitle from './components/header-title.vue';
 
 	export default {
@@ -58,12 +56,13 @@
 		},
 		components: {
 			superComponent : superComponent,
-			menuItem : menuItem,
+			menuList: menuList,
 			headerTitle : headerTitle
 		},
 		methods: {
-			setActiveTabName: function(name) {
-				this.activeTabName = name;
+			setActiveTabName: function(e) {
+				
+				this.activeTab = e.index;
 			}
 		},
 		created: function() {
@@ -74,6 +73,7 @@
 				return [{
 						//profile settings
 						name: 'profile',
+						index:0,
 						title: this.$d('Profile'),
 						form: [{
 								component: 'textField',
@@ -94,6 +94,7 @@
 					{
 						//general settings
 						name: 'general',
+						index:1,
 						title: this.$d('General'),
 						form: [{
 							component: 'selectList',
@@ -135,6 +136,7 @@
 					},
 					{
 						name: 'spaces',
+						index:2,
 						title: this.$d('Spaces')
 					}
 				]
@@ -142,7 +144,7 @@
 		},
 		data: function() {
 			return {
-				activeTabName: 'profile'
+				activeTab : 0
 			}
 		}
 	}
@@ -178,10 +180,5 @@
 
 	}
 
-	.link-list {
-		width: 100%;
-		box-sizing: border-box;
 
-
-	}
 </style>

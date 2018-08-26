@@ -3,8 +3,12 @@
 		v-on:click="toggleState" 
 		class="toolbar-tool"
 		v-bind:class="{ 'toolbar-tool_active' : app.state === data }"
-		v-bind:style="'background-image: url(' + icon + ');'"
+		v-bind:style="(icon) ? 'background-image: url(' + icon + ');' : ''"
 		v-bind:title="title">
+		
+		<slot>
+		</slot>
+		
 	</div>
 </template>
 
@@ -60,6 +64,10 @@
 			/*.f-recolor(@color-active);
 			.transition(none);
 			opacity: 1;*/
+		}
+		
+		& * {
+			pointer-events: none;
 		}
 	}
 </style>

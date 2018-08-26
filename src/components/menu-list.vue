@@ -1,10 +1,10 @@
 <template>
-	<div class="menu">
+	<div class="menu-list">
 		<menu-item
-			v-for="(item, index) in menu"
+			v-for="(item, index) in list"
 			v-bind:isActive="active == index"
-			v-on:click.native="setActive(index, item.value)"
-			v-bind:title="item.title">
+			v-on:click.native="setActive(index, item[v])"
+			v-bind:title="item[k]">
 		</menu-item>
 	</div>
 	
@@ -16,11 +16,16 @@
 	
 	export default {
 		props: {
-			menu : Object,
+			list : Array,
 			active : {
 				default: 0,
 				type: Number
-			}
+			},
+			k: String,
+			v: String
+		},
+		components: {
+			menuItem: menuItem
 		},
 		methods : {
 			setActive : function(index, value){
@@ -33,7 +38,7 @@
 
 <style lang="less">
 	@import '../less/main.less';
-	.menu {
+	.menu-list {
 		width: 100%;
 		box-sizing: border-box;
 	}
