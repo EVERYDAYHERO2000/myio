@@ -57,6 +57,9 @@
 		font-weight: 500;
 		color: @color-black;
 		.transition(all .2s ease);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		
 		&:hover {
 			color: @color-active;

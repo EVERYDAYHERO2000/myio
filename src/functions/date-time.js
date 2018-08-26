@@ -9,7 +9,7 @@ const getDateTime = function (date) {
 	
 	date = (date instanceof Date) ? date : new Date( date.replace(/-/g, '/') );
 	let monthNames = [d.january, d.february, d.march, d.april, d.may, d.june, d.july, d.august, d.september, d.october, d.november, d.december];
-	let dateTime = {}
+	let dateTime = {};
 	
 	dateTime.raw = date;
 	dateTime.currentTimeZoneOffsetInHours = date.getTimezoneOffset() / 60;

@@ -1,51 +1,29 @@
 "use strict";
 
-import $ from 'jquery';
- 
+/**
+ * Функция возвращает совпадение первого знака строки с цветом из массива
+ * @param {String} str Строка текста
+ * @return {String} HEX цвет 
+ */
 const changeColor = function (str) {
 
-  let char = str[0].toUpperCase();
-  let color = '#eaeaea';
-  let colors = [
-    {
-      color: '#f78987',
-      char: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '@', '%', '#', '!']
-  },
-    {
-      color: '#f28aad',
-      char: ['A', 'G', 'N', 'T', 'Б', 'З', 'О', 'Ф', 'Э']
-  },
-    {
-      color: '#c17bcc',
-      char: ['B', 'H', 'O', 'V', 'В', 'И', 'Й', 'П', 'Х', 'Ю']
-  },
-    {
-      color: '#9a74dd',
-      char: ['C', 'I', 'P', 'X', 'Г', 'К', 'Р', 'Ц', 'Я']
-  },
-    {
-      color: '#98d2ff',
-      char: ['D', 'K', 'Q', 'Y', 'Д', 'Л', 'С', 'Ч']
-  },
-    {
-      color: '#67c4bb',
-      char: ['E', 'L', 'R', 'Z', 'Е', 'Ё', 'М', 'Т', 'Ш', 'Щ']
-  },
-    {
-      color: '#ffd571',
-      char: ['F', 'M', 'S', 'А', 'Ж', 'Н', 'У', 'Ы']
-  }
-]
-  $.each(colors, function (i, str) {
-    $.each(str.char, function (i, c) {
-      if (char === c) {
-        color = str.color;
-        return false;
-      }
-    });
-  });
+	let char = str[0].toUpperCase();
+	
+	let chars = ["!", "#", "%", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "V", "X", "Y", "Z", "Ё", "А", "Б", "В", "Г", "Д", "Е", "Ж", "З", "И", "Й", "К", "Л", "М", "Н", "О", "П", "Р", "С", "Т", "У", "Ф", "Х", "Ц", "Ч", "Ш", "Щ", "Ы", "Э", "Ю", "Я"];
+	
+	let colors = ['#f78987', '#f28aad', '#c17bcc', '#9a74dd', '#7fbded', '#79cc8f', '#ffd571', '#67c4bb', '#d0b582', '#ef7139', '#5387c4'];
 
-  return color;
+	for (var i = 0, c = 0; i < chars.length; i++){
+		
+		if (char === chars[i]) return colors[c];
+		
+		if (c < colors.length - 1) {
+			c++;
+		} else {
+			c = 0;
+		}
+	}
+
 }
 
 export default changeColor;

@@ -28,7 +28,7 @@ func.ifExist = function(arr, key, value, step, final) {
 		}
 	}
 	if (final) final(result);
-	return result;
+	return result; 
 }
 
 /**
