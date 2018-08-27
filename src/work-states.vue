@@ -83,6 +83,9 @@
 			v-if="app.state === 'calendar'">
 		calendar
 		</div>
+		
+		<socket-listener>
+		</socket-listener>
 
 	</div>
 
@@ -102,19 +105,12 @@
 	import VueSplit from 'vue-split-panel';
 	import settingsForm from './settings-form.vue';
 	import panelMessages from './panel-messages.vue';
+	import socketListener from './socket-listener.vue';
 
 	export default {
 		props: {
 			opt: Object,
 			app: Object
-		},
-		sockets: {
-			connect: function () {
-				console.log('socket connected')
-			},
-			customEmit: function (val) {
-				console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
-			}
 		},
 		components: {
 			panelChats: panelChats,
@@ -122,7 +118,8 @@
 			Split: VueSplit.Split,
 			SplitArea: VueSplit.SplitArea,
 			settingsForm: settingsForm,
-			panelMessages: panelMessages
+			panelMessages: panelMessages,
+			socketListener: socketListener
 		},
 		methods: {
 			onDragStart(size) {
@@ -153,43 +150,11 @@
 			}
 		},
 		created: function() { 
-			let __this = this;
 			let user = auth.load();
 			let chatsId = F.joinObjectsKeys(APP.opt.chatsRooms, 'chatsId').array;
 			
 			if (chatsId.length) this.loadMessages(user.email, user.pass, chatsId);
 			
-			//////////
-			this.$socket.on('chat message',function(msg){
-				let temp = JSON.parse(msg);
-				
-				F.ifExist(__this.opt.chats, 'id', temp.data.chatsId, undefined, function(e){
-					APP.$data.opt.messages.push(temp.data);
-				});
-				
-			});
-			
-			this.$socket.on('add user',function(msg){
-				let temp = JSON.parse(msg);
-				
-				if (F.ifExist(APP.$data.opt.spaceRoles, 'spaceId', temp.spaceId)){
-
-					request.post('loadUser', {
-						id : temp.userId
-					}, function(d){
-						APP.$data.opt.userList.push(d.data[0]);
-					});
-				}
-				
-				
-				
-			});
-			
-			this.$options.sockets.event_name = (data) => {
-				console.log(data)
-			
-			}
-			/////////
 		},
 		data: function(){
 			return {

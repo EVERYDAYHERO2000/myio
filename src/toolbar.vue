@@ -98,7 +98,6 @@
 	import logo from './components/logo.vue';
 	
 	import icon_add from './assets/add.svg';
-	import icon_space from './assets/space.svg';
 	import icon_forum from './assets/forum.svg';
 	import icon_event from './assets/event.svg';
 	import icon_cloudQueue from './assets/cloud-queue.svg';
@@ -157,7 +156,6 @@
 				},
 				icons : {
 					icon_add : icon_add,
-					icon_space : icon_space,
 					icon_forum : icon_forum,
 					icon_event : icon_event,
 					icon_cloudQueue : icon_cloudQueue,
