@@ -9,8 +9,14 @@
 		
 	export default {
 		props: {
-			date: String,
-			format: String
+			date: {
+				default: getDateTitme( new Date() ).formated,
+				type: String
+			},
+			format: {
+				default: 'formated', 
+				type: String
+			}
 		},
 		methods: {
 			setDate : function(){

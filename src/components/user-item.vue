@@ -1,7 +1,6 @@
 <template>
 <div 
- 	class="user-item" 
- 	v-bind:data-index="index">
+ 	class="user-item">
 
  	<contact-icon-chip 
 		v-bind:title="opt.email" 
@@ -24,10 +23,9 @@
 
 
 <script>
-	import $ from 'jquery';
 	
-	import contactIconChip from '../components/contact-icon-chip.vue';
-	import userName from '../components/user-name.vue';
+	import contactIconChip 	from '../components/contact-icon-chip.vue';
+	import userName 				from '../components/user-name.vue';
 	
 	export default {
 		props: {
@@ -47,12 +45,8 @@
 		},
 		methods: {
 			onRemove: function() {
-				let index = $(this.$el).data('index');
-				this.$emit('onRemove', index);
+				this.$emit('onRemove', this.index);
 			}
-		},
-		created: function() {
-
 		}
 	}
 </script>

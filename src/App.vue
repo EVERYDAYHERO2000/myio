@@ -1,7 +1,10 @@
 <template>
 	<div 
-		class="app__inner" 
-		v-bind:lang="app.lang">
+		class="app" 
+		v-bind:class="getSystem()"
+		v-bind:lang="app.lang"
+		v-on:mousewheel="disableZoom"
+		v-on:DOMMouseScroll="disableZoom">
 		
 		<div class="app-states">
 				
@@ -70,7 +73,6 @@
 </template>
 
 <script>
-	import $ 									from 'jquery';
 	import platform 					from 'platform';
 
 	import auth 							from './functions/auth.js';
@@ -116,28 +118,23 @@
 			}
 		},
 		methods: {
-			setLang: lang.setLang
-		},
-		created: function() {
-			window.APP = this;
-
-			$('body').addClass(function() {
+			
+			setLang: lang.setLang,
+			
+			getSystem : function(){
 				return [
 					platform.os.family.replace(/ /g, '-').toLowerCase(),
 					platform.name.replace(/ /g, '-').toLowerCase()
 				].join(' ');
-			});
-
-		},
-		mounted: function() {
-			$('#loading').remove();
-
-			$(window).bind('mousewheel DOMMouseScroll', function(event) {
-				if (event.ctrlKey == true) {
-					event.preventDefault();
-				}
-			});
+			},
 			
+			disableZoom: function(e){
+				if (e.ctrlKey == true) e.preventDefault();
+			}
+			
+		},
+		created: function() {
+			window.APP = this;
 		}
 	}
 </script>
@@ -199,7 +196,7 @@
 	}
 
 	#app,
-	.app__inner {
+	.app {
 		position: absolute;
 		top: 0;
 		left: 0;

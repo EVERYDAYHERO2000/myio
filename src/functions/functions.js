@@ -72,4 +72,5 @@ func.each = function(arr,step){
 	}
 }
 
+
 export default func;
