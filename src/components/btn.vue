@@ -1,21 +1,23 @@
 <template>
 	<div 
-		v-on:mousedown="click" 
-		v-on:mousemove="getCoordinate" 
+		v-on:click="click" 
 		class="btn" 
 		v-bind:class="{'btn_link' : type == 'link'}">
 		
 		<button v-bind:name="name">
 			<span>{{label}}</span>
 		</button>
-		<div class="btn__drop"></div>
+		
+		<drop-effect 
+			v-bind:theme="(type == 'link') ? 'dark' : 'light'">
+		</drop-effect>
 		
 	</div>
 </template>
 
 
 <script>
-	import $ from 'jquery';
+	import dropEffect from '../components/drop-effect.vue';
 	
 	export default {
 		props: {
@@ -32,30 +34,12 @@
 				type : String
 			}
 		},
+		components: {
+			dropEffect : dropEffect
+		},
 		methods: {
-			getCoordinate: function(e) {
-				let $el = this.$el;
-				$($el).find('.btn__drop').css({
-					top: e.layerY + 'px',
-					left: e.layerX + 'px'
-				});
-
-			},
-			makeDrop: function(e) {
-				let $el = this.$el;
-				$($el).find('.btn__drop').removeClass('btn__drop_down').delay(10).queue(function() {
-					$(this).addClass('btn__drop_down').dequeue();
-				});
-			},
 			click: function(e) {
-				let $el = this.$el;
-				let __this = this;
-				this.makeDrop(e);
-
-				$($el).delay(150).queue(function() {
-					__this.$emit('onClick', true);
-					$(this).dequeue();
-				});
+				this.$emit('onClick', true);
 			}
 		}
 	}
@@ -115,39 +99,6 @@
 			}
 		}
 
-
-		&__drop {
-			.border-radius(50%);
-			position: absolute;
-			background-color: rgba(255, 255, 255, 0.3);
-
-			top: 0;
-			left: 0;
-			.transform-origin(center);
-			.transform(translate(-50%, -50%));
-			opacity: 1;
-			pointer-events: none;
-
-			&_down {
-				opacity: 0;
-				.animation(btn-down 0.8s ease);
-			}
-
-			@keyframes btn-down {
-				0% {
-					width: 1px;
-					height: 1px;
-					opacity: 1;
-				}
-				100% {
-					width: 300px;
-					height: 300px;
-					opacity: 0;
-				}
-			}
-
-		}
-
 		& span {
 			pointer-events: none;
 		}
@@ -171,10 +122,6 @@
 		
 		&_link:hover {
 			.box-shadow(none);
-		}
-		
-		&_link &__drop {
-			background-color: rgba(red(@color-active), green(@color-active), blue(@color-active), 0.1);
 		}
 		
 		&_disabled {

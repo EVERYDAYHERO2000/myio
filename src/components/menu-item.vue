@@ -15,11 +15,18 @@
 				{{title}}
 			</label>
 			
+			<drop-effect 
+				v-bind:theme="'dark'">
+			</drop-effect>
+			
 		</div>
 </template>
 
 
 <script>
+	
+	import dropEffect from '../components/drop-effect.vue';
+	
 	export default {
 		props: {
 			title : {
@@ -42,6 +49,9 @@
 				default : 0,
 				type : Number
 			}
+		},
+		components: {
+			dropEffect : dropEffect 
 		}
 	}
 </script>
@@ -57,6 +67,7 @@
 		font-weight: 500;
 		color: @color-black;
 		.transition(all .2s ease);
+		position: relative;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;

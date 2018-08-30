@@ -50,13 +50,16 @@
     
   </div>
   
+  <drop-effect 
+		v-bind:theme="(isActive) ? 'light' : 'dark'">
+	</drop-effect>
+  
 </div>
 
 </template>
 
 
 <script>
-	import $ from 'jquery';
 	import request from '../functions/request.js';
 	import F from '../functions/functions.js';
 
@@ -64,6 +67,7 @@
 	import userName from '../components/user-name.vue';
 	import dateTime from '../components/date-time.vue';
 	import pin from '../components/pin.vue';
+	import dropEffect from '../components/drop-effect.vue';
 	
 	import contextMenu__mixin from '../mixins/context-menu.js'; 
 
@@ -79,7 +83,8 @@
 			contactIconChip: contactIconChip,
 			userName: userName,
 			dateTime: dateTime,
-			pin: pin
+			pin: pin,
+			dropEffect: dropEffect
 		},
 		methods: {
 			//сделать чат активным
@@ -161,6 +166,7 @@
 		.flex-block();
 		padding: @padding;
 		position: relative;
+		overflow: hidden;
 
 		&:hover {
 			background-color: @color-hover;
@@ -209,7 +215,7 @@
 			.flex-direction(column);
 			width: auto;
 			line-height: 20px;
-
+			pointer-events: none;
 			color: @color-black;
 			flex-grow: 1;
 			overflow: hidden;
@@ -226,6 +232,7 @@
 			box-sizing: border-box;
 			width: 0px;
 			position: relative;
+			pointer-events: none;
 		}
 
 		&__keep {
