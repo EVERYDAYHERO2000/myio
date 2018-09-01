@@ -32,7 +32,7 @@
 
 
 <script>
-	import $ from 'jquery';
+
 	import F from '../functions/functions.js';
 
 	import selectList from '../components/select-list.vue';
@@ -58,9 +58,6 @@
 				this.UsersCanBeAdded.push(this.UsersCanBeRemoved[e]);
 				this.UsersCanBeRemoved.splice(e, 1);
 			},
-			d: function(w) {
-				return this.app.d[w.toLowerCase()][this.app.lang];
-			},
 			users: function() {
 				let temp = JSON.parse(JSON.stringify(this.opt.userList));
 
@@ -71,23 +68,11 @@
 				return temp;
 			}
 		},
-		created: function() {
-			
-		},
-		beforeUpdate: function() {
-
-		},
-		mounted: function() {
-
-		},
 		data: function() {
 			return {
 				UsersCanBeAdded: this.users(),
 				UsersCanBeRemoved: []
 			}
-		},
-		computed: {
-
 		}
 	}
 </script>

@@ -27,7 +27,6 @@
 
 
 <script>
-	import $ from 'jquery';
 	import F from '../functions/functions.js';
 	
 	import contactIconChip from '../components/contact-icon-chip.vue';

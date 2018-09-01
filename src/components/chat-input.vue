@@ -6,8 +6,10 @@
 		</div>
 		<textarea 
 			autofocus 
+			ref="chat-input"
 		  class="chat-input__input" 
 			v-model="textInput"
+			v-bind:style="height"
 			v-on:keyup="resizeTextarea"
 			v-on:keydown="handleCmdEnter($event)">
 		</textarea>
@@ -29,7 +31,6 @@
 
 
 <script>
-	import $ from 'jquery';
 	import request from '../functions/request.js';
 
 	export default {
@@ -37,17 +38,21 @@
 			opt: Object,
 			app: Object
 		},
-		created: function() {
-			$(this.$el).find('.chat-input__input').focus();
+		mounted: function() {
+			this.setFocus();
+			
 		},
 		updated: function() {
-			$(this.$el).find('.chat-input__input').focus();
+			this.setFocus();
 		},
 		methods: {
 			handleCmdEnter: function(e) {
 				if ((e.metaKey || e.ctrlKey) && e.keyCode == 13) {
 					this.addNewMessage();
 				}
+			},
+			setFocus: function(){
+				this.$refs['chat-input'].focus();
 			},
 			addNewMessage: function() {
 				let __this = this;
@@ -67,18 +72,20 @@
 				
 			},
 			resizeTextarea: function() {
-				let el = this.$el;
-				let $textarea = $(el).find('.chat-input__input');
-				let offset = $textarea[0].offsetHeight - $textarea[0].clientHeight;
+				
+				let $textarea = this.$refs['chat-input'];
+				let offset = $textarea.offsetHeight - $textarea.clientHeight;
 
-				$textarea.removeAttr('style').css({
-					'height': [$textarea[0].scrollHeight + offset,'px'].join('')
+				this.height = 'height: 0';
+				this.$nextTick(function () {
+					this.height = ['height:', $textarea.scrollHeight + offset, 'px'].join('');
 				});
 			}
 		},
 		data: function() {
 			return {
-				textInput: ''
+				textInput: '',
+				height : 'height: 0'
 			}
 		}
 	}
@@ -119,7 +126,9 @@
 			min-height: 50px;
 			height: 50px;
 			resize: none;
-			overflow: hidden; //transition: height .2s;
+			overflow: hidden; 
+			//transition: height .2s;
+			
 			&:focus {
 				outline: none;
 			}

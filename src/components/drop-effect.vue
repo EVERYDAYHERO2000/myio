@@ -13,19 +13,23 @@
 <script>
 	export default {
 		props: {
-			isDroped : {
-				default: false,
-				type: Boolean
-			},
 			theme : {
 				default : 'light',
 				type: String
+			},
+			offsetX: {
+				default: 0,
+				type: Number
+			},
+			offsetY: {
+				default: 0,
+				type: Number
 			}
 		},
 		methods: {
 			makeDrop: function(e){
-				this.x = e.layerX;
-				this.y = e.layerY;
+				this.x = e.layerX - this.offsetX;
+				this.y = e.layerY - this.offsetY;
 				this.isDrop = true;
 			},
 			fadeDrop: function (e) {
@@ -83,6 +87,6 @@
 		}
 		
 	.drop-effect-enter-active {
-		transition: all .5s ease;
+		.transition(all .5s ease);
 	}
 </style>

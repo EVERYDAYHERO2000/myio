@@ -1,6 +1,5 @@
 "use strict";
 
-import $ from 'jquery';
 import changeColor from '../functions/change-color.js';
 
 const data = {};

@@ -10,13 +10,13 @@
 
 			<menu-item
 				v-if="item.name"
-				v-on:contextmenu.prevent="hideNative"
+				v-on:contextmenu.native.prevent="hideNative"
 				v-bind:title="item.name">
 			</menu-item>
 
 			<divider
 				v-bind:margin="0"
-				v-on:contextmenu.prevent="hideNative" 
+				v-on:contextmenu.native.prevent="hideNative" 
 				v-if="item.type && item.type == 'divider'">		
 			</divider>
 		
@@ -28,8 +28,7 @@
 
 
 <script>
-	import $ from 'jquery';
-	import findZindex from '../functions/find-zindex.js'
+	import findZindex from '../functions/find-zindex.js';
 	
 	import divider from '../components/divider.vue';
 	import menuItem from '../components/menu-item.vue';
@@ -45,6 +44,11 @@
 			divider : divider,
 			menuItem : menuItem
 		},
+		data: function(){
+			return {
+				style : this.position()
+			}
+		},
 		methods: {
 			position: function(){
 				let offset = 20;
@@ -52,40 +56,45 @@
 				let height;
 				let winWidth = window.innerWidth;
 				let winHeight = window.innerHeight;
-				let x = 'left: ' + (this.x - offset) + 'px;';
-				let y = 'top: ' + (this.y - offset) + 'px;';
-				let zIndex = 'z-index: ' + findZindex('div') + ';';
+				let x = ['left:',this.x - offset,'px'].join('');
+				let y = ['top:',this.y - offset,'px'].join('');
+				let zIndex = ['z-index:',findZindex('div')].join('');
 				
 				this.$nextTick(function () {
-					
-					width = this.$el.offsetWidth;
-					height = this.$el.offsetHeight
+							
+					if (this.$el.nodeType !== 8) {
+						width = this.$el.offsetWidth;
+						height = this.$el.offsetHeight
 
-					x = (this.x + width < winWidth) ? 'left: ' + (this.x - offset) + 'px;' : 'right: 0;';
-					y = (this.y + height < winHeight) ? 'top: ' + (this.y - offset) + 'px;' : 'bottom: 0;';
-					$(this.$el).attr('style', [x,y,zIndex].join(''));
+						x = (this.x + width < winWidth) 	? ['left:',this.x - offset,'px'].join('') : 'right:0';
+						y = (this.y + height < winHeight) ? ['top:',this.y - offset,'px'].join('')  : 'bottom:0';
+						
+						this.$el.setAttribute('style', [x,y,zIndex].join(';'));
+					}
 					
 				});
-				return [y,x,zIndex].join('');
+				return [y,x,zIndex].join(';');
 			},
 			hideMenu: function(event){
 				
 				let target = event.toElement || event.relatedTarget;
-				if ( !$(target).is('.menu-item, .divider, .context-menu') ){
+				
+				if ( !target.classList.contains('menu-item') && 
+						 !target.classList.contains('divider') && 
+						 !target.classList.contains('context-menu') ) {
 					APP.$data.app.context.isShowed = false;
 				}
 			},
-			hideNative: function(){
+			hideNative: function(e){
+				e.preventDefault();
 				return false;
 			}
 		},
-		updated: function(){
-			
-		},
 		created: function(){
-			$(document).bind('contextmenu', function(e) {
-				//return false;
-			});
+			window.addEventListener('contextmenu', this.hideNative, false);
+		},
+		beforeDestroy: function(){
+			window.removeEventListener('contextmenu', this.hideNative, false);
 		}
 	}
 </script>

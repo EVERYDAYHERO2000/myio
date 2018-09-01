@@ -44,7 +44,7 @@
 
 
 <script>
-	import $ from 'jquery';
+
 	import request from './functions/request.js';
 	import F from './functions/functions.js';
 	

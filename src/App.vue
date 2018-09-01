@@ -58,8 +58,7 @@
 		</div>
 		
 		<modal 
-			v-bind:opt="opt" 
-			v-bind:app="app">
+			v-bind:isVisible="app.modal">
 		</modal>
 		
 		<context-menu

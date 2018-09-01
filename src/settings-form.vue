@@ -42,7 +42,7 @@
 
 
 <script>
-	import $ from 'jquery';
+
 	import lang from './functions/lang.js';
 	
 	import menuList from './components/menu-list.vue';

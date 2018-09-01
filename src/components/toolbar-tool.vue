@@ -2,24 +2,30 @@
 	<div 
 		v-on:click="toggleState" 
 		class="toolbar-tool"
-		v-bind:class="{ 'toolbar-tool_active' : app.state === data }"
+		v-bind:class="{ 'toolbar-tool_active' : state === data }"
 		v-bind:style="(icon) ? 'background-image: url(' + icon + ');' : ''"
 		v-bind:title="title">
 		
 		<slot>
 		</slot>
 		
+		<drop-effect 
+			v-bind:theme="'dark'">
+		</drop-effect>
+		
 	</div>
 </template>
 
 
 <script>
-	import $ from 'jquery';
+	
+	import dropEffect from '../components/drop-effect.vue';
 	
 	export default {
 		props: {
-			opt: Object,
-			app: Object,
+			state: {
+				type : String
+			},
 			icon: String,
 			data: {
 				default: '',
@@ -27,9 +33,12 @@
 			},
 			title: String
 		},
+		components : {
+			dropEffect : dropEffect
+		},
 		methods: {
 			toggleState: function() {
-				if (this.data && this.app.state !== this.data) this.app.state = this.data;
+				if (this.data && this.state !== this.data) APP.$data.app.state = this.data;
 			}
 		}
 	}
@@ -49,6 +58,7 @@
 		background-size: auto;
 		opacity: 0.8;
 		.transition( all .2s );
+		position: relative;
 
 		&:last-child {
 			margin: 0 0 10px 0;

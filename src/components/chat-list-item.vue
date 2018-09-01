@@ -51,6 +51,8 @@
   </div>
   
   <drop-effect 
+  	v-bind:offsetX="50"
+  	v-bind:offsetY="40"
 		v-bind:theme="(isActive) ? 'light' : 'dark'">
 	</drop-effect>
   
@@ -249,6 +251,7 @@
 			right: 0;
 			background-color: @color-white;
 			padding: 5px 10px 0 0;
+			pointer-events: none;
 			.transform(translate(10px, -8px));
 
 			& span {
@@ -266,6 +269,7 @@
 			box-sizing: border-box;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			pointer-events: none;
 		}
 
 		&__description {
@@ -275,6 +279,7 @@
 			overflow: hidden;
 			padding: 0 20px 0 0;
 			display: flex;
+			pointer-events: none;
 		}
 
 		&__last-message {
@@ -282,6 +287,7 @@
 			padding: 0 0 0 5px;
 			box-sizing: border-box;
 			overflow: hidden;
+			pointer-events: none;
 		}
 
 	}

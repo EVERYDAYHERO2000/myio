@@ -42,7 +42,6 @@
 
 
 <script>
-	import $ from 'jquery';
 	import F from './functions/functions.js';
 	
 	import panelHeader from './components/panel-header.vue';

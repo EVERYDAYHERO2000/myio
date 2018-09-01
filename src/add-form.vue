@@ -96,7 +96,6 @@
 
 
 <script>
-	import $ from 'jquery';
 
 	import getDateTime from './functions/date-time.js';
 	import request from './functions/request.js';

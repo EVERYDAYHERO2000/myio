@@ -16,7 +16,7 @@
 
 
 <script>
-	import $ from 'jquery';
+
 	import changeColor from '../functions/change-color.js';
 
 	export default {

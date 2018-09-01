@@ -38,6 +38,7 @@
 	.pin {
 		width: 20px;
 		height: 20px;
+		pointer-events: all;
 		&__icon {
 			fill: rgba(0,0,0,1);
 			stroke: none;

@@ -93,7 +93,6 @@
 
 
 <script>
-	import $ from 'jquery';
 	import request from './functions/request.js';
 	import data from './functions/data.js';
 	import auth from './functions/auth.js';

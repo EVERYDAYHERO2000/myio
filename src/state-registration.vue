@@ -56,7 +56,7 @@
 
 
 <script>
-	import $ from 'jquery';
+
 	import auth from './functions/auth.js';
 	import request from './functions/request.js';
 	

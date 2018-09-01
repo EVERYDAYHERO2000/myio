@@ -16,7 +16,6 @@
 
 
 <script>
-	import $ from 'jquery';
 	
 	import menuList from './components/menu-list.vue';
 	import headerTitle from './components/header-title.vue';

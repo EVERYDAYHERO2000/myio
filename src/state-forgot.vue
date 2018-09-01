@@ -32,7 +32,7 @@
 
 
 <script>
-	import $ from 'jquery';
+
 	import auth from './functions/auth.js';
 	import URL from './functions/urls-option.js';
 	

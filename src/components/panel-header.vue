@@ -25,7 +25,6 @@
 
 
 <script>
-	import $ from 'jquery';
 	
 	import contextMenu__mixin from '../mixins/context-menu.js';
 	

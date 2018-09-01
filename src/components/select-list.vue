@@ -10,11 +10,15 @@
 		<div class="select-list__bar"></div>
 		
 		<div 
-			class="select-list__back" 
+			class="select-list__back"
+			v-bind:class="{ 'select-list__back_active' : isActive }" 
 			v-on:click="toggleShow">
 		</div>
 		
-		<div class="select-list__list">
+		<div
+			v-bind:class="{ 'select-list__list_active' : isActive }"  
+			v-bind:style="findZindex()"
+			class="select-list__list">
 			<div 
 				v-for="(option, index) in options" 
 				class="select-list__option">
@@ -43,7 +47,7 @@
 
 
 <script>
-	import $ from 'jquery';
+
 	import findZindex from '../functions/find-zindex.js';
 	
 	import menuItem from '../components/menu-item.vue';
@@ -69,20 +73,24 @@
 				return  'select-list_' + this._uid;
 			},
 			toggleShow: function() {
-				let $el = this.$el;
-				let zIndex = findZindex('div');
-				$($el).find('.select-list__back').toggleClass('select-list__back_active');
-				$($el).find('.select-list__list').toggleClass('select-list__list_active').css({
-					'z-index': zIndex + 1
-				});
+				this.isActive = !this.isActive;
+			},
+			findZindex: function() {
+				return ['z-index:', findZindex('div')].join('');
 			},
 			select: function(e) {
-				let index = Number( $(e.target).attr('data-key') );
+				
+				let index = Number( e.target.attributes['data-key'].value );
 				let selected = this.options[index];
 				
 				this.toggleShow();
 
 				this.$emit('onActive', index);
+			}
+		},
+		data: function(){
+			return {
+				isActive: false
 			}
 		},
 		computed: {

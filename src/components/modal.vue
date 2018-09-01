@@ -1,33 +1,31 @@
 <template>
 	<div 
-		v-if="app.modal" 
+		v-bind:class="{'modal_active' : isVisible}"
 		class="modal">
-		<div class="modal__panel"></div>
+		<transition name="show-effect">
+		
+			<div 
+				v-if="isVisible" 
+				class="modal__panel">
+
+				<slot>
+				</slot>
+
+			</div>
+			
+		</transition>
 	</div>
 </template>
 
 
 <script>
-	import $ from 'jquery';
 	
 	export default {
 		props: {
-			opt : Object,
-			app : Object
-		},
-		methods: {
-			toggleShow: function() {
-				let $el = this.$el;
-				$($el).find('.modal__panel').delay(100).queue(function() {
-					$($el).find('.modal__panel').toggleClass('modal__panel_active');
-				});
+			isVisible : {
+				default : false,
+				type: Boolean
 			}
-		},
-		mounted: function() {
-			this.toggleShow();
-		},
-		updated: function() {
-			this.toggleShow();
 		}
 	}
 </script>
@@ -43,6 +41,10 @@
 		width: 100vw;
 		.flex-block();
 		.justify-content(center);
+		
+		&_active {
+			height: 100vh;
+		}
 
 		&__panel {
 			background: @color-white;
@@ -52,13 +54,31 @@
 			top: 0;
 			box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 			.transform-origin(center top);
-			.transform(translateY(-50vh));
-			.transition(all .3s ease); 
-
-			&_active {
-				.transform(translateY(0px));
-				.transition(all .3s ease);
-			}
 		}
 	}
+	
+	.show-effect-enter {
+		.transform(translateY(-50vh));
+	}
+		
+	.show-effect-enter-to {
+		.transform(translateY(0px));
+	}
+		
+	.show-effect-enter-active {
+		.transition(all .3s ease);
+	}
+	
+	.show-effect-leave {
+		.transform(translateY(0px));
+	}
+		
+	.show-effect-leave-to {
+		.transform(translateY(-50vh));
+	}
+		
+	.show-effect-leave-active {
+		.transition(all .3s ease);
+	}
+	
 </style>

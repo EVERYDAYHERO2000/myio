@@ -1,13 +1,14 @@
 <template>
-<div class="toolbar">
+<div
+	v-bind:class="{'toolbar_active' : spaceForm.isVisible || addForm.isVisible}"  
+	class="toolbar">
   <div class="toolbar__tools">
 
     <toolbar-tool 
       v-if="app.state == 'chats'" 
       v-on:click.native="toggleToolbarAdd"
       v-bind:title="$d('Create new')" 
-      v-bind:opt="opt"
-      v-bind:app="app"
+      v-bind:state="app.state"
       v-bind:icon="icons.icon_add">
     </toolbar-tool>
 
@@ -16,8 +17,7 @@
 		<toolbar-tool 
       v-on:click.native="toggleToolbarSpace"
       v-bind:title="$d('Work spaces')" 
-      v-bind:opt="opt"
-      v-bind:app="app">
+      v-bind:state="app.state">
       
 			<logo 
 				v-bind:size="'s'">
@@ -31,16 +31,14 @@
       v-bind:data="'chats'" 
       v-on:click.native="closeToolbar"
       v-bind:title="$d('Chats')" 
-      v-bind:opt="opt"
-      v-bind:app="app" 
+      v-bind:state="app.state" 
       v-bind:icon="icons.icon_forum">
     </toolbar-tool>
 
     <toolbar-tool 
       v-bind:data="'calendar'" 
       v-on:click.native="closeToolbar" 
-      v-bind:opt="opt"
-      v-bind:app="app"
+      v-bind:state="app.state"
       v-bind:title="$d('Calendar')" 
       v-bind:icon="icons.icon_event">
     </toolbar-tool>
@@ -48,8 +46,7 @@
     <toolbar-tool 
       v-bind:data="'files'" 
       v-on:click.native="closeToolbar"
-      v-bind:opt="opt"
-      v-bind:app="app"
+      v-bind:state="app.state"
       v-bind:title="$d('Files')" 
       v-bind:icon="icons.icon_cloudQueue">
     </toolbar-tool>
@@ -57,8 +54,7 @@
     <toolbar-tool 
       v-bind:data="'settings'" 
       v-on:click.native="closeToolbar" 
-      v-bind:opt="opt"
-      v-bind:app="app"
+      v-bind:state="app.state"
       v-bind:title="$d('Settings')" 
       v-bind:icon="icons.icon_settings">
     </toolbar-tool>
@@ -89,19 +85,18 @@
 
 
 <script>
-	import $ from 'jquery';
 	
-	import toolbarTool from './components/toolbar-tool.vue';
-	import addForm from './add-form.vue';
-	import spaceForm from './space-form.vue';
-	import divider from './components/divider.vue';
-	import logo from './components/logo.vue';
+	import toolbarTool 			from './components/toolbar-tool.vue';
+	import addForm 					from './add-form.vue';
+	import spaceForm 				from './space-form.vue';
+	import divider 					from './components/divider.vue';
+	import logo 						from './components/logo.vue';
 	
-	import icon_add from './assets/add.svg';
-	import icon_forum from './assets/forum.svg';
-	import icon_event from './assets/event.svg';
-	import icon_cloudQueue from './assets/cloud-queue.svg';
-	import icon_settings from './assets/settings.svg';
+	import icon_add 				from './assets/add.svg';
+	import icon_forum 			from './assets/forum.svg';
+	import icon_event 			from './assets/event.svg';
+	import icon_cloudQueue 	from './assets/cloud-queue.svg';
+	import icon_settings 		from './assets/settings.svg';
 
 	export default {
 		props: {
@@ -118,8 +113,6 @@
 		methods: {
 			toggleToolbarAdd: function() {
 				if (!this.spaceForm.isVisible) {
-					let el = this.$el;
-					$(el).toggleClass('toolbar_active');
 					this.addForm.isVisible = !this.addForm.isVisible;
 				} else {
 					this.closeToolbar();
@@ -127,9 +120,7 @@
 				}
 			},
 			toggleToolbarSpace: function() {
-				if (!this.addForm.isVisible) {
-					let el = this.$el;
-					$(el).toggleClass('toolbar_active');
+				if (!this.addForm.isVisible) {					
 					this.spaceForm.isVisible = !this.spaceForm.isVisible;
 				} else {
 					this.closeToolbar();
@@ -137,13 +128,8 @@
 				}
 			},
 			closeToolbar: function() {
-				let el = this.$el;
-				$(el).removeClass('toolbar_active');
 				this.addForm.isVisible = false;
 				this.spaceForm.isVisible = false;
-			},
-			d: function(w){
-				return this.app.d[w.toLowerCase()][this.app.lang];
 			}
 		},
 		data: function() {
