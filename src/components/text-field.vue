@@ -17,7 +17,8 @@
 			v-bind:type="type" 
 			v-bind:id="setId()"
 			v-bind:name="setId()"
-			v-on:keyup="onChange" 
+			v-on:keyup="onChange"
+			v-model="text" 
 			required />
 
 		<label 
@@ -60,7 +61,12 @@
 				return [this.type,this._uid].join('_');
 			},
 			onChange: function(e) {
-				this.$emit('onValue', $(this.$el).find('input').val());
+				this.$emit('onValue', this.text);
+			}
+		},
+		data: function(){
+			return {
+				text: ''
 			}
 		}
 	}

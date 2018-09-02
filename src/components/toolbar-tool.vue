@@ -20,7 +20,7 @@
 <script>
 	
 	import dropEffect from '../components/drop-effect.vue';
-	
+
 	export default {
 		props: {
 			state: {
