@@ -42,14 +42,14 @@
 
 
 <script>
-	import F from './functions/functions.js';
+	import F 							from './functions/functions.js';
 	
-	import panelHeader from './components/panel-header.vue';
-	import selectList from './components/select-list.vue';
-	import textField from './components/text-field.vue';
-	import userList from './components/user-list.vue';
-	import chatInput from './components/chat-input.vue';
-	import message from './components/message.vue';
+	import panelHeader 		from './components/panel-header/panel-header.vue';
+	import selectList 		from './components/select-list/select-list.vue';
+	import textField 			from './components/text-field/text-field.vue';
+	import userList 			from './components/user-list/user-list.vue';
+	import chatInput 			from './components/chat-input/chat-input.vue';
+	import message 				from './components/message/message.vue';
 	
 	export default {
 		props: {

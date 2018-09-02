@@ -43,11 +43,11 @@
 
 <script>
 
-	import lang from './functions/lang.js';
+	import lang 						from './functions/lang.js';
 	
-	import menuList from './components/menu-list.vue';
-	import superComponent from './components/super-component.vue';
-	import headerTitle from './components/header-title.vue';
+	import menuList 				from './components/menu-list/menu-list.vue';
+	import superComponent 	from './components/super-component/super-component.vue';
+	import headerTitle 			from './components/header-title/header-title.vue';
 
 	export default {
 		props: {

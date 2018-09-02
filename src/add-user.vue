@@ -45,14 +45,14 @@
 
 <script>
 
-	import request from './functions/request.js';
-	import F from './functions/functions.js';
+	import request 					from './functions/request.js';
+	import F 								from './functions/functions.js';
 	
-	import btn from './components/btn.vue';
-	import textField from './components/text-field.vue';
-	import btnGroup from './components/btn-group.vue';
-	import loadingSpinner from './components/loading-spinner.vue'
-	import userItem from './components/user-item.vue';
+	import btn 							from './components/btn/btn.vue';
+	import textField 				from './components/text-field/text-field.vue';
+	import btnGroup 				from './components/btn-group/btn-group.vue';
+	import loadingSpinner 	from './components/loading-spinner/loading-spinner.vue'
+	import userItem 				from './components/user-item/user-item.vue';
 	
 	export default {
 		props : {

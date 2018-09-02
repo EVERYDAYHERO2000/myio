@@ -86,11 +86,12 @@
 
 <script>
 	
-	import toolbarTool 			from './components/toolbar-tool.vue';
 	import addForm 					from './add-form.vue';
 	import spaceForm 				from './space-form.vue';
-	import divider 					from './components/divider.vue';
-	import logo 						from './components/logo.vue';
+	
+	import toolbarTool 			from './components/toolbar-tool/toolbar-tool.vue';
+	import divider 					from './components/divider/divider.vue';
+	import logo 						from './components/logo/logo.vue';
 	
 	import icon_add 				from './assets/add.svg';
 	import icon_forum 			from './assets/forum.svg';

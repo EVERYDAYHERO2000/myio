@@ -17,8 +17,8 @@
 
 <script>
 	
-	import menuList from './components/menu-list.vue';
-	import headerTitle from './components/header-title.vue';
+	import menuList 		from './components/menu-list/menu-list.vue';
+	import headerTitle 	from './components/header-title/header-title.vue';
 	
 	export default {
 		props : {

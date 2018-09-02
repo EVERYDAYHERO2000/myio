@@ -19,6 +19,10 @@ npm run build
 
 # run after build to start Electron 
 npm run electron 
+
+# run styleguide
+npm run styleguide
+
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).

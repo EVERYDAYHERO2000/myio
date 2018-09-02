@@ -97,16 +97,17 @@
 
 <script>
 
-	import getDateTime from './functions/date-time.js';
-	import request from './functions/request.js';
-	import F from './functions/functions.js';
+	import getDateTime 	from './functions/date-time.js';
+	import request 			from './functions/request.js';
+	import F 						from './functions/functions.js';
 
-	import addUser from './add-user.vue';
-	import btn from './components/btn.vue';
-	import textField from './components/text-field.vue';
-	import selectList from './components/select-list.vue';
-	import userList from './components/user-list.vue';
-	import btnGroup from './components/btn-group.vue';
+	import addUser 			from './add-user.vue';
+	
+	import btn 					from './components/btn/btn.vue';
+	import textField 		from './components/text-field/text-field.vue';
+	import selectList 	from './components/select-list/select-list.vue';
+	import userList 		from './components/user-list/user-list.vue';
+	import btnGroup 		from './components/btn-group/btn-group.vue';
 
 	
 	export default {

@@ -46,11 +46,11 @@
 
 
 <script>
-	import panelHeader from './components/panel-header.vue';
-	import chatListItem from './components/chat-list-item.vue';
-	import textField from './components/text-field.vue';
+	import panelHeader 				from './components/panel-header/panel-header.vue';
+	import chatListItem 			from './components/chat-list-item/chat-list-item.vue';
+	import textField 					from './components/text-field/text-field.vue';
 	
-	import chatList__mixin from './mixins/chat-list.js';
+	import chatList__mixin 		from './mixins/chat-list.js';
 	
 	export default {
 		props: {

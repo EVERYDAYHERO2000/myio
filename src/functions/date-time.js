@@ -25,7 +25,7 @@ const getDateTime = function (date) {
 	}
 	dateTime.day = stringifyNumber(date.getDate());
 	dateTime.time = [dateTime.hours,dateTime.minute].join(':');
-	dateTime.date = [dateTime.monthName,dateTime.day].join(' ');
+	dateTime.date = [dateTime.monthName,dateTime.day].join(' '); 
 	dateTime.dateTime = [dateTime.date,dateTime.time].join(', ');
 	dateTime.dateOnly = [dateTime.fullYear,dateTime.month,dateTime.day].join('-');
 	dateTime.formated = [dateTime.dateOnly,dateTime.time].join(' ');

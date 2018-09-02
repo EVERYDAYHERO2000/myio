@@ -32,7 +32,7 @@
 
 			<btn 
 				v-bind:label="$d('Sign in')" 
-				v-bind:type="'link'"
+				v-bind:theme="'link'"
 				v-on:onClick="nextScreen = 'registration'" >
 			</btn>
 
@@ -44,16 +44,16 @@
 
 <script>
 
-	import auth from './functions/auth.js';
-	import request from './functions/request.js';
-	import data from './functions/data.js';
-	import lang from './functions/lang.js';
+	import auth 				from './functions/auth.js';
+	import request 			from './functions/request.js';
+	import data 				from './functions/data.js';
+	import lang 				from './functions/lang.js';
 	
-	import btn from './components/btn.vue';
-	import textField from './components/text-field.vue';
-	import logo from './components/logo.vue';
-	import btnGroup from './components/btn-group.vue';
-	import screen from './components/screen.vue';
+	import btn 					from './components/btn/btn.vue';
+	import textField 		from './components/text-field/text-field.vue';
+	import logo	 				from './components/logo/logo.vue';
+	import btnGroup 		from './components/btn-group/btn-group.vue';
+	import screen 			from './components/screen/screen.vue';
 	
 	export default {
 		props: {

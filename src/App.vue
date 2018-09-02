@@ -76,15 +76,16 @@
 
 	import auth 							from './functions/auth.js';
 	import lang 							from './functions/lang.js';
-
-	import contextMenu 				from './components/context-menu.vue';
-	import modal 							from './components/modal.vue';
-	import loadingSpinner 		from './components/loading-spinner.vue';
+	
 	import toolbar 						from './toolbar.vue';
 	import stateRegistration 	from './state-registration.vue';
 	import stateForgot 				from './state-forgot.vue';
 	import stateLogin 				from './state-login.vue';
 	import workStates 				from './work-states.vue';
+
+	import contextMenu 				from './components/context-menu/context-menu.vue';
+	import modal 							from './components/modal/modal.vue';
+	import loadingSpinner 		from './components/loading-spinner/loading-spinner.vue';
 
 	export default {
 		name: 'app',
@@ -140,29 +141,8 @@
 
 <style lang="less">
 	@import '~normalize.css/normalize.css';
-	@import './less/prefixer.less';
-	@import './less/font.less';
 	@import './less/main.less';
-	@import './less/loading-spinner.less';
-	@import './less/animations.less';
-
-	:root {
-		--color-background: @color-background;
-		--color-white: @color-white;
-		--color-black: @color-black;
-		--color-border: @color-border;
-		--color-gray-font: @color-gray-font;
-		--color-active: @color-active;
-		--color-hover: @color-hover;
-		--color-border-active: @color-border-active;
-		--color-border-hover: @color-border-hover;
-		--color-error: @color-error;
-		--logo-color-main: @color-active;
-		--logo-color-main-tint: darken(@color-active, 20%);
-		--logo-color-font: @color-black;
-		--logo-color-second: @color-white;
-		--logo-color-second-tint: darken(@color-white, 20%);
-	}
+	
 
 	body {
 		margin: 0;
@@ -184,14 +164,6 @@
 		&:focus {
 			outline: none;
 		}
-	}
-
-	input {
-		font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
-	}
-
-	button {
-		color: @color-black;
 	}
 
 	#app,
