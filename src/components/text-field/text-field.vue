@@ -35,25 +35,42 @@
 
 <script>
 
-	
+	/**
+ 	* Поле ввода
+ 	*/
 	export default {
 		props: {
+			/**
+ 			* Заголовок элемента
+ 			*/
 			label: {
 				default : '',
 				type: String
 			},
+			/**
+ 			* тип элемента
+ 			*/
 			type: {
 				default: 'text',
 				type: String
 			},
+			/**
+ 			* Значение по умолчанию
+ 			*/
 			value: {
 				default: '',
 				type: String
 			},
+			/**
+ 			* Плейсхолдер
+ 			*/
 			placeholder: {
 				default: '', 
 				type: String
 			},
+			/**
+ 			* Ошибка
+ 			*/
 			error: String
 		},
 		methods: {

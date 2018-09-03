@@ -48,8 +48,14 @@
 	import userList 		from '../../components/user-list/user-list.vue';
 	import checkbox 		from '../../components/checkbox/checkbox.vue';
 	
+	/**
+ 	* Супер компонент, может быть любым компонентом. Для построения интерфейса из json. 
+ 	*/
 	export default {
 		props : {
+			/**
+ 			* Объект со списком опций компонента
+ 			*/
 			com: Object
 		},
 		components: {

@@ -15,7 +15,7 @@
 			class="panel-header__form">
 			
 			<slot>
-				
+				<!-- @slot Тут контент который виден после раскрытия элемента -->
 			</slot>
 			
 		</div>
@@ -28,21 +28,27 @@
 	
 	import contextMenu__mixin from '../../mixins/context-menu.js';
 	
+	/**
+ 	* Панель интерфейса, умеет разворачиваться по клику 
+ 	*/
 	export default {
 		props: {
+			/**
+ 			* Текст заголовка
+ 			*/
 			title : {
 				default : '', 
 				type : String
 			},
+			/**
+ 			* Контекстное меню правой кнопки мыши 
+ 			*/
 			menu : {
 				type : Array
 			}
 			
 		},
 		mixins: [contextMenu__mixin],
-		components: {
-
-		},
 		methods: {
 			toggleHeaderPanel: function() {
 				this.isShowed = !this.isShowed;
@@ -102,6 +108,7 @@
 		&__titlebar {
 			padding: 10px 0px 10px 10px;
 			line-height: 20px;
+			user-select: none;
 
 			&:after {
 				display: block;

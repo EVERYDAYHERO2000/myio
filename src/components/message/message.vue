@@ -33,9 +33,18 @@
 	import userName 				from '../../components/user-name/user-name.vue';
 	import dateTime 				from '../../components/date-time/date-time.vue';
 	
+	/**
+ 	* Сообщение в чате 
+ 	*/
 	export default {
 		props : {
+			/**
+ 			* глобальный объект с данными для поиска пользователя
+ 			*/
 			opt: Object,
+			/**
+ 			* объект сообщения
+ 			*/
 			message: Object
 		},
 		components : {

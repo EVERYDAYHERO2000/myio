@@ -25,24 +25,42 @@
 	import logo 				from '../../components/logo/logo.vue';
 	import headerTitle 	from '../../components/header-title/header-title.vue';
 	
+	/**
+ 	* Экран приложения, состояние. Используется в экране входа, регистрации в качестве контейнера.
+ 	*/
 	export default {
 		props: {
+			/**
+ 			* Полноэкранный режим.
+ 			*/
 			fullscreen : {
 				default: true,
     		type: Boolean
 			},
+			/**
+ 			* Логотип есть/нет.
+ 			*/
 			logo : {
 				default: false,
     		type: Boolean
 			},
+			/**
+ 			* Ошибка отправки содержимого.
+ 			*/
 			incorrect : {
 				default: false,
     		type: Boolean
 			},
+			/**
+ 			* Заголовок окна.
+ 			*/
 			header: {
 				default: '',
     		type: String
 			},
+			/**
+ 			* Переменная для callback.
+ 			*/
 			param: {
 				default: '',
 				type: String

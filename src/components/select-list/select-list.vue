@@ -52,11 +52,26 @@
 	
 	import menuItem 		from '../../components/menu-item/menu-item.vue';
 	
+	/**
+ 	* Выпадающий список 
+ 	*/
 	export default {
 		props: {
+			/**
+ 			* Массив с опциями для меню
+ 			*/
 			options: Array,
+			/**
+ 			* Индекс активной опции
+ 			*/
 			active: Number,
+			/**
+ 			* ключ value  
+ 			*/
 			k: String,
+			/**
+ 			* ключ заголовка
+ 			*/
 			v: String 
 		},
 		components: {

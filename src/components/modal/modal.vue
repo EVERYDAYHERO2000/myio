@@ -9,6 +9,7 @@
 				class="modal__panel">
 
 				<slot>
+					<!-- @slot Тут контент который виден после появления элемента -->
 				</slot>
 
 			</div>
@@ -19,9 +20,14 @@
 
 
 <script>
-	
+	/**
+ 	* Контейнер модального окна.
+ 	*/
 	export default {
 		props: {
+			/**
+ 			*  Показать/спрятать
+ 			*/
 			isVisible : {
 				default : false,
 				type: Boolean
