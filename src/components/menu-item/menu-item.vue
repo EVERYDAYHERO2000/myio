@@ -26,25 +26,42 @@
 <script>
 	
 	import dropEffect from '../../components/drop-effect/drop-effect.vue';
-	
+	/**
+ 	*	Опция для списка 
+ 	*/
 	export default {
 		props: {
+			/**
+ 			*	Заголовок, название опции 
+ 			*/
 			title : {
 				default : '',
 				type: String
 			},
+			/**
+ 			*	DOM элемент, `div` — по-умолчанию, `label`
+ 			*/
 			type : {
 				default: 'div', 
 				type: String
 			},
+			/**
+ 			*	Жирный шрифт, если опция активна
+ 			*/
 			isActive : {
 				default: false,
 				type: Boolean
 			},
+			/**
+ 			*	Если `type : 'label'` — указывается id связанного элемента 
+ 			*/
 			forId : {
 				default: '',
 				type: String
 			},
+			/**
+ 			*	`key` если в цикле
+ 			*/
 			dataKey : {
 				default : 0,
 				type : Number
@@ -71,6 +88,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+		user-select: none;
 		
 		&:hover {
 			color: @color-active;

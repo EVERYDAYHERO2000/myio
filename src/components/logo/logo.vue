@@ -64,10 +64,17 @@
 
 
 <script>
+
 	import cssVars from '../../functions/css-vars.js';
 	
+	/**
+ 	* Логотип myio
+ 	*/
 	export default {
 		props: {
+			/**
+ 			* Размер логотипа `m` — нормальный `s` — только знак
+ 			*/
 			size : {
 				default: 'm',
 				type: String

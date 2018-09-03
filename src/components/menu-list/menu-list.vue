@@ -14,14 +14,29 @@
 <script>
 	import menuItem from '../../components/menu-item/menu-item.vue';
 	
+	/**
+ 	*	Список меню 
+ 	*/
 	export default {
 		props: {
+			/**
+ 			*	массив пунктов меню 
+ 			*/
 			list : Array,
+			/**
+ 			*	индекс активного пункта меню
+ 			*/
 			active : {
 				default: 0,
 				type: Number
 			},
+			/**
+ 			*	ключ объекта с заголовком 
+ 			*/
 			k: String,
+			/**
+ 			*	ключ объекта с value
+ 			*/
 			v: String
 		},
 		components: {
