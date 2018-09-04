@@ -11,7 +11,7 @@
 		<user-item 
 			v-for="(user, index) in UsersCanBeRemoved" 
 			v-on:onRemove="removeUser" 
-			v-bind:opt="user"
+			v-bind:user="user"
 			v-bind:key="user.id" 
 			v-bind:index="index">
 		</user-item>	
@@ -38,11 +38,15 @@
 	import selectList from '../../components/select-list/select-list.vue';
 	import userItem from '../../components/user-item/user-item.vue';
 
-
+	/**
+ 	* Выпадающий список с доступными пользователями 
+ 	*/
 	export default {
 		props: {
-			opt: Object,
-			app: Object
+			/**
+ 			* Глобальный объект с данными. В объекте смотрим в userList [] и в user {}  
+ 			*/
+			opt: Object
 		},
 		components: {
 			selectList: selectList,
@@ -61,7 +65,7 @@
 			users: function() {
 				let temp = JSON.parse(JSON.stringify(this.opt.userList));
 
-				F.ifExist(temp, 'id', APP.$data.opt.user.id, function(e) {}, function(e) {
+				F.ifExist(temp, 'id', this.opt.user.id, function(e) {}, function(e) {
 					temp.splice(e.index, 1);
 				});
 

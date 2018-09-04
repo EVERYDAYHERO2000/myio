@@ -34,7 +34,6 @@
 
       <user-list 
 				v-on:onValue="setUserList"
-				v-bind:app="app"
 				v-bind:opt="opt">
 			</user-list>
 
@@ -65,7 +64,6 @@
 
       <user-list 
 				v-on:onValue="setUserList"
-				v-bind:app="app"
 				v-bind:opt="opt">
 			</user-list>
 

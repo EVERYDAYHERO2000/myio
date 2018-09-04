@@ -3,13 +3,13 @@
  	class="user-item">
 
  	<contact-icon-chip 
-		v-bind:title="opt.email" 
+		v-bind:title="user.email" 
 		v-bind:size="'s'"
-		v-bind:image="opt.avatar">
+		v-bind:image="user.avatar">
 	</contact-icon-chip>
 
 	<div class="user-item__content">
-		<user-name v-bind:name="opt.email"></user-name>
+		<user-name v-bind:name="user.email"></user-name>
 	</div>
 		
 	<div 
@@ -27,13 +27,25 @@
 	import contactIconChip 	from '../../components/contact-icon-chip/contact-icon-chip.vue';
 	import userName 				from '../../components/user-name/user-name.vue';
 	
+	/**
+ 	* Пользователь с аватаркой.  
+ 	*/
 	export default {
 		props: {
-			opt: Object,
+			/**
+ 			* Объект с пользователем 
+ 			*/
+			user: Object,
+			/**
+ 			* Удаляемый  
+ 			*/
 			removeble : {
 				default: true,
 				type: Boolean
 			},
+			/**
+ 			* Индекс элемента
+ 			*/
 			index: {
 				default: 0,
 				type: Number

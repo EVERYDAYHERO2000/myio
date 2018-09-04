@@ -6,8 +6,14 @@
 
 
 <script>
+	/**
+ 	* Имя пользователя 
+ 	*/
 	export default {
 		props : {
+			/**
+ 			* Имя пользователя 
+ 			*/
 			name : {
 				default: 'Username', 
 				type: String

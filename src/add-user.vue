@@ -25,7 +25,7 @@
       
       <user-item
       	v-bind:removeble="false"
-      	v-bind:opt="user"
+      	v-bind:user="user"
       	v-if="state == 3">
       </user-item>
       

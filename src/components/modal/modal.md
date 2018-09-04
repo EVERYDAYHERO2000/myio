@@ -3,5 +3,6 @@
 ```js
 <modal
 	v-bind:isVisible="false">
+	Место для содержимого
 </modal>
 ```

@@ -8,8 +8,6 @@
 			
 			<user-list 
 				v-on:onValue="setUserList"
-				v-bind:name="'users_2'"
-				v-bind:app="app"
 				v-bind:opt="opt">
 			</user-list>
 			
