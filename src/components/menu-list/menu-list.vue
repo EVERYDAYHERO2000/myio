@@ -4,6 +4,7 @@
 			v-for="(item, index) in list"
 			v-bind:isActive="active == index"
 			v-on:click.native="setActive(index, item[v])"
+			v-bind:key="index"
 			v-bind:title="item[k]">
 		</menu-item>
 	</div>

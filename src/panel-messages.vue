@@ -18,8 +18,9 @@
 				<div class="panel-messages__list-inner">	
 					
 					<message
-						v-for="message in messages"
+						v-for="(message,index) in messages"
 						v-bind:opt="opt"
+						v-bind:key="index"
 						v-bind:message="message">
 					</message>
 					
@@ -51,8 +52,6 @@
 	export default {
 		props: {
 			opt : Object,
-			app: Object,
-			type: String,
 			panelTitle: String
 		},
 		components : {

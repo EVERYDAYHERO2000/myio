@@ -5,10 +5,10 @@
   <div class="toolbar__tools">
 
     <toolbar-tool 
-      v-if="app.state == 'chats'" 
+      v-if="state == 'chats'" 
       v-on:click.native="toggleToolbarAdd"
       v-bind:title="$d('Create new')" 
-      v-bind:state="app.state"
+      v-bind:state="state"
       v-bind:icon="icons.icon_add">
     </toolbar-tool>
 
@@ -17,7 +17,7 @@
 		<toolbar-tool 
       v-on:click.native="toggleToolbarSpace"
       v-bind:title="$d('Work spaces')" 
-      v-bind:state="app.state">
+      v-bind:state="state">
       
 			<logo 
 				v-bind:size="'s'">
@@ -31,14 +31,14 @@
       v-bind:data="'chats'" 
       v-on:click.native="closeToolbar"
       v-bind:title="$d('Chats')" 
-      v-bind:state="app.state" 
+      v-bind:state="state" 
       v-bind:icon="icons.icon_forum">
     </toolbar-tool>
 
     <toolbar-tool 
       v-bind:data="'calendar'" 
       v-on:click.native="closeToolbar" 
-      v-bind:state="app.state"
+      v-bind:state="state"
       v-bind:title="$d('Calendar')" 
       v-bind:icon="icons.icon_event">
     </toolbar-tool>
@@ -46,7 +46,7 @@
     <toolbar-tool 
       v-bind:data="'files'" 
       v-on:click.native="closeToolbar"
-      v-bind:state="app.state"
+      v-bind:state="state"
       v-bind:title="$d('Files')" 
       v-bind:icon="icons.icon_cloudQueue">
     </toolbar-tool>
@@ -54,7 +54,7 @@
     <toolbar-tool 
       v-bind:data="'settings'" 
       v-on:click.native="closeToolbar" 
-      v-bind:state="app.state"
+      v-bind:state="state"
       v-bind:title="$d('Settings')" 
       v-bind:icon="icons.icon_settings">
     </toolbar-tool>
@@ -106,10 +106,19 @@
 	import icon_cloudQueue 	from './assets/cloud-queue.svg';
 	import icon_settings 		from './assets/settings.svg';
 
+	/**
+ 	* Панель инструментов рабочего экрана приложения
+	* используется в App.vue
+ 	*/
 	export default {
 		props: {
 			opt: Object,
-			app: Object
+			/**
+ 			* Состояние приложения 
+ 			*/
+			state: {
+				type : String
+			}
 		},
 		components: {
 			toolbarTool : toolbarTool,

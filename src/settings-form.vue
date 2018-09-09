@@ -29,8 +29,9 @@
 				</header-title>
 				
 				<super-component 
-					v-for="elem in settingListItem.form"
+					v-for="(elem,index) in settingListItem.form"
 					v-on:onChange="elem.onChange"
+					v-bind:key="index"
 					v-bind:com="elem">
 				</super-component>
 				

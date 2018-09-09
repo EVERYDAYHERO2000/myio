@@ -11,48 +11,60 @@
 			<div 
 				class="app-states__screen" 
 				v-if="app.screen === 'loading'">
+				
 				<loading-spinner>
 				</loading-spinner>
+				
 			</div>
 
 			<div 
 				class="app-states__main" 
 				v-else-if="app.screen === 'main'">
+				
 				<toolbar 
 					v-bind:opt="opt" 
-					v-bind:app="app">
+					v-bind:state="app.state">
 				</toolbar>
+				
 				<work-states 
+					v-bind:auth="auth"
 					v-bind:opt="opt"
 					v-bind:app="app">
 				</work-states>
+				
 			</div>
 
 			<div 
 				class="app-states__screen" 
 				v-else-if="app.screen === 'registration'">
+				
 				<state-registration 
 					v-bind:opt="opt"
 					v-bind:app="app">
 				</state-registration>
+				
 			</div>
 
 			<div 
 				class="app-states__screen" 
 				v-else-if="app.screen === 'forgot'">
+				
 				<state-forgot 
 					v-bind:opt="opt"
 					v-bind:app="app">
 				</state-forgot>
+				
 			</div>
 
 			<div 
 			 class="app-states__screen" 
 			 v-else-if="app.screen === 'login'">
+			 
 				<state-login 
 					v-bind:opt="opt"
 					v-bind:app="app">
 				</state-login>
+				
 			</div>
 
 		</div>
@@ -99,6 +111,9 @@
 	import modal 							from './components/modal/modal.vue';
 	import loadingSpinner 		from './components/loading-spinner/loading-spinner.vue';
 
+	/**
+ 	* Контейнер приложения
+ 	*/
 	export default {
 		name: 'app',
 		components: {
