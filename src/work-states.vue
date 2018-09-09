@@ -93,18 +93,23 @@
 
 
 <script>
-	import request from './functions/request.js';
-	import data from './functions/data.js';
-	import auth from './functions/auth.js';
-	import F from './functions/functions.js';
+	/**
+ 	* Функции 
+ 	*/
+	import request 					from './functions/request.js';
+	import data 						from './functions/data.js';
+	import auth 						from './functions/auth.js';
+	import F 								from './functions/functions.js';
 
-
-	import panelChats from './panel-chats.vue';
-	import panelTasks from './panel-tasks.vue';
-	import VueSplit from 'vue-split-panel';
-	import settingsForm from './settings-form.vue';
-	import panelMessages from './panel-messages.vue';
-	import socketListener from './socket-listener.vue';
+	/**
+ 	* Секции
+ 	*/
+	import panelChats 			from './panel-chats.vue';
+	import panelTasks 			from './panel-tasks.vue';
+	import VueSplit 				from 'vue-split-panel';
+	import settingsForm 		from './settings-form.vue';
+	import panelMessages 		from './panel-messages.vue';
+	import socketListener 	from './socket-listener.vue';
 
 	export default {
 		props: {

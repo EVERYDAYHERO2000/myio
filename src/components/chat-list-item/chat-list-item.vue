@@ -51,7 +51,6 @@
   
   <drop-effect 
   	v-bind:offsetX="50"
-  	v-bind:offsetY="40"
 		v-bind:theme="(isActive) ? 'light' : 'dark'">
 	</drop-effect>
   

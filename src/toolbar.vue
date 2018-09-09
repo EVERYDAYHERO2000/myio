@@ -63,13 +63,11 @@
   <div class="toolbar__form">
     <add-form 
     	v-if="addForm.isVisible"
-    	v-on:success="toggleToolbarAdd" 
-    	v-bind:app="app"
+    	v-on:success="toggleToolbarAdd"
     	v-bind:opt="opt">
     </add-form>
     <space-form 
     	v-if="spaceForm.isVisible"
-    	v-bind:app="app" 
     	v-bind:opt="opt">
     </space-form>
   </div>
@@ -86,13 +84,22 @@
 
 <script>
 	
+	/**
+ 	* Секции 
+ 	*/
 	import addForm 					from './add-form.vue';
 	import spaceForm 				from './space-form.vue';
 	
+	/**
+ 	* Компоненты 
+ 	*/
 	import toolbarTool 			from './components/toolbar-tool/toolbar-tool.vue';
 	import divider 					from './components/divider/divider.vue';
 	import logo 						from './components/logo/logo.vue';
 	
+	/**
+ 	* Ассеты 
+ 	*/
 	import icon_add 				from './assets/add.svg';
 	import icon_forum 			from './assets/forum.svg';
 	import icon_event 			from './assets/event.svg';

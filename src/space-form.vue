@@ -16,14 +16,15 @@
 
 
 <script>
-	
+	/**
+ 	* Компоненты 
+ 	*/
 	import menuList 		from './components/menu-list/menu-list.vue';
 	import headerTitle 	from './components/header-title/header-title.vue';
 	
 	export default {
 		props : {
-			opt: Object,
-			app: Object
+			opt: Object
 		},
 		components: {
 			menuList: menuList,

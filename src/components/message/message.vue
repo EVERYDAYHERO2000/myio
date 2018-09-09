@@ -1,5 +1,7 @@
 <template>
-	<div class="message">
+	<div 
+		v-on:contextmenu.prevent="setContextMenu"
+		class="message">
 	
 		<contactIconChip
 			v-bind:title="user.login" 
@@ -11,7 +13,7 @@
 			<user-name 
 				v-bind:name="user.login">
 			</user-name>
-			<div>{{message.text}}</div>
+			<div clas="message__text">{{message.text}}</div>
 		</div>
 		
 		<div class="message__info">
@@ -27,11 +29,22 @@
 
 
 <script>
-	import F 								from '../../functions/functions.js';
+	/**
+ 	* Функции 
+ 	*/
+	import F 									from '../../functions/functions.js';
 	
-	import contactIconChip 	from '../../components/contact-icon-chip/contact-icon-chip.vue';
-	import userName 				from '../../components/user-name/user-name.vue';
-	import dateTime 				from '../../components/date-time/date-time.vue';
+	/**
+ 	* Компоненты 
+ 	*/
+	import contactIconChip 		from '../../components/contact-icon-chip/contact-icon-chip.vue';
+	import userName 					from '../../components/user-name/user-name.vue';
+	import dateTime 					from '../../components/date-time/date-time.vue'; 
+	
+	/**
+ 	* Миксины 
+ 	*/
+	import contextMenu__mixin from '../../mixins/context-menu.js';
 	
 	/**
  	* Сообщение в чате 
@@ -47,6 +60,7 @@
  			*/
 			message: Object
 		},
+		mixins: [contextMenu__mixin],
 		components : {
 			contactIconChip: contactIconChip,
 			userName: userName,
@@ -55,6 +69,17 @@
 		computed : {
 			user : function(){
 				return F.ifExist(this.opt.userList, 'id', this.message.userId).object;
+			}
+		},
+		data : function(){
+			return {
+				menu : [
+					{name: this.$d('add user')},
+					{type: 'divider'},
+					{name: this.$d('pin')},
+					{name: this.$d('delete')}, 
+					{name: this.$d('convert to task')}
+				]
 			}
 		}
 	}
@@ -76,6 +101,11 @@
 			flex-grow: 1;
 			padding: 0 5px;
 			box-sizing: border-box;
+			user-select: all;
+		}
+		
+		&__text {
+			user-select: all;
 		}
 		
 		&__info {

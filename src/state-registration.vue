@@ -57,9 +57,15 @@
 
 <script>
 
+	/**
+ 	* Функции 
+ 	*/
 	import auth 					from './functions/auth.js';
 	import request 				from './functions/request.js';
 	
+	/**
+ 	* Компоненты 
+ 	*/
 	import btn 						from './components/btn/btn.vue';
 	import textField 			from './components/text-field/text-field.vue';
 	import logo 					from './components/logo/logo.vue';

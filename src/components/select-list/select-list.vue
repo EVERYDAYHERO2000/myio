@@ -130,6 +130,7 @@
 		&__placeholder {
 			border: none;
 			.border-radius(0);
+			color: @color-black;
 			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 			background-color: transparent;
 			box-sizing: border-box;

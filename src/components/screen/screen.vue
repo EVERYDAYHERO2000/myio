@@ -20,8 +20,9 @@
 
 
 <script>
-	import $	 					from 'jquery';
-	
+	/**
+ 	* Компоненты 
+ 	*/
 	import logo 				from '../../components/logo/logo.vue';
 	import headerTitle 	from '../../components/header-title/header-title.vue';
 	
@@ -72,24 +73,10 @@
 		},
 		methods : {
 			setIncorrect: function() {
-				if (this.incorrect){
-					let $el = this.$el;
-					let __this = this;
-					$($el).addClass('screen_incorrect').delay(500).queue(function() {
-						$(this).removeClass('screen_incorrect');
-						$(this).dequeue(); 
-						__this.$emit('onIncorrect', true);
-					});
-				}
+				this.$emit('onIncorrect', true);
 			},
 			setClose : function() {
-				if (this.param){
-					let __this = this;
-					let $el = this.$el;
-					$($el).addClass('screen_hide').delay(300).queue(function() {
-						__this.$emit('onClose', __this.param);
-					});
-				}
+				this.$emit('onClose', this.param);
 			}
 		},
 		updated : function(){
@@ -113,11 +100,6 @@
 		
 		&_fullscreen {
 			.fullscreen-form();
-		}
-		
-		&_hide {
-			opacity: 0;
-			.transition(all 0.3s ease);
 		}
 		
 		&_incorrect {

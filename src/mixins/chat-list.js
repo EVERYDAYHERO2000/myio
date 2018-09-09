@@ -7,9 +7,10 @@ const chatList = {
 			let chatsRooms = this.opt.chatsRooms
 			let chatsLength = chats.length;
 			let chatsRoomsLength = chatsRooms.length;
+			let searchResult = this.searchResult.toLowerCase().trim();
 			let newList = [];
 			for (var i = 0; i < chatsLength; i++) {
-				if ( exist(chats[i].taskStatus, this.taskStatus) ) push();
+				if ( exist(chats[i].taskStatus, this.taskStatus) ) push(i, searchResult);
 			}
 			
 			function exist(str, arr){
@@ -22,31 +23,42 @@ const chatList = {
 				return false;
 			}
 			
-			function push(){
-				for (var c = 0; c < chatsRoomsLength; c++) {
-						if (chats[i].id == chatsRooms[c].chatsId) {
-							newList.push({
-								createrId: chats[i].createrId,
-								creationDate: chats[i].creationDate,
-								deadlineDate: chats[i].deadlineDate,
-								endDate: chats[i].endDate,
-								icon: chats[i].icon,
-								id: chats[i].id,
-								isDeleted: chats[i].isDeleted,
-								name: chats[i].name,
-								parentId: chats[i].parentId,
-								spacesId: chats[i].spacesId,
-								taskStatus: chats[i].taskStatus,
-								updateDate: chats[i].updateDate,
-								joinDate: chatsRooms[c].joinDate,
-								lastSeenDate: chatsRooms[c].lastSeenDate,
-								chatRole: chatsRooms[c].chatRole,
-								isPinned: chatsRooms[c].isPinned,
-								chatsIndex: i,
-								chatsRoomsIndex: c
-							});
+			function push(index, searchResult){
+				
+				for (var c = 0; c < chatsRoomsLength; c++) { 
+					if (chats[index].id == chatsRooms[c].chatsId) {
+						if (!searchResult.length) {	
+							__push(newList, chats, chatsRooms, index, c);
+						} else {
+							if ( chats[index].name.toLowerCase().trim().indexOf( searchResult ) + 1 ){
+								__push(newList, chats, chatsRooms, index, c);
+							}
 						}
 					}
+				}
+				
+				function __push(arr, chats, chatsRooms, indexChat, indexRoom){
+					arr.push({
+						createrId: 				chats[indexChat].createrId,
+						creationDate: 		chats[indexChat].creationDate,
+						deadlineDate: 		chats[indexChat].deadlineDate,
+						endDate: 					chats[indexChat].endDate,
+						icon: 						chats[indexChat].icon,
+						id: 							chats[indexChat].id,
+						isDeleted: 				chats[indexChat].isDeleted,
+						name: 						chats[indexChat].name,
+						parentId: 				chats[indexChat].parentId,
+						spacesId: 				chats[indexChat].spacesId,
+						taskStatus: 			chats[indexChat].taskStatus,
+						updateDate: 			chats[indexChat].updateDate,
+						joinDate: 				chatsRooms[indexRoom].joinDate,
+						lastSeenDate: 		chatsRooms[indexRoom].lastSeenDate,
+						chatRole: 				chatsRooms[indexRoom].chatRole,
+						isPinned: 				chatsRooms[indexRoom].isPinned,
+						chatsIndex: 			indexChat,
+						chatsRoomsIndex: 	indexRoom
+					});
+				}
 			}
 			
 			return newList;

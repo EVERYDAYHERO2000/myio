@@ -3,7 +3,7 @@
 	<div class="panel-messages">	
 		
 		<panel-header
-
+			v-bind:position="'layer'"
 			v-bind:title="panelTitle">
 			
 			<user-list 
@@ -26,12 +26,11 @@
 				</div>	
 			</div>
 			
-			<div class="panel-messages__input">
-				<chat-input 
-					v-bind:app="app"
-					v-bind:opt="opt">
-				</chat-input>
-			</div>
+			
+			<chat-input 
+				v-bind:opt="opt">
+			</chat-input>
+			
 			
 		</div>
 	</div>
@@ -120,10 +119,6 @@
 			position: absolute;
 			bottom: 0;
 			max-height: 100%;
-		}
-		
-		&__input {
-			
 		}
 		
 	}

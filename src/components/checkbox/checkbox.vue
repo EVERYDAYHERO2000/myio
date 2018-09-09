@@ -66,6 +66,7 @@
 		@speed: 0.1s;
 		
 		&__input {
+			font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
 			display: none;
 		}
 		

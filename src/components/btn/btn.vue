@@ -17,6 +17,9 @@
 
 
 <script>
+	/**
+ 	* Компонеты 
+ 	*/
 	import dropEffect from '../../components/drop-effect/drop-effect.vue';
 	
 	/**

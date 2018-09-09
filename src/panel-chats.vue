@@ -6,11 +6,12 @@
 					{name: $d('new chat')},
 					{name: $d('mute notification')}
 				]"
-		v-bind:title="panelTitle">
+		v-bind:title="(searchResult) ? panelTitle + ':' + searchResult : panelTitle">
 		
 		<text-field 
 			v-bind:label="''"
 			v-bind:placeholder="$d('Search')"
+			v-on:onValue="setSearchResult"
 			v-bind:type="'search'">
 		</text-field>
 		
@@ -24,7 +25,7 @@
 			v-bind:app="app"
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
-			v-bind:type="'chat'"
+			v-bind:type="'chat'" 
 			v-bind:key="chat.id">
 		</chat-list-item>
 	
@@ -69,14 +70,15 @@
 
 		},
 		methods: {
+			setSearchResult: function(e){
+				this.searchResult = e;
+			}
 		},
 		data: function(){
 			return {
-				taskStatus: ['chat']
+				taskStatus: ['chat'],
+				searchResult : ''
 			}
-		},
-		computed : {
-			
 		}
 	}
 </script>
@@ -88,12 +90,12 @@
 	.panel-chats {
 		.flex-block();
 		height: 100vh;
-		.flex-direction(row);
+		.flex-direction(column);
 
 		&__list {
 			height: calc(100vh - @height-header);
 			width: 100%;
-			.transform(translateY(@height-header));
+			
 			.vertical-scroll();
 		}
 	}

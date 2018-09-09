@@ -2,7 +2,11 @@
 	<div class="panel-tasks">
 
 	<panel-header
-		v-bind:title="panelTitle">
+		v-bind:menu="[
+					{name: $d('new task')},
+					{name: $d('mute notification')}
+				]"
+		v-bind:title="(searchResult) ? panelTitle + ':' + searchResult : panelTitle">
 		
 			<select-list 
 				v-bind:name="'test'" 
@@ -16,6 +20,7 @@
 			<text-field 
 				v-bind:label="''" 
 				v-bind:placeholder="$d('Search')"
+				v-on:onValue="setSearchResult"
 				v-bind:type="'search'">
 			</text-field>
 			
@@ -51,13 +56,17 @@
 
 <script>
 
-	import F 								from './functions/functions.js';
-	
+	/**
+ 	* Компоненты 
+ 	*/
 	import panelHeader 			from './components/panel-header/panel-header.vue';
 	import selectList 			from './components/select-list/select-list.vue';
 	import textField 				from './components/text-field/text-field.vue';
 	import chatListItem 		from './components/chat-list-item/chat-list-item.vue';
 	
+	/**
+ 	* Миксины 
+ 	*/
 	import chatList__mixin 	from './mixins/chat-list.js';
 	
 	export default {
@@ -80,11 +89,15 @@
 		methods: {
 			setActive: function(e){
 				this.active = e;
+			},
+			setSearchResult: function(e){
+				this.searchResult = e;
 			}
 		},
 		data: function(){
 			return {
 				taskStatus: ['started','needInfo','review','closed'],
+				searchResult : '',
 				active: 0
 			}
 		},
@@ -116,12 +129,12 @@
 	.panel-tasks {
 		.flex-block();
 		height: 100vh;
-		.flex-direction(row);
+		.flex-direction(column);
 
 		&__list {
 			height: calc(100vh - @height-header);
 			width: 100%;
-			.transform(translateY(@height-header));
+			
 			.vertical-scroll();
 		}
 	}

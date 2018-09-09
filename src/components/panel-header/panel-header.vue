@@ -1,13 +1,17 @@
 <template>
 	<div
-		v-on:contextmenu.prevent="setContextMenu"
-		v-bind:class="{ 'panel-header_active' : isShowed }" 
+		v-on:contextmenu.prevent="setContextMenu" 
+		v-bind:class="{ 
+			'panel-header_active' : isShowed, 
+			'panel-header_static' : position == 'static',
+			'panel-header_layer'  : position == 'layer' }" 
 		class="panel-header"> 
 	
 		<div 
 			class="panel-header__titlebar" 
 			v-bind:title="$d('expand')"
-			v-on:click="toggleHeaderPanel">{{title}}
+			v-on:click="toggleHeaderPanel">
+			{{title}}
 		</div>
 		
 		<div 
@@ -45,6 +49,13 @@
  			*/
 			menu : {
 				type : Array
+			},
+			/**
+ 			* Позиционирование шапки `static` — статичное, `layer` — абcолютное, отдельным слоем.
+ 			*/
+			position : {
+				default : 'static',
+				type : String
 			}
 			
 		},
@@ -71,44 +82,45 @@
 
 		@animation-speed: 0.5s;
 
-		position: absolute;
-		top: 0;
-		left: 0;
 		width: 100%;
 
 		max-height: @height-header;
-		z-index: 1000;
 		box-sizing: border-box;
 		.f-border(bottom);
 		background-color: @color-white;
-		box-shadow: 0px 0px 0px rgba(0, 0, 0, .05);
-		transition: max-height @animation-speed ease, box-shadow @animation-speed / 2 ease;
+		transition: all @animation-speed ease;
 		color: @color-gray-font;
-		overflow: hidden;
-
-
-		&_active {
-			box-shadow: 0px 2px 20px rgba(0, 0, 0, .05);
-			max-height: calc(100vh - @height-header);
-			transition: max-height @animation-speed ease, box-shadow @animation-speed / 2 ease;
-			overflow: visible;
-			.animation( overflowed @animation-speed 1 ease );
+		overflow: visible;
+		
+		&_layer {
+			top: 0;
+			left: 0;
+			z-index: 1000;
+			box-shadow: 0px 0px 0px rgba(0, 0, 0, .05);
+			position: absolute;
+		}
+		
+		&_static {
+			position: static;
 		}
 
-		@keyframes overflowed {
-			0%,
-			99% {
-				overflow: hidden;
-			}
-			100% {
-				overflow: visible;
-			}
+		&_layer&_active {
+			box-shadow: 0px 2px 20px rgba(0, 0, 0, .05);
+		}
+		
+		&_active {
+			max-height: calc(100vh - @height-header);
+			transition: all @animation-speed ease;
 		}
 
 		&__titlebar {
 			padding: 10px 0px 10px 10px;
 			line-height: 20px;
 			user-select: none;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			word-break: keep-all;
+			width: calc(100% - 30px);
 
 			&:after {
 				display: block;

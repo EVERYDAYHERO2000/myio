@@ -45,9 +45,15 @@
 
 <script>
 
+	/**
+ 	* Функции 
+ 	*/
 	import request 					from './functions/request.js';
 	import F 								from './functions/functions.js';
 	
+	/**
+ 	* Компоненты 
+ 	*/
 	import btn 							from './components/btn/btn.vue';
 	import textField 				from './components/text-field/text-field.vue';
 	import btnGroup 				from './components/btn-group/btn-group.vue';
@@ -56,8 +62,7 @@
 	
 	export default {
 		props : {
-			opt: Object,
-			app: Object
+			opt: Object
 		},
 		components: {
 			btn: btn,

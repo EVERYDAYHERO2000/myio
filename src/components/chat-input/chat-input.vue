@@ -1,9 +1,11 @@
 <template>
 	<div class="chat-input">
+	
 		<div 	
 			v-bind:title="$d('add file')" 
 			class="chat-input__add-file">
 		</div>
+		
 		<textarea 
 			autofocus 
 			ref="chat-input"
@@ -13,6 +15,7 @@
 			v-on:keyup="resizeTextarea"
 			v-on:keydown="handleCmdEnter($event)">
 		</textarea>
+		
 		<div 
 			class="chat-input__send" 
 			v-on:click="addNewMessage" 
@@ -26,6 +29,7 @@
 			</svg>
 	
 		</div>
+		
 	</div>
 </template>
 

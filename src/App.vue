@@ -72,17 +72,29 @@
 </template>
 
 <script>
+	/**
+ 	* Библиотеки 
+ 	*/
 	import platform 					from 'platform';
 
+	/**
+ 	* Функции 
+ 	*/
 	import auth 							from './functions/auth.js';
 	import lang 							from './functions/lang.js';
 	
+	/**
+ 	* Секции 
+ 	*/
 	import toolbar 						from './toolbar.vue';
 	import stateRegistration 	from './state-registration.vue';
 	import stateForgot 				from './state-forgot.vue';
 	import stateLogin 				from './state-login.vue';
 	import workStates 				from './work-states.vue';
 
+	/**
+ 	* Компоненты 
+ 	*/
 	import contextMenu 				from './components/context-menu/context-menu.vue';
 	import modal 							from './components/modal/modal.vue';
 	import loadingSpinner 		from './components/loading-spinner/loading-spinner.vue';
@@ -127,7 +139,6 @@
 					platform.name.replace(/ /g, '-').toLowerCase()
 				].join(' ');
 			},
-			
 			disableZoom: function(e){
 				if (e.ctrlKey == true) e.preventDefault();
 			}
@@ -164,6 +175,24 @@
 		&:focus {
 			outline: none;
 		}
+	}
+	
+	:root {
+		--color-background: @color-background;
+		--color-white: @color-white;
+		--color-black: @color-black;
+		--color-border: @color-border;
+		--color-gray-font: @color-gray-font;
+		--color-active: @color-active;
+		--color-hover: @color-hover;
+		--color-border-active: @color-border-active;
+		--color-border-hover: @color-border-hover;
+		--color-error: @color-error;
+		--logo-color-main: @color-active;
+		--logo-color-main-tint: darken(@color-active, 20%);
+		--logo-color-font: @color-black;
+		--logo-color-second: @color-white;
+		--logo-color-second-tint: darken(@color-white, 20%);
 	}
 
 	#app,

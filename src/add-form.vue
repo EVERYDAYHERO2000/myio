@@ -82,8 +82,7 @@
 
      	<add-user
      		v-on:userSubmit="close"
-     		v-bind:opt="opt"
-     		v-bind:app="app">
+     		v-bind:opt="opt">
      	</add-user>
       
     </div>
@@ -94,13 +93,21 @@
 
 
 <script>
-
+	/**
+ 	* Функции 
+ 	*/
 	import getDateTime 	from './functions/date-time.js';
 	import request 			from './functions/request.js';
 	import F 						from './functions/functions.js';
 
+	/**
+ 	* Секции 
+ 	*/
 	import addUser 			from './add-user.vue';
 	
+	/**
+ 	* Компоненты 
+ 	*/
 	import btn 					from './components/btn/btn.vue';
 	import textField 		from './components/text-field/text-field.vue';
 	import selectList 	from './components/select-list/select-list.vue';
@@ -110,8 +117,7 @@
 	
 	export default {
 		props: {
-			opt: Object,
-			app: Object
+			opt: Object
 		},
 		components: {
 			btn: btn,

@@ -17,7 +17,7 @@
 			v-bind:type="type" 
 			v-bind:id="setId()"
 			v-bind:name="setId()"
-			v-on:keyup="onChange"
+			v-on:input="onChange"
 			v-model="text" 
 			required />
 
@@ -117,6 +117,7 @@
 		}
 
 		& input {
+			font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
 			font-size: @font-size-main;
 			padding: 10px 10px 10px 5px;
 			display: block;

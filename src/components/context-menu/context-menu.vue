@@ -101,7 +101,8 @@
 				
 				let target = event.toElement || event.relatedTarget;
 				
-				if ( !target.classList.contains('menu-item') && 
+				if ( target &&
+						 !target.classList.contains('menu-item') && 
 						 !target.classList.contains('divider') && 
 						 !target.classList.contains('context-menu') ) {
 					APP.$data.app.context.isShowed = false;
