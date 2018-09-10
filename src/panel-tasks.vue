@@ -83,9 +83,6 @@
 			textField: textField
 		},
 		mixins: [chatList__mixin],
-		created: function(){
-			
-		},
 		methods: {
 			setActive: function(e){
 				this.active = e;

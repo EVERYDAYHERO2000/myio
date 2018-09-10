@@ -102,6 +102,7 @@
 		
 		&_static {
 			position: static;
+			transition: all @animation-speed ease;
 		}
 
 		&_layer&_active {

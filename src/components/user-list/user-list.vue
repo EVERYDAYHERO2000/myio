@@ -8,6 +8,7 @@
   <div 
   	class="user-list__users" 
   	v-if="UsersCanBeRemoved.length">
+  	
 		<user-item 
 			v-for="(user, index) in UsersCanBeRemoved" 
 			v-on:onRemove="removeUser" 
@@ -15,6 +16,7 @@
 			v-bind:key="user.id" 
 			v-bind:index="index">
 		</user-item>	
+		
   </div>
   
 	<select-list 
@@ -33,10 +35,16 @@
 
 <script>
 
-	import F from '../../functions/functions.js';
+	/**
+ 	* Функции 
+ 	*/
+	import F 						from '../../functions/functions.js';
 
-	import selectList from '../../components/select-list/select-list.vue';
-	import userItem from '../../components/user-item/user-item.vue';
+	/**
+ 	* Компоненты 
+ 	*/
+	import selectList 	from '../../components/select-list/select-list.vue';
+	import userItem 		from '../../components/user-item/user-item.vue';
 
 	/**
  	* Выпадающий список с доступными пользователями 
@@ -44,37 +52,54 @@
 	export default {
 		props: {
 			/**
- 			* Глобальный объект с данными. В объекте смотрим в userList [] и в user {}  
+ 			* id пользователя которого нужно исключить. Например исключить самого себя. 
  			*/
-			opt: Object
+			userExcludeId: {
+				default: 0,
+				type: Number
+			},
+			/**
+ 			* Массив с пользователями 
+ 			*/
+			userList: Array
 		},
 		components: {
 			selectList: selectList,
 			userItem: userItem
 		},
 		methods: {
+			/**
+ 			* Добавить пользователя из списка
+			* e {number} — индекс элемента
+ 			*/
 			addUser: function(e) {
 				this.UsersCanBeRemoved.push(this.UsersCanBeAdded[e]);
 				this.UsersCanBeAdded.splice(e, 1);
 				this.$emit('onValue', this.UsersCanBeRemoved);
 			},
+			/**
+ 			* Удалить пользователя и вернуть в список
+			* e {number} — индекс элемента
+ 			*/
 			removeUser: function(e) {
 				this.UsersCanBeAdded.push(this.UsersCanBeRemoved[e]);
 				this.UsersCanBeRemoved.splice(e, 1);
 			},
-			users: function() {
-				let temp = JSON.parse(JSON.stringify(this.opt.userList));
+			/**
+ 			* Собрать список с пользователями. При необходимости исключить самого себя. 
+ 			*/
+			createUserList: function() {
+				let temp = JSON.parse(JSON.stringify(this.userList));
 
-				F.ifExist(temp, 'id', this.opt.user.id, function(e) {}, function(e) {
+				if (this.userExcludeId) F.ifExist(temp, 'id', this.userExcludeId, undefined, function(e) {
 					temp.splice(e.index, 1);
 				});
-
 				return temp;
 			}
 		},
 		data: function() {
 			return {
-				UsersCanBeAdded: this.users(),
+				UsersCanBeAdded: this.createUserList(),
 				UsersCanBeRemoved: []
 			}
 		}

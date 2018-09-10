@@ -19,8 +19,14 @@
 
 <script>
 	
+	/**
+ 	* Компоненты 
+ 	*/
 	import dropEffect from '../../components/drop-effect/drop-effect.vue';
 
+	/**
+ 	* Кнопка панели инструментов 
+ 	*/
 	export default {
 		props: {
 			state: {

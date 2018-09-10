@@ -23,7 +23,9 @@
 
 
 <script>
-	
+	/**
+ 	* Компоненты 
+ 	*/
 	import contactIconChip 	from '../../components/contact-icon-chip/contact-icon-chip.vue';
 	import userName 				from '../../components/user-name/user-name.vue';
 	

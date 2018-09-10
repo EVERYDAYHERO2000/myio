@@ -59,6 +59,9 @@
  	*/
 	import chatList__mixin 		from './mixins/chat-list.js';
 	
+	/**
+ 	* Панель список чатов 
+ 	*/
 	export default {
 		props: {
 			opt: Object,
@@ -72,9 +75,6 @@
 			textField: textField
 		},
 		mixins: [chatList__mixin],
-		created: function(){
-
-		},
 		methods: {
 			setSearchResult: function(e){
 				this.searchResult = e;

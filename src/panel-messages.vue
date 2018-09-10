@@ -8,7 +8,8 @@
 			
 			<user-list 
 				v-on:onValue="setUserList"
-				v-bind:opt="opt">
+				v-bind:userExcludeId="opt.user.id"
+				v-bind:userList="opt.userList">
 			</user-list>
 			
 		</panel-header> 
@@ -40,8 +41,14 @@
 
 
 <script>
+	/**
+ 	* Функции 
+ 	*/
 	import F 							from './functions/functions.js';
 	
+	/**
+ 	* Компоненты 
+ 	*/
 	import panelHeader 		from './components/panel-header/panel-header.vue';
 	import selectList 		from './components/select-list/select-list.vue';
 	import textField 			from './components/text-field/text-field.vue';
@@ -49,6 +56,9 @@
 	import chatInput 			from './components/chat-input/chat-input.vue';
 	import message 				from './components/message/message.vue';
 	
+	/**
+ 	* Панель с лентой сообщений чата. 
+ 	*/
 	export default {
 		props: {
 			opt : Object,

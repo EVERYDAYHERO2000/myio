@@ -34,7 +34,8 @@
 
       <user-list 
 				v-on:onValue="setUserList"
-				v-bind:opt="opt">
+				v-bind:userExcludeId="opt.user.id"
+				v-bind:userList="opt.userList">
 			</user-list>
 
       <btn-group class="btn-group_shade">
@@ -64,7 +65,8 @@
 
       <user-list 
 				v-on:onValue="setUserList"
-				v-bind:opt="opt">
+				v-bind:userExcludeId="opt.user.id"
+				v-bind:userList="opt.userList">
 			</user-list>
 
       <btn-group class="btn-group_shade">

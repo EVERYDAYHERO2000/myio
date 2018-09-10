@@ -30,9 +30,10 @@
 		color: @color-active;
 		font-size: @font-size-main;
 		user-select: none;
+		
+		&__on-active {
+			color: @color-white;
+		}
 	}
 	
-	.user-name__on-active {
-		color: @color-white;
-	}
 </style>

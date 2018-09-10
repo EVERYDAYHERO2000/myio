@@ -28,7 +28,8 @@
 		<user-list 
 			v-if="com.component == 'userList'"
 			v-on:onValue="change"
-			v-bind:opt="com.opt">
+			v-bind:userExcludeId="opt.user.id"
+			v-bind:userList="opt.userList">
 		</user-list>
 		
 		<checkbox 
