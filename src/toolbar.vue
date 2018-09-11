@@ -8,7 +8,6 @@
       v-if="state == 'chats'" 
       v-on:click.native="toggleToolbarAdd"
       v-bind:title="$d('Create new')" 
-      v-bind:state="state"
       v-bind:icon="icons.icon_add">
     </toolbar-tool>
 
@@ -16,8 +15,7 @@
 
 		<toolbar-tool 
       v-on:click.native="toggleToolbarSpace"
-      v-bind:title="$d('Work spaces')" 
-      v-bind:state="state">
+      v-bind:title="$d('Work spaces')">
       
 			<logo 
 				v-bind:size="'s'">
@@ -28,33 +26,37 @@
     <divider></divider>
 
     <toolbar-tool 
-      v-bind:data="'chats'" 
+      v-bind:nextState="'chats'" 
+      v-on:onChangeState="setState"
       v-on:click.native="closeToolbar"
       v-bind:title="$d('Chats')" 
-      v-bind:state="state" 
+      v-bind:currentState="state" 
       v-bind:icon="icons.icon_forum">
     </toolbar-tool>
 
     <toolbar-tool 
-      v-bind:data="'calendar'" 
+      v-bind:nextState="'calendar'" 
+      v-on:onChangeState="setState"
       v-on:click.native="closeToolbar" 
-      v-bind:state="state"
+      v-bind:currentState="state"
       v-bind:title="$d('Calendar')" 
       v-bind:icon="icons.icon_event">
     </toolbar-tool>
 
     <toolbar-tool 
-      v-bind:data="'files'" 
+      v-bind:nextState="'files'"
+      v-on:onChangeState="setState" 
       v-on:click.native="closeToolbar"
-      v-bind:state="state"
+      v-bind:currentState="state"
       v-bind:title="$d('Files')" 
       v-bind:icon="icons.icon_cloudQueue">
     </toolbar-tool>
 
     <toolbar-tool 
-      v-bind:data="'settings'" 
+      v-bind:nextState="'settings'" 
+      v-on:onChangeState="setState"
       v-on:click.native="closeToolbar" 
-      v-bind:state="state"
+      v-bind:currentState="state"
       v-bind:title="$d('Settings')" 
       v-bind:icon="icons.icon_settings">
     </toolbar-tool>
@@ -147,6 +149,9 @@
 			closeToolbar: function() {
 				this.addForm.isVisible = false;
 				this.spaceForm.isVisible = false;
+			},
+			setState: function(e){
+				APP.$set(APP.app, 'state', e);
 			}
 		},
 		data: function() {
@@ -177,7 +182,7 @@
 		@width-toolbar_active: 320px;
 
 		width: @width-toolbar;
-		height: 100vh;
+		height: 100%;
 		background-color: @color-white;
 		box-sizing: border-box;
 		.f-border(right);

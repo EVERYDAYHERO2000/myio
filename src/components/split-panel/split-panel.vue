@@ -53,6 +53,9 @@
  	*/
 	export default {
 		props: {
+			/**
+ 			* Минимальная ширина
+ 			*/
 			minWidth : {
 				default : 300,
 				type: Number

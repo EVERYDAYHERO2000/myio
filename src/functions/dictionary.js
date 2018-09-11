@@ -1,6 +1,6 @@
 "use strict";
 
-let d = {
+const d = {
 
 		'help' : {
 			eng: 'Help',

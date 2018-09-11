@@ -2,7 +2,7 @@
 	<div 
 		v-on:click="toggleState" 
 		class="toolbar-tool"
-		v-bind:class="{ 'toolbar-tool_active' : state === data }"
+		v-bind:class="{ 'toolbar-tool_active' : currentState && currentState === nextState }"
 		v-bind:style="(icon) ? 'background-image: url(' + icon + ');' : ''"
 		v-bind:title="title">
 		
@@ -29,14 +29,14 @@
  	*/
 	export default {
 		props: {
-			state: {
+			currentState: {
 				type : String
 			},
-			icon: String,
-			data: {
+			nextState: {
 				default: '',
 				type: String
 			},
+			icon: String,
 			title: String
 		},
 		components : {
@@ -44,7 +44,9 @@
 		},
 		methods: {
 			toggleState: function() {
-				if (this.data && this.state !== this.data) APP.$data.app.state = this.data;
+				if (this.nextState && this.currentState !== this.nextState) {
+					this.$emit('onChangeState', this.nextState);
+				}
 			}
 		}
 	}
