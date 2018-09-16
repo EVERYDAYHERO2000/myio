@@ -35,6 +35,7 @@
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
 			v-bind:type="'task'"
+			v-bind:searchResult="searchResult" 
 			v-bind:key="chat.id">
 		</chat-list-item>
 	
@@ -45,6 +46,7 @@
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
 			v-bind:type="'task'"
+			v-bind:searchResult="searchResult" 
 			v-bind:key="chat.id">
 		</chat-list-item>
 		
@@ -87,7 +89,7 @@
 			setActive: function(e){
 				this.active = e;
 			},
-			setSearchResult: function(e){
+			setSearchResult: function(e){ 
 				this.searchResult = e;
 			}
 		},

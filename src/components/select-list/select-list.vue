@@ -48,8 +48,14 @@
 
 <script>
 
+	/**
+ 	* Функции 
+ 	*/
 	import findZindex 	from '../../functions/find-zindex.js';
 	
+	/**
+ 	* Компоненты 
+	*/
 	import menuItem 		from '../../components/menu-item/menu-item.vue';
 	
 	/**

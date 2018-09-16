@@ -11,7 +11,13 @@
 	</contact-icon-chip>
 	
 	<div class="chat-list-item__content">
-		<div class="chat-list-item__title">{{ chat.name }}</div>
+	
+		<heightlight-text
+			class="chat-list-item__title"
+			v-bind:heightlightText="searchResult"
+			v-bind:text="chat.name">	
+		</heightlight-text>
+		
 		<div class="chat-list-item__description">
      
       <user-name 
@@ -60,15 +66,25 @@
 
 
 <script>
+	/**
+ 	* Функции 
+ 	*/
 	import request 							from '../../functions/request.js';
 	import F 										from '../../functions/functions.js';
 
+	/**
+ 	* Компоненты 
+ 	*/
 	import contactIconChip 			from '../../components/contact-icon-chip/contact-icon-chip.vue';
 	import userName 						from '../../components/user-name/user-name.vue';
 	import dateTime 						from '../../components/date-time/date-time.vue';
 	import pin 									from '../../components/pin/pin.vue';
 	import dropEffect 					from '../../components/drop-effect/drop-effect.vue';
+	import heightlightText			from '../../components/heightlight-text/heightlight-text.vue';
 	
+	/**
+ 	* Миксины 
+ 	*/
 	import contextMenu__mixin 	from '../../mixins/context-menu.js'; 
 
 	/**
@@ -90,6 +106,9 @@
 			type: {
 				default: 'chat',
 				type: String
+			},
+			searchResult: {
+				type: String
 			}
 		},
 		mixins: [contextMenu__mixin],
@@ -98,7 +117,8 @@
 			userName: userName,
 			dateTime: dateTime,
 			pin: pin,
-			dropEffect: dropEffect
+			dropEffect: dropEffect,
+			heightlightText: heightlightText
 		},
 		methods: {
 			//сделать чат активным
@@ -132,7 +152,7 @@
 					{type: 'divider'},
 					{name: this.$d('pin')},
 					{name: this.$d('delete')}, 
-					{name: this.$d('convert to task')}
+					{name: this.$d('convert to task')} 
 				]
 			}
 		},

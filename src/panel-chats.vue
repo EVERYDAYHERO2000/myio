@@ -25,8 +25,9 @@
 			v-bind:app="app"
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
-			v-bind:type="'chat'" 
-			v-bind:key="chat.id">
+			v-bind:type="'chat'"
+			v-bind:searchResult="searchResult" 
+			v-bind:key="chat.id"> 
 		</chat-list-item>
 	
 		<chat-list-item 
@@ -36,6 +37,7 @@
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
 			v-bind:type="'chat'"
+			v-bind:searchResult="searchResult"
 			v-bind:key="chat.id">
 		</chat-list-item>
 		
@@ -66,7 +68,7 @@
 		props: {
 			opt: Object,
 			app: Object,
-			panelTitle: String,
+			panelTitle: String, 
 			type: String
 		},
 		components: {
