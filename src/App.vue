@@ -192,7 +192,7 @@
 		}
 	}
 	
-	:root {
+	:root { 
 		--color-background: @color-background;
 		--color-white: @color-white;
 		--color-black: @color-black;

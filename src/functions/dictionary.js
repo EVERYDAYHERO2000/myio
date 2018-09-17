@@ -227,6 +227,11 @@ const d = {
 			ru : 'Закрепить',
 			zh: '銷'
 		},
+		'unpin' : {
+			eng: 'Unpin',
+			ru : 'Открепить',
+			zh: '銷'
+		},
 		'pin chat' : {
 			eng : 'Pin chat',
 			ru : 'Закрепить чат',

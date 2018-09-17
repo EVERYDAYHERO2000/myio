@@ -5,20 +5,23 @@
 		v-if="isShowed"
 		class="context-menu">
 		
-		<template v-for="(item,index) in menu">
+		<template 
+			v-for="(item,index) in menu">
 		
+			
+				<menu-item
+					v-on:click.native="item.action()"
+					v-if="item.name && !item.hide"
+					v-on:contextmenu.native.prevent="hideNative"
+					v-bind:title="item.name">
+				</menu-item>
 
-			<menu-item
-				v-if="item.name"
-				v-on:contextmenu.native.prevent="hideNative"
-				v-bind:title="item.name">
-			</menu-item>
+				<divider
+					v-bind:margin="0"
+					v-on:contextmenu.native.prevent="hideNative" 
+					v-if="item.type && item.type == 'divider'">		
+				</divider>
 
-			<divider
-				v-bind:margin="0"
-				v-on:contextmenu.native.prevent="hideNative" 
-				v-if="item.type && item.type == 'divider'">		
-			</divider>
 		
 		</template>
 		

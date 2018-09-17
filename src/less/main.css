@@ -149,3 +149,24 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   }
 }
+body {
+  font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+}
+:root {
+  --color-background: #fafafa;
+  --color-white: #ffffff;
+  --color-black: rgba(0, 0, 0, 0.7);
+  --color-border: #dddddd;
+  --color-gray-font: rgba(0, 0, 0, 0.5);
+  --color-active: #4b91c6;
+  --color-hover: #fdfefe;
+  --color-border-active: #3577a9;
+  --color-border-hover: #d6e6f2;
+  --color-error: #ff4f12;
+  --logo-color-main: #4b91c6;
+  --logo-color-main-tint: #295c82;
+  --logo-color-font: rgba(0, 0, 0, 0.7);
+  --logo-color-second: #ffffff;
+  --logo-color-second-tint: #cccccc;
+}

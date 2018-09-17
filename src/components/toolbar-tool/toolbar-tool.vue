@@ -29,14 +29,26 @@
  	*/
 	export default {
 		props: {
+			/**
+ 			* текущее состояние приложения
+ 			*/
 			currentState: {
 				type : String
 			},
+			/**
+ 			* состояние приложения после перехода
+ 			*/
 			nextState: {
 				default: '',
 				type: String
 			},
+			/**
+ 			* иконка
+ 			*/
 			icon: String,
+			/**
+ 			* всплывающий текст `title`
+ 			*/
 			title: String
 		},
 		components : {

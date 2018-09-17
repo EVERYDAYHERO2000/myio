@@ -121,7 +121,9 @@
 			heightlightText: heightlightText
 		},
 		methods: {
-			//сделать чат активным
+			/**
+    	* Сделать чат активным
+    	*/
 			setChatActive: function() {
 				let __this = this;
 				request.post('setChatActive', {
@@ -131,7 +133,9 @@
 					APP.$set(APP.opt.user, 'activeChatId', __this.chat.id);
 				});
 			},
-			//запинить/распинить чат
+			/**
+    	* Закрепить / открепить чат
+    	*/
 			setChatPinned: function() {
 				let __this = this;
 
@@ -143,16 +147,52 @@
 				}, function(e) {
 					APP.$set(APP.opt.chatsRooms[__this.chat.chatsRoomsIndex], 'isPinned', pin);
 				});
+			},
+			/**
+    	* Удалить чат.
+    	*/
+			deleteChat : function(){
+				console.log(this.chat.name)
+			},
+			/**
+    	* Выйти из чата
+    	*/
+			leaveChat : function(){
+				console.log(this.chat.name)
 			}
 		},
 		data : function(){
 			return {
 				menu : [
-					{name: this.$d('add user')},
-					{type: 'divider'},
-					{name: this.$d('pin')},
-					{name: this.$d('delete')}, 
-					{name: this.$d('convert to task')} 
+					/**
+    			* Добавить пользователя
+    			*/
+					{
+						name: this.$d('add user')
+					},
+					{
+						type: 'divider'
+					},
+					/**
+    			* Закрепить / открепить чат.
+    			*/
+					{
+						name: (this.chat.isPinned) ? this.$d('unpin') : this.$d('pin'),
+						action: this.setChatPinned
+					},
+					/**
+    			* Удалить чат.
+    			*/
+					{
+						name: this.$d('delete')
+					},
+					/**
+    			* Переместить в задачи.
+    			*/
+					{
+						name: this.$d('convert to task'),
+						hide: (this.type === 'chat') ? false : true
+					} 
 				]
 			}
 		},

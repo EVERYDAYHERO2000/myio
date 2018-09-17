@@ -21,11 +21,12 @@
 
 	/**
  	* Аватарка чата или таска. Для чатов — круглая, для тасков — квадратная.
+	* Цыет аватарки зависит от длины заголовка `title`
  	*/
 	export default {
 		props: {
 			/**
- 			* Заголовок чата, используется первая буква
+ 			* Заголовок чата
  			*/
 			title: {
 				default : '',
@@ -80,13 +81,16 @@
 		color: rgba(red(@color-white),green(@color-white),blue(@color-white), 0.7);
 		box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.02);
 		user-select: none;
+		transition: all .5s;
 
 		&_chat {
 			.border-radius(50%);
+			
 		}
 		
 		&_task {
 			.border-radius(5px);
+			
 		}
 		
 		&_m {
