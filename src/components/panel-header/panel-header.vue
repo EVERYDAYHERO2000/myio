@@ -30,7 +30,9 @@
 
 <script>
 	
-	import contextMenu__mixin from '../../mixins/context-menu.js';
+	import icon 								from '../../components/icon/icon.vue';
+	
+	import contextMenu__mixin 	from '../../mixins/context-menu.js';
 	
 	/**
  	* Панель интерфейса, умеет разворачиваться по клику 
@@ -58,6 +60,9 @@
 				type : String
 			}
 			
+		},
+		components: {
+			icon: icon
 		},
 		mixins: [contextMenu__mixin],
 		methods: {

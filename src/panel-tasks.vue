@@ -50,6 +50,17 @@
 			v-bind:key="chat.id">
 		</chat-list-item>
 		
+		<btn-group
+			v-bind:align="'center'">
+			
+			<btn
+				style="margin: 30px 0"
+				v-bind:theme="'link'"
+				v-bind:label="$d('new task')">
+			</btn>	
+						
+		</btn-group>
+		
 	</div>
 
 </div>
@@ -65,6 +76,8 @@
 	import selectList 			from './components/select-list/select-list.vue';
 	import textField 				from './components/text-field/text-field.vue';
 	import chatListItem 		from './components/chat-list-item/chat-list-item.vue';
+	import btnGroup					from './components/btn-group/btn-group.vue';
+	import btn							from './components/btn/btn.vue';
 	
 	/**
  	* Миксины 
@@ -82,7 +95,9 @@
 			panelHeader : panelHeader,
 			chatListItem : chatListItem,
 			selectList: selectList,
-			textField: textField
+			textField: textField,
+			btnGroup: btnGroup,
+			btn: btn
 		},
 		mixins: [chatList__mixin],
 		methods: {

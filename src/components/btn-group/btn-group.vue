@@ -35,6 +35,7 @@
 
 <style lang="less">
 	@import '../../less/main.less';
+	
 	.btn-group {
 		.flex-block();
 
@@ -47,7 +48,7 @@
 		}
 		
 		&_left {
-			.justify-content(space-between);
+			.justify-content(flex-start);
 		}
 		
 		&_right {

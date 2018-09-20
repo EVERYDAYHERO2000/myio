@@ -1,10 +1,12 @@
 <template>
 	<div class="chat-input">
-	
-		<div 	
-			v-bind:title="$d('add file')" 
-			class="chat-input__add-file">
-		</div>
+		
+		<icon
+			class="chat-input__add-file"
+			v-bind:name="'attachment'"
+			v-bind:opacity="0.5"
+			v-bind:title="$d('add file')">
+		</icon>
 		
 		<textarea 
 			autofocus 
@@ -21,12 +23,10 @@
 			v-on:click="addNewMessage" 
 			v-bind:title="$d('send') + ': ⌘ + Enter'">
 			
-			<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    		<polygon 
-    			transform="translate(0, 1)" 
-    			points="0 18 20 9 0 0 0 7 14 9 0 11">
-    		</polygon>
-			</svg>
+			<icon
+				v-bind:color="'color'"
+				v-bind:name="'send'">
+			</icon>
 	
 		</div>
 		
@@ -35,7 +35,9 @@
 
 
 <script>
-	import request from '../../functions/request.js';
+	import request 	from '../../functions/request.js';
+	
+	import icon 		from '../../components/icon/icon.vue';	
 
 	/**
  	* Инпут воода сообщения в чат 
@@ -43,6 +45,9 @@
 	export default {
 		props: {
 			opt: Object
+		},
+		components: {
+			icon : icon
 		},
 		mounted: function() {
 			this.setFocus();
@@ -115,10 +120,6 @@
 			min-width: @icon-size;
 			min-height: @icon-size;
 			margin: 8px;
-			background-image: ~"url(../../assets/add-file.svg)";
-			background-size: @icon-size @icon-size;
-			background-position: center;
-			background-repeat: no-repeat;
 		}
 
 		&__input {
@@ -151,11 +152,6 @@
 			margin: 8px;
 			.flex-block();
     	align-items: center;
-			
-			& polygon {
-				fill: @color-active;
-				stroke: none;
-			}
 		}
 	}
 </style>
