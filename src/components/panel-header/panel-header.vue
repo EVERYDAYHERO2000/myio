@@ -12,6 +12,9 @@
 			v-bind:title="$d('expand')"
 			v-on:click="toggleHeaderPanel">
 			{{title}}
+			<icon
+				v-bind:name="'menu'">
+			</icon>
 		</div>
 		
 		<div 
@@ -126,29 +129,14 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			word-break: keep-all;
-			width: calc(100% - 30px);
+			width: calc(100% - 10px);
+			.flex-block();
+			justify-content: space-between;
 
-			&:after {
-				display: block;
-				content: '';
-				height: @height-header;
-				width: @height-header;
-				background-image: ~'url(../../assets/more-vert.svg)';
-				background-size: 20px;
-				background-position: center;
-				background-repeat: no-repeat;
-				position: absolute;
-				top: 0;
-				right: -8px;
-				opacity: 0.8;
-
-			}
 		}
 
 		&__form {
 			padding: 0 10px 10px 10px;
-
-			
 
 			&>div:first-child {
 				padding-top: 20px;

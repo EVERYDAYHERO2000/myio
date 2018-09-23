@@ -7,8 +7,12 @@
     <toolbar-tool 
       v-if="state == 'chats'" 
       v-on:click.native="toggleToolbarAdd"
-      v-bind:title="$d('Create new')" 
-      v-bind:icon="icons.icon_add">
+      v-bind:title="$d('Create new')">
+      
+      <icon
+      	v-bind:name="'new'">
+			</icon>
+      
     </toolbar-tool>
 
     <div class="toolbar__sizer"></div>
@@ -30,8 +34,12 @@
       v-on:onChangeState="setState"
       v-on:click.native="closeToolbar"
       v-bind:title="$d('Chats')" 
-      v-bind:currentState="state" 
-      v-bind:icon="icons.icon_forum">
+      v-bind:currentState="state">
+      
+      <icon
+      	v-bind:name="'chats'">
+			</icon>
+      
     </toolbar-tool>
 
     <toolbar-tool 
@@ -39,8 +47,12 @@
       v-on:onChangeState="setState"
       v-on:click.native="closeToolbar" 
       v-bind:currentState="state"
-      v-bind:title="$d('Calendar')" 
-      v-bind:icon="icons.icon_event">
+      v-bind:title="$d('Calendar')">
+      
+      <icon
+      	v-bind:name="'calendar'">
+			</icon>
+      
     </toolbar-tool>
 
     <toolbar-tool 
@@ -48,8 +60,12 @@
       v-on:onChangeState="setState" 
       v-on:click.native="closeToolbar"
       v-bind:currentState="state"
-      v-bind:title="$d('Files')" 
-      v-bind:icon="icons.icon_cloudQueue">
+      v-bind:title="$d('Files')">
+      
+      <icon
+      	v-bind:name="'files'">
+			</icon>
+      
     </toolbar-tool>
 
     <toolbar-tool 
@@ -57,8 +73,12 @@
       v-on:onChangeState="setState"
       v-on:click.native="closeToolbar" 
       v-bind:currentState="state"
-      v-bind:title="$d('Settings')" 
-      v-bind:icon="icons.icon_settings">
+      v-bind:title="$d('Settings')">
+      
+      <icon
+      	v-bind:name="'settings'">
+			</icon>
+      
     </toolbar-tool>
   </div>
 
@@ -98,15 +118,9 @@
 	import toolbarTool 			from './components/toolbar-tool/toolbar-tool.vue';
 	import divider 					from './components/divider/divider.vue';
 	import logo 						from './components/logo/logo.vue';
+	import icon 						from './components/icon/icon.vue';
 	
-	/**
- 	* Ассеты 
- 	*/
-	import icon_add 				from './assets/add.svg';
-	import icon_forum 			from './assets/forum.svg';
-	import icon_event 			from './assets/event.svg';
-	import icon_cloudQueue 	from './assets/cloud-queue.svg';
-	import icon_settings 		from './assets/settings.svg';
+
 
 	/**
  	* Панель инструментов рабочего экрана приложения
@@ -127,7 +141,8 @@
 			addForm : addForm,
 			spaceForm : spaceForm,
 			divider : divider,
-			logo : logo
+			logo : logo,
+			icon : icon 
 		},
 		methods: {
 			toggleToolbarAdd: function() {
@@ -161,13 +176,6 @@
 				},
 				spaceForm: {
 					isVisible: false
-				},
-				icons : {
-					icon_add : icon_add,
-					icon_forum : icon_forum,
-					icon_event : icon_event,
-					icon_cloudQueue : icon_cloudQueue,
-					icon_settings : icon_settings
 				}
 			}
 		}

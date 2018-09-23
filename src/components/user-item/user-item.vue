@@ -12,11 +12,12 @@
 		<user-name v-bind:name="user.email"></user-name>
 	</div>
 		
-	<div 
+	<icon 
 		v-if="removeble"
+		v-bind:name="'remove'"
 		class="user-item__remove" 
-		v-on:click="onRemove">
-	</div>
+		v-on:click.native="onRemove">
+	</icon>
 
 </div>
 </template>
@@ -28,6 +29,7 @@
  	*/
 	import contactIconChip 	from '../../components/contact-icon-chip/contact-icon-chip.vue';
 	import userName 				from '../../components/user-name/user-name.vue';
+	import icon			 				from '../../components/icon/icon.vue';
 	
 	
 	
@@ -58,7 +60,8 @@
 		},
 		components : {
 			contactIconChip : contactIconChip,
-			userName: userName
+			userName: userName,
+			icon : icon
 		},
 		methods: {
 			onRemove: function() {
@@ -88,14 +91,6 @@
 		}
 
 		&__remove {
-			width: @icon-size;
-			height: @icon-size;
-			min-width: @icon-size;
-			min-height: @icon-size;
-			background-image: ~'url(../../assets/remove-circle-outline.svg)';
-			background-size: @icon-size;
-			background-position: center;
-			background-repeat: no-repeat;
 			opacity: .1;
 			margin: 10px 0 0 0;
 			.transition( all .2s );

@@ -1,5 +1,6 @@
 ```js
 <pin
-	v-bind:state="true">
+	v-bind:active="true"
+	v-bind:pined="true">
 </pin>
 ```

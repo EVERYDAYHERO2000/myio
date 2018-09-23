@@ -48,7 +48,8 @@
     	
 			<pin 
 				v-bind:title="$d('pin')"
-				v-bind:state="(chat.isPinned) ? true : false">
+				v-bind:active="isActive"
+				v-bind:pined="(chat.isPinned) ? true : false">
 			</pin>
 			
     </div>

@@ -42,6 +42,11 @@
 			
 		</div>
 		
+		<icon
+			class="select-list__icon"
+			v-bind:name="'dropDown'">
+		</icon>
+		
 	</div>
 </template>
 
@@ -57,6 +62,7 @@
  	* Компоненты 
 	*/
 	import menuItem 		from '../../components/menu-item/menu-item.vue';
+	import icon 		from '../../components/icon/icon.vue';
 	
 	/**
  	* Выпадающий список 
@@ -81,7 +87,8 @@
 			v: String 
 		},
 		components: {
-			menuItem: menuItem
+			menuItem: menuItem,
+			icon: icon
 		},
 		updated: function(){
 			
@@ -149,21 +156,13 @@
 				outline: none;
 			}
 
-			&::after {
-				background-image: ~"url(../../assets/arrow-drop-down.svg)";
-				width: 20px;
-				height: 20px;
-				content: '';
-				display: block;
+		}
+		
+		&__icon {
 				position: absolute;
 				bottom: 0;
 				right: 0;
-				.transform(translateY(-10px));
-				opacity: 0.7;
-
-			}
-
-
+				.transform(translateY(-8px));
 		}
 
 		&__list {

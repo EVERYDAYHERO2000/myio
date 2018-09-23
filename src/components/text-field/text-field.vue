@@ -6,10 +6,18 @@
 			'text-field_date' : type == 'date'
 		}">
 
-		<div 
+		<icon 
 			v-if="type == 'search'" 
+			v-bind:name="'search'"
+			v-bind:opacity="0.2"
 			class="text-field__search-icon">
-		</div>
+		</icon>
+		
+		<icon 
+			v-if="type == 'date'" 
+			v-bind:name="'dropDown'"
+			class="text-field__list-icon">
+		</icon>
 
 		<input 
 			v-bind:placeholder="placeholder"
@@ -35,6 +43,8 @@
 
 <script>
 
+	import icon 		from '../../components/icon/icon.vue';
+	
 	/**
  	* Поле ввода
  	*/
@@ -72,6 +82,9 @@
  			* Ошибка
  			*/
 			error: String
+		},
+		components : {
+			icon: icon
 		},
 		methods: {
 			setId: function(){
@@ -212,13 +225,9 @@
 			}
 
 			& input::-webkit-calendar-picker-indicator {
-
 				color: rgba(0, 0, 0, 0);
-				opacity: 0.7;
 				display: block;
-				background: ~"url(../../assets/arrow-drop-down.svg)";
-				background-position: center;
-				background-repeat: no-repeat;
+				background: none;
 				width: 20px;
 				.transform(translateX(14px));
 			}
@@ -247,14 +256,15 @@
 		}
 
 		&__search-icon {
-			background-image: ~'url(../../assets/search.svg)';
-			background-repeat: no-repeat;
-			background-position: center;
-			opacity: 0.2;
-			width: 20px;
-			height: 20px;
 			position: absolute;
 			bottom: 10px;
+		}
+		
+		&__list-icon {
+			position: absolute;
+			bottom: 10px;
+			right: 0;
+			pointer-events: none;
 		}
 
 		&__error {

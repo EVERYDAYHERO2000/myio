@@ -31,7 +31,6 @@
 		<chat-list-item 
 			v-for="chat in chatList"
 			v-if="chat.isPinned"
-			v-bind:app="app"
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
 			v-bind:type="'task'"
@@ -42,7 +41,6 @@
 		<chat-list-item 
 			v-for="chat in chatList"
 			v-if="!chat.isPinned"
-			v-bind:app="app"
 			v-bind:opt="opt" 
 			v-bind:chat="chat"
 			v-bind:type="'task'"

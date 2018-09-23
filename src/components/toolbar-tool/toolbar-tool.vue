@@ -79,6 +79,8 @@
 		opacity: 0.8;
 		.transition( all .2s );
 		position: relative;
+		display: flex;
+    justify-content: center;
 
 		&:last-child {
 			margin: 0 0 10px 0;
@@ -88,12 +90,6 @@
 			opacity: .2;
 			.transition( all .2s );
 			pointer-events: none;
-		}
-		
-		&:hover {
-			/*.f-recolor(@color-active);
-			.transition(none);
-			opacity: 1;*/
 		}
 		
 		& * {
