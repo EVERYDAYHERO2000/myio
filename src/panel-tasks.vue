@@ -2,10 +2,7 @@
 	<div class="panel-tasks">
 
 	<panel-header
-		v-bind:menu="[
-					{name: $d('new task')},
-					{name: $d('mute notification')}
-				]"
+		v-bind:menu="contextMenu"
 		v-bind:title="(searchResult) ? panelTitle + ':' + searchResult : panelTitle">
 		
 			<select-list 
@@ -52,6 +49,7 @@
 			v-bind:align="'center'">
 			
 			<btn
+				v-on:click.native="addChat"
 				style="margin: 30px 0"
 				v-bind:theme="'link'"
 				v-bind:label="$d('new task')">
@@ -104,13 +102,27 @@
 			},
 			setSearchResult: function(e){ 
 				this.searchResult = e;
+			},
+			addChat: function(){
+				const toolbar = APP.$data.app.store.toolbar;
+				toolbar.addForm.state = 0;
+				toolbar.toggleToolbarAdd();
 			}
 		},
 		data: function(){
 			return {
 				taskStatus: ['started','needInfo','review','closed'],
 				searchResult : '',
-				active: 0
+				active: 0,
+				contextMenu: [
+					{
+						name: this.$d('new task'),
+						action: this.addChat
+					},
+					{
+						name: this.$d('mute notification')
+					}
+				]
 			}
 		},
 		computed : {

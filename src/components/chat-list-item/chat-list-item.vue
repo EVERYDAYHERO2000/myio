@@ -185,7 +185,7 @@
     			* Удалить чат.
     			*/
 					{
-						name: this.$d('delete')
+						name: (this.chat.chatRole) ? this.$d('delete') : ''
 					},
 					/**
     			* Переместить в задачи.

@@ -13,7 +13,10 @@
 			<user-name 
 				v-bind:name="user.login">
 			</user-name>
-			<div clas="message__text">{{message.text}}</div>
+			
+			<formated-text v-bind:text="message.text">	
+			</formated-text>
+			
 		</div>
 		
 		<div class="message__info">
@@ -40,6 +43,7 @@
 	import contactIconChip 		from '../../components/contact-icon-chip/contact-icon-chip.vue';
 	import userName 					from '../../components/user-name/user-name.vue';
 	import dateTime 					from '../../components/date-time/date-time.vue'; 
+	import formatedText 			from '../../components/formated-text/formated-text.vue'; 
 	
 	/**
  	* Миксины 
@@ -64,7 +68,8 @@
 		components : {
 			contactIconChip: contactIconChip,
 			userName: userName,
-			dateTime: dateTime
+			dateTime: dateTime,
+			formatedText: formatedText
 		},
 		computed : {
 			user : function(){
@@ -74,13 +79,26 @@
 		data : function(){
 			return {
 				menu : [
-					{name: this.$d('add user')},
-					{type: 'divider'},
-					{name: this.$d('pin')},
-					{name: this.$d('delete')}, 
-					{name: this.$d('convert to task')}
+					{
+						name: this.$d('add user')
+					},
+					{
+						type: 'divider'
+					},
+					{
+						name: this.$d('pin')
+					},
+					{
+						name: this.$d('delete')
+					}, 
+					{
+						name: this.$d('convert to task')
+					}
 				]
 			}
+		},
+		created: function(){
+			
 		}
 	}
 
@@ -101,11 +119,7 @@
 			flex-grow: 1;
 			padding: 0 5px;
 			box-sizing: border-box;
-			user-select: all;
-		}
-		
-		&__text {
-			user-select: all;
+			user-select: text;
 		}
 		
 		&__info {

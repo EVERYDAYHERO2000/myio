@@ -2,10 +2,7 @@
 	<div class="panel-chats">
 
 	<panel-header
-		v-bind:menu="[
-					{name: $d('new chat')},
-					{name: $d('mute notification')}
-				]"
+		v-bind:menu="contextMenu"
 		v-bind:title="(searchResult) ? panelTitle + ':' + searchResult : panelTitle">
 		
 		<text-field 
@@ -43,6 +40,7 @@
 			v-bind:align="'center'">
 			
 			<btn
+				v-on:click.native="addChat"
 				style="margin: 30px 0"
 				v-bind:theme="'link'"
 				v-bind:label="$d('new chat')">
@@ -93,12 +91,26 @@
 		methods: {
 			setSearchResult: function(e){
 				this.searchResult = e;
+			},
+			addChat: function(){
+				const toolbar = APP.$data.app.store.toolbar;
+				toolbar.addForm.state = 1;
+				toolbar.toggleToolbarAdd();
 			}
 		},
 		data: function(){
 			return {
 				taskStatus: ['chat'],
-				searchResult : ''
+				searchResult : '',
+				contextMenu: [
+					{
+						name: this.$d('new chat'),
+						action: this.addChat
+					},
+					{
+						name: this.$d('mute notification')
+					}
+				]
 			}
 		}
 	}

@@ -86,6 +86,7 @@
     <add-form 
     	v-if="addForm.isVisible"
     	v-on:success="toggleToolbarAdd"
+    	v-bind:state="addForm.state"
     	v-bind:opt="opt">
     </add-form>
     <space-form 
@@ -172,12 +173,16 @@
 		data: function() {
 			return {
 				addForm: {
-					isVisible: false
+					isVisible: false,
+					state: 0
 				},
 				spaceForm: {
 					isVisible: false
 				}
 			}
+		},
+		created : function(){
+			APP.$set(APP.app.store, 'toolbar', this);
 		}
 	}
 </script>

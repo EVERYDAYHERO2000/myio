@@ -134,6 +134,7 @@
 					modal: false,
 					screen: "login",
 					state: "chats",
+					store: [],
 					context: {
 						isShowed: false,
 						menu: [],

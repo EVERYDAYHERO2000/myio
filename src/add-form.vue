@@ -3,15 +3,15 @@
 
   <select-list 
     v-bind:name="'test'" 
-    v-bind:options="this.dataType" 
-    v-bind:active="this.active"
+    v-bind:options="dataType" 
+    v-bind:active="state"
     v-bind:k="'value'"
     v-bind:v="'name'"
-    v-on:onActive="this.setActive">
+    v-on:onActive="setActive">
   </select-list>
     
     <!--CREATE TASK-->
-    <div v-if="this.active == 0">
+    <div v-if="active == 0">
 
       <text-field 
 				v-on:onValue="setTitle"
@@ -27,7 +27,7 @@
 
       <text-field 
 				v-on:onValue="setDate"
-				v-bind:value="this.date"
+				v-bind:value="date"
 				v-bind:type="'date'"
 				v-bind:label="$d('deadlined')">
 			</text-field>
@@ -49,7 +49,7 @@
     <!--CREATE TASK END-->
 
    	<!--CREATE CHAT-->
-    <div v-if="this.active == 1">
+    <div v-if="active == 1">
 
       <text-field 
 				v-on:onValue="setTitle"
@@ -80,7 +80,7 @@
     <!--CREATE CHAT END-->
 
    	<!--ADD USER-->
-    <div v-if="this.active == 2">
+    <div v-if="active == 2">
 
      	<add-user
      		v-on:userSubmit="close"
@@ -119,7 +119,8 @@
 	
 	export default {
 		props: {
-			opt: Object
+			opt: Object,
+			state: Number
 		},
 		components: {
 			btn: btn,
