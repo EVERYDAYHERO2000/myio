@@ -68,11 +68,11 @@
 		width: max-content;
 		overflow: hidden;
 		position: relative;
-		.box-shadow(0 0 0 rgba(0,0,0,0));
+		.box-shadow(0 0 0 0 rgba(0,0,0,0.2));
 		.transition(all 0.2s ease);
 		
 		&:hover {
-			.box-shadow( 0px 1px 3px rgba(0,0,0,0.3));
+			.box-shadow( 0px 5px 15px rgba(0,0,0,0.2) );
 			.transition(all 0.2s ease);
 		}
 
