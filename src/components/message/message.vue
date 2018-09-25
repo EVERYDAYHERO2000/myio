@@ -1,6 +1,7 @@
 <template>
 	<div 
 		v-on:contextmenu.prevent="setContextMenu"
+		v-bind:class="{'message_next': !avatar }"
 		class="message">
 	
 		<contactIconChip
@@ -14,7 +15,9 @@
 				v-bind:name="user.login">
 			</user-name>
 			
-			<formated-text v-bind:text="message.text">	
+			<formated-text 
+				v-if="message.text" 
+				v-bind:text="message.text">	
 			</formated-text>
 			
 		</div>
@@ -62,7 +65,14 @@
 			/**
  			* объект сообщения
  			*/
-			message: Object
+			message: Object,
+			/**
+ 			* Отображать аватарку 
+ 			*/
+			avatar: {
+				default: true,
+				type: Boolean
+			}
 		},
 		mixins: [contextMenu__mixin],
 		components : {
@@ -110,10 +120,23 @@
 	
 	.message {
 		box-sizing: border-box;
-		min-height: 50px;
+		
 		.flex-block();
 		padding: 5px 8px;
 		width: 100%;
+		
+		&_next {
+			& .contact-icon-chip {
+				visibility: hidden;
+				height: 0px;
+				max-height: 0px;
+				min-height: 0px;
+			}
+			
+			& .user-name {
+				visibility: hidden;
+			}
+		}
 		
 		&__content {
 			flex-grow: 1;

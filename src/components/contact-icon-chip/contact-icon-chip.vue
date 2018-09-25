@@ -53,6 +53,7 @@
 				default: 'm',
 				type: String
 			}
+			
 		},
 		methods: {
 			stylize : function(){

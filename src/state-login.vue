@@ -102,7 +102,7 @@
 				}
 			},
 			loadData: function(email, pass) {
-				let __this = this;
+				const __this = this;
 				__this.setState('loading');
 				
 				request.post('login',{

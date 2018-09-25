@@ -12,15 +12,15 @@
 			autofocus 
 			ref="chat-input"
 		  class="chat-input__input" 
-			v-model="textInput"
-			v-bind:style="height"
+			v-model="message"
+			v-bind:style="'height:' + height + 'px'"
 			v-on:keyup="resizeTextarea"
 			v-on:keydown="handleCmdEnter($event)">
 		</textarea>
 		
 		<div 
 			class="chat-input__send" 
-			v-on:click="addNewMessage" 
+			v-on:click="sendNewMessage" 
 			v-bind:title="$d('send') + ': ⌘ + Enter'">
 			
 			<icon
@@ -44,6 +44,9 @@
  	*/
 	export default {
 		props: {
+			/**
+ 			* Глобальный объект приложения. 
+ 			*/
 			opt: Object
 		},
 		components: {
@@ -57,46 +60,69 @@
 			this.setFocus();
 		},
 		methods: {
+			/**
+ 			* Комбинация клавиш 
+ 			*/
 			handleCmdEnter: function(e) {
 				if ((e.metaKey || e.ctrlKey) && e.keyCode == 13) {
-					this.addNewMessage();
+					this.sendNewMessage();
 				}
 			},
+			/**
+ 			* Установить фокус на элемент
+ 			*/
 			setFocus: function(){
-				if (this.$refs['chat-input']) this.$refs['chat-input'].focus();
+				if (this.$refs['chat-input']) {
+					this.$refs['chat-input'].focus();
+				}
 			},
-			addNewMessage: function() {
-				let __this = this;
+			/**
+ 			* Отправить новое сообщение
+ 			*/
+			sendNewMessage: function() {
+				const __this = this;
 				
-				request.post('newMessage',{
-					pass : this.opt.user.password,
-					email : this.opt.user.email,
-					text : this.textInput,
-					userId: this.opt.user.id,
-					chatsId: this.opt.user.activeChatId,
-				}, function(e){
-					
-					__this.textInput = '';
-					__this.$socket.emit('chat message', JSON.stringify(e));
-					
-				});
+				if (this.message.trim()){
+				
+					request.post('newMessage',{
+						pass : this.opt.user.password,
+						email : this.opt.user.email,
+						text : this.message,
+						userId: this.opt.user.id,
+						chatsId: this.opt.user.activeChatId,
+					}, function(e){
+
+						__this.message = '';
+						__this.$socket.emit('chat message', JSON.stringify(e));
+
+					});
+				}
 				
 			},
+			/**
+ 			* Увеличить высоту компонента по количеству строк текста
+ 			*/
 			resizeTextarea: function() {
 				
-				let $textarea = this.$refs['chat-input'];
-				let offset = $textarea.offsetHeight - $textarea.clientHeight;
+				const textarea = this.$refs['chat-input'];
+				let offset = textarea.offsetHeight - textarea.clientHeight;
 
-				this.height = 'height: 0';
+				this.height = 0;
 				this.$nextTick(function () {
-					this.height = ['height:', $textarea.scrollHeight + offset, 'px'].join('');
+					this.height = textarea.scrollHeight + offset;
 				});
 			}
 		},
 		data: function() {
 			return {
-				textInput: '',
-				height : 'height: 0'
+				/**
+ 				* {String} value для поля ввода
+ 				*/
+				message: '',
+				/**
+ 				* {Number} высота поля ввода
+ 				*/
+				height : 0
 			}
 		}
 	}

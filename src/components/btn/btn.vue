@@ -46,6 +46,9 @@
 			dropEffect : dropEffect
 		},
 		methods: {
+			/**
+    	* Нажатие на кнопку
+    	*/
 			click: function(e) {
 				this.$emit('onClick', true);
 			}

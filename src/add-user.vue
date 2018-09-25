@@ -85,7 +85,7 @@
 				}
 			},
 			findUser:function(e){
-				let __this = this;
+				const __this = this;
 				let __email = this.email.trim();
 				
 				this.state = 1;
@@ -123,7 +123,7 @@
 				}
 			},
 			addUser: function(){
-				let __this = this;
+				const __this = this;
 				if (this.user.id){
 					let userId = this.user.id;
 					let spaceId = F.ifExist(this.opt.chats, 'id', this.opt.user.activeChatId).object.spacesId;

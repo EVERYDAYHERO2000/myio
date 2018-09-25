@@ -154,7 +154,7 @@
 				this.$emit('success', true);
 			},
 			createNew: function() {
-				let __this = this;
+				const __this = this;
 				
 				//тип чата:чат/задача
 				let chatType = (function(e){

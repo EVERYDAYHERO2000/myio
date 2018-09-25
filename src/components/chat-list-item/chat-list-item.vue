@@ -126,7 +126,7 @@
     	* Сделать чат активным
     	*/
 			setChatActive: function() {
-				let __this = this;
+				const __this = this;
 				request.post('setChatActive', {
 					userId: this.opt.user.id,
 					chatId: this.chat.id
@@ -138,7 +138,7 @@
     	* Закрепить / открепить чат
     	*/
 			setChatPinned: function() {
-				let __this = this;
+				const __this = this;
 
 				let pin = !this.chat.isPinned;
 				request.post('setChatPinned', {
@@ -205,7 +205,7 @@
 
 			//последнее сообщение в чате
 			lastMessage: function() {
-				let __this = this;
+				const __this = this;
 				let message = {};
 
 				F.ifExist(this.opt.messages, 'chatsId', this.chat.id, undefined, function(e){

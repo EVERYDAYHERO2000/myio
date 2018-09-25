@@ -20,6 +20,7 @@
 					
 					<message
 						v-for="(message,index) in messages"
+						v-bind:avatar="(messages[index - 1] && message.userId != messages[index - 1].userId)"
 						v-bind:opt="opt"
 						v-bind:key="index"
 						v-bind:message="message">
@@ -79,6 +80,9 @@
 		},
 		data : function(){
 			return {
+				/**
+ 				* Список пользователей
+ 				*/
 				userList: []
 			}
 		},
@@ -86,6 +90,9 @@
 			
 		},
 		computed: {
+			/**
+ 			* Список сообщений чата 
+ 			*/
 			messages : function(){
 				let tempList = [];
 				F.ifExist(this.opt.messages, 'chatsId', this.opt.user.activeChatId, function(e){
