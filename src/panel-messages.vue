@@ -17,14 +17,30 @@
 		<div class="panel-messages__chat">
 			<div class="panel-messages__list">
 				<div class="panel-messages__list-inner">	
+				
+					<chat-date 
+						v-if="(messages.length)"
+						v-bind:date="messages[0].date">
+					</chat-date>
+				
+					<template v-for="(message,index) in messages">
 					
-					<message
-						v-for="(message,index) in messages"
-						v-bind:avatar="(messages[index - 1] && message.userId != messages[index - 1].userId)"
-						v-bind:opt="opt"
-						v-bind:key="index"
-						v-bind:message="message">
-					</message>
+						<chat-date 
+							v-if="( messages[index - 1] && getDateTime(message.date).val != getDateTime(messages[index - 1].date).val )"
+							v-bind:date="message.date">
+						</chat-date>
+						
+						<message
+							v-bind:avatar="(	messages[index - 1] && 
+																message.userId != messages[index - 1].userId || 
+																messages[index - 1] && 
+																getDateTime(message.date).val != getDateTime(messages[index - 1].date).val )"
+							v-bind:opt="opt"
+							v-bind:key="index"
+							v-bind:message="message">
+						</message>
+					
+					</template>
 					
 				</div>	
 			</div>
@@ -46,6 +62,7 @@
  	* Функции 
  	*/
 	import F 							from './functions/functions.js';
+	import getDateTitme 	from './functions/date-time.js';
 	
 	/**
  	* Компоненты 
@@ -56,6 +73,7 @@
 	import userList 			from './components/user-list/user-list.vue';
 	import chatInput 			from './components/chat-input/chat-input.vue';
 	import message 				from './components/message/message.vue';
+	import chatDate 			from './components/chat-date/chat-date.vue';
 	
 	/**
  	* Панель с лентой сообщений чата. 
@@ -71,12 +89,14 @@
 			textField: textField,
 			chatInput: chatInput,
 			userList: userList,
-			message: message
+			message: message,
+			chatDate: chatDate
 		},
 		methods: {
 			setUserList: function(e) {
 				this.userList = e;
-			}
+			},
+			getDateTime: getDateTitme
 		},
 		data : function(){
 			return {

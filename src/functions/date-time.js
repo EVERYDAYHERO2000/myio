@@ -30,6 +30,7 @@ const getDateTime = function (date) {
 	dateTime.dateOnly = [dateTime.fullYear,dateTime.month,dateTime.day].join('-');
 	dateTime.formated = [dateTime.dateOnly,dateTime.time].join(' ');
 	dateTime.value = Number([dateTime.fullYear,dateTime.month,dateTime.day,dateTime.hours,dateTime.minute,dateTime.seconds].join(''));
+	dateTime.val = Number([dateTime.fullYear,dateTime.month,dateTime.day].join(''));
 
 	function stringifyNumber(n) {
 		return (n < 10) ? '0' + n : n.toString();
